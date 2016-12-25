@@ -1,4 +1,5 @@
-# UTRA Soccer Team (Please contact Jason at soccer@utra.ca for all access)
+# UTRA Soccer Team Links
+(Please contact Jason at soccer@utra.ca for all access)
 
 Facebook Group
 https://www.facebook.com/groups/UTRASoccer/
