@@ -1,0 +1,8 @@
+prefix=/home/soccer/soccer/devel
+
+Name: opencv_tutorial
+Description: Description of opencv_tutorial
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/soccer/soccer/devel/lib 
+Requires: 

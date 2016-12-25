@@ -1,0 +1,20 @@
+# All hidden folders and files
+/.*
+.* 
+!/.gitignore
+!/.gitconfig
+
+# Linux Folders
+/Videos/
+/Pictures/
+/Music/
+/Desktop/
+
+# ROS
+/soccer/build/**
+
+# SIMSpark
+/simspark/**/build/**
+/simspark/.svn/*
+
+# Gazebo (Might need to fix in future)
