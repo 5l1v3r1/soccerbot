@@ -6,7 +6,7 @@ project(using_markers)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
-  visualization_msg
+  visualization_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -135,7 +135,7 @@ add_executable(using_markers_node src/basic_shapes.cpp)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(
-  basic_shapes
+  using_markers_node
   ${catkin_LIBRARIES}
 )
 
