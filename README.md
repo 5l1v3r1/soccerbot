@@ -8,7 +8,7 @@ Google Drive
 https://drive.google.com/drive/folders/0B8OHQTLVTR6GTnlfRkFGZk5EQVU?usp=sharing
 
 Slack
-utrarobosoccer.slack.com
+http://utrarobosoccer.slack.com
 
 Competition Rules (Child Size)
 https://www.robocuphumanoid.org/materials/rules/
