@@ -9,6 +9,7 @@
 /Pictures/
 /Music/
 /Desktop/
+/Downloads/
 
 # ROS
 /soccer/build/**
