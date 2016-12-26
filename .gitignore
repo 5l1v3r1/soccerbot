@@ -13,6 +13,7 @@
 
 # ROS
 /soccer/build/**
+!/soccer/build/.project
 
 # SIMSpark
 /simspark/**/build/**

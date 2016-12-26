@@ -11,6 +11,7 @@ int main( int argc, char** argv )
   // Set our initial shape type to be a cube
   uint32_t shape = visualization_msgs::Marker::CUBE;
 
+
   while (ros::ok())
   {
     visualization_msgs::Marker marker;
