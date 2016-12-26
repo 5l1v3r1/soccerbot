@@ -19,6 +19,7 @@ https://www.robocuphumanoid.org/materials/rules/
 - Competition Information and Dates (Humanoid)
 http://wiki.robocup.org/Humanoid_League
 
+
 - Competition Information and Dates (Simulation)
 http://wiki.robocup.org/Soccer_Simulation_League
 
@@ -49,7 +50,12 @@ git pull origin simulation
 git pull origin control
 ```
 
-## Simulation Team Setup Instructions
+## 3D Simulation Team Setup Instructions
+http://simspark.sourceforge.net/wiki/index.php/Installation_on_Linux
+Do Ubuntu Part 2 (but prerequisites first)
+
+## 2D Simulation Team Steup Instructions
+Follow instructions in the Install file
 
 ## Control Team Setup Instructions
 
