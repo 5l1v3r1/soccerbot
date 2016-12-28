@@ -31,7 +31,7 @@ https://drive.google.com/drive/folders/0B8OHQTLVTR6GUnZOVXd6VC00UG8
 
 ## Virtual Machine Installation Instructions
 1. Obtain the Preconfigured Virtual Machine and copy it into the default location (etc $HOME/Virtual Machines)
-https://drive.google.com/drive/folders/0B8OHQTLVTR6Ga2xfU0Z6NVVMSFE
+https://drive.google.com/open?id=0BytZsWzpd8xeakROOEptaWkxdDA
 
 2. Install VMWareFusion or VirtualBox VM
 INSERT LINKS HERE
