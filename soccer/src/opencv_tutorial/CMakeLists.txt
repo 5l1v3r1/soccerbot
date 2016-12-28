@@ -132,7 +132,6 @@ include_directories(
 
 ## Declare a C++ executable
 add_executable(opencv_tutorial_node src/opencv_tutorial_node.cpp)
-add_executable(image_converter src/image_converter.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
@@ -140,11 +139,6 @@ add_executable(image_converter src/image_converter.cpp)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(opencv_tutorial_node
-  ${catkin_LIBRARIES}
-  ${OpenCV_LIBRARIES}
-)
-
-target_link_libraries(image_converter.cpp
   ${catkin_LIBRARIES}
   ${OpenCV_LIBRARIES}
 )
