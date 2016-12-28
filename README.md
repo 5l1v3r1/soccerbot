@@ -61,7 +61,8 @@ Follow instructions in the Install file
 
 Update your home directory with your team branch in your home directory
 ```
-git pull origin control
+git clone https://github.com/utra-robosoccer/soccerbot
+cd soccerbot
 ```
 
 Source the directory
