@@ -1,14 +1,12 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(learning_tf)
+project(test)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
-  rospy
-  tf
-  turtlesim
+  visualization_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -102,8 +100,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES learning_tf
-#  CATKIN_DEPENDS roscpp rospy tf turtlesim
+#  LIBRARIES using_markers
+#  CATKIN_DEPENDS roscpp visualization_msg
 #  DEPENDS system_lib
 )
 
@@ -119,26 +117,27 @@ include_directories(
 )
 
 ## Declare a C++ library
-# add_library(learning_tf
-#   src/${PROJECT_NAME}/learning_tf.cpp
+# add_library(using_markers
+#   src/${PROJECT_NAME}/using_markers.cpp
 # )
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-# add_dependencies(learning_tf ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(using_markers ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-# add_executable(learning_tf_node src/learning_tf_node.cpp)
+add_executable(markers src/markers.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-# add_dependencies(learning_tf_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(using_markers_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(learning_tf_node
-#   ${catkin_LIBRARIES}
-# )
+target_link_libraries(
+  markers
+  ${catkin_LIBRARIES}
+)
 
 #############
 ## Install ##
@@ -155,7 +154,7 @@ include_directories(
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS learning_tf learning_tf_node
+# install(TARGETS using_markers using_markers_node
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -180,7 +179,7 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_learning_tf.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_using_markers.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

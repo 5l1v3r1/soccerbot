@@ -11,10 +11,6 @@ class cam_test{
     cam_test(){
       VideoCapture cap(CV_CAP_ANY); // open the video camera no. 0
 
-      int counter = 10000;
-
-
-
          if (!cap.isOpened())  // if not success, exit program
          {
              cout << "Cannot open the video cam" << endl;
@@ -30,7 +26,6 @@ class cam_test{
          while (1)
          {
              Mat frame;
-             Mat result;
 
              bool bSuccess = cap.read(frame); // read a new frame from video
 
@@ -39,7 +34,8 @@ class cam_test{
                   cout << "Cannot read a frame from video stream" << endl;
                   break;
              }
-	     imshow("MyVideo", frame); // Shows the frame in MyVideo             
+			
+			imshow("MyVideo", frame);
 
              if (waitKey(30) == 27) //wait for 'esc' key press for 30ms. If 'esc' key is pressed, break loop
             {
@@ -47,7 +43,8 @@ class cam_test{
                  break;
             }
          }
-            counter++;
+
+
     }
 
     ~cam_test(){
