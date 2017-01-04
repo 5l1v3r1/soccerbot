@@ -19,6 +19,7 @@ https://www.robocuphumanoid.org/materials/rules/
 - Competition Information and Dates (Humanoid)
 http://wiki.robocup.org/Humanoid_League
 
+
 - Competition Information and Dates (Simulation)
 http://wiki.robocup.org/Soccer_Simulation_League
 
@@ -30,7 +31,7 @@ https://drive.google.com/drive/folders/0B8OHQTLVTR6GUnZOVXd6VC00UG8
 
 ## Virtual Machine Installation Instructions
 1. Obtain the Preconfigured Virtual Machine and copy it into the default location (etc $HOME/Virtual Machines)
-https://drive.google.com/drive/folders/0B8OHQTLVTR6Ga2xfU0Z6NVVMSFE
+https://drive.google.com/open?id=0BytZsWzpd8xeakROOEptaWkxdDA
 
 2. Install VMWareFusion or VirtualBox VM
 INSERT LINKS HERE
@@ -49,13 +50,19 @@ git pull origin simulation
 git pull origin control
 ```
 
-## Simulation Team Setup Instructions
+## 3D Simulation Team Setup Instructions
+http://simspark.sourceforge.net/wiki/index.php/Installation_on_Linux
+Do Ubuntu Part 2 (but prerequisites first)
+
+## 2D Simulation Team Steup Instructions
+Follow instructions in the Install file
 
 ## Control Team Setup Instructions
 
 Update your home directory with your team branch in your home directory
 ```
-git pull origin control
+git clone https://github.com/utra-robosoccer/soccerbot
+cd soccerbot
 ```
 
 Source the directory
