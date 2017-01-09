@@ -13,6 +13,9 @@ https://drive.google.com/drive/folders/0B8OHQTLVTR6GTnlfRkFGZk5EQVU?usp=sharing
 - Slack
 http://utrarobosoccer.slack.com
 
+- Meeting Calender Subscription
+https://calendar.google.com/calendar/ical/soccer%40utra.ca/public/basic.ics
+
 - Competition Rules (Child Size)
 https://www.robocuphumanoid.org/materials/rules/
 
