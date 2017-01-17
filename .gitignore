@@ -11,7 +11,7 @@
 /Desktop/
 /Downloads/
 
-# ROS
+# ROS files
 /soccer/build/**
 !/soccer/build/.project
 
