@@ -47,7 +47,13 @@ Password: soccer
 
 5. Open your home directory in a terminal window
 
-6. GIT Update your home directory with your team branch.
+6. Configure your name and email properly
+```
+git config user.email "your_email@example.com"
+git config user.name "Your Name"
+```
+
+7. GIT Update your home directory with your team branch.
 ```
 git pull origin simulation
 git pull origin control
