@@ -117,9 +117,9 @@ include_directories(
 )
 
 ## Declare a C++ library
-# add_library(ball
-#   src/${PROJECT_NAME}/ball.cpp
-# )
+add_library(ball
+  src/${PROJECT_NAME}/ball.cpp
+)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
