@@ -9,6 +9,7 @@
 /Music/
 /Desktop/
 /Downloads/
+!/Documents/
 
 # ROS files
 /soccer/build/
