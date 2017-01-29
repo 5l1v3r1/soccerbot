@@ -114,6 +114,54 @@ agentspark/fast:
 	$(MAKE) -f CMakeFiles/agentspark.dir/build.make CMakeFiles/agentspark.dir/build
 .PHONY : agentspark/fast
 
+behaviours/behaviour.o: behaviours/behaviour.cpp.o
+.PHONY : behaviours/behaviour.o
+
+# target to build an object file
+behaviours/behaviour.cpp.o:
+	$(MAKE) -f CMakeFiles/agentspark.dir/build.make CMakeFiles/agentspark.dir/behaviours/behaviour.cpp.o
+.PHONY : behaviours/behaviour.cpp.o
+
+behaviours/behaviour.i: behaviours/behaviour.cpp.i
+.PHONY : behaviours/behaviour.i
+
+# target to preprocess a source file
+behaviours/behaviour.cpp.i:
+	$(MAKE) -f CMakeFiles/agentspark.dir/build.make CMakeFiles/agentspark.dir/behaviours/behaviour.cpp.i
+.PHONY : behaviours/behaviour.cpp.i
+
+behaviours/behaviour.s: behaviours/behaviour.cpp.s
+.PHONY : behaviours/behaviour.s
+
+# target to generate assembly for a file
+behaviours/behaviour.cpp.s:
+	$(MAKE) -f CMakeFiles/agentspark.dir/build.make CMakeFiles/agentspark.dir/behaviours/behaviour.cpp.s
+.PHONY : behaviours/behaviour.cpp.s
+
+behaviours/naobehaviour.o: behaviours/naobehaviour.cpp.o
+.PHONY : behaviours/naobehaviour.o
+
+# target to build an object file
+behaviours/naobehaviour.cpp.o:
+	$(MAKE) -f CMakeFiles/agentspark.dir/build.make CMakeFiles/agentspark.dir/behaviours/naobehaviour.cpp.o
+.PHONY : behaviours/naobehaviour.cpp.o
+
+behaviours/naobehaviour.i: behaviours/naobehaviour.cpp.i
+.PHONY : behaviours/naobehaviour.i
+
+# target to preprocess a source file
+behaviours/naobehaviour.cpp.i:
+	$(MAKE) -f CMakeFiles/agentspark.dir/build.make CMakeFiles/agentspark.dir/behaviours/naobehaviour.cpp.i
+.PHONY : behaviours/naobehaviour.cpp.i
+
+behaviours/naobehaviour.s: behaviours/naobehaviour.cpp.s
+.PHONY : behaviours/naobehaviour.s
+
+# target to generate assembly for a file
+behaviours/naobehaviour.cpp.s:
+	$(MAKE) -f CMakeFiles/agentspark.dir/build.make CMakeFiles/agentspark.dir/behaviours/naobehaviour.cpp.s
+.PHONY : behaviours/naobehaviour.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -147,6 +195,12 @@ help:
 	@echo "... agentspark"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... behaviours/behaviour.o"
+	@echo "... behaviours/behaviour.i"
+	@echo "... behaviours/behaviour.s"
+	@echo "... behaviours/naobehaviour.o"
+	@echo "... behaviours/naobehaviour.i"
+	@echo "... behaviours/naobehaviour.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

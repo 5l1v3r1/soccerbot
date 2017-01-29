@@ -75,15 +75,66 @@ CMakeFiles/agentspark.dir/main.cpp.o.provides: CMakeFiles/agentspark.dir/main.cp
 
 CMakeFiles/agentspark.dir/main.cpp.o.provides.build: CMakeFiles/agentspark.dir/main.cpp.o
 
+CMakeFiles/agentspark.dir/behaviours/naobehaviour.cpp.o: CMakeFiles/agentspark.dir/flags.make
+CMakeFiles/agentspark.dir/behaviours/naobehaviour.cpp.o: ../behaviours/naobehaviour.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/art/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/agentspark.dir/behaviours/naobehaviour.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/agentspark.dir/behaviours/naobehaviour.cpp.o -c /home/art/soccerbot/soccer/src/control/behaviours/naobehaviour.cpp
+
+CMakeFiles/agentspark.dir/behaviours/naobehaviour.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/agentspark.dir/behaviours/naobehaviour.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/art/soccerbot/soccer/src/control/behaviours/naobehaviour.cpp > CMakeFiles/agentspark.dir/behaviours/naobehaviour.cpp.i
+
+CMakeFiles/agentspark.dir/behaviours/naobehaviour.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/agentspark.dir/behaviours/naobehaviour.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/art/soccerbot/soccer/src/control/behaviours/naobehaviour.cpp -o CMakeFiles/agentspark.dir/behaviours/naobehaviour.cpp.s
+
+CMakeFiles/agentspark.dir/behaviours/naobehaviour.cpp.o.requires:
+.PHONY : CMakeFiles/agentspark.dir/behaviours/naobehaviour.cpp.o.requires
+
+CMakeFiles/agentspark.dir/behaviours/naobehaviour.cpp.o.provides: CMakeFiles/agentspark.dir/behaviours/naobehaviour.cpp.o.requires
+	$(MAKE) -f CMakeFiles/agentspark.dir/build.make CMakeFiles/agentspark.dir/behaviours/naobehaviour.cpp.o.provides.build
+.PHONY : CMakeFiles/agentspark.dir/behaviours/naobehaviour.cpp.o.provides
+
+CMakeFiles/agentspark.dir/behaviours/naobehaviour.cpp.o.provides.build: CMakeFiles/agentspark.dir/behaviours/naobehaviour.cpp.o
+
+CMakeFiles/agentspark.dir/behaviours/behaviour.cpp.o: CMakeFiles/agentspark.dir/flags.make
+CMakeFiles/agentspark.dir/behaviours/behaviour.cpp.o: ../behaviours/behaviour.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/art/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/agentspark.dir/behaviours/behaviour.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/agentspark.dir/behaviours/behaviour.cpp.o -c /home/art/soccerbot/soccer/src/control/behaviours/behaviour.cpp
+
+CMakeFiles/agentspark.dir/behaviours/behaviour.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/agentspark.dir/behaviours/behaviour.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/art/soccerbot/soccer/src/control/behaviours/behaviour.cpp > CMakeFiles/agentspark.dir/behaviours/behaviour.cpp.i
+
+CMakeFiles/agentspark.dir/behaviours/behaviour.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/agentspark.dir/behaviours/behaviour.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/art/soccerbot/soccer/src/control/behaviours/behaviour.cpp -o CMakeFiles/agentspark.dir/behaviours/behaviour.cpp.s
+
+CMakeFiles/agentspark.dir/behaviours/behaviour.cpp.o.requires:
+.PHONY : CMakeFiles/agentspark.dir/behaviours/behaviour.cpp.o.requires
+
+CMakeFiles/agentspark.dir/behaviours/behaviour.cpp.o.provides: CMakeFiles/agentspark.dir/behaviours/behaviour.cpp.o.requires
+	$(MAKE) -f CMakeFiles/agentspark.dir/build.make CMakeFiles/agentspark.dir/behaviours/behaviour.cpp.o.provides.build
+.PHONY : CMakeFiles/agentspark.dir/behaviours/behaviour.cpp.o.provides
+
+CMakeFiles/agentspark.dir/behaviours/behaviour.cpp.o.provides.build: CMakeFiles/agentspark.dir/behaviours/behaviour.cpp.o
+
 # Object files for target agentspark
 agentspark_OBJECTS = \
-"CMakeFiles/agentspark.dir/main.cpp.o"
+"CMakeFiles/agentspark.dir/main.cpp.o" \
+"CMakeFiles/agentspark.dir/behaviours/naobehaviour.cpp.o" \
+"CMakeFiles/agentspark.dir/behaviours/behaviour.cpp.o"
 
 # External object files for target agentspark
 agentspark_EXTERNAL_OBJECTS =
 
 agentspark: CMakeFiles/agentspark.dir/main.cpp.o
+agentspark: CMakeFiles/agentspark.dir/behaviours/naobehaviour.cpp.o
+agentspark: CMakeFiles/agentspark.dir/behaviours/behaviour.cpp.o
 agentspark: CMakeFiles/agentspark.dir/build.make
+agentspark: /usr/lib/simspark/librcssnet3D.so
 agentspark: CMakeFiles/agentspark.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable agentspark"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/agentspark.dir/link.txt --verbose=$(VERBOSE)
@@ -93,6 +144,8 @@ CMakeFiles/agentspark.dir/build: agentspark
 .PHONY : CMakeFiles/agentspark.dir/build
 
 CMakeFiles/agentspark.dir/requires: CMakeFiles/agentspark.dir/main.cpp.o.requires
+CMakeFiles/agentspark.dir/requires: CMakeFiles/agentspark.dir/behaviours/naobehaviour.cpp.o.requires
+CMakeFiles/agentspark.dir/requires: CMakeFiles/agentspark.dir/behaviours/behaviour.cpp.o.requires
 .PHONY : CMakeFiles/agentspark.dir/requires
 
 CMakeFiles/agentspark.dir/clean:

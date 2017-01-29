@@ -6,7 +6,29 @@
 
 #IncludeRegexTransform: 
 
-/home/art/soccerbot/soccer/src/control/main.cpp
-iostream
-/home/art/soccerbot/soccer/src/control/iostream
+/home/art/soccerbot/soccer/src/control/behaviours/behaviour.h
+string
+-
+
+/home/art/soccerbot/soccer/src/control/behaviours/naobehaviour.cpp
+naobehaviour.h
+/home/art/soccerbot/soccer/src/control/behaviours/naobehaviour.h
+
+/home/art/soccerbot/soccer/src/control/behaviours/naobehaviour.h
+../headers/headers.h
+/home/art/soccerbot/soccer/src/control/headers/headers.h
+behaviour.h
+/home/art/soccerbot/soccer/src/control/behaviours/behaviour.h
+
+/home/art/soccerbot/soccer/src/control/headers/headers.h
+map
+-
+string
+-
+vector
+-
+ostream
+-
+sstream
+-
 
