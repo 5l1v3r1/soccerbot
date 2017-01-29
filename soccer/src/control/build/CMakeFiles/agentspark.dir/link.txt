@@ -1,0 +1,1 @@
+/usr/bin/c++   -Wall -Wextra -Wno-unused -O3 -DNDEBUG    CMakeFiles/agentspark.dir/main.cpp.o  -o agentspark -rdynamic 
