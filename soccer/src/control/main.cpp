@@ -37,20 +37,17 @@ static bool gLoop = true;
 int agentBodyType = 0;
 
 // SIGINT handler prototype
-extern "C" void handler(int sig)
-{
+extern "C" void handler(int sig) {
     if (sig == SIGINT)
         gLoop = false;
 }
 
-void PrintGreeting()
-{
+void PrintGreeting() {
     std::cout << "UTRA FC Base Code\n";
 
 }
 
-void PrintHelp()
-{
+void PrintHelp() {
     std::cout << "\nusage: agentspark [options]" << std::endl;
     std::cout << "\noptions:" << std::endl;
     std::cout << " --help\tprints this message." << std::endl;
@@ -138,50 +135,61 @@ void ReadOptions(int argc, char* argv[]) {
     teamName = "UTRA_FC_Base";
     uNum = 0; // Value of 0 means choose next available number
 
-    for( int i = 0; i < argc; i++)
-    {
-        if ( strcmp( argv[i], "--help" ) == 0 )
-        {
+    for( int i = 0; i < argc; i++) {
+        
+        if ( strcmp( argv[i], "--help" ) == 0 ) {
             PrintHelp();
             exit(0);
         }
-        else if ( strncmp( argv[i], "--host", 6 ) == 0 )
-        {
+
+        else if ( strncmp( argv[i], "--host", 6 ) == 0 ) {
+            
             std::string tmp=argv[i];
 
-            if ( tmp.length() <= 7 ) // minimal sanity check
-            {
+            // minimal sanity check
+            if ( tmp.length() <= 7 ) { 
                 PrintHelp();
                 exit(0);
             }
+
             gHost = tmp.substr(7);
         }
-        else if ( strncmp( argv[i], "--mhost", 7 ) == 0 )
-        {
+
+        else if ( strncmp( argv[i], "--mhost", 7 ) == 0 ) {
+            
             std::string tmp=argv[i];
 
-            if ( tmp.length() <= 8 ) // minimal sanity check
-            {
+            // minimal sanity check
+            if ( tmp.length() <= 8 ) {
                 PrintHelp();
                 exit(0);
             }
+
             mHost = tmp.substr(8);
         }
+
         else if ( strncmp( argv[i], "--port", 6) == 0 ) {
+          
             if (i == argc - 1) {
                 PrintHelp();
                 exit(0);
             }
+
             gPort = atoi(argv[i+1]);
         }
+
         else if ( strncmp( argv[i], "--mport", 7) == 0 ) {
+            
             if (i == argc - 1) {
                 PrintHelp();
                 exit(0);
             }
+
             mPort = atoi(argv[i+1]);
         }
+
         else if(strcmp(argv[i], "--team") == 0) {
+            
             if(i == argc - 1) {
                 PrintHelp();
                 exit(0);
@@ -189,21 +197,28 @@ void ReadOptions(int argc, char* argv[]) {
 
             teamName = argv[i + 1];
         }
+
         else if(strcmp(argv[i], "--unum") == 0) {
+            
             if(i == argc - 1) {
                 PrintHelp();
                 exit(0);
             }
+
             uNum = atoi(argv[i + 1]);
         }
+
         else if(strcmp(argv[i], "--paramsfile") == 0) {
+            
             if(i == argc - 1) {
                 PrintHelp();
                 exit(0);
             }
+
             std::string inputsFile = argv[i+1];
             LoadParams(inputsFile);
         }
+
         else if (strcmp(argv[i], "--experimentout") == 0) {
             if(i == argc - 1) {
                 PrintHelp();
@@ -212,36 +227,47 @@ void ReadOptions(int argc, char* argv[]) {
             outputFile = argv[i+1];
         }
         else if (strcmp(argv[i], "--optimize") == 0) {
+            
             if(i == argc - 1) {
                 PrintHelp();
                 exit(0);
             }
+
             agentType = argv[i+1];
         }
         else if (strcmp(argv[i], "--type") == 0) {
+
             if(i == argc - 1) {
                 PrintHelp();
                 exit(0);
             }
+
             rsg = "rsg/agent/nao/nao_hetero.rsg " + std::string(argv[i+1]);
             agentBodyType = atoi(argv[i+1]);
         }
+
         else if (strcmp(argv[i], "--rsg") == 0) {
+
             if(i == argc - 1) {
                 PrintHelp();
                 exit(0);
             }
+
             rsg = argv[i+1];
         }
+
         else if (strcmp(argv[i], "--pkgoalie") == 0) {
             agentType = "pkgoalie";
         }
+
         else if (strcmp(argv[i], "--pkshooter") == 0) {
             agentType = "pkshooter";
         }
-	else if (strcmp(argv[i], "--gazebo") == 0) {
+
+		else if (strcmp(argv[i], "--gazebo") == 0) {
             agentType = "gazebo";
         }
+
     } // for-loop
 }
 
@@ -249,14 +275,12 @@ bool init() {
     std::cout << "connecting to TCP " << gHost << ":" << gPort << "\n";
     //std::cout << "connecting to UDP " << gHost << ":" << gPort << "\n";
 
-    try
-    {
+    try {
         Addr local(INADDR_ANY,INADDR_ANY);
         gSocket.bind(local);
     }
 
-    catch (BindErr error)
-    {
+    catch (BindErr error) {
         std::cerr << "failed to bind socket with '"
              << error.what() << "'" << std::endl;
 
@@ -264,14 +288,13 @@ bool init() {
         return false;
     }
 
-    try
-    {
+    try {
         Addr server(gPort,gHost);
         gSocket.connect(server);
     }
 
-    catch (ConnectErr error)
-    {
+    catch (ConnectErr error) {
+
         std::cerr << "connection failed with: '"
              << error.what() << "'" << std::endl;
         gSocket.close();
@@ -280,14 +303,13 @@ bool init() {
 
     // Connect to the monitor port so that we can use the training command parser
     if (mPort != -1) {
-        try
-        {
+        try {
             Addr local(INADDR_ANY,INADDR_ANY);
             mSocket.bind(local);
         }
 
-        catch (BindErr error)
-        {
+        catch (BindErr error) {
+
             std::cerr << "failed to bind socket with '"
                  << error.what() << "'" << std::endl;
 
@@ -295,14 +317,13 @@ bool init() {
             return false;
         }
 
-        try
-        {
+        try {
             Addr server(mPort,gHost);
             mSocket.connect(server);
         }
 
-        catch (ConnectErr error)
-        {
+        catch (ConnectErr error) {
+
             std::cerr << "connection failed with: '"
                  << error.what() << "'" << std::endl;
             mSocket.close();
@@ -315,11 +336,14 @@ bool init() {
 }
 
 void Done() {
+
     gSocket.close();
     std::cout << "closed connection to " << gHost << ":" << gPort << "\n";
+
     if (mPort != -1) {
         mSocket.close();
     }
+
 }
 
 bool SelectInput() {
@@ -347,10 +371,9 @@ bool SelectInput() {
     }
 }
 
-void PutMessage(const std::string& msg)
-{
-    if (msg.empty())
-    {
+void PutMessage(const std::string& msg) {
+    
+    if (msg.empty()) {
         return;
     }
 
@@ -358,15 +381,15 @@ void PutMessage(const std::string& msg)
     unsigned int len = htonl(msg.size());
     std::string prefix((const char*)&len,sizeof(unsigned int));
     std::string str = prefix + msg;
+
     if ( static_cast<ssize_t>(str.size()) != write(gSocket.getFD(), str.data(), str.size())) {
        // LOG_STR("could not put entire message: " + msg);
     }
 }
 
-void PutMonMessage(const std::string& msg)
-{
-    if (msg.empty())
-    {
+void PutMonMessage(const std::string& msg) {
+    
+    if (msg.empty()) {
         return;
     }
 
@@ -374,6 +397,7 @@ void PutMonMessage(const std::string& msg)
     unsigned int len = htonl(msg.size());
     std::string prefix((const char*)&len,sizeof(unsigned int));
     std::string str = prefix + msg;
+
     if ( static_cast<ssize_t>(str.size()) != write(mSocket.getFD(), str.data(), str.size())) {
        // LOG_STR("could not put entire monitor message: " + msg);
     }
@@ -381,17 +405,20 @@ void PutMonMessage(const std::string& msg)
 
 
 
-bool GetMessage(std::string& msg)
-{
+bool GetMessage(std::string& msg) {
+
     static char buffer[16 * 1024];
 
     unsigned int bytesRead = 0;
-    while(bytesRead < sizeof(unsigned int))
-    {
+    while(bytesRead < sizeof(unsigned int)) {
+
         SelectInput();
         int readResult = read(gSocket.getFD(), buffer + bytesRead, sizeof(unsigned int) - bytesRead);
-        if(readResult < 0)
+        
+        if(readResult < 0){
             continue;
+        }
+
         if (readResult == 0) {
             // [patmac] Kill ourselves if we disconnect from the server
             // for instance when the server is killed.  This helps to
@@ -400,6 +427,7 @@ bool GetMessage(std::string& msg)
             Done();
             exit(1);
         }
+
         bytesRead += readResult;
     }
 
@@ -415,10 +443,12 @@ bool GetMessage(std::string& msg)
         char *c;
         unsigned int *i;
     };
+
     int_char_t size;
     size.c = buffer;
     unsigned int msgLen = ntohl(*(size.i));
     // std::cerr << "GM 6 / " << msgLen << " (bytesRead " << bytesRead << ")\n";
+
     if(sizeof(unsigned int) + msgLen > sizeof(buffer)) {
         std::cerr << "too long message; aborting" << std::endl;
         abort();
@@ -431,20 +461,24 @@ bool GetMessage(std::string& msg)
 
     char *offset = buffer + bytesRead;
 
-    while (msgRead < msgLen)
-    {
-        if (! SelectInput())
-        {
+    while (msgRead < msgLen) {
+
+        if (! SelectInput()) {
             return false;
         }
 
         unsigned readLen = sizeof(buffer) - msgRead;
-        if(readLen > msgLen - msgRead)
+
+        if(readLen > msgLen - msgRead){
             readLen = msgLen - msgRead;
+        }
 
         int readResult = read(gSocket.getFD(), offset, readLen);
-        if(readResult < 0)
+
+        if(readResult < 0){
             continue;
+        }
+
         msgRead += readResult;
         offset += readResult;
         //std::cerr << "msgRead = |" << msgRead << "|\n";
@@ -459,11 +493,13 @@ bool GetMessage(std::string& msg)
     //std::cout << msg << std::endl;
 
     static std::string lastMsg = "";
+
     if (msg.compare(lastMsg) == 0) {
         std::cerr << "Duplicate message received from server -- has the server killed us?\n";
         Done();
         exit(1);
     }
+
     lastMsg = msg;
 
     return true;
@@ -476,6 +512,7 @@ void Run()
     if (agentType == "naoagent") {
         behaviour = new NaoBehaviour(teamName, uNum, namedParams, rsg);
     }
+
     else {
         throw "unknown agent type";
     }
@@ -483,6 +520,7 @@ void Run()
     PutMessage(behaviour->Init()+"(syn)");
 
     std::string msg;
+
     while (gLoop) {
 
         GetMessage(msg);
@@ -490,6 +528,7 @@ void Run()
         // To support agent sync mode
         msgToServer.append("(syn)");
         PutMessage(msgToServer);
+
         if (mPort != -1) {
             PutMonMessage(behaviour->getMonMessage());
         }
@@ -497,33 +536,30 @@ void Run()
 }
 
 int
-main(int argc, char* argv[])
-{
+main(int argc, char* argv[]) {
     // registering the handler, catching SIGINT signals
     signal(SIGINT, handler);
 
     // Actually print out the errors that are thrown.
-    try
-    {
+    try {
         PrintGreeting();
         ReadOptions(argc,argv);
 
-        if (! init())
-        {
+        if (! init()) {
             return 1;
         }
 
         Run();
         Done();
     }
-    catch (char const* c)
-    {
+
+    catch (char const* c) {
         std::cerr << "-------------ERROR------------" << std::endl;
         std::cerr << c << std::endl;
         std::cerr << "-----------END ERROR----------" << std::endl;
     }
-    catch (std::string s)
-    {
+
+    catch (std::string s) {
         std::cerr << "-------------ERROR------------" << std::endl;
         std::cerr << s << std::endl;
         std::cerr << "-----------END ERROR----------" << std::endl;
