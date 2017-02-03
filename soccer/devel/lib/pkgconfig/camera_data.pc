@@ -1,7 +1,7 @@
 prefix=/home/art/soccerbot/soccer/devel
 
-Name: field_mapper
-Description: Description of field_mapper
+Name: camera_data
+Description: Description of camera_data
 Version: 0.0.0
 Cflags: 
 Libs: -L/home/art/soccerbot/soccer/devel/lib 
