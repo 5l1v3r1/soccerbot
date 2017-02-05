@@ -24,11 +24,11 @@ set(SRCS
   behaviours/behaviour.cpp
 )
 
-add_executable(agentspark 
+add_executable(utracontrol 
 ${SRCS}
 )
 
-target_link_libraries(agentspark
+target_link_libraries(utracontrol
  ${RCSSNET3D_LIBRARY}
 )
 
