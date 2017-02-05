@@ -5,6 +5,8 @@
 #include "behaviour.h"
 
 class NaoBehaviour : public Behaviour {
+protected:
+    string rsg;
 
 public:
 

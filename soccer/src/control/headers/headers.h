@@ -6,6 +6,7 @@
 #include <vector>
 #include <ostream>
 #include <sstream>
+#include <iostream>
 
 using std::map;
 using std::string;

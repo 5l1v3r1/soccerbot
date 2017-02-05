@@ -5,7 +5,6 @@
 #include <stdio.h>
 #include <fstream>
 #include <rcssnet/tcpsocket.hpp>
-//#include <rcssnet/udpsocket.hpp>
 #include <rcssnet/exception.hpp>
 #include <netinet/in.h>
 
@@ -273,7 +272,6 @@ void ReadOptions(int argc, char* argv[]) {
 
 bool init() {
     std::cout << "connecting to TCP " << gHost << ":" << gPort << "\n";
-    //std::cout << "connecting to UDP " << gHost << ":" << gPort << "\n";
 
     try {
         Addr local(INADDR_ANY,INADDR_ANY);
@@ -331,7 +329,6 @@ bool init() {
         }
     }
 
-
     return true;
 }
 
@@ -348,6 +345,7 @@ void Done() {
 
 bool SelectInput() {
 
+    return 1;
     fd_set readfds;
     struct timeval tv = {60,0};
     FD_ZERO(&readfds);
@@ -372,6 +370,7 @@ bool SelectInput() {
 }
 
 void PutMessage(const std::string& msg) {
+    std::cout << msg << std::endl;
     
     if (msg.empty()) {
         return;
@@ -511,11 +510,10 @@ void Run()
 
     if (agentType == "naoagent") {
         behaviour = new NaoBehaviour(teamName, uNum, namedParams, rsg);
-    }
-
-    else {
+    } else {
         throw "unknown agent type";
     }
+    std::cout << "Running!" << std::endl;
 
     PutMessage(behaviour->Init()+"(syn)");
 
