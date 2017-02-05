@@ -1,1 +1,0 @@
-/usr/bin/c++   -Wall -Wextra -Wno-unused -O3 -DNDEBUG    CMakeFiles/agentspark.dir/main.cpp.o CMakeFiles/agentspark.dir/behaviours/naobehaviour.cpp.o CMakeFiles/agentspark.dir/behaviours/behaviour.cpp.o  -o agentspark -rdynamic /usr/lib/simspark/librcssnet3D.so -Wl,-rpath,/usr/lib/simspark 
