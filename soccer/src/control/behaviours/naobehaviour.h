@@ -3,13 +3,22 @@
 
 #include "../headers/headers.h"
 #include "behaviour.h"
+#include "../models/worldmodel/worldmodel.h"
+#include "../models/bodymodel/bodymodel.h"
+#include "../skills/skill.h"
 
 class NaoBehaviour : public Behaviour {
 protected:
+    map< SkillType, boost::shared_ptr<Skill> > skills;
+    const map<string, string>& namedParams;
     string rsg;
+    BodyModel *bodyModel;
+    WorldModel *worldModel;
+    SkillType skill;
+
+    void readSkillsFromFile(const std::string& filename);
 
 public:
-
     NaoBehaviour(const std::string teamName, int uNum, const map <std::string, std::string>& namedParams_, const std::string& rsg_);
     virtual ~NaoBehaviour();
 
@@ -18,8 +27,6 @@ public:
 
     void setMonMessage(const std::string& msg);
     std::string getMonMessage();
-
-    
 };
 
 #endif
