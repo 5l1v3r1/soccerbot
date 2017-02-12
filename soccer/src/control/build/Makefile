@@ -303,6 +303,30 @@ models/bodymodel/bodymodel.cpp.s:
 	$(MAKE) -f CMakeFiles/utracontrol.dir/build.make CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.s
 .PHONY : models/bodymodel/bodymodel.cpp.s
 
+models/worldmodel/parser.o: models/worldmodel/parser.cpp.o
+.PHONY : models/worldmodel/parser.o
+
+# target to build an object file
+models/worldmodel/parser.cpp.o:
+	$(MAKE) -f CMakeFiles/utracontrol.dir/build.make CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o
+.PHONY : models/worldmodel/parser.cpp.o
+
+models/worldmodel/parser.i: models/worldmodel/parser.cpp.i
+.PHONY : models/worldmodel/parser.i
+
+# target to preprocess a source file
+models/worldmodel/parser.cpp.i:
+	$(MAKE) -f CMakeFiles/utracontrol.dir/build.make CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.i
+.PHONY : models/worldmodel/parser.cpp.i
+
+models/worldmodel/parser.s: models/worldmodel/parser.cpp.s
+.PHONY : models/worldmodel/parser.s
+
+# target to generate assembly for a file
+models/worldmodel/parser.cpp.s:
+	$(MAKE) -f CMakeFiles/utracontrol.dir/build.make CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.s
+.PHONY : models/worldmodel/parser.cpp.s
+
 models/worldmodel/worldmodel.o: models/worldmodel/worldmodel.cpp.o
 .PHONY : models/worldmodel/worldmodel.o
 
@@ -408,6 +432,9 @@ help:
 	@echo "... models/bodymodel/bodymodel.o"
 	@echo "... models/bodymodel/bodymodel.i"
 	@echo "... models/bodymodel/bodymodel.s"
+	@echo "... models/worldmodel/parser.o"
+	@echo "... models/worldmodel/parser.i"
+	@echo "... models/worldmodel/parser.s"
 	@echo "... models/worldmodel/worldmodel.o"
 	@echo "... models/worldmodel/worldmodel.i"
 	@echo "... models/worldmodel/worldmodel.s"

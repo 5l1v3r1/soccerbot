@@ -15,6 +15,7 @@ CMakeFiles/utracontrol.dir/behaviours/naobehaviour.cpp.o
  /home/arkadyark/Documents/soccerbot/soccer/src/control/math/vecposition.h
  /home/arkadyark/Documents/soccerbot/soccer/src/control/models/bodymodel/bodymodel.h
  /home/arkadyark/Documents/soccerbot/soccer/src/control/models/worldmodel/WorldObject.h
+ /home/arkadyark/Documents/soccerbot/soccer/src/control/models/worldmodel/parser.h
  /home/arkadyark/Documents/soccerbot/soccer/src/control/models/worldmodel/worldmodel.h
  /home/arkadyark/Documents/soccerbot/soccer/src/control/skills/curve3d.h
  /home/arkadyark/Documents/soccerbot/soccer/src/control/skills/skill.h
@@ -33,6 +34,7 @@ CMakeFiles/utracontrol.dir/main.cpp.o
  /home/arkadyark/Documents/soccerbot/soccer/src/control/math/vecposition.h
  /home/arkadyark/Documents/soccerbot/soccer/src/control/models/bodymodel/bodymodel.h
  /home/arkadyark/Documents/soccerbot/soccer/src/control/models/worldmodel/WorldObject.h
+ /home/arkadyark/Documents/soccerbot/soccer/src/control/models/worldmodel/parser.h
  /home/arkadyark/Documents/soccerbot/soccer/src/control/models/worldmodel/worldmodel.h
  /home/arkadyark/Documents/soccerbot/soccer/src/control/skills/curve3d.h
  /home/arkadyark/Documents/soccerbot/soccer/src/control/skills/skill.h
@@ -66,6 +68,17 @@ CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.o
  /home/arkadyark/Documents/soccerbot/soccer/src/control/models/bodymodel/bodymodel.cpp
  /home/arkadyark/Documents/soccerbot/soccer/src/control/models/bodymodel/bodymodel.h
  /home/arkadyark/Documents/soccerbot/soccer/src/control/models/worldmodel/WorldObject.h
+ /home/arkadyark/Documents/soccerbot/soccer/src/control/models/worldmodel/worldmodel.h
+CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o
+ /home/arkadyark/Documents/soccerbot/soccer/src/control/headers/Field.h
+ /home/arkadyark/Documents/soccerbot/soccer/src/control/headers/headers.h
+ /home/arkadyark/Documents/soccerbot/soccer/src/control/math/Geometry.h
+ /home/arkadyark/Documents/soccerbot/soccer/src/control/math/hctmatrix.h
+ /home/arkadyark/Documents/soccerbot/soccer/src/control/math/vecposition.h
+ /home/arkadyark/Documents/soccerbot/soccer/src/control/models/bodymodel/bodymodel.h
+ /home/arkadyark/Documents/soccerbot/soccer/src/control/models/worldmodel/WorldObject.h
+ /home/arkadyark/Documents/soccerbot/soccer/src/control/models/worldmodel/parser.cpp
+ /home/arkadyark/Documents/soccerbot/soccer/src/control/models/worldmodel/parser.h
  /home/arkadyark/Documents/soccerbot/soccer/src/control/models/worldmodel/worldmodel.h
 CMakeFiles/utracontrol.dir/models/worldmodel/worldmodel.cpp.o
  /home/arkadyark/Documents/soccerbot/soccer/src/control/headers/Field.h

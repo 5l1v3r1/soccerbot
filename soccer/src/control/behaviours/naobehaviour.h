@@ -4,6 +4,7 @@
 #include "../headers/headers.h"
 #include "behaviour.h"
 #include "../models/worldmodel/worldmodel.h"
+#include "../models/worldmodel/parser.h"
 #include "../models/bodymodel/bodymodel.h"
 #include "../skills/skill.h"
 
@@ -14,9 +15,11 @@ protected:
     string rsg;
     BodyModel *bodyModel;
     WorldModel *worldModel;
+    Parser *parser;
     SkillType skill;
 
     void readSkillsFromFile(const std::string& filename);
+    std::string composeAction();
 
 public:
     NaoBehaviour(const std::string teamName, int uNum, const map <std::string, std::string>& namedParams_, const std::string& rsg_);

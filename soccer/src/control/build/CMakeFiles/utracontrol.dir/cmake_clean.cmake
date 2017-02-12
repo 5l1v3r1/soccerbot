@@ -6,6 +6,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/utracontrol.dir/math/vecposition.cpp.o"
   "CMakeFiles/utracontrol.dir/math/Geometry.cpp.o"
   "CMakeFiles/utracontrol.dir/models/worldmodel/worldmodel.cpp.o"
+  "CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o"
   "CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.o"
   "CMakeFiles/utracontrol.dir/skills/skill.cpp.o"
   "CMakeFiles/utracontrol.dir/skills/curve3d.cpp.o"

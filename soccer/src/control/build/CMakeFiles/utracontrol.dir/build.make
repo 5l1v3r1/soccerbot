@@ -210,9 +210,32 @@ CMakeFiles/utracontrol.dir/models/worldmodel/worldmodel.cpp.o.provides: CMakeFil
 
 CMakeFiles/utracontrol.dir/models/worldmodel/worldmodel.cpp.o.provides.build: CMakeFiles/utracontrol.dir/models/worldmodel/worldmodel.cpp.o
 
+CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o: CMakeFiles/utracontrol.dir/flags.make
+CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o: ../models/worldmodel/parser.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/arkadyark/Documents/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o -c /home/arkadyark/Documents/soccerbot/soccer/src/control/models/worldmodel/parser.cpp
+
+CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/arkadyark/Documents/soccerbot/soccer/src/control/models/worldmodel/parser.cpp > CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.i
+
+CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/arkadyark/Documents/soccerbot/soccer/src/control/models/worldmodel/parser.cpp -o CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.s
+
+CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o.requires:
+.PHONY : CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o.requires
+
+CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o.provides: CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o.requires
+	$(MAKE) -f CMakeFiles/utracontrol.dir/build.make CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o.provides.build
+.PHONY : CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o.provides
+
+CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o.provides.build: CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o
+
 CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.o: CMakeFiles/utracontrol.dir/flags.make
 CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.o: ../models/bodymodel/bodymodel.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/arkadyark/Documents/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/arkadyark/Documents/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.o -c /home/arkadyark/Documents/soccerbot/soccer/src/control/models/bodymodel/bodymodel.cpp
 
@@ -235,7 +258,7 @@ CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.o.provides.build: CMak
 
 CMakeFiles/utracontrol.dir/skills/skill.cpp.o: CMakeFiles/utracontrol.dir/flags.make
 CMakeFiles/utracontrol.dir/skills/skill.cpp.o: ../skills/skill.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/arkadyark/Documents/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/arkadyark/Documents/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/utracontrol.dir/skills/skill.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/skills/skill.cpp.o -c /home/arkadyark/Documents/soccerbot/soccer/src/control/skills/skill.cpp
 
@@ -258,7 +281,7 @@ CMakeFiles/utracontrol.dir/skills/skill.cpp.o.provides.build: CMakeFiles/utracon
 
 CMakeFiles/utracontrol.dir/skills/curve3d.cpp.o: CMakeFiles/utracontrol.dir/flags.make
 CMakeFiles/utracontrol.dir/skills/curve3d.cpp.o: ../skills/curve3d.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/arkadyark/Documents/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_10)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/arkadyark/Documents/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/utracontrol.dir/skills/curve3d.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/skills/curve3d.cpp.o -c /home/arkadyark/Documents/soccerbot/soccer/src/control/skills/curve3d.cpp
 
@@ -281,7 +304,7 @@ CMakeFiles/utracontrol.dir/skills/curve3d.cpp.o.provides.build: CMakeFiles/utrac
 
 CMakeFiles/utracontrol.dir/headers/headers.cpp.o: CMakeFiles/utracontrol.dir/flags.make
 CMakeFiles/utracontrol.dir/headers/headers.cpp.o: ../headers/headers.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/arkadyark/Documents/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_11)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/arkadyark/Documents/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/utracontrol.dir/headers/headers.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/headers/headers.cpp.o -c /home/arkadyark/Documents/soccerbot/soccer/src/control/headers/headers.cpp
 
@@ -311,6 +334,7 @@ utracontrol_OBJECTS = \
 "CMakeFiles/utracontrol.dir/math/vecposition.cpp.o" \
 "CMakeFiles/utracontrol.dir/math/Geometry.cpp.o" \
 "CMakeFiles/utracontrol.dir/models/worldmodel/worldmodel.cpp.o" \
+"CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o" \
 "CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.o" \
 "CMakeFiles/utracontrol.dir/skills/skill.cpp.o" \
 "CMakeFiles/utracontrol.dir/skills/curve3d.cpp.o" \
@@ -326,6 +350,7 @@ utracontrol: CMakeFiles/utracontrol.dir/math/hctmatrix.cpp.o
 utracontrol: CMakeFiles/utracontrol.dir/math/vecposition.cpp.o
 utracontrol: CMakeFiles/utracontrol.dir/math/Geometry.cpp.o
 utracontrol: CMakeFiles/utracontrol.dir/models/worldmodel/worldmodel.cpp.o
+utracontrol: CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o
 utracontrol: CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.o
 utracontrol: CMakeFiles/utracontrol.dir/skills/skill.cpp.o
 utracontrol: CMakeFiles/utracontrol.dir/skills/curve3d.cpp.o
@@ -348,6 +373,7 @@ CMakeFiles/utracontrol.dir/requires: CMakeFiles/utracontrol.dir/math/hctmatrix.c
 CMakeFiles/utracontrol.dir/requires: CMakeFiles/utracontrol.dir/math/vecposition.cpp.o.requires
 CMakeFiles/utracontrol.dir/requires: CMakeFiles/utracontrol.dir/math/Geometry.cpp.o.requires
 CMakeFiles/utracontrol.dir/requires: CMakeFiles/utracontrol.dir/models/worldmodel/worldmodel.cpp.o.requires
+CMakeFiles/utracontrol.dir/requires: CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o.requires
 CMakeFiles/utracontrol.dir/requires: CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.o.requires
 CMakeFiles/utracontrol.dir/requires: CMakeFiles/utracontrol.dir/skills/skill.cpp.o.requires
 CMakeFiles/utracontrol.dir/requires: CMakeFiles/utracontrol.dir/skills/curve3d.cpp.o.requires

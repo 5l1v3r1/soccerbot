@@ -655,25 +655,6 @@ boost::shared_ptr<Skill> Skill::getReflection(BodyModel *bodyModel) {
     for(size_t k = 0; k < this->keyFrames.size(); k++) {
         reflection->appendKeyFrame(this->keyFrames[k]->getReflection(bodyModel));
     }
-    /*
-      // TODO: find a better way to reflect -
-      // The problem with the commented code in the above line is:
-      // When reflecting, it reflects left foot to right and right to left,
-      // and thus the robot can start a skill in the right leg, instead of always
-      // in the left. Below is a temp fix:
-      int size = this->keyFrames.size();
-      if (size % 2 != 0)
-        throw "Uneven number of frames";
-      for(int k = size / 2; k < size; k++){
-        reflection->appendKeyFrame(this->keyFrames[k]->getReflection(bodyModel));
-      }
-      for(int k = 0; k < size / 2; k++){
-        reflection->appendKeyFrame(this->keyFrames[k]->getReflection(bodyModel));
-      }
-
-    */
-
-
 
     return reflection;
 }

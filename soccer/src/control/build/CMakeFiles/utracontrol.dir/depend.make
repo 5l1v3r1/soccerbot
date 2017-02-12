@@ -14,6 +14,7 @@ CMakeFiles/utracontrol.dir/behaviours/naobehaviour.cpp.o: ../math/hctmatrix.h
 CMakeFiles/utracontrol.dir/behaviours/naobehaviour.cpp.o: ../math/vecposition.h
 CMakeFiles/utracontrol.dir/behaviours/naobehaviour.cpp.o: ../models/bodymodel/bodymodel.h
 CMakeFiles/utracontrol.dir/behaviours/naobehaviour.cpp.o: ../models/worldmodel/WorldObject.h
+CMakeFiles/utracontrol.dir/behaviours/naobehaviour.cpp.o: ../models/worldmodel/parser.h
 CMakeFiles/utracontrol.dir/behaviours/naobehaviour.cpp.o: ../models/worldmodel/worldmodel.h
 CMakeFiles/utracontrol.dir/behaviours/naobehaviour.cpp.o: ../skills/curve3d.h
 CMakeFiles/utracontrol.dir/behaviours/naobehaviour.cpp.o: ../skills/skill.h
@@ -32,6 +33,7 @@ CMakeFiles/utracontrol.dir/main.cpp.o: ../math/hctmatrix.h
 CMakeFiles/utracontrol.dir/main.cpp.o: ../math/vecposition.h
 CMakeFiles/utracontrol.dir/main.cpp.o: ../models/bodymodel/bodymodel.h
 CMakeFiles/utracontrol.dir/main.cpp.o: ../models/worldmodel/WorldObject.h
+CMakeFiles/utracontrol.dir/main.cpp.o: ../models/worldmodel/parser.h
 CMakeFiles/utracontrol.dir/main.cpp.o: ../models/worldmodel/worldmodel.h
 CMakeFiles/utracontrol.dir/main.cpp.o: ../skills/curve3d.h
 CMakeFiles/utracontrol.dir/main.cpp.o: ../skills/skill.h
@@ -66,6 +68,17 @@ CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.o: ../models/bodymodel
 CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.o: ../models/bodymodel/bodymodel.h
 CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.o: ../models/worldmodel/WorldObject.h
 CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.o: ../models/worldmodel/worldmodel.h
+
+CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o: ../headers/Field.h
+CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o: ../headers/headers.h
+CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o: ../math/Geometry.h
+CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o: ../math/hctmatrix.h
+CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o: ../math/vecposition.h
+CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o: ../models/bodymodel/bodymodel.h
+CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o: ../models/worldmodel/WorldObject.h
+CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o: ../models/worldmodel/parser.cpp
+CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o: ../models/worldmodel/parser.h
+CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o: ../models/worldmodel/worldmodel.h
 
 CMakeFiles/utracontrol.dir/models/worldmodel/worldmodel.cpp.o: ../headers/Field.h
 CMakeFiles/utracontrol.dir/models/worldmodel/worldmodel.cpp.o: ../headers/headers.h

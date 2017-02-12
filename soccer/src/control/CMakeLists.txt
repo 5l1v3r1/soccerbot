@@ -27,6 +27,7 @@ set(SRCS
     math/vecposition.cpp
     math/Geometry.cpp
     models/worldmodel/worldmodel.cpp
+    models/worldmodel/parser.cpp
     models/bodymodel/bodymodel.cpp
     skills/skill.cpp
     skills/curve3d.cpp
