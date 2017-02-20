@@ -131,26 +131,26 @@ include_directories(
 # add_dependencies(opencv_tutorial ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-add_executable(camera_data src/camera_data.cpp)
-add_executable(open_camera src/open_camera.cpp)
+#add_executable(camera_data src/camera_data.cpp)
+#add_executable(open_camera src/open_camera.cpp)
 
-set_target_properties(camera_data PROPERTIES COMPILE_FLAGS "-m32 -fPIC")
-set_target_properties(camera_data PROPERTIES LINK_FLAGS -m32)
+#set_target_properties(camera_data PROPERTIES COMPILE_FLAGS "-m32 -fPIC")
+#set_target_properties(camera_data PROPERTIES LINK_FLAGS -m32)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 # add_dependencies(opencv_tutorial_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(camera_data
-  ${catkin_LIBRARIES}
-  ${OpenCV_LIBRARIES}
-)
+#target_link_libraries(camera_data
+#  ${catkin_LIBRARIES}
+#  ${OpenCV_LIBRARIES}
+#)
 
-target_link_libraries(open_camera
-  ${catkin_LIBRARIES}
-  ${OpenCV_LIBRARIES}
-)
+#target_link_libraries(open_camera
+#  ${catkin_LIBRARIES}
+#  ${OpenCV_LIBRARIES}
+#)
 
 #############
 ## Install ##
