@@ -3,6 +3,7 @@ project(UTRAFCBase CXX C)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
 
+find_package(Boost COMPONENTS system REQUIRED)
 find_package(Rcssnet3d REQUIRED)
 
 if(NOT CMAKE_BUILD_TYPE)
@@ -19,9 +20,18 @@ ${RCSSNET3D_INCLUDE_DIR}
 )
 
 set(SRCS
-  main.cpp
-  behaviours/naobehaviour.cpp
-  behaviours/behaviour.cpp
+    main.cpp
+    behaviours/behaviour.cpp
+    behaviours/naobehaviour.cpp
+    math/hctmatrix.cpp
+    math/vecposition.cpp
+    math/Geometry.cpp
+    models/worldmodel/worldmodel.cpp
+    models/worldmodel/parser.cpp
+    models/bodymodel/bodymodel.cpp
+    skills/skill.cpp
+    skills/curve3d.cpp
+    headers/headers.cpp
 )
 
 add_executable(utracontrol 
@@ -30,5 +40,6 @@ ${SRCS}
 
 target_link_libraries(utracontrol
  ${RCSSNET3D_LIBRARY}
+ ${Boost_SYSTEM_LIBRARY}
 )
 
