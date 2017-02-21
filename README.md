@@ -4,6 +4,9 @@ We are an amateur soccer team at the University of Toronto making an attempt to 
 ## Team Links
 (Please contact Jason at soccer@utra.ca for all access)
 
+- Github Repository
+https://github.com/utra-robosoccer/soccerbot/
+
 - Facebook Group
 https://www.facebook.com/groups/UTRASoccer/
 
