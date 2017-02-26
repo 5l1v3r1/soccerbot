@@ -134,8 +134,6 @@ include_directories(
 add_executable(camera_data src/camera_data.cpp)
 add_executable(open_camera src/open_camera.cpp)
 
-set_target_properties(camera_data PROPERTIES COMPILE_FLAGS "-m32 -fPIC")
-set_target_properties(camera_data PROPERTIES LINK_FLAGS -m32)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
