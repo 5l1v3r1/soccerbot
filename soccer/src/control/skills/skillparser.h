@@ -144,18 +144,13 @@ struct SkillParser : public grammar<SkillParser>
     {
         definition(SkillParser const& self)
         {
-            top
-                =   +( skill | reflectskill )   ;
-
-
+            top = +( skill | reflectskill );
 
             skill
                 =   str_p("STARTSKILL")          >>
                     ID[ assign_a( skillname ) ][ startSkillCB( skillname, currentSkillType, self ) ]  >>
                     +(state)               >>
-                    str_p("ENDSKILL")           ;// >>
-//                    ID                          ;
-            // TODO: cannot get parse_info.full here. Why?
+                    str_p("ENDSKILL");
 
 
 
@@ -777,7 +772,7 @@ struct SkillParser : public grammar<SkillParser>
             void
             operator() ( iterator_t, iterator_t ) const {
                 currentSkillType = EnumParser<SkillType>::getEnumFromString( skillname );
-                parser.skills[currentSkillType] =  boost::shared_ptr<Skill>( new Skill() );
+                parser.skills[currentSkillType] =  boost::shared_ptr<Skill>( new Skill(skillname) );
             }
 
             std::string& skillname;

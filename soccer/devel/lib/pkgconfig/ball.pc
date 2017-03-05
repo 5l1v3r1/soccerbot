@@ -1,8 +1,0 @@
-prefix=/home/art/soccerbot/soccer/devel
-
-Name: ball
-Description: Description of ball
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/art/soccerbot/soccer/devel/lib 
-Requires: 

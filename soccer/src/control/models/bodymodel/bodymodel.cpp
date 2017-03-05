@@ -544,7 +544,7 @@ void BodyModel::display() {
 
     cout << "*****************Body Model******************************\n";
 
-    /*
+    
     cout << "HJ_H1: " << getJointAngle(HJ_H1) << " ";
     cout << "HJ_H2: " << getJointAngle(HJ_H2) << "\n";
 
@@ -578,52 +578,6 @@ void BodyModel::display() {
 
     cout << "FRP Left: " << FRPCentreLeft << ", " << FRPForceLeft << "\n";
     cout << "FRP Right: " << FRPCentreRight << ", " << FRPForceRight << "\n";
-    */
-
-    /*
-    HCTMatrix h1 = HCTMatrix(  component[COMP_LANKLE].transformFromRoot);
-    HCTMatrix h2 = HCTMatrix(  component[COMP_LANKLE].transformToRoot);
-    HCTMatrix h3 = HCTMatrix(h2);
-    h3.multiply(h1);
-
-    cout << "^^^^^^^^^^^^^^^H1^^^^^^^^^^^^^^^^^^^^\n";
-    for(int i = 0; i < 4; i++){
-      for(int j = 0; j < 4; j++){
-        cout << h1.getCell(i, j) << "\t";
-      }
-      cout << "\n";
-    }
-
-    cout << "^^^^^^^^^^^^^^^H2^^^^^^^^^^^^^^^^^^^^\n";
-    for(int i = 0; i < 4; i++){
-      for(int j = 0; j < 4; j++){
-        cout << h2.getCell(i, j) << "\t";
-      }
-      cout << "\n";
-    }
-
-    cout << "^^^^^^^^^^^^^^^H3^^^^^^^^^^^^^^^^^^^^\n";
-    for(int i = 0; i < 4; i++){
-      for(int j = 0; j < 4; j++){
-        cout << h3.getCell(i, j) << "\t";
-      }
-      cout << "\n";
-    }
-
-    cout << "$$$$$$$$$$$$$$$$debug$$$$$$$$$$$$$$$$$$$\n";
-    VecPosition xx = VecPosition(1.0, 0, 0);
-    VecPosition yy = VecPosition(0, 1.0, 0);
-    VecPosition zz = VecPosition(0, 0, 1.0);
-
-    VecPosition xx1 = component[COMP_HEAD].transformFromParent.transform(xx);
-    VecPosition yy1 = component[COMP_HEAD].transformFromParent.transform(yy);
-    VecPosition zz1 = component[COMP_HEAD].transformFromParent.transform(zz);
-
-    cout << "xx1: " << xx1 << "\n";
-    cout << "yy1: " << yy1 << "\n";
-    cout << "zz1: " << zz1 << "\n";
-    */
-
 }
 
 void BodyModel::displayDerived() {

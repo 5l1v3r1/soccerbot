@@ -15,6 +15,9 @@ if(NOT CMAKE_CXX_FLAGS)
   set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wno-unused")
 endif(NOT CMAKE_CXX_FLAGS)
 
+#set(RCSSNET3D_INCLUDE_DIR "/usr/include/simspark")
+#set(RCSSNET3D_LIBRARY "../../../soccerbot/simspark/rcssserver3d")
+
 include_directories(
 ${RCSSNET3D_INCLUDE_DIR}
 )

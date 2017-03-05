@@ -51,6 +51,9 @@ EnumParser<SkillType>::EnumParser()
     string2enum["SKILL_STAND"] = SKILL_STAND;
     enum2String[SKILL_STAND] = "SKILL_STAND";
 
+    string2enum["SKILL_WAVE"] = SKILL_WAVE;
+    enum2String[SKILL_WAVE] = "SKILL_WAVE";
+
     string2enum["SKILL_KICK_LEFT_LEG"] = SKILL_KICK_LEFT_LEG;
     enum2String[SKILL_KICK_LEFT_LEG] = "SKILL_KICK_LEFT_LEG";
 

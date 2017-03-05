@@ -77,11 +77,9 @@ struct Effector {
     }
 
     void updateErrors() {
-
         previousError = currentError;
         currentError = targetAngle - currentAngle;
         cumulativeError += currentError;
-
     }
 
     void setTargetAngle(const double &angle) {
