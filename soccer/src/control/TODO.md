@@ -1,11 +1,11 @@
 ##Optimization/Learning
-1. Piping: instantiate an agent that reads a skill from a file, and performs that skill
+1. Write program to run agent with programmatically generated parameter values
 
-2. Write program to run agent with programmatically generated parameter values
+2. Write program to run agent and get fitness values back
 
-3. Write program to run agent and get fitness values back
+3. Write program to run agent many times, getting fitness
 
-4. Write program to run agent many times, getting fitness, and updating parameter values with reinforcement learning
+4. Updating parameter values each iteration with reinforcement learning
 
 ##Physics
 1. Implement waving an arm as a .skl, with a parameter (to use to test optimization)
