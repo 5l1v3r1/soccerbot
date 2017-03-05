@@ -14,7 +14,7 @@ namedParams(namedParams_), rsg(rsg_) {
     bodyModel = new BodyModel(worldModel);
     parser = new Parser(worldModel, bodyModel);
 
-    static const SkillType arr[] = {SKILL_STAND};
+    static const SkillType arr[] = {SKILL_STAND, SKILL_WAVE};
     skillSequence = vector<SkillType>(arr, arr + sizeof(arr) / sizeof(arr[0]));
     currentSkillIndex = 0;
 }
