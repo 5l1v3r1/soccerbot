@@ -1,8 +1,8 @@
-prefix=/home/soccer/soccerbot/soccer/devel
+prefix=/home/soccer/soccer/devel
 
 Name: audio_receiver
 Description: Description of audio_receiver
 Version: 0.0.0
 Cflags: 
-Libs: -L/home/soccer/soccerbot/soccer/devel/lib 
+Libs: -L/home/soccer/soccer/devel/lib 
 Requires: 
