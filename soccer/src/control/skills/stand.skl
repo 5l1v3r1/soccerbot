@@ -1,13 +1,13 @@
 STARTSKILL SKILL_STAND
 
 STARTSTATE
-settar EFF_H1 10 end
-wait 5 end
+settar EFF_H1 1 end
+wait 0.4 end
 ENDSTATE
 
 STARTSTATE
-settar EFF_H1 -10 end
-wait 5 end
+settar EFF_H1 -1 end
+wait 0.4 end
 ENDSTATE
 
 ENDSKILL 
