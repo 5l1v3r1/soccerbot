@@ -34,11 +34,14 @@ RM = /usr/bin/cmake -E remove -f
 # Escaping for special characters.
 EQUALS = =
 
+# The program to use to edit the cache.
+CMAKE_EDIT_COMMAND = /usr/bin/ccmake
+
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/arkadyark/Documents/soccerbot/soccer/src/control
+CMAKE_SOURCE_DIR = /home/art/soccerbot/soccer/src/control
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/arkadyark/Documents/soccerbot/soccer/src/control/build
+CMAKE_BINARY_DIR = /home/art/soccerbot/soccer/src/control/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/utracontrol.dir/depend.make
@@ -51,17 +54,17 @@ include CMakeFiles/utracontrol.dir/flags.make
 
 CMakeFiles/utracontrol.dir/main.cpp.o: CMakeFiles/utracontrol.dir/flags.make
 CMakeFiles/utracontrol.dir/main.cpp.o: ../main.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/arkadyark/Documents/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/art/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/utracontrol.dir/main.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/main.cpp.o -c /home/arkadyark/Documents/soccerbot/soccer/src/control/main.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/main.cpp.o -c /home/art/soccerbot/soccer/src/control/main.cpp
 
 CMakeFiles/utracontrol.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/utracontrol.dir/main.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/arkadyark/Documents/soccerbot/soccer/src/control/main.cpp > CMakeFiles/utracontrol.dir/main.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/art/soccerbot/soccer/src/control/main.cpp > CMakeFiles/utracontrol.dir/main.cpp.i
 
 CMakeFiles/utracontrol.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/utracontrol.dir/main.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/arkadyark/Documents/soccerbot/soccer/src/control/main.cpp -o CMakeFiles/utracontrol.dir/main.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/art/soccerbot/soccer/src/control/main.cpp -o CMakeFiles/utracontrol.dir/main.cpp.s
 
 CMakeFiles/utracontrol.dir/main.cpp.o.requires:
 .PHONY : CMakeFiles/utracontrol.dir/main.cpp.o.requires
@@ -74,17 +77,17 @@ CMakeFiles/utracontrol.dir/main.cpp.o.provides.build: CMakeFiles/utracontrol.dir
 
 CMakeFiles/utracontrol.dir/behaviours/behaviour.cpp.o: CMakeFiles/utracontrol.dir/flags.make
 CMakeFiles/utracontrol.dir/behaviours/behaviour.cpp.o: ../behaviours/behaviour.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/arkadyark/Documents/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/art/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/utracontrol.dir/behaviours/behaviour.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/behaviours/behaviour.cpp.o -c /home/arkadyark/Documents/soccerbot/soccer/src/control/behaviours/behaviour.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/behaviours/behaviour.cpp.o -c /home/art/soccerbot/soccer/src/control/behaviours/behaviour.cpp
 
 CMakeFiles/utracontrol.dir/behaviours/behaviour.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/utracontrol.dir/behaviours/behaviour.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/arkadyark/Documents/soccerbot/soccer/src/control/behaviours/behaviour.cpp > CMakeFiles/utracontrol.dir/behaviours/behaviour.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/art/soccerbot/soccer/src/control/behaviours/behaviour.cpp > CMakeFiles/utracontrol.dir/behaviours/behaviour.cpp.i
 
 CMakeFiles/utracontrol.dir/behaviours/behaviour.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/utracontrol.dir/behaviours/behaviour.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/arkadyark/Documents/soccerbot/soccer/src/control/behaviours/behaviour.cpp -o CMakeFiles/utracontrol.dir/behaviours/behaviour.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/art/soccerbot/soccer/src/control/behaviours/behaviour.cpp -o CMakeFiles/utracontrol.dir/behaviours/behaviour.cpp.s
 
 CMakeFiles/utracontrol.dir/behaviours/behaviour.cpp.o.requires:
 .PHONY : CMakeFiles/utracontrol.dir/behaviours/behaviour.cpp.o.requires
@@ -97,17 +100,17 @@ CMakeFiles/utracontrol.dir/behaviours/behaviour.cpp.o.provides.build: CMakeFiles
 
 CMakeFiles/utracontrol.dir/behaviours/naobehaviour.cpp.o: CMakeFiles/utracontrol.dir/flags.make
 CMakeFiles/utracontrol.dir/behaviours/naobehaviour.cpp.o: ../behaviours/naobehaviour.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/arkadyark/Documents/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/art/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/utracontrol.dir/behaviours/naobehaviour.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/behaviours/naobehaviour.cpp.o -c /home/arkadyark/Documents/soccerbot/soccer/src/control/behaviours/naobehaviour.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/behaviours/naobehaviour.cpp.o -c /home/art/soccerbot/soccer/src/control/behaviours/naobehaviour.cpp
 
 CMakeFiles/utracontrol.dir/behaviours/naobehaviour.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/utracontrol.dir/behaviours/naobehaviour.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/arkadyark/Documents/soccerbot/soccer/src/control/behaviours/naobehaviour.cpp > CMakeFiles/utracontrol.dir/behaviours/naobehaviour.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/art/soccerbot/soccer/src/control/behaviours/naobehaviour.cpp > CMakeFiles/utracontrol.dir/behaviours/naobehaviour.cpp.i
 
 CMakeFiles/utracontrol.dir/behaviours/naobehaviour.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/utracontrol.dir/behaviours/naobehaviour.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/arkadyark/Documents/soccerbot/soccer/src/control/behaviours/naobehaviour.cpp -o CMakeFiles/utracontrol.dir/behaviours/naobehaviour.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/art/soccerbot/soccer/src/control/behaviours/naobehaviour.cpp -o CMakeFiles/utracontrol.dir/behaviours/naobehaviour.cpp.s
 
 CMakeFiles/utracontrol.dir/behaviours/naobehaviour.cpp.o.requires:
 .PHONY : CMakeFiles/utracontrol.dir/behaviours/naobehaviour.cpp.o.requires
@@ -120,17 +123,17 @@ CMakeFiles/utracontrol.dir/behaviours/naobehaviour.cpp.o.provides.build: CMakeFi
 
 CMakeFiles/utracontrol.dir/math/hctmatrix.cpp.o: CMakeFiles/utracontrol.dir/flags.make
 CMakeFiles/utracontrol.dir/math/hctmatrix.cpp.o: ../math/hctmatrix.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/arkadyark/Documents/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/art/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/utracontrol.dir/math/hctmatrix.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/math/hctmatrix.cpp.o -c /home/arkadyark/Documents/soccerbot/soccer/src/control/math/hctmatrix.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/math/hctmatrix.cpp.o -c /home/art/soccerbot/soccer/src/control/math/hctmatrix.cpp
 
 CMakeFiles/utracontrol.dir/math/hctmatrix.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/utracontrol.dir/math/hctmatrix.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/arkadyark/Documents/soccerbot/soccer/src/control/math/hctmatrix.cpp > CMakeFiles/utracontrol.dir/math/hctmatrix.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/art/soccerbot/soccer/src/control/math/hctmatrix.cpp > CMakeFiles/utracontrol.dir/math/hctmatrix.cpp.i
 
 CMakeFiles/utracontrol.dir/math/hctmatrix.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/utracontrol.dir/math/hctmatrix.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/arkadyark/Documents/soccerbot/soccer/src/control/math/hctmatrix.cpp -o CMakeFiles/utracontrol.dir/math/hctmatrix.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/art/soccerbot/soccer/src/control/math/hctmatrix.cpp -o CMakeFiles/utracontrol.dir/math/hctmatrix.cpp.s
 
 CMakeFiles/utracontrol.dir/math/hctmatrix.cpp.o.requires:
 .PHONY : CMakeFiles/utracontrol.dir/math/hctmatrix.cpp.o.requires
@@ -143,17 +146,17 @@ CMakeFiles/utracontrol.dir/math/hctmatrix.cpp.o.provides.build: CMakeFiles/utrac
 
 CMakeFiles/utracontrol.dir/math/vecposition.cpp.o: CMakeFiles/utracontrol.dir/flags.make
 CMakeFiles/utracontrol.dir/math/vecposition.cpp.o: ../math/vecposition.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/arkadyark/Documents/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/art/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/utracontrol.dir/math/vecposition.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/math/vecposition.cpp.o -c /home/arkadyark/Documents/soccerbot/soccer/src/control/math/vecposition.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/math/vecposition.cpp.o -c /home/art/soccerbot/soccer/src/control/math/vecposition.cpp
 
 CMakeFiles/utracontrol.dir/math/vecposition.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/utracontrol.dir/math/vecposition.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/arkadyark/Documents/soccerbot/soccer/src/control/math/vecposition.cpp > CMakeFiles/utracontrol.dir/math/vecposition.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/art/soccerbot/soccer/src/control/math/vecposition.cpp > CMakeFiles/utracontrol.dir/math/vecposition.cpp.i
 
 CMakeFiles/utracontrol.dir/math/vecposition.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/utracontrol.dir/math/vecposition.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/arkadyark/Documents/soccerbot/soccer/src/control/math/vecposition.cpp -o CMakeFiles/utracontrol.dir/math/vecposition.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/art/soccerbot/soccer/src/control/math/vecposition.cpp -o CMakeFiles/utracontrol.dir/math/vecposition.cpp.s
 
 CMakeFiles/utracontrol.dir/math/vecposition.cpp.o.requires:
 .PHONY : CMakeFiles/utracontrol.dir/math/vecposition.cpp.o.requires
@@ -166,17 +169,17 @@ CMakeFiles/utracontrol.dir/math/vecposition.cpp.o.provides.build: CMakeFiles/utr
 
 CMakeFiles/utracontrol.dir/math/Geometry.cpp.o: CMakeFiles/utracontrol.dir/flags.make
 CMakeFiles/utracontrol.dir/math/Geometry.cpp.o: ../math/Geometry.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/arkadyark/Documents/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/art/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/utracontrol.dir/math/Geometry.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/math/Geometry.cpp.o -c /home/arkadyark/Documents/soccerbot/soccer/src/control/math/Geometry.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/math/Geometry.cpp.o -c /home/art/soccerbot/soccer/src/control/math/Geometry.cpp
 
 CMakeFiles/utracontrol.dir/math/Geometry.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/utracontrol.dir/math/Geometry.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/arkadyark/Documents/soccerbot/soccer/src/control/math/Geometry.cpp > CMakeFiles/utracontrol.dir/math/Geometry.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/art/soccerbot/soccer/src/control/math/Geometry.cpp > CMakeFiles/utracontrol.dir/math/Geometry.cpp.i
 
 CMakeFiles/utracontrol.dir/math/Geometry.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/utracontrol.dir/math/Geometry.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/arkadyark/Documents/soccerbot/soccer/src/control/math/Geometry.cpp -o CMakeFiles/utracontrol.dir/math/Geometry.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/art/soccerbot/soccer/src/control/math/Geometry.cpp -o CMakeFiles/utracontrol.dir/math/Geometry.cpp.s
 
 CMakeFiles/utracontrol.dir/math/Geometry.cpp.o.requires:
 .PHONY : CMakeFiles/utracontrol.dir/math/Geometry.cpp.o.requires
@@ -189,17 +192,17 @@ CMakeFiles/utracontrol.dir/math/Geometry.cpp.o.provides.build: CMakeFiles/utraco
 
 CMakeFiles/utracontrol.dir/models/worldmodel/worldmodel.cpp.o: CMakeFiles/utracontrol.dir/flags.make
 CMakeFiles/utracontrol.dir/models/worldmodel/worldmodel.cpp.o: ../models/worldmodel/worldmodel.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/arkadyark/Documents/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/art/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/utracontrol.dir/models/worldmodel/worldmodel.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/models/worldmodel/worldmodel.cpp.o -c /home/arkadyark/Documents/soccerbot/soccer/src/control/models/worldmodel/worldmodel.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/models/worldmodel/worldmodel.cpp.o -c /home/art/soccerbot/soccer/src/control/models/worldmodel/worldmodel.cpp
 
 CMakeFiles/utracontrol.dir/models/worldmodel/worldmodel.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/utracontrol.dir/models/worldmodel/worldmodel.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/arkadyark/Documents/soccerbot/soccer/src/control/models/worldmodel/worldmodel.cpp > CMakeFiles/utracontrol.dir/models/worldmodel/worldmodel.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/art/soccerbot/soccer/src/control/models/worldmodel/worldmodel.cpp > CMakeFiles/utracontrol.dir/models/worldmodel/worldmodel.cpp.i
 
 CMakeFiles/utracontrol.dir/models/worldmodel/worldmodel.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/utracontrol.dir/models/worldmodel/worldmodel.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/arkadyark/Documents/soccerbot/soccer/src/control/models/worldmodel/worldmodel.cpp -o CMakeFiles/utracontrol.dir/models/worldmodel/worldmodel.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/art/soccerbot/soccer/src/control/models/worldmodel/worldmodel.cpp -o CMakeFiles/utracontrol.dir/models/worldmodel/worldmodel.cpp.s
 
 CMakeFiles/utracontrol.dir/models/worldmodel/worldmodel.cpp.o.requires:
 .PHONY : CMakeFiles/utracontrol.dir/models/worldmodel/worldmodel.cpp.o.requires
@@ -212,17 +215,17 @@ CMakeFiles/utracontrol.dir/models/worldmodel/worldmodel.cpp.o.provides.build: CM
 
 CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o: CMakeFiles/utracontrol.dir/flags.make
 CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o: ../models/worldmodel/parser.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/arkadyark/Documents/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/art/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o -c /home/arkadyark/Documents/soccerbot/soccer/src/control/models/worldmodel/parser.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o -c /home/art/soccerbot/soccer/src/control/models/worldmodel/parser.cpp
 
 CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/arkadyark/Documents/soccerbot/soccer/src/control/models/worldmodel/parser.cpp > CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/art/soccerbot/soccer/src/control/models/worldmodel/parser.cpp > CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.i
 
 CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/arkadyark/Documents/soccerbot/soccer/src/control/models/worldmodel/parser.cpp -o CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/art/soccerbot/soccer/src/control/models/worldmodel/parser.cpp -o CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.s
 
 CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o.requires:
 .PHONY : CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o.requires
@@ -235,17 +238,17 @@ CMakeFiles/utracontrol.dir/models/worldmodel/parser.cpp.o.provides.build: CMakeF
 
 CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.o: CMakeFiles/utracontrol.dir/flags.make
 CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.o: ../models/bodymodel/bodymodel.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/arkadyark/Documents/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/art/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.o -c /home/arkadyark/Documents/soccerbot/soccer/src/control/models/bodymodel/bodymodel.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.o -c /home/art/soccerbot/soccer/src/control/models/bodymodel/bodymodel.cpp
 
 CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/arkadyark/Documents/soccerbot/soccer/src/control/models/bodymodel/bodymodel.cpp > CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/art/soccerbot/soccer/src/control/models/bodymodel/bodymodel.cpp > CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.i
 
 CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/arkadyark/Documents/soccerbot/soccer/src/control/models/bodymodel/bodymodel.cpp -o CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/art/soccerbot/soccer/src/control/models/bodymodel/bodymodel.cpp -o CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.s
 
 CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.o.requires:
 .PHONY : CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.o.requires
@@ -258,17 +261,17 @@ CMakeFiles/utracontrol.dir/models/bodymodel/bodymodel.cpp.o.provides.build: CMak
 
 CMakeFiles/utracontrol.dir/skills/skill.cpp.o: CMakeFiles/utracontrol.dir/flags.make
 CMakeFiles/utracontrol.dir/skills/skill.cpp.o: ../skills/skill.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/arkadyark/Documents/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_10)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/art/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/utracontrol.dir/skills/skill.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/skills/skill.cpp.o -c /home/arkadyark/Documents/soccerbot/soccer/src/control/skills/skill.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/skills/skill.cpp.o -c /home/art/soccerbot/soccer/src/control/skills/skill.cpp
 
 CMakeFiles/utracontrol.dir/skills/skill.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/utracontrol.dir/skills/skill.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/arkadyark/Documents/soccerbot/soccer/src/control/skills/skill.cpp > CMakeFiles/utracontrol.dir/skills/skill.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/art/soccerbot/soccer/src/control/skills/skill.cpp > CMakeFiles/utracontrol.dir/skills/skill.cpp.i
 
 CMakeFiles/utracontrol.dir/skills/skill.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/utracontrol.dir/skills/skill.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/arkadyark/Documents/soccerbot/soccer/src/control/skills/skill.cpp -o CMakeFiles/utracontrol.dir/skills/skill.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/art/soccerbot/soccer/src/control/skills/skill.cpp -o CMakeFiles/utracontrol.dir/skills/skill.cpp.s
 
 CMakeFiles/utracontrol.dir/skills/skill.cpp.o.requires:
 .PHONY : CMakeFiles/utracontrol.dir/skills/skill.cpp.o.requires
@@ -281,17 +284,17 @@ CMakeFiles/utracontrol.dir/skills/skill.cpp.o.provides.build: CMakeFiles/utracon
 
 CMakeFiles/utracontrol.dir/skills/curve3d.cpp.o: CMakeFiles/utracontrol.dir/flags.make
 CMakeFiles/utracontrol.dir/skills/curve3d.cpp.o: ../skills/curve3d.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/arkadyark/Documents/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_11)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/art/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/utracontrol.dir/skills/curve3d.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/skills/curve3d.cpp.o -c /home/arkadyark/Documents/soccerbot/soccer/src/control/skills/curve3d.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/skills/curve3d.cpp.o -c /home/art/soccerbot/soccer/src/control/skills/curve3d.cpp
 
 CMakeFiles/utracontrol.dir/skills/curve3d.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/utracontrol.dir/skills/curve3d.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/arkadyark/Documents/soccerbot/soccer/src/control/skills/curve3d.cpp > CMakeFiles/utracontrol.dir/skills/curve3d.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/art/soccerbot/soccer/src/control/skills/curve3d.cpp > CMakeFiles/utracontrol.dir/skills/curve3d.cpp.i
 
 CMakeFiles/utracontrol.dir/skills/curve3d.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/utracontrol.dir/skills/curve3d.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/arkadyark/Documents/soccerbot/soccer/src/control/skills/curve3d.cpp -o CMakeFiles/utracontrol.dir/skills/curve3d.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/art/soccerbot/soccer/src/control/skills/curve3d.cpp -o CMakeFiles/utracontrol.dir/skills/curve3d.cpp.s
 
 CMakeFiles/utracontrol.dir/skills/curve3d.cpp.o.requires:
 .PHONY : CMakeFiles/utracontrol.dir/skills/curve3d.cpp.o.requires
@@ -304,17 +307,17 @@ CMakeFiles/utracontrol.dir/skills/curve3d.cpp.o.provides.build: CMakeFiles/utrac
 
 CMakeFiles/utracontrol.dir/headers/headers.cpp.o: CMakeFiles/utracontrol.dir/flags.make
 CMakeFiles/utracontrol.dir/headers/headers.cpp.o: ../headers/headers.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/arkadyark/Documents/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_12)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/art/soccerbot/soccer/src/control/build/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/utracontrol.dir/headers/headers.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/headers/headers.cpp.o -c /home/arkadyark/Documents/soccerbot/soccer/src/control/headers/headers.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/utracontrol.dir/headers/headers.cpp.o -c /home/art/soccerbot/soccer/src/control/headers/headers.cpp
 
 CMakeFiles/utracontrol.dir/headers/headers.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/utracontrol.dir/headers/headers.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/arkadyark/Documents/soccerbot/soccer/src/control/headers/headers.cpp > CMakeFiles/utracontrol.dir/headers/headers.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/art/soccerbot/soccer/src/control/headers/headers.cpp > CMakeFiles/utracontrol.dir/headers/headers.cpp.i
 
 CMakeFiles/utracontrol.dir/headers/headers.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/utracontrol.dir/headers/headers.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/arkadyark/Documents/soccerbot/soccer/src/control/headers/headers.cpp -o CMakeFiles/utracontrol.dir/headers/headers.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/art/soccerbot/soccer/src/control/headers/headers.cpp -o CMakeFiles/utracontrol.dir/headers/headers.cpp.s
 
 CMakeFiles/utracontrol.dir/headers/headers.cpp.o.requires:
 .PHONY : CMakeFiles/utracontrol.dir/headers/headers.cpp.o.requires
@@ -385,6 +388,6 @@ CMakeFiles/utracontrol.dir/clean:
 .PHONY : CMakeFiles/utracontrol.dir/clean
 
 CMakeFiles/utracontrol.dir/depend:
-	cd /home/arkadyark/Documents/soccerbot/soccer/src/control/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/arkadyark/Documents/soccerbot/soccer/src/control /home/arkadyark/Documents/soccerbot/soccer/src/control /home/arkadyark/Documents/soccerbot/soccer/src/control/build /home/arkadyark/Documents/soccerbot/soccer/src/control/build /home/arkadyark/Documents/soccerbot/soccer/src/control/build/CMakeFiles/utracontrol.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/art/soccerbot/soccer/src/control/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/art/soccerbot/soccer/src/control /home/art/soccerbot/soccer/src/control /home/art/soccerbot/soccer/src/control/build /home/art/soccerbot/soccer/src/control/build /home/art/soccerbot/soccer/src/control/build/CMakeFiles/utracontrol.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/utracontrol.dir/depend
 

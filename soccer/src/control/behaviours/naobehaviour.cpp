@@ -7,12 +7,16 @@ NaoBehaviour::NaoBehaviour(const std::string teamName, int uNum, const map <std:
 namedParams(namedParams_), rsg(rsg_) {	
 
     readSkillsFromFile("./skills/stand.skl");
+	
+	readSkillsFromFile("./skills/wave.skl");
 
     worldModel = new WorldModel();
     bodyModel = new BodyModel(worldModel);
     parser = new Parser(worldModel, bodyModel);
 
     skill = SKILL_STAND;
+
+    //skill = SKILL_WAVE;
 }
 
 NaoBehaviour::~NaoBehaviour() {
@@ -28,6 +32,12 @@ std::string NaoBehaviour::Init() {
 std::string NaoBehaviour::Think(const std::string& message) {
     bool parseSuccess = parser->parse(message);
     skills[skill]->execute(bodyModel, worldModel);
+
+    for (int i = 0; i < 10000; i++) {
+    
+    	if (!(i % 100))	bodyModel->display();
+    }
+
     worldModel->setLastSkill(skill);
     std::string action = composeAction();
 	return action;

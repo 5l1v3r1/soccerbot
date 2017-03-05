@@ -370,7 +370,7 @@ bool SelectInput() {
 }
 
 void PutMessage(const std::string& msg) {
-    std::cout << msg << std::endl;
+    //std::cout << msg << std::endl;
     
     if (msg.empty()) {
         return;

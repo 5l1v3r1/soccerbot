@@ -544,7 +544,7 @@ void BodyModel::display() {
 
     cout << "*****************Body Model******************************\n";
 
-    /*
+    
     cout << "HJ_H1: " << getJointAngle(HJ_H1) << " ";
     cout << "HJ_H2: " << getJointAngle(HJ_H2) << "\n";
 
@@ -578,7 +578,7 @@ void BodyModel::display() {
 
     cout << "FRP Left: " << FRPCentreLeft << ", " << FRPForceLeft << "\n";
     cout << "FRP Right: " << FRPCentreRight << ", " << FRPForceRight << "\n";
-    */
+
 
     /*
     HCTMatrix h1 = HCTMatrix(  component[COMP_LANKLE].transformFromRoot);

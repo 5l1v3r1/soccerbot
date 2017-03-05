@@ -46,11 +46,14 @@ RM = /usr/bin/cmake -E remove -f
 # Escaping for special characters.
 EQUALS = =
 
+# The program to use to edit the cache.
+CMAKE_EDIT_COMMAND = /usr/bin/ccmake
+
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/arkadyark/Documents/soccerbot/soccer/src/control
+CMAKE_SOURCE_DIR = /home/art/soccerbot/soccer/src/control
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/arkadyark/Documents/soccerbot/soccer/src/control/build
+CMAKE_BINARY_DIR = /home/art/soccerbot/soccer/src/control/build
 
 #=============================================================================
 # Target rules for target CMakeFiles/utracontrol.dir
@@ -59,7 +62,7 @@ CMAKE_BINARY_DIR = /home/arkadyark/Documents/soccerbot/soccer/src/control/build
 CMakeFiles/utracontrol.dir/all:
 	$(MAKE) -f CMakeFiles/utracontrol.dir/build.make CMakeFiles/utracontrol.dir/depend
 	$(MAKE) -f CMakeFiles/utracontrol.dir/build.make CMakeFiles/utracontrol.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/arkadyark/Documents/soccerbot/soccer/src/control/build/CMakeFiles  1 2 3 4 5 6 7 8 9 10 11 12
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/art/soccerbot/soccer/src/control/build/CMakeFiles  1 2 3 4 5 6 7 8 9 10 11 12
 	@echo "Built target utracontrol"
 .PHONY : CMakeFiles/utracontrol.dir/all
 
@@ -69,9 +72,9 @@ all: CMakeFiles/utracontrol.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/utracontrol.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arkadyark/Documents/soccerbot/soccer/src/control/build/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/art/soccerbot/soccer/src/control/build/CMakeFiles 12
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/utracontrol.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arkadyark/Documents/soccerbot/soccer/src/control/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/art/soccerbot/soccer/src/control/build/CMakeFiles 0
 .PHONY : CMakeFiles/utracontrol.dir/rule
 
 # Convenience name for target.
