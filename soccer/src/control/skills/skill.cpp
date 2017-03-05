@@ -589,14 +589,10 @@ bool Skill::done(BodyModel *bodyModel, const WorldModel *worldModel) {
     return ((currentKeyFrame == (int)(keyFrames.size() - 1)) && keyFrames[currentKeyFrame]->done(bodyModel, worldModel, currentKeyFrameSetTime));
 }
 
-void Skill::execute(BodyModel *bodyModel, const WorldModel *worldModel) {
+bool Skill::execute(BodyModel *bodyModel, const WorldModel *worldModel) {
     const double &currentTime = worldModel->getTime();
-    // Check. Can be removed.
-    if(done(bodyModel, worldModel)) {
-        // TODO: check why it prints it before kickoff - just a matter of initialization????
-//    cerr << "Ideally, this should not be printed.\n";
-        return ;
-    }
+
+    if(done(bodyModel, worldModel)) return true;
 
     if(keyFrames[currentKeyFrame]->done(bodyModel, worldModel, currentKeyFrameSetTime)) {
         currentKeyFrame += 1;
@@ -610,7 +606,7 @@ void Skill::execute(BodyModel *bodyModel, const WorldModel *worldModel) {
         currentKeyFrameSetTime = currentTime;
     }
 
-    //cerr << "Skill::execute()  currentKeyFrame=" << currentKeyFrame << " currentTime=" << currentTime << "currentKeyFrameSetTime=" << currentKeyFrameSetTime << " done=" << keyFrames[currentKeyFrame]->done(bodyModel, currentKeyFrameSetTime, currentTime) << " currentKeyFrameSet=" << currentKeyFrameSet << endl;
+    return false;
 }
 
 /**
