@@ -16,7 +16,9 @@ protected:
     BodyModel *bodyModel;
     WorldModel *worldModel;
     Parser *parser;
-    SkillType skill;
+
+    vector<SkillType> skillSequence;
+    int currentSkillIndex;
 
     void readSkillsFromFile(const std::string& filename);
     std::string composeAction();

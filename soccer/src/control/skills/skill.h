@@ -271,7 +271,7 @@ public:
 
     bool done(BodyModel *bodyModel, const WorldModel *worldModel);
 
-    void execute(BodyModel *bodyModel, const WorldModel *worldModel);
+    bool execute(BodyModel *bodyModel, const WorldModel *worldModel);
 
     bool canExecute(const BodyModel *bodyModel, const WorldModel *worldModel) const;
 

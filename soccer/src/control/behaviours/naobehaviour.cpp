@@ -12,7 +12,9 @@ namedParams(namedParams_), rsg(rsg_) {
     bodyModel = new BodyModel(worldModel);
     parser = new Parser(worldModel, bodyModel);
 
-    skill = SKILL_STAND;
+    static const SkillType arr[] = {SKILL_STAND};
+    skillSequence = vector<SkillType>(arr, arr + sizeof(arr) / sizeof(arr[0]));
+    currentSkillIndex = 0;
 }
 
 NaoBehaviour::~NaoBehaviour() {
@@ -27,8 +29,16 @@ std::string NaoBehaviour::Init() {
 
 std::string NaoBehaviour::Think(const std::string& message) {
     bool parseSuccess = parser->parse(message);
-    skills[skill]->execute(bodyModel, worldModel);
-    worldModel->setLastSkill(skill);
+    boost::shared_ptr<Skill> skillToExecute = skills[skillSequence[currentSkillIndex]];
+
+    // Loop through the skill sequence
+    if(skillToExecute->execute(bodyModel, worldModel)) {
+        std::cout << "Finished the skill!" << std::endl;
+        skillToExecute->reset();
+        currentSkillIndex += 1;
+        currentSkillIndex %= skillSequence.size();
+    }
+    worldModel->setLastSkill(skillSequence[currentSkillIndex]);
     std::string action = composeAction();
 	return action;
 }
