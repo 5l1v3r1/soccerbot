@@ -572,10 +572,15 @@ void KeyFrame::display() {
 ////////////////////////////////////////////////////////////////
 // Skill
 ////////////////////////////////////////////////////////////////
-Skill::Skill() {
+Skill::Skill(std::string name) {
+    skillName = name;
     keyFrames.clear();
     reset();
     currentKeyFrame = -1; // set to invalid
+}
+
+std::string Skill::getName() {
+    return skillName;
 }
 
 void Skill::reset() {
@@ -595,6 +600,7 @@ bool Skill::execute(BodyModel *bodyModel, const WorldModel *worldModel) {
     if(done(bodyModel, worldModel)) return true;
 
     if(keyFrames[currentKeyFrame]->done(bodyModel, worldModel, currentKeyFrameSetTime)) {
+        std::cout << "Finished keyframe " << currentKeyFrame << " of " << skillName << std::endl;
         currentKeyFrame += 1;
         currentKeyFrameSet = false;
         currentKeyFrameSetTime = -1;
@@ -641,7 +647,7 @@ appendKeyFrame( boost::shared_ptr<KeyFrame> keyFrame ) {
 
 boost::shared_ptr<Skill> Skill::getReflection(BodyModel *bodyModel) {
 
-    boost::shared_ptr<Skill> reflection(new Skill());
+    boost::shared_ptr<Skill> reflection(new Skill(skillName + "_reflection"));
 
     reflection->currentKeyFrame = this->currentKeyFrame;
     reflection->currentKeyFrameSet = this->currentKeyFrameSet;

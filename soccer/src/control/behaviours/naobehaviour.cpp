@@ -1,5 +1,4 @@
 #include "naobehaviour.h"
-
 #include "../headers/headers.h"
 #include "../skills/skillparser.h"
 
@@ -7,14 +6,13 @@ NaoBehaviour::NaoBehaviour(const std::string teamName, int uNum, const map <std:
 namedParams(namedParams_), rsg(rsg_) {	
 
     readSkillsFromFile("./skills/stand.skl");
-	
 	readSkillsFromFile("./skills/wave.skl");
 
     worldModel = new WorldModel();
     bodyModel = new BodyModel(worldModel);
     parser = new Parser(worldModel, bodyModel);
 
-    static const SkillType arr[] = {SKILL_STAND};
+    static const SkillType arr[] = {SKILL_STAND, SKILL_WAVE};
     skillSequence = vector<SkillType>(arr, arr + sizeof(arr) / sizeof(arr[0]));
     currentSkillIndex = 0;
 }
@@ -32,10 +30,9 @@ std::string NaoBehaviour::Init() {
 std::string NaoBehaviour::Think(const std::string& message) {
     bool parseSuccess = parser->parse(message);
     boost::shared_ptr<Skill> skillToExecute = skills[skillSequence[currentSkillIndex]];
-
     // Loop through the skill sequence
     if(skillToExecute->execute(bodyModel, worldModel)) {
-        std::cout << "Finished the skill!" << std::endl;
+        std::cout << "Finished executing " << skillToExecute->getName() << std::endl;
         skillToExecute->reset();
         currentSkillIndex += 1;
         currentSkillIndex %= skillSequence.size();

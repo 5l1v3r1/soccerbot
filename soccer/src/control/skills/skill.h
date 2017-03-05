@@ -261,11 +261,14 @@ protected:
     int currentKeyFrame;
     bool currentKeyFrameSet;
     double currentKeyFrameSetTime;
+    std::string skillName;
 
 public:
 
-    Skill();
+    Skill(std::string skillName);
     ~Skill() {};
+
+    std::string getName();
 
     void reset();
 
