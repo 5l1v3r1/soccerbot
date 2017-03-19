@@ -8,9 +8,6 @@ BodyModel::BodyModel(WorldModel *worldModel) {
 
     this->worldModel = worldModel;
 
-    initialiseEffectors();
-    initialiseComponents();
-
     gyroRates = VecPosition(0, 0, 0);
     accelRates = VecPosition(0, 0, 0);
 

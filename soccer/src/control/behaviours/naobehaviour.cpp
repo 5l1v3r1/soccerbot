@@ -29,6 +29,7 @@ std::string NaoBehaviour::Init() {
 
 std::string NaoBehaviour::Think(const std::string& message) {
     bool parseSuccess = parser->parse(message);
+    bodyModel->refresh();
     boost::shared_ptr<Skill> skillToExecute = skills[skillSequence[currentSkillIndex]];
     // Loop through the skill sequence
     if(skillToExecute->execute(bodyModel, worldModel)) {
@@ -39,6 +40,7 @@ std::string NaoBehaviour::Think(const std::string& message) {
     }
     worldModel->setLastSkill(skillSequence[currentSkillIndex]);
     std::string action = composeAction();
+    std::cout << bodyModel->getCenterOfMass() << std::endl;
 	return action;
 }
 
