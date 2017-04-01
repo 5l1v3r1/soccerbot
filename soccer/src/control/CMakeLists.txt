@@ -26,6 +26,7 @@ set(SRCS
     main.cpp
     behaviours/behaviour.cpp
     behaviours/naobehaviour.cpp
+    optimization/Optimizer.cpp
     math/hctmatrix.cpp
     math/vecposition.cpp
     math/Geometry.cpp

@@ -10,6 +10,7 @@
 
 #include "behaviours/behaviour.h"
 #include "behaviours/naobehaviour.h"
+#include "optimization/Optimizer.h"
 
 #include "headers/headers.h"
 
@@ -506,10 +507,12 @@ bool GetMessage(std::string& msg) {
 
 void Run()
 {
-    Behaviour *behaviour;
+    NaoBehaviour *behaviour;
+    Optimizer *optimizer;
 
     if (agentType == "naoagent") {
         behaviour = new NaoBehaviour(teamName, uNum, namedParams, rsg);
+        optimizer = new Optimizer(behaviour);
     } else {
         throw "unknown agent type";
     }
@@ -523,6 +526,7 @@ void Run()
 
         GetMessage(msg);
         std::string msgToServer = behaviour->Think(msg);
+        float fitness = optimizer.getFitness();
         // To support agent sync mode
         msgToServer.append("(syn)");
         PutMessage(msgToServer);
