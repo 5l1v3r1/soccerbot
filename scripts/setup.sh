@@ -34,5 +34,8 @@ chmod +x netbeans-8.2-cpp-linux-x64.sh
 
 sudo ./netbeans-8.2-cpp-linux-x64.sh --silent #shhhh
 
+### VIM ###
+sudo apt-get install vim -y
+
 
 
