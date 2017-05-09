@@ -10,8 +10,8 @@ sudo systemctl restart sshd.service
 sudo service restart ssh
 
 sudo apt-get install xfce4 xfce4-goodies tightvncserver -y
-mv ~/.vnc/xstartup ~/.vnc/xstartup.bak
-mv xstartup ~/.vnc/xstartup
+mv -f ~/.vnc/xstartup ~/.vnc/xstartup.bak
+cp xstartup ~/.vnc/xstartup
 
 #### ROS ####
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
@@ -32,6 +32,7 @@ wget wget download.netbeans.org/netbeans/8.2/final/bundles/netbeans-8.2-cpp-linu
 chmod +x netbeans-8.2-cpp-linux-x64.sh
 
 sudo ./netbeans-8.2-cpp-linux-x64.sh --silent #shhhh
+rm -rf netbeans-8.2-cpp-linux-x64.sh #dont need installer after installling
 
 ### VIM ###
 sudo apt-get install vim -y
