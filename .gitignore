@@ -21,4 +21,8 @@
 /simspark/**/build/**
 /simspark/.svn/*
 
+# pkgconfig
+*.pc
+# cmake
+*.cmake
 # Gazebo (Might need to fix in future)
