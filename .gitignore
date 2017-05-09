@@ -22,7 +22,5 @@
 /simspark/.svn/*
 
 # pkgconfig
-*.pc
-# cmake
-*.cmake
+/soccer/devel/lib/pjgconfig/**
 # Gazebo (Might need to fix in future)
