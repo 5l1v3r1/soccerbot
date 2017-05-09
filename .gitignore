@@ -19,7 +19,6 @@
 
 # SIMSpark
 /simspark/**/build/**
-/simspark/.svn/*
 
 # pkgconfig
 /soccer/devel/lib/pjgconfig/**
