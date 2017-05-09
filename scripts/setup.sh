@@ -23,8 +23,7 @@ rosdep update
 echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 source /opt/ros/kinetic/setup.bash
-echo "source /opt/ros/kinetic/setup.zsh" >> ~/.zshrc
-source ~/.zshrc
+
 sudo apt-get install python-rosinstall -y
 
 ### NETBEANS ###
@@ -37,5 +36,6 @@ sudo ./netbeans-8.2-cpp-linux-x64.sh --silent #shhhh
 ### VIM ###
 sudo apt-get install vim -y
 
+sh configure_simspark.sh
 
 
