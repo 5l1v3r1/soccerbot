@@ -74,7 +74,7 @@ if("TRUE" STREQUAL "TRUE")
 else()
   set(field_mapper_SOURCE_PREFIX "")
   set(field_mapper_DEVEL_PREFIX "")
-  set(field_mapper_INSTALL_PREFIX /home/fyyaz/soccerbot/soccer/install)
+  set(field_mapper_INSTALL_PREFIX /usr/local)
   set(field_mapper_PREFIX ${field_mapper_INSTALL_PREFIX})
 endif()
 

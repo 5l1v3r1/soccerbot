@@ -74,7 +74,7 @@ if("TRUE" STREQUAL "TRUE")
 else()
   set(audio_receiver_SOURCE_PREFIX "")
   set(audio_receiver_DEVEL_PREFIX "")
-  set(audio_receiver_INSTALL_PREFIX /home/fyyaz/soccerbot/soccer/install)
+  set(audio_receiver_INSTALL_PREFIX /usr/local)
   set(audio_receiver_PREFIX ${audio_receiver_INSTALL_PREFIX})
 endif()
 

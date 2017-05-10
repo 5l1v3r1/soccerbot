@@ -74,7 +74,7 @@ if("TRUE" STREQUAL "TRUE")
 else()
   set(camera_data_SOURCE_PREFIX "")
   set(camera_data_DEVEL_PREFIX "")
-  set(camera_data_INSTALL_PREFIX /home/fyyaz/soccerbot/soccer/install)
+  set(camera_data_INSTALL_PREFIX /usr/local)
   set(camera_data_PREFIX ${camera_data_INSTALL_PREFIX})
 endif()
 

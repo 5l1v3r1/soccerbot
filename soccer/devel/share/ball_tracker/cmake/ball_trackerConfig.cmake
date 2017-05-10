@@ -74,7 +74,7 @@ if("TRUE" STREQUAL "TRUE")
 else()
   set(ball_tracker_SOURCE_PREFIX "")
   set(ball_tracker_DEVEL_PREFIX "")
-  set(ball_tracker_INSTALL_PREFIX /home/fyyaz/soccerbot/soccer/install)
+  set(ball_tracker_INSTALL_PREFIX /usr/local)
   set(ball_tracker_PREFIX ${ball_tracker_INSTALL_PREFIX})
 endif()
 

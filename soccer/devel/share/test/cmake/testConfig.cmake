@@ -74,7 +74,7 @@ if("TRUE" STREQUAL "TRUE")
 else()
   set(test_SOURCE_PREFIX "")
   set(test_DEVEL_PREFIX "")
-  set(test_INSTALL_PREFIX /home/fyyaz/soccerbot/soccer/install)
+  set(test_INSTALL_PREFIX /usr/local)
   set(test_PREFIX ${test_INSTALL_PREFIX})
 endif()
 
