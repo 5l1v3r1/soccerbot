@@ -34,9 +34,13 @@ chmod +x netbeans-8.2-cpp-linux-x64.sh
 sudo ./netbeans-8.2-cpp-linux-x64.sh --silent #shhhh
 rm -rf netbeans-8.2-cpp-linux-x64.sh #dont need installer after installling
 
+roscd
+cd ..
+mkdir ~/.netbeans/8.1/etc/
+echo ". $(pwd)/setup.sh" > ~/.netbeans/8.1/etc/netbeans.conf
+
 ### VIM ###
 sudo apt-get install vim -y
 
 sh configure_simspark.sh
-
 

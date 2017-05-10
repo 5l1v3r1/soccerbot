@@ -16,6 +16,7 @@
 !/soccer/build/.project
 
 /soccer/**/build/**
+/soccer/nbproject/private/*
 
 # SIMSpark
 /simspark/**/build/**
