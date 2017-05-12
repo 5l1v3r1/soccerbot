@@ -1,8 +1,8 @@
-prefix=/home/fyyaz/soccerbot/soccer/devel
+prefix=/home/soccer/soccerbot/soccer/devel
 
 Name: field_mapper
 Description: Description of field_mapper
 Version: 0.0.0
 Cflags: 
-Libs: -L/home/fyyaz/soccerbot/soccer/devel/lib 
+Libs: -L/home/soccer/soccerbot/soccer/devel/lib 
 Requires: 

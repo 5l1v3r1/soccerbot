@@ -33,8 +33,6 @@
 #include <OpenGL/gl.h>
 #include <OpenGL/glext.h>
 #else
-//#include <GLES3/gl3.h>
-//#include <GLES3/gl3ext.h>
 #include <GL/gl.h>
 #include <GL/glext.h>
 #include <GL/glu.h>

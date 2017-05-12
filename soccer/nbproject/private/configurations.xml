@@ -3,6 +3,56 @@
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <df root="." name="0">
       <df name="build">
+        <df name="audio_receiver">
+          <df name="catkin_generated">
+            <df name="installspace">
+            </df>
+            <df name="stamps">
+              <df name="audio_receiver">
+              </df>
+            </df>
+          </df>
+          <df name="CMakeFiles">
+          </df>
+        </df>
+        <df name="ball_tracker">
+          <df name="catkin_generated">
+            <df name="installspace">
+            </df>
+            <df name="stamps">
+              <df name="ball_tracker">
+              </df>
+            </df>
+          </df>
+          <df name="CMakeFiles">
+          </df>
+        </df>
+        <df name="camera_data">
+          <df name="catkin_generated">
+            <df name="installspace">
+            </df>
+            <df name="stamps">
+              <df name="camera_data">
+              </df>
+            </df>
+          </df>
+          <df name="CMakeFiles">
+          </df>
+        </df>
+        <df name="catkin">
+          <df name="catkin_generated">
+            <df name="version">
+            </df>
+          </df>
+        </df>
+        <df name="catkin_generated">
+          <df name="installspace">
+          </df>
+          <df name="stamps">
+            <df name="Project">
+            </df>
+          </df>
+        </df>
         <df name="CMakeFiles">
           <df name="3.5.1">
             <df name="CompilerIdC">
@@ -12,8 +62,110 @@
               <in>CMakeCXXCompilerId.cpp</in>
             </df>
           </df>
+          <df name="CMakeTmp">
+          </df>
           <in>feature_tests.c</in>
           <in>feature_tests.cxx</in>
+        </df>
+        <df name="control">
+          <df name="CMakeFiles">
+          </df>
+        </df>
+        <df name="field_mapper">
+          <df name="catkin_generated">
+            <df name="installspace">
+            </df>
+            <df name="stamps">
+              <df name="field_mapper">
+              </df>
+            </df>
+          </df>
+          <df name="CMakeFiles">
+          </df>
+        </df>
+        <df name="gtest">
+          <df name="CMakeFiles">
+          </df>
+        </df>
+        <df name="src">
+          <df name="audio_receiver">
+            <df name="catkin_generated">
+              <df name="installspace">
+              </df>
+              <df name="stamps">
+                <df name="audio_receiver">
+                </df>
+              </df>
+            </df>
+            <df name="CMakeFiles">
+            </df>
+          </df>
+          <df name="ball_tracker">
+            <df name="catkin_generated">
+              <df name="installspace">
+              </df>
+              <df name="stamps">
+                <df name="ball_tracker">
+                </df>
+              </df>
+            </df>
+            <df name="CMakeFiles">
+            </df>
+          </df>
+          <df name="camera_data">
+            <df name="catkin_generated">
+              <df name="installspace">
+              </df>
+              <df name="stamps">
+                <df name="camera_data">
+                </df>
+              </df>
+            </df>
+            <df name="CMakeFiles">
+            </df>
+          </df>
+          <df name="control">
+            <df name="CMakeFiles">
+            </df>
+          </df>
+          <df name="field_mapper">
+            <df name="catkin_generated">
+              <df name="installspace">
+              </df>
+              <df name="stamps">
+                <df name="field_mapper">
+                </df>
+              </df>
+            </df>
+            <df name="CMakeFiles">
+            </df>
+          </df>
+          <df name="test">
+            <df name="catkin_generated">
+              <df name="installspace">
+              </df>
+              <df name="stamps">
+                <df name="test">
+                </df>
+              </df>
+            </df>
+            <df name="CMakeFiles">
+            </df>
+          </df>
+        </df>
+        <df name="test">
+          <df name="catkin_generated">
+            <df name="installspace">
+            </df>
+            <df name="stamps">
+              <df name="test">
+              </df>
+            </df>
+          </df>
+          <df name="CMakeFiles">
+          </df>
+        </df>
+        <df name="test_results">
         </df>
       </df>
       <df name="devel">
@@ -95,8 +247,6 @@
               <df name="CompilerIdCXX">
                 <in>CMakeCXXCompilerId.cpp</in>
               </df>
-            </df>
-            <df name="CMakeTmp">
             </df>
             <in>feature_tests.c</in>
             <in>feature_tests.cxx</in>
