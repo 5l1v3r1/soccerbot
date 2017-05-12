@@ -7,7 +7,7 @@ sudo apt-get update
 #### Basic requirements ####
 sudo apt install openssh-server -y
 sudo systemctl restart sshd.service
-sudo service restart ssh
+sudo service ssh start
 
 sudo apt-get install xfce4 xfce4-goodies tightvncserver -y
 mv -f ~/.vnc/xstartup ~/.vnc/xstartup.bak
