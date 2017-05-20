@@ -27,6 +27,9 @@ http://wiki.robocup.org/Soccer_Simulation_League
 - Project Planner
 https://drive.google.com/drive/folders/0B8OHQTLVTR6GQ3dqamQxMkZrUmc
 
+- ROS Tutorials
+http://wiki.ros.org/ROS/Tutorials
+
 ## Installation
 1. Obtain a copy of Ubuntu, either through a virtual machine or a dual boot (Dual boot preferred)
 
