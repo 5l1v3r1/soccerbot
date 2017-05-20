@@ -39,8 +39,8 @@ git clone https://github.com/utra-robosoccer/soccerbot/
 3. Execute the installation scripts
 ```
 cd scripts/
-sh setup.sh
-sh configure_simspark.sh
+sudo sh setup.sh
+sudo sh configure_simspark.sh
 ```
 
 4. Configure your name and email properly
