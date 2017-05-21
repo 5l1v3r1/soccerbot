@@ -1,0 +1,7 @@
+- git:
+    local-name: robot_localization
+    uri: https://github.com/cra-ros-pkg/robot_localization
+- setup-file:
+    local-name: /opt/ros/kinetic/setup.sh
+- other:
+    local-name: /opt/ros/kinetic/share/ros

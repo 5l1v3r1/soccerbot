@@ -44,3 +44,26 @@ sudo apt-get install vim -y
 
 sh configure_simspark.sh
 
+### GAZEBO ###
+wget osrf-distributions.s3.amazonaws.com/gazebo/gazebo8_install.sh
+chmod +x gazebo8_install.sh
+cd ..
+sh scripts/gazebo8_install.sh
+cd scripts/
+rm -rf gazebo8_install.sh
+
+### OTHER ###
+if ! grep -q ROS_WD ~/.bashrc;
+then
+    cd ../soccer/
+    echo "export ROS_WD=$(pwd)" >> ~/.bashrc
+fi
+source ~/.bashrc
+
+### ROS EXTERNAL DEPENDENCIES ###
+rosinstall ../soccer/include/ ../soccer/include/packages.rosinstall
+if ! grep -q /include/setup.bash ~/.bashrc;
+then
+    echo "source $ROS_WD/include/setup.bash" >> ~/.bashrc
+fi
+

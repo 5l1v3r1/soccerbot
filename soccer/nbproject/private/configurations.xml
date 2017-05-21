@@ -13,6 +13,36 @@
             </df>
           </df>
           <df name="CMakeFiles">
+            <df name="roscpp_generate_messages_cpp.dir">
+            </df>
+            <df name="roscpp_generate_messages_eus.dir">
+            </df>
+            <df name="roscpp_generate_messages_lisp.dir">
+            </df>
+            <df name="roscpp_generate_messages_nodejs.dir">
+            </df>
+            <df name="roscpp_generate_messages_py.dir">
+            </df>
+            <df name="rosgraph_msgs_generate_messages_cpp.dir">
+            </df>
+            <df name="rosgraph_msgs_generate_messages_eus.dir">
+            </df>
+            <df name="rosgraph_msgs_generate_messages_lisp.dir">
+            </df>
+            <df name="rosgraph_msgs_generate_messages_nodejs.dir">
+            </df>
+            <df name="rosgraph_msgs_generate_messages_py.dir">
+            </df>
+            <df name="std_msgs_generate_messages_cpp.dir">
+            </df>
+            <df name="std_msgs_generate_messages_eus.dir">
+            </df>
+            <df name="std_msgs_generate_messages_lisp.dir">
+            </df>
+            <df name="std_msgs_generate_messages_nodejs.dir">
+            </df>
+            <df name="std_msgs_generate_messages_py.dir">
+            </df>
           </df>
         </df>
         <df name="ball_tracker">
@@ -25,6 +55,34 @@
             </df>
           </df>
           <df name="CMakeFiles">
+            <df name="ball.dir">
+              <df name="src">
+              </df>
+            </df>
+            <df name="ball_tracker.dir">
+              <df name="src">
+              </df>
+            </df>
+            <df name="geometry_msgs_generate_messages_cpp.dir">
+            </df>
+            <df name="geometry_msgs_generate_messages_eus.dir">
+            </df>
+            <df name="geometry_msgs_generate_messages_lisp.dir">
+            </df>
+            <df name="geometry_msgs_generate_messages_nodejs.dir">
+            </df>
+            <df name="geometry_msgs_generate_messages_py.dir">
+            </df>
+            <df name="visualization_msgs_generate_messages_cpp.dir">
+            </df>
+            <df name="visualization_msgs_generate_messages_eus.dir">
+            </df>
+            <df name="visualization_msgs_generate_messages_lisp.dir">
+            </df>
+            <df name="visualization_msgs_generate_messages_nodejs.dir">
+            </df>
+            <df name="visualization_msgs_generate_messages_py.dir">
+            </df>
           </df>
         </df>
         <df name="camera_data">
@@ -37,6 +95,30 @@
             </df>
           </df>
           <df name="CMakeFiles">
+            <df name="camera_data.dir">
+              <df name="src">
+              </df>
+            </df>
+            <df name="geometry_msgs_generate_messages_cpp.dir">
+            </df>
+            <df name="geometry_msgs_generate_messages_eus.dir">
+            </df>
+            <df name="geometry_msgs_generate_messages_lisp.dir">
+            </df>
+            <df name="geometry_msgs_generate_messages_nodejs.dir">
+            </df>
+            <df name="geometry_msgs_generate_messages_py.dir">
+            </df>
+            <df name="sensor_msgs_generate_messages_cpp.dir">
+            </df>
+            <df name="sensor_msgs_generate_messages_eus.dir">
+            </df>
+            <df name="sensor_msgs_generate_messages_lisp.dir">
+            </df>
+            <df name="sensor_msgs_generate_messages_nodejs.dir">
+            </df>
+            <df name="sensor_msgs_generate_messages_py.dir">
+            </df>
           </df>
         </df>
         <df name="catkin">
@@ -62,13 +144,41 @@
               <in>CMakeCXXCompilerId.cpp</in>
             </df>
           </df>
+          <df name="clean_test_results.dir">
+          </df>
           <df name="CMakeTmp">
+          </df>
+          <df name="download_extra_data.dir">
+          </df>
+          <df name="doxygen.dir">
+          </df>
+          <df name="run_tests.dir">
+          </df>
+          <df name="tests.dir">
           </df>
           <in>feature_tests.c</in>
           <in>feature_tests.cxx</in>
         </df>
         <df name="control">
           <df name="CMakeFiles">
+            <df name="utracontrol.dir">
+              <df name="behaviours">
+              </df>
+              <df name="headers">
+              </df>
+              <df name="math">
+              </df>
+              <df name="models">
+                <df name="bodymodel">
+                </df>
+                <df name="worldmodel">
+                </df>
+              </df>
+              <df name="optimization">
+              </df>
+              <df name="skills">
+              </df>
+            </df>
           </df>
         </df>
         <df name="field_mapper">
@@ -85,71 +195,55 @@
         </df>
         <df name="gtest">
           <df name="CMakeFiles">
+            <df name="gtest.dir">
+              <df name="src">
+              </df>
+            </df>
+            <df name="gtest_main.dir">
+              <df name="src">
+              </df>
+            </df>
           </df>
         </df>
-        <df name="src">
-          <df name="audio_receiver">
-            <df name="catkin_generated">
-              <df name="installspace">
-              </df>
-              <df name="stamps">
-                <df name="audio_receiver">
-                </df>
-              </df>
+        <df name="soccer_field">
+          <df name="catkin_generated">
+            <df name="installspace">
             </df>
-            <df name="CMakeFiles">
+            <df name="stamps">
+              <df name="soccer_field">
+              </df>
             </df>
           </df>
-          <df name="ball_tracker">
-            <df name="catkin_generated">
-              <df name="installspace">
-              </df>
-              <df name="stamps">
-                <df name="ball_tracker">
-                </df>
+          <df name="CMakeFiles">
+            <df name="ball.dir">
+              <df name="src">
               </df>
             </df>
-            <df name="CMakeFiles">
-            </df>
-          </df>
-          <df name="camera_data">
-            <df name="catkin_generated">
-              <df name="installspace">
-              </df>
-              <df name="stamps">
-                <df name="camera_data">
-                </df>
+            <df name="ball_node.dir">
+              <df name="src">
               </df>
             </df>
-            <df name="CMakeFiles">
-            </df>
-          </df>
-          <df name="control">
-            <df name="CMakeFiles">
-            </df>
-          </df>
-          <df name="field_mapper">
-            <df name="catkin_generated">
-              <df name="installspace">
-              </df>
-              <df name="stamps">
-                <df name="field_mapper">
-                </df>
+            <df name="field.dir">
+              <df name="src">
               </df>
             </df>
-            <df name="CMakeFiles">
-            </df>
-          </df>
-          <df name="test">
-            <df name="catkin_generated">
-              <df name="installspace">
-              </df>
-              <df name="stamps">
-                <df name="test">
-                </df>
+            <df name="field_node.dir">
+              <df name="src">
               </df>
             </df>
-            <df name="CMakeFiles">
+            <df name="soccer_field.dir">
+              <df name="src">
+              </df>
+            </df>
+            <df name="visualization_msgs_generate_messages_cpp.dir">
+            </df>
+            <df name="visualization_msgs_generate_messages_eus.dir">
+            </df>
+            <df name="visualization_msgs_generate_messages_lisp.dir">
+            </df>
+            <df name="visualization_msgs_generate_messages_nodejs.dir">
+            </df>
+            <df name="visualization_msgs_generate_messages_py.dir">
             </df>
           </df>
         </df>
@@ -163,6 +257,10 @@
             </df>
           </df>
           <df name="CMakeFiles">
+            <df name="markers.dir">
+              <df name="src">
+              </df>
+            </df>
           </df>
         </df>
         <df name="test_results">
@@ -181,6 +279,8 @@
           <df name="camera_data">
           </df>
           <df name="pkgconfig">
+          </df>
+          <df name="soccer_field">
           </df>
           <df name="test">
           </df>
@@ -218,6 +318,10 @@
             <df name="cmake">
             </df>
           </df>
+          <df name="soccer_field">
+            <df name="cmake">
+            </df>
+          </df>
           <df name="test">
             <df name="cmake">
             </df>
@@ -236,27 +340,6 @@
         <df name="audio_receiver">
           <df name="src">
             <in>constants.hpp</in>
-          </df>
-        </df>
-        <df name="ball_tracker">
-          <df name="CMakeFiles">
-            <df name="3.5.1">
-              <df name="CompilerIdC">
-                <in>CMakeCCompilerId.c</in>
-              </df>
-              <df name="CompilerIdCXX">
-                <in>CMakeCXXCompilerId.cpp</in>
-              </df>
-            </df>
-            <in>feature_tests.c</in>
-            <in>feature_tests.cxx</in>
-          </df>
-          <df name="src">
-            <df name="ball">
-              <in>ball.cpp</in>
-              <in>ball.hpp</in>
-            </df>
-            <in>ball_tracker.cpp</in>
           </df>
         </df>
         <df name="camera_data">
@@ -322,16 +405,16 @@
           </df>
           <in>main.cpp</in>
         </df>
-        <df name="field_mapper">
+        <df name="soccer_field">
           <df name="src">
+            <in>ball.cpp</in>
+            <in>ball.hpp</in>
+            <in>ball_node.cpp</in>
+            <in>field.cpp</in>
+            <in>field.hpp</in>
             <in>field_constants.hpp</in>
-            <in>soccerfield.cpp</in>
-            <in>soccerfield.hpp</in>
-          </df>
-        </df>
-        <df name="test">
-          <df name="src">
-            <in>markers.cpp</in>
+            <in>field_node.cpp</in>
+            <in>object.cpp</in>
           </df>
         </df>
       </df>
@@ -374,6 +457,8 @@
       <runprofile version="9">
         <runcommandpicklist>
           <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
+          <runcommandpicklistitem>devel/run.sh</runcommandpicklistitem>
+          <runcommandpicklistitem>nbproject/run.sh</runcommandpicklistitem>
           <runcommandpicklistitem>roscore</runcommandpicklistitem>
         </runcommandpicklist>
         <runcommand>roscore</runcommand>

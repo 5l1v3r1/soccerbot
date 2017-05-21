@@ -1,8 +1,8 @@
-prefix=/home/soccer/soccerbot/soccer/devel
+prefix=/home/vuwij/soccerbot/soccer/devel
 
 Name: test
 Description: Description of test
 Version: 0.0.0
 Cflags: 
-Libs: -L/home/soccer/soccerbot/soccer/devel/lib 
+Libs: -L/home/vuwij/soccerbot/soccer/devel/lib 
 Requires: 
