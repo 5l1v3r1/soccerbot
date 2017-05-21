@@ -5,8 +5,8 @@
 NaoBehaviour::NaoBehaviour(const std::string teamName, int uNum, const map <std::string, std::string>& namedParams_, const std::string& rsg_) :
 namedParams(namedParams_), rsg(rsg_) {	
 
-    readSkillsFromFile("./skills/stand.skl");
-	readSkillsFromFile("./skills/wave.skl");
+    readSkillsFromFile("../skills/stand.skl");
+	readSkillsFromFile("../skills/wave.skl");
 
     worldModel = new WorldModel();
     bodyModel = new BodyModel(worldModel);
