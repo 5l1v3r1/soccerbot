@@ -10,20 +10,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/vuwij/soccerbot/soccer/src/soccer_field/src/ball.hpp</file>
-            <file>file:/home/vuwij/soccerbot/soccer/src/soccer_field/package.xml</file>
-            <file>file:/home/vuwij/soccerbot/soccer/src/control/main.cpp</file>
-            <file>file:/home/vuwij/soccerbot/soccer/src/soccer_field/src/field_node.cpp</file>
-            <file>file:/home/vuwij/soccerbot/soccer/src/soccer_field/src/ball_node.cpp</file>
-            <file>file:/home/vuwij/soccerbot/soccer/src/soccer_field/src/field.hpp</file>
-            <file>file:/home/vuwij/soccerbot/soccer/src/soccer_field/src/field_constants.hpp</file>
-            <file>file:/home/vuwij/soccerbot/soccer/src/control/behaviours/behaviour.cpp</file>
-            <file>file:/home/vuwij/soccerbot/soccer/src/control/behaviours/behaviour.h</file>
-            <file>file:/home/vuwij/soccerbot/soccer/src/soccer_field/src/ball.cpp</file>
-            <file>file:/home/vuwij/soccerbot/soccer/src/soccer_field/CMakeLists.txt</file>
             <file>file:/home/vuwij/soccerbot/soccer/src/camera_data/src/open_camera.cpp</file>
-            <file>file:/home/vuwij/soccerbot/soccer/src/soccer_field/src/field.cpp</file>
-            <file>file:/home/vuwij/soccerbot/soccer/src/camera_data/src/camera_data.cpp</file>
         </group>
     </open-files>
     <preferences xmlns="http://www.netbeans.org/ns/auxiliary-configuration-preferences/1">

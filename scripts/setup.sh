@@ -61,9 +61,14 @@ fi
 source ~/.bashrc
 
 ### ROS EXTERNAL DEPENDENCIES ###
+sudo apt-get install ros-kinetic-geographic-msgs -y
+
 rosinstall ../soccer/include/ ../soccer/include/packages.rosinstall
 if ! grep -q /include/setup.bash ~/.bashrc;
 then
     echo "source $ROS_WD/include/setup.bash" >> ~/.bashrc
 fi
 
+### MATLAB ###
+wget http://esd.mathworks.com/R2017a/Linux_x86_64/INST_432557/matlab_R2017a_glnxa64.zip
+unzip matlab_R2017a_glnxa42.zip

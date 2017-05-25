@@ -205,6 +205,290 @@
             </df>
           </df>
         </df>
+        <df name="robot_localization">
+          <df name="catkin_generated">
+            <df name="installspace">
+            </df>
+            <df name="stamps">
+              <df name="robot_localization">
+              </df>
+            </df>
+          </df>
+          <df name="cmake">
+          </df>
+          <df name="CMakeFiles">
+            <df name="_robot_localization_generate_messages_check_deps_SetDatum.dir">
+            </df>
+            <df name="_robot_localization_generate_messages_check_deps_SetPose.dir">
+            </df>
+            <df name="_run_tests_robot_localization.dir">
+            </df>
+            <df name="_run_tests_robot_localization_gtest.dir">
+            </df>
+            <df name="_run_tests_robot_localization_gtest_filter_base-test.dir">
+            </df>
+            <df name="_run_tests_robot_localization_rostest.dir">
+            </df>
+            <df name="_run_tests_robot_localization_rostest_test_test_ekf.test.dir">
+            </df>
+            <df name="_run_tests_robot_localization_rostest_test_test_ekf_localization_node_bag1.test.dir">
+            </df>
+            <df name="_run_tests_robot_localization_rostest_test_test_ekf_localization_node_bag2.test.dir">
+            </df>
+            <df name="_run_tests_robot_localization_rostest_test_test_ekf_localization_node_bag3.test.dir">
+            </df>
+            <df name="_run_tests_robot_localization_rostest_test_test_ekf_localization_node_interfaces.test.dir">
+            </df>
+            <df name="_run_tests_robot_localization_rostest_test_test_filter_base_diagnostics_timestamps.test.dir">
+            </df>
+            <df name="_run_tests_robot_localization_rostest_test_test_ukf.test.dir">
+            </df>
+            <df name="_run_tests_robot_localization_rostest_test_test_ukf_localization_node_bag1.test.dir">
+            </df>
+            <df name="_run_tests_robot_localization_rostest_test_test_ukf_localization_node_bag2.test.dir">
+            </df>
+            <df name="_run_tests_robot_localization_rostest_test_test_ukf_localization_node_bag3.test.dir">
+            </df>
+            <df name="_run_tests_robot_localization_rostest_test_test_ukf_localization_node_interfaces.test.dir">
+            </df>
+            <df name="actionlib_generate_messages_cpp.dir">
+            </df>
+            <df name="actionlib_generate_messages_eus.dir">
+            </df>
+            <df name="actionlib_generate_messages_lisp.dir">
+            </df>
+            <df name="actionlib_generate_messages_nodejs.dir">
+            </df>
+            <df name="actionlib_generate_messages_py.dir">
+            </df>
+            <df name="actionlib_msgs_generate_messages_cpp.dir">
+            </df>
+            <df name="actionlib_msgs_generate_messages_eus.dir">
+            </df>
+            <df name="actionlib_msgs_generate_messages_lisp.dir">
+            </df>
+            <df name="actionlib_msgs_generate_messages_nodejs.dir">
+            </df>
+            <df name="actionlib_msgs_generate_messages_py.dir">
+            </df>
+            <df name="clean_test_results_robot_localization.dir">
+            </df>
+            <df name="diagnostic_msgs_generate_messages_cpp.dir">
+            </df>
+            <df name="diagnostic_msgs_generate_messages_eus.dir">
+            </df>
+            <df name="diagnostic_msgs_generate_messages_lisp.dir">
+            </df>
+            <df name="diagnostic_msgs_generate_messages_nodejs.dir">
+            </df>
+            <df name="diagnostic_msgs_generate_messages_py.dir">
+            </df>
+            <df name="ekf.dir">
+              <df name="src">
+              </df>
+            </df>
+            <df name="ekf_localization_node.dir">
+              <df name="src">
+              </df>
+            </df>
+            <df name="filter_base-test.dir">
+              <df name="test">
+              </df>
+            </df>
+            <df name="filter_base.dir">
+              <df name="src">
+              </df>
+            </df>
+            <df name="filter_utilities.dir">
+              <df name="src">
+              </df>
+            </df>
+            <df name="geographic_msgs_generate_messages_cpp.dir">
+            </df>
+            <df name="geographic_msgs_generate_messages_eus.dir">
+            </df>
+            <df name="geographic_msgs_generate_messages_lisp.dir">
+            </df>
+            <df name="geographic_msgs_generate_messages_nodejs.dir">
+            </df>
+            <df name="geographic_msgs_generate_messages_py.dir">
+            </df>
+            <df name="nav_msgs_generate_messages_cpp.dir">
+            </df>
+            <df name="nav_msgs_generate_messages_eus.dir">
+            </df>
+            <df name="nav_msgs_generate_messages_lisp.dir">
+            </df>
+            <df name="nav_msgs_generate_messages_nodejs.dir">
+            </df>
+            <df name="nav_msgs_generate_messages_py.dir">
+            </df>
+            <df name="navsat_transform.dir">
+              <df name="src">
+              </df>
+            </df>
+            <df name="navsat_transform_node.dir">
+              <df name="src">
+              </df>
+            </df>
+            <df name="robot_localization_gencpp.dir">
+            </df>
+            <df name="robot_localization_generate_messages.dir">
+            </df>
+            <df name="robot_localization_generate_messages_cpp.dir">
+            </df>
+            <df name="robot_localization_generate_messages_eus.dir">
+            </df>
+            <df name="robot_localization_generate_messages_lisp.dir">
+            </df>
+            <df name="robot_localization_generate_messages_nodejs.dir">
+            </df>
+            <df name="robot_localization_generate_messages_py.dir">
+            </df>
+            <df name="robot_localization_geneus.dir">
+            </df>
+            <df name="robot_localization_genlisp.dir">
+            </df>
+            <df name="robot_localization_gennodejs.dir">
+            </df>
+            <df name="robot_localization_genpy.dir">
+            </df>
+            <df name="ros_filter.dir">
+              <df name="src">
+              </df>
+            </df>
+            <df name="ros_filter_utilities.dir">
+              <df name="src">
+              </df>
+            </df>
+            <df name="roslint.dir">
+            </df>
+            <df name="roslint_robot_localization.dir">
+            </df>
+            <df name="run_tests_robot_localization.dir">
+            </df>
+            <df name="run_tests_robot_localization_gtest.dir">
+            </df>
+            <df name="run_tests_robot_localization_gtest_filter_base-test.dir">
+            </df>
+            <df name="run_tests_robot_localization_rostest.dir">
+            </df>
+            <df name="run_tests_robot_localization_rostest_test_test_ekf.test.dir">
+            </df>
+            <df name="run_tests_robot_localization_rostest_test_test_ekf_localization_node_bag1.test.dir">
+            </df>
+            <df name="run_tests_robot_localization_rostest_test_test_ekf_localization_node_bag2.test.dir">
+            </df>
+            <df name="run_tests_robot_localization_rostest_test_test_ekf_localization_node_bag3.test.dir">
+            </df>
+            <df name="run_tests_robot_localization_rostest_test_test_ekf_localization_node_interfaces.test.dir">
+            </df>
+            <df name="run_tests_robot_localization_rostest_test_test_filter_base_diagnostics_timestamps.test.dir">
+            </df>
+            <df name="run_tests_robot_localization_rostest_test_test_ukf.test.dir">
+            </df>
+            <df name="run_tests_robot_localization_rostest_test_test_ukf_localization_node_bag1.test.dir">
+            </df>
+            <df name="run_tests_robot_localization_rostest_test_test_ukf_localization_node_bag2.test.dir">
+            </df>
+            <df name="run_tests_robot_localization_rostest_test_test_ukf_localization_node_bag3.test.dir">
+            </df>
+            <df name="run_tests_robot_localization_rostest_test_test_ukf_localization_node_interfaces.test.dir">
+            </df>
+            <df name="std_srvs_generate_messages_cpp.dir">
+            </df>
+            <df name="std_srvs_generate_messages_eus.dir">
+            </df>
+            <df name="std_srvs_generate_messages_lisp.dir">
+            </df>
+            <df name="std_srvs_generate_messages_nodejs.dir">
+            </df>
+            <df name="std_srvs_generate_messages_py.dir">
+            </df>
+            <df name="test_ekf.dir">
+              <df name="test">
+              </df>
+            </df>
+            <df name="test_ekf_localization_node_bag1.dir">
+              <df name="test">
+              </df>
+            </df>
+            <df name="test_ekf_localization_node_bag2.dir">
+              <df name="test">
+              </df>
+            </df>
+            <df name="test_ekf_localization_node_bag3.dir">
+              <df name="test">
+              </df>
+            </df>
+            <df name="test_ekf_localization_node_interfaces.dir">
+              <df name="test">
+              </df>
+            </df>
+            <df name="test_filter_base_diagnostics_timestamps.dir">
+              <df name="test">
+              </df>
+            </df>
+            <df name="test_ukf.dir">
+              <df name="test">
+              </df>
+            </df>
+            <df name="test_ukf_localization_node_bag1.dir">
+              <df name="test">
+              </df>
+            </df>
+            <df name="test_ukf_localization_node_bag2.dir">
+              <df name="test">
+              </df>
+            </df>
+            <df name="test_ukf_localization_node_bag3.dir">
+              <df name="test">
+              </df>
+            </df>
+            <df name="test_ukf_localization_node_interfaces.dir">
+              <df name="test">
+              </df>
+            </df>
+            <df name="tf2_msgs_generate_messages_cpp.dir">
+            </df>
+            <df name="tf2_msgs_generate_messages_eus.dir">
+            </df>
+            <df name="tf2_msgs_generate_messages_lisp.dir">
+            </df>
+            <df name="tf2_msgs_generate_messages_nodejs.dir">
+            </df>
+            <df name="tf2_msgs_generate_messages_py.dir">
+            </df>
+            <df name="topic_tools_generate_messages_cpp.dir">
+            </df>
+            <df name="topic_tools_generate_messages_eus.dir">
+            </df>
+            <df name="topic_tools_generate_messages_lisp.dir">
+            </df>
+            <df name="topic_tools_generate_messages_nodejs.dir">
+            </df>
+            <df name="topic_tools_generate_messages_py.dir">
+            </df>
+            <df name="ukf.dir">
+              <df name="src">
+              </df>
+            </df>
+            <df name="ukf_localization_node.dir">
+              <df name="src">
+              </df>
+            </df>
+            <df name="uuid_msgs_generate_messages_cpp.dir">
+            </df>
+            <df name="uuid_msgs_generate_messages_eus.dir">
+            </df>
+            <df name="uuid_msgs_generate_messages_lisp.dir">
+            </df>
+            <df name="uuid_msgs_generate_messages_nodejs.dir">
+            </df>
+            <df name="uuid_msgs_generate_messages_py.dir">
+            </df>
+          </df>
+        </df>
         <df name="soccer_field">
           <df name="catkin_generated">
             <df name="installspace">
@@ -273,12 +557,32 @@
             </df>
           </df>
         </df>
+        <df name="include">
+          <df name="robot_localization">
+            <in>SetDatum.h</in>
+            <in>SetDatumRequest.h</in>
+            <in>SetDatumResponse.h</in>
+            <in>SetPose.h</in>
+            <in>SetPoseRequest.h</in>
+            <in>SetPoseResponse.h</in>
+          </df>
+        </df>
         <df name="lib">
           <df name="ball_tracker">
           </df>
           <df name="camera_data">
           </df>
           <df name="pkgconfig">
+          </df>
+          <df name="python2.7">
+            <df name="dist-packages">
+              <df name="robot_localization">
+                <df name="srv">
+                </df>
+              </df>
+            </df>
+          </df>
+          <df name="robot_localization">
           </df>
           <df name="soccer_field">
           </df>
@@ -302,6 +606,14 @@
             <df name="cmake">
             </df>
           </df>
+          <df name="common-lisp">
+            <df name="ros">
+              <df name="robot_localization">
+                <df name="srv">
+                </df>
+              </df>
+            </df>
+          </df>
           <df name="control">
             <df name="cmake">
             </df>
@@ -310,12 +622,32 @@
             <df name="cmake">
             </df>
           </df>
+          <df name="gennodejs">
+            <df name="ros">
+              <df name="robot_localization">
+                <df name="srv">
+                </df>
+              </df>
+            </df>
+          </df>
           <df name="learning_tf">
             <df name="cmake">
             </df>
           </df>
           <df name="opencv_tutorial">
             <df name="cmake">
+            </df>
+          </df>
+          <df name="robot_localization">
+            <df name="cmake">
+            </df>
+          </df>
+          <df name="roseus">
+            <df name="ros">
+              <df name="robot_localization">
+                <df name="srv">
+                </df>
+              </df>
             </df>
           </df>
           <df name="soccer_field">
@@ -404,6 +736,55 @@
             <in>skillparser.h</in>
           </df>
           <in>main.cpp</in>
+        </df>
+        <df name="robot_localization">
+          <df name="doc">
+            <df name=".templates">
+            </df>
+            <df name="images">
+            </df>
+          </df>
+          <df name="include">
+            <df name="robot_localization">
+              <in>ekf.h</in>
+              <in>filter_base.h</in>
+              <in>filter_common.h</in>
+              <in>filter_utilities.h</in>
+              <in>navsat_conversions.h</in>
+              <in>navsat_transform.h</in>
+              <in>ros_filter.h</in>
+              <in>ros_filter_types.h</in>
+              <in>ros_filter_utilities.h</in>
+              <in>ukf.h</in>
+            </df>
+          </df>
+          <df name="launch">
+          </df>
+          <df name="params">
+          </df>
+          <df name="src">
+            <in>ekf.cpp</in>
+            <in>ekf_localization_node.cpp</in>
+            <in>filter_base.cpp</in>
+            <in>filter_utilities.cpp</in>
+            <in>navsat_transform.cpp</in>
+            <in>navsat_transform_node.cpp</in>
+            <in>ros_filter.cpp</in>
+            <in>ros_filter_utilities.cpp</in>
+            <in>ukf.cpp</in>
+            <in>ukf_localization_node.cpp</in>
+          </df>
+          <df name="srv">
+          </df>
+          <df name="test">
+            <in>test_ekf.cpp</in>
+            <in>test_ekf_localization_node_interfaces.cpp</in>
+            <in>test_filter_base.cpp</in>
+            <in>test_filter_base_diagnostics_timestamps.cpp</in>
+            <in>test_localization_node_bag_pose_tester.cpp</in>
+            <in>test_ukf.cpp</in>
+            <in>test_ukf_localization_node_interfaces.cpp</in>
+          </df>
         </df>
         <df name="soccer_field">
           <df name="src">
