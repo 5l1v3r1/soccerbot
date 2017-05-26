@@ -29,7 +29,7 @@ public:
 	    GaussianBlur(edges, edges, Size(7,7), 1.5, 1.5);
 	    Canny(edges, edges, 0 , 30, 3);
 	    imshow("Camera_Input", edges);
-	    if (waitKey(30) > 0) break;
+	    if (waitKey(30) < 0) break;
         }
     }
 
