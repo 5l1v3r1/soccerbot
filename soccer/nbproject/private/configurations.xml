@@ -95,6 +95,10 @@
             </df>
           </df>
           <df name="CMakeFiles">
+            <df name="camera.dir">
+              <df name="src">
+              </df>
+            </df>
             <df name="camera_data.dir">
               <df name="src">
               </df>
@@ -151,6 +155,8 @@
           <df name="download_extra_data.dir">
           </df>
           <df name="doxygen.dir">
+          </df>
+          <df name="Progress">
           </df>
           <df name="run_tests.dir">
           </df>
@@ -675,13 +681,47 @@
           </df>
         </df>
         <df name="camera_data">
-          <df name="src">
-            <df name="shape_detector">
-              <in>houghcircle.cpp</in>
-              <in>shape_detector.hpp</in>
+          <df name="matlab">
+            <df name="ImageNetToolboxV0.3">
+              <in>ToolboxDemo.m</in>
+              <in>XPathExecuteQuery.m</in>
+              <in>buildClientHashtable.m</in>
+              <in>checkResumeNeeded.m</in>
+              <in>downloadImages.m</in>
+              <in>getResumeDownloadList.m</in>
+              <in>processTasklist.m</in>
+              <in>requestServerReleaseVersion.m</in>
+              <in>serverReleaseStatusToHash.m</in>
+              <in>verifyUserAccesskeyPair.m</in>
+              <in>wnidToDefinition.m</in>
+              <in>wnidToGloss.m</in>
+              <in>wnidToWords.m</in>
             </df>
+          </df>
+          <df name="src">
+            <in>camera.cpp</in>
+            <in>camera.hpp</in>
             <in>camera_data.cpp</in>
-            <in>open_camera.cpp</in>
+            <in>houghcircle.cpp</in>
+            <in>shape_detector.hpp</in>
+          </df>
+          <df name="training_images">
+            <df name="ball">
+            </df>
+            <df name="enemy_lying">
+            </df>
+            <df name="enemy_sitting">
+            </df>
+            <df name="enemy_standing">
+            </df>
+            <df name="friendly_lying">
+            </df>
+            <df name="friendly_sitting">
+            </df>
+            <df name="friendly_standing">
+            </df>
+            <df name="net">
+            </df>
           </df>
         </df>
         <df name="control">
