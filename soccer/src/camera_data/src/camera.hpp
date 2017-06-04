@@ -18,8 +18,8 @@ private:
     Mat edges;
 
     /** Global variables */
-    String face_cascade_name = "/home/vuwij/soccerbot/soccer/src/camera_data/src/haarcascade_frontalface_alt.xml";
-    String eyes_cascade_name = "/home/vuwij/soccerbot/soccer/src/camera_data/src/haarcascade_eye_tree_eyeglasses.xml";
+    String face_cascade_name = "/src/camera_data/src/haarcascade_frontalface_alt.xml";
+    String eyes_cascade_name = "/src/camera_data/src/haarcascade_eye_tree_eyeglasses.xml";
     CascadeClassifier face_cascade;
     CascadeClassifier eyes_cascade;
     string window_name = "Capture - Face detection";
@@ -29,7 +29,7 @@ private:
 public:
     Camera();
     ~Camera();
-
+    
     void detect_edges();
     void detect_face();
 };

@@ -60,16 +60,23 @@ void Camera::detectAndDisplay(Mat frame) {
 }
 
 void Camera::detect_face() {
+    char *path = NULL;
+    path = getcwd(NULL, 0);
+    if (path == NULL){
+        printf("--(!)Error loading path to soccer folder");
+        return;
+    }
+    
     rng = RNG(12345);
     VideoCapture capture;
     Mat frame;
 
     //-- 1. Load the cascades
-    if (!face_cascade.load(face_cascade_name)) {
+    if (!face_cascade.load(path+face_cascade_name)) {
         printf("--(!)Error loading face cascade\n");
         return;
     };
-    if (!eyes_cascade.load(eyes_cascade_name)) {
+    if (!eyes_cascade.load(path+eyes_cascade_name)) {
         printf("--(!)Error loading eyes cascade\n");
         return;
     };
