@@ -36,30 +36,24 @@ void Camera::detect_edges() {
 }
 
 void Camera::detectAndDisplay(Mat frame) {
-    std::vector<Rect> faces;
+    std::vector<Rect> ball;
     Mat frame_gray;
     cvtColor(frame, frame_gray, COLOR_BGR2GRAY);
     equalizeHist(frame_gray, frame_gray);
     //-- Detect faces
-    face_cascade.detectMultiScale(frame_gray, faces, 1.1, 2, 0 | CASCADE_SCALE_IMAGE, Size(30, 30));
-    for (size_t i = 0; i < faces.size(); i++) {
-        Point center(faces[i].x + faces[i].width / 2, faces[i].y + faces[i].height / 2);
-        ellipse(frame, center, Size(faces[i].width / 2, faces[i].height / 2), 0, 0, 360, Scalar(255, 0, 255), 4, 8, 0);
-        Mat faceROI = frame_gray(faces[i]);
+    ball_cascade.detectMultiScale(frame_gray, ball, 1.1, 2, 0 | CASCADE_SCALE_IMAGE, Size(30, 30));
+    for (size_t i = 0; i < ball.size(); i++) {
+        Point center(ball[i].x + ball[i].width / 2, ball[i].y + ball[i].height / 2);
+        ellipse(frame, center, Size(ball[i].width / 2, ball[i].height / 2), 0, 0, 360, Scalar(255, 0, 255), 4, 8, 0);
+        Mat faceROI = frame_gray(ball[i]);
         std::vector<Rect> eyes;
         //-- In each face, detect eyes
-        eyes_cascade.detectMultiScale(faceROI, eyes, 1.1, 2, 0 | CASCADE_SCALE_IMAGE, Size(30, 30));
-        for (size_t j = 0; j < eyes.size(); j++) {
-            Point eye_center(faces[i].x + eyes[j].x + eyes[j].width / 2, faces[i].y + eyes[j].y + eyes[j].height / 2);
-            int radius = cvRound((eyes[j].width + eyes[j].height)*0.25);
-            circle(frame, eye_center, radius, Scalar(255, 0, 0), 4, 8, 0);
-        }
     }
     //-- Show what you got
     imshow(window_name, frame);
 }
 
-void Camera::detect_face() {
+void Camera::detect_ball() {
     char *path = NULL;
     path = getcwd(NULL, 0);
     if (path == NULL){
@@ -72,12 +66,11 @@ void Camera::detect_face() {
     Mat frame;
 
     //-- 1. Load the cascades
-    if (!face_cascade.load(path+face_cascade_name)) {
-        printf("--(!)Error loading face cascade\n");
-        return;
-    };
-    if (!eyes_cascade.load(path+eyes_cascade_name)) {
-        printf("--(!)Error loading eyes cascade\n");
+    std::string fullpath(path);
+    fullpath += "/soccerbot/soccer" + ball_cascade_name;
+    cout << fullpath << endl;
+    if (!ball_cascade.load(fullpath)) {
+        printf("--(!)Error loading ball cascade\n");
         return;
     };
 

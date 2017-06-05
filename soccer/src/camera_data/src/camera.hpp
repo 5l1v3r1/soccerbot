@@ -18,11 +18,9 @@ private:
     Mat edges;
 
     /** Global variables */
-    String face_cascade_name = "/src/camera_data/src/haarcascade_frontalface_alt.xml";
-    String eyes_cascade_name = "/src/camera_data/src/haarcascade_eye_tree_eyeglasses.xml";
-    CascadeClassifier face_cascade;
-    CascadeClassifier eyes_cascade;
-    string window_name = "Capture - Face detection";
+    String ball_cascade_name = "/src/camera_data/cascades/ball.xml";
+    CascadeClassifier ball_cascade;
+    string window_name = "Capture - Ball detection";
     RNG rng;
 
     void detectAndDisplay(Mat frame);
@@ -31,7 +29,7 @@ public:
     ~Camera();
     
     void detect_edges();
-    void detect_face();
+    void detect_ball();
 };
 
 #endif /* CAMERA_INPUT_HPP */

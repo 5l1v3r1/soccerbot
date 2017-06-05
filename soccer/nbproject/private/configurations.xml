@@ -156,6 +156,8 @@
           </df>
           <df name="doxygen.dir">
           </df>
+          <df name="Progress">
+          </df>
           <df name="run_tests.dir">
           </df>
           <df name="tests.dir">
@@ -679,10 +681,9 @@
           </df>
         </df>
         <df name="camera_data">
+          <df name="cascades">
+          </df>
           <df name="matlab">
-            <df name="cascade_filter">
-              <in>detectSoccerBalls.m</in>
-            </df>
             <df name="ImageNetToolbox">
               <in>ToolboxDemo.m</in>
               <in>XPathExecuteQuery.m</in>
@@ -698,135 +699,9 @@
               <in>wnidToGloss.m</in>
               <in>wnidToWords.m</in>
             </df>
-            <df name="visiondemos">
-              <df name="+slstart">
-                <df name="+internal">
-                  <in>ComputerVisionSystemToolboxFeaturedExampleProvider.m</in>
-                </df>
-              </df>
-              <df name="html">
-                <in>DetectAndTrackFaceExample.m</in>
-                <in>NoiseRemovalAndSharpeningHDLExample.m</in>
-                <in>captureVideoViewerFrame.m</in>
-                <in>vipabandonedobj.m</in>
-                <in>vipbarcoderecognition.m</in>
-                <in>vipcellcounting.m</in>
-                <in>vipcodec.m</in>
-                <in>vipcolorsegmentation.m</in>
-                <in>vipconcentricity.m</in>
-                <in>vipfocus.m</in>
-                <in>viphough.m</in>
-                <in>vipldws.m</in>
-                <in>viplivebarcoderecognition.m</in>
-                <in>vipliveedgedetection.m</in>
-                <in>vipmosaicking.m</in>
-                <in>vipmotion.m</in>
-                <in>vippattern.m</in>
-                <in>vipscenechange.m</in>
-                <in>vipstabilize.m</in>
-                <in>vipstaples.m</in>
-                <in>vipstripes.m</in>
-                <in>vipsurveillance.m</in>
-                <in>viptraffic.m</in>
-                <in>viptrafficof.m</in>
-                <in>vipunmarkedroad.m</in>
-                <in>vipwarningsigns.m</in>
-              </df>
-              <in>Contents.m</in>
-              <in>DeepLearningFasterRCNNObjectDetectionExample.m</in>
-              <in>DeepLearningImageClassificationExample.m</in>
-              <in>DeepLearningRCNNObjectDetectionExample.m</in>
-              <in>DepthEstimationFromStereoVideoCodeGenerationExample.m</in>
-              <in>DepthEstimationFromStereoVideoExample.m</in>
-              <in>EvaluatingCameraCalibrationExample.m</in>
-              <in>FaceDetectionARMCodeGenerationExample.m</in>
-              <in>FaceTrackingARMCodeGenerationExample.m</in>
-              <in>FaceTrackingKLTpackNGoExample.m</in>
-              <in>FaceTrackingKLTpackNGo_kernel.m</in>
-              <in>FaceTrackingUsingKLTExample.m</in>
-              <in>FaceTrackingWebcamExample.m</in>
-              <in>FeatureBasedObjectDetectionExample.m</in>
-              <in>FeatureBasedPanoramicImageStitchingExample.m</in>
-              <in>HOGDigitClassificationExample.m</in>
-              <in>ImageCategoryClassificationExample.m</in>
-              <in>ImageRetrievalExample.m</in>
-              <in>MeasuringPlanarObjectsExample.m</in>
-              <in>MotionBasedMultiObjectTrackingExample.m</in>
-              <in>OCRExample.m</in>
-              <in>PedestrianTrackingFromMovingCameraExample.m</in>
-              <in>StitchPointCloudsExample.m</in>
-              <in>StructureFromMotionExample.m</in>
-              <in>StructureFromMotionFromMultipleViewsExample.m</in>
-              <in>TextDetectionExample.m</in>
-              <in>UncalibratedStereoRectificationExample.m</in>
-              <in>VideoInCustomGUIExample.m</in>
-              <in>VisionRecovertformCodeGenerationExample.m</in>
-              <in>VisualOdometryExample.m</in>
-              <in>cvexEstStabilizationTform.m</in>
-              <in>cvexRectifyImages.m</in>
-              <in>cvexTformToSRT.m</in>
-              <in>cvexTransformImagePair.m</in>
-              <in>depthEstimationFromStereoVideo_kernel.m</in>
-              <in>faceDetectionARMKernel.m</in>
-              <in>faceDetectionARMMain.c</in>
-              <in>faceDetectionARMMain.m</in>
-              <in>faceTrackingARMKernel.m</in>
-              <in>faceTrackingARMMain.c</in>
-              <in>faceTrackingARMMain.m</in>
-              <in>featureMatchingVisualization_extrinsic.m</in>
-              <in>helperCIFAR10Data.m</in>
-              <in>helperDetectAndMatchFeatures.m</in>
-              <in>helperDisplayConfusionMatrix.m</in>
-              <in>helperDisplayImageMontage.m</in>
-              <in>helperEstimateRelativePose.m</in>
-              <in>helperExtractHOGFeaturesFromImageSet.m</in>
-              <in>helperFind3Dto2DCorrespondences.m</in>
-              <in>helperFindEpipolarInliers.m</in>
-              <in>helperImportMatConvNet.m</in>
-              <in>helperNormalizeViewSet.m</in>
-              <in>helperOpenCVVideoViewer.cpp</in>
-              <in>helperOpenCVVideoViewer.hpp</in>
-              <in>helperOpenCVWebcam.cpp</in>
-              <in>helperOpenCVWebcam.hpp</in>
-              <in>helperTableOfScales.m</in>
-              <in>helperUpdateCameraPlots.m</in>
-              <in>helperUpdateCameraTrajectories.m</in>
-              <in>isvipwincodecavailable.m</in>
-              <in>kalmanFilterForTracking.m</in>
-              <in>main.c</in>
-              <in>showFrameOnAxis.m</in>
-              <in>updatesearch.m</in>
-              <in>videocellcounting.m</in>
-              <in>videodeparturewarning.m</in>
-              <in>videodetectcolorandtype.m</in>
-              <in>videoexclude3rdlane.m</in>
-              <in>videolanematching.m</in>
-              <in>videoldws.m</in>
-              <in>videooptflowlines.m</in>
-              <in>videopattern_gettemplate.m</in>
-              <in>videopatternmatching.m</in>
-              <in>videopatternplots.m</in>
-              <in>videostabilize.m</in>
-              <in>videostabilize_pm.m</in>
-              <in>videostaples.m</in>
-              <in>videotrafficgmm.m</in>
-              <in>vipdemos.m</in>
-              <in>vipdh_cmap.m</in>
-              <in>vipdh_stripes.m</in>
-              <in>viplivebarcoderecognition.m</in>
-              <in>vipliveedgedetection.m</in>
-              <in>viplivergbhistogram.m</in>
-              <in>vippattern_gettemplate.m</in>
-              <in>vipsimdelay.m</in>
-              <in>vipstripes_filter.m</in>
-              <in>vipwarningsigns_templates.m</in>
-              <in>visionRecovertformCodeGeneration_kernel.m</in>
-              <in>visiondemohelp.m</in>
-              <in>visiondemos.m</in>
-              <in>visionfacetracking.m</in>
-              <in>visionrecovertform.m</in>
-            </df>
+            <in>detect_balls.m</in>
             <in>download_images.m</in>
+            <in>reduce_images_in_folder.m</in>
           </df>
           <df name="src">
             <in>camera.cpp</in>
@@ -836,6 +711,14 @@
           </df>
           <df name="training_images">
             <df name="ball">
+              <df name="negative">
+              </df>
+              <df name="negative160x120">
+              </df>
+              <df name="positive">
+              </df>
+              <df name="positive160x120">
+              </df>
             </df>
             <df name="enemy_lying">
             </df>

@@ -23,14 +23,14 @@ negativeImages = imageDatastore(negativeFolder);
 % using HOG features.
 % NOTE: The command can take several minutes to run.
 trainCascadeObjectDetector('ball.xml',positiveInstances, ...
-    negativeFolder,'FalseAlarmRate',0.1,'NumCascadeStages',4);
+    negativeFolder,'FalseAlarmRate',0.05,'NumCascadeStages',4);
 movefile('ball.xml', '../cascades/ball.xml')
 %%
 % Use the newly trained classifier to detect a stop sign in an image.
 detector = vision.CascadeObjectDetector('../cascades/ball.xml');
 %%
 % Read the test image.
-img = imread('ball3.jpg');
+img = imread('ball4.jpg');
 %%
 % Detect a stop sign.
 bbox = step(detector,img); 

@@ -10,7 +10,7 @@ int main(int argc, char **argv)
   // Set up ROS.ca
   ros::init(argc, argv, "camera_data");
   Camera camera;
-  camera.detect_face();
+  camera.detect_ball();
 
   ROS_INFO("Cam Tested!");
 }
