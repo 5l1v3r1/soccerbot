@@ -1,10 +1,12 @@
-folders = get_folders('../training_images/');
-
-for i=1:length(folders)
-   subfolders = get_folders(strcat(folders(i).folder,'/',folders(i).name));
-   for j=1:length(subfolders)
-       reduce_in_folder(strcat(subfolders(j).folder,'/',subfolders(j).name));
-   end
+function reduce_images_in_folder()
+    folders = get_folders('../training_images/');
+    
+    for i=1:length(folders)
+       subfolders = get_folders(strcat(folders(i).folder,'/',folders(i).name));
+       for j=1:length(subfolders)
+           reduce_in_folder(strcat(subfolders(j).folder,'/',subfolders(j).name));
+       end
+    end
 end
 
 function folders = get_folders(folder)
