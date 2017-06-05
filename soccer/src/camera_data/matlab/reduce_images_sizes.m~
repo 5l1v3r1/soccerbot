@@ -1,0 +1,32 @@
+
+get_folders('../training_images/');
+
+for i=1:length(folders)
+   subfolders = dir(folders(i).name);
+   for j=1:length(subfolders)
+       reduce_in_folder(subfolders(i).name);
+   end
+end
+
+function get_folders(folder)
+    folders = dir();
+    folders = folders([folders.isdir]);
+    folders = folders(arrayfun(@(x) x.name(1), folders) ~= '.');
+
+    return 
+end
+
+function reduce_in_folder(folder)
+    negImg = dir(strcat(folder, '*.jpg'));
+    newdir = strcat(strcat(folder, '160x120'));
+    mkdir(newdir);
+    n = length(negImg);
+
+    for i=1:n
+       currentfilename = negImg(i).name;
+       newfilename = strcat(int2str(i), '.png');
+       currentImage = imread(strcat(negFolder, currentfilename));
+       resizedImage = imresize(currentImage, 0.5);
+       imwrite(resizedImage, fullfile(newdir, newfilename));
+    end
+end

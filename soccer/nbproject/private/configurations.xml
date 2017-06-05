@@ -680,7 +680,10 @@
         </df>
         <df name="camera_data">
           <df name="matlab">
-            <df name="ImageNetToolboxV0.3">
+            <df name="cascade_filter">
+              <in>detectSoccerBalls.m</in>
+            </df>
+            <df name="ImageNetToolbox">
               <in>ToolboxDemo.m</in>
               <in>XPathExecuteQuery.m</in>
               <in>buildClientHashtable.m</in>
@@ -823,6 +826,7 @@
               <in>visionfacetracking.m</in>
               <in>visionrecovertform.m</in>
             </df>
+            <in>download_images.m</in>
           </df>
           <df name="src">
             <in>camera.cpp</in>

@@ -11,8 +11,16 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/vuwij/soccerbot/soccer/src/camera_data/src/camera.cpp</file>
+            <file>file:/home/vuwij/soccerbot/soccer/src/robot_localization/src/ekf.cpp</file>
+            <file>file:/home/vuwij/soccerbot/soccer/src/robot_localization/include/robot_localization/ekf.h</file>
+            <file>file:/home/vuwij/soccerbot/soccer/src/robot_localization/src/ekf_localization_node.cpp</file>
+            <file>file:/home/vuwij/soccerbot/soccer/src/robot_localization/include/robot_localization/ros_filter_types.h</file>
+            <file>file:/home/vuwij/soccerbot/soccer/src/robot_localization/launch/dual_ekf_navsat_example.launch</file>
+            <file>file:/home/vuwij/soccerbot/soccer/src/robot_localization/include/robot_localization/filter_base.h</file>
             <file>file:/home/vuwij/soccerbot/soccer/src/camera_data/src/haarcascade_frontalface_alt.xml</file>
             <file>file:/home/vuwij/soccerbot/soccer/src/camera_data/src/camera.hpp</file>
+            <file>file:/home/vuwij/soccerbot/soccer/src/robot_localization/launch/ekf_template.launch</file>
+            <file>file:/home/vuwij/soccerbot/soccer/src/robot_localization/include/robot_localization/navsat_transform.h</file>
             <file>file:/home/vuwij/soccerbot/soccer/src/camera_data/src/camera_data.cpp</file>
         </group>
     </open-files>
