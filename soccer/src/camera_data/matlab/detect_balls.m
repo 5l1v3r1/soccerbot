@@ -4,10 +4,10 @@
 % The table was exported from the Training Image Labeler app.
 %%
 % Load positive samples.
-load('../training_images/ball/positive/ball_positive_table.mat');
+load('../training_images/ball/positive/ball.mat');
 %%
 % Select the bounding boxes for stop signs from the table.
-positiveInstances = ball_table(:,1:2);
+positiveInstances = ball(:,1:2);
 %%
 % Add the image directory to the MATLAB path.
 imDir = '../training_images/ball/positive/';
@@ -23,7 +23,7 @@ negativeImages = imageDatastore(negativeFolder);
 % using HOG features.
 % NOTE: The command can take several minutes to run.
 trainCascadeObjectDetector('ball.xml',positiveInstances, ...
-    negativeFolder,'FalseAlarmRate',0.05,'NumCascadeStages',4);
+    negativeFolder,'FalseAlarmRate',0.05,'NumCascadeStages',4,'FeatureType','Haar');
 movefile('ball.xml', '../cascades/ball.xml')
 %%
 % Use the newly trained classifier to detect a stop sign in an image.
