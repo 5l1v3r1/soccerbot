@@ -53,21 +53,14 @@ void Camera::detectAndDisplay(Mat frame) {
     imshow(window_name, frame);
 }
 
-void Camera::detect_ball() {
-    char *path = NULL;
-    path = getcwd(NULL, 0);
-    if (path == NULL){
-        printf("--(!)Error loading path to soccer folder");
-        return;
-    }
-    
+void Camera::detect_ball() {   
     rng = RNG(12345);
     VideoCapture capture;
     Mat frame;
 
     //-- 1. Load the cascades
-    std::string fullpath(path);
-    fullpath += "/soccerbot/soccer" + ball_cascade_name;
+//    std::string fullpath(path);
+    std::string fullpath = path + ball_cascade_name;
     cout << fullpath << endl;
     if (!ball_cascade.load(fullpath)) {
         printf("--(!)Error loading ball cascade\n");
