@@ -66,7 +66,7 @@ sudo apt-get install ros-kinetic-geographic-msgs -y
 rosinstall ../soccer/include/ ../soccer/include/packages.rosinstall
 if ! grep -q /include/setup.bash ~/.bashrc;
 then
-    echo "source $ROS_WD/include/setup.bash" >> ~/.bashrc
+    echo "source $ROS_WD/devel/setup.bash" >> ~/.bashrc
 fi
 
 ### MATLAB ###

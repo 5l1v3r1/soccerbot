@@ -4,17 +4,17 @@
 % The table was exported from the Training Image Labeler app.
 %%
 % Load positive samples.
-load('../training_images/ball/positive/ball.mat');
+load('../training_images/ball/ball.mat');
 %%
 % Select the bounding boxes for stop signs from the table.
 positiveInstances = ball(:,1:2);
 %%
 % Add the image directory to the MATLAB path.
-imDir = '../training_images/ball/positive/';
+imDir = '../training_images/ball/';
 addpath(imDir);
 %%
 % Specify the folder for negative images.
-negativeFolder = '../training_images/ball/negative/';
+negativeFolder = '../training_images/negative/';
 %%
 % Create an |imageDatastore| object containing negative images.
 negativeImages = imageDatastore(negativeFolder);
