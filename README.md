@@ -1,4 +1,4 @@
-# UTRA Soccer Team
+# UTRA Soccer Team 
 We are an amateur soccer team at the University of Toronto making an attempt to compete in the 2018 RoboCup
 
 ## Team Links
