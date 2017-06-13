@@ -15,22 +15,23 @@ addpath(imDir);
 %%
 % Specify the folder for negative images.
 negativeFolder = '../training_images/negative/';
+publicNegative = '../training_images/haarcascade-negatives/images';
 %%
 % Create an |imageDatastore| object containing negative images.
-negativeImages = imageDatastore(negativeFolder);
+negativeImages = imageDatastore({publicNegative});
 %%
 % Train a cascade object detector called 'stopSignDetector.xml'
 % using HOG features.
 % NOTE: The command can take several minutes to run.
 trainCascadeObjectDetector('ball.xml',positiveInstances, ...
-    negativeFolder,'FalseAlarmRate',0.02,'NumCascadeStages',4,'FeatureType','Haar');
+    negativeFolder,'FalseAlarmRate',0.01,'NumCascadeStages',4,'FeatureType','Haar');
 movefile('ball.xml', '../cascades/ball.xml')
 %%
 % Use the newly trained classifier to detect a stop sign in an image.
 detector = vision.CascadeObjectDetector('../cascades/ball.xml');
 %%
 % Read the test image.
-img = imread('ball1.jpg');
+img = imread('ball5.jpg');
 %%
 % Detect a stop sign.
 bbox = step(detector,img); 

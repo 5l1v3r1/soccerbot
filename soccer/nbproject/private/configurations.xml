@@ -701,6 +701,8 @@
             <in>download_images.m</in>
             <in>reduce_images_in_folder.m</in>
           </df>
+          <df name="scripts">
+          </df>
           <df name="src">
             <in>camera.cpp</in>
             <in>camera.hpp</in>
@@ -709,14 +711,6 @@
           </df>
           <df name="training_images">
             <df name="ball">
-              <df name="negative">
-              </df>
-              <df name="negative160x120">
-              </df>
-              <df name="positive">
-              </df>
-              <df name="positive160x120">
-              </df>
             </df>
             <df name="enemy_lying">
             </df>
@@ -729,6 +723,12 @@
             <df name="friendly_sitting">
             </df>
             <df name="friendly_standing">
+            </df>
+            <df name="haarcascade-negatives">
+              <df name="images">
+              </df>
+            </df>
+            <df name="negative">
             </df>
             <df name="net">
             </df>
