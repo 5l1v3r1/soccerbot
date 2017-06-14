@@ -10,7 +10,8 @@ sudo systemctl restart sshd.service
 sudo service ssh start
 
 sudo apt-get install xfce4 xfce4-goodies tightvncserver -y
-cp -r .vnc  ~/.vnc
+mkdir ~/.vnc
+cp -f xstartup  ~/.vnc/xstartup
 chmod +x ~/.vnc/xstartup
 
 #### ROS ####
