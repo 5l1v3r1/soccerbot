@@ -10,7 +10,8 @@ Parser::Parser(WorldModel *worldModel, BodyModel *bodyModel) {
     this->bodyModel = bodyModel;
 }
 
-Parser::~Parser() {}
+Parser::~Parser() {
+}
 
 vector<string> Parser::tokenise(const string &s) {
     int length = s.length();
@@ -19,14 +20,13 @@ vector<string> Parser::tokenise(const string &s) {
 
     vector<string> v;
 
-    for(int i = 0; i < length; ++i) {
+    for (int i = 0; i < length; ++i) {
         char c = s.at(i);
-        if(c != '(' && c != ')' && c != ' ') {
+        if (c != '(' && c != ')' && c != ' ') {
             currentString.append(1, c);
-        }
-        else {
+        } else {
 
-            if(currentString.length() > 0) {
+            if (currentString.length() > 0) {
                 v.push_back(currentString);
                 currentString = "";
             }
@@ -41,14 +41,14 @@ bool Parser::parseTime(const string &str) {
     bool valid = false;
     double time = 0;
     vector<string> tokens = tokenise(str);
-    for(size_t i = 0; i < tokens.size() - 1; ++i) {
-        if(!(tokens[i].compare("now"))) {
+    for (size_t i = 0; i < tokens.size() - 1; ++i) {
+        if (!(tokens[i].compare("now"))) {
             time = atof(tokens[i + 1].c_str());
             valid = true;
         }
     }
 
-    if(valid) {
+    if (valid) {
         worldModel->setTime(time);
         worldModel->incrementCycle();
     }
@@ -69,114 +69,91 @@ bool Parser::parseHingeJoint(const string &str) {
     int hingeJointIndexBM = -1;
 
     vector<string> tokens = tokenise(str);
-    for(size_t i = 0; i < tokens.size(); ++i) {
+    for (size_t i = 0; i < tokens.size(); ++i) {
 
-        if(!tokens[i].compare("n")) {
-            if(i + 1 < tokens.size()) {
+        if (!tokens[i].compare("n")) {
+            if (i + 1 < tokens.size()) {
 
                 name = tokens[i + 1];
 
-                if(!(name.compare("hj1"))) {
+                if (!(name.compare("hj1"))) {
                     hingeJointIndexBM = HJ_H1;
                     validName = true;
-                }
-                else if(!(name.compare("hj2"))) {
+                } else if (!(name.compare("hj2"))) {
                     hingeJointIndexBM = HJ_H2;
                     validName = true;
-                }
-                else if(!(name.compare("laj1"))) {
+                } else if (!(name.compare("laj1"))) {
                     hingeJointIndexBM = HJ_LA1;
                     validName = true;
-                }
-                else if(!(name.compare("laj2"))) {
+                } else if (!(name.compare("laj2"))) {
                     hingeJointIndexBM = HJ_LA2;
                     validName = true;
-                }
-                else if(!(name.compare("laj3"))) {
+                } else if (!(name.compare("laj3"))) {
                     hingeJointIndexBM = HJ_LA3;
                     validName = true;
-                }
-                else if(!(name.compare("laj4"))) {
+                } else if (!(name.compare("laj4"))) {
                     hingeJointIndexBM = HJ_LA4;
                     validName = true;
-                }
-                else if(!(name.compare("raj1"))) {
+                } else if (!(name.compare("raj1"))) {
                     hingeJointIndexBM = HJ_RA1;
                     validName = true;
-                }
-                else if(!(name.compare("raj2"))) {
+                } else if (!(name.compare("raj2"))) {
                     hingeJointIndexBM = HJ_RA2;
                     validName = true;
-                }
-                else if(!(name.compare("raj3"))) {
+                } else if (!(name.compare("raj3"))) {
                     hingeJointIndexBM = HJ_RA3;
                     validName = true;
-                }
-                else if(!(name.compare("raj4"))) {
+                } else if (!(name.compare("raj4"))) {
                     hingeJointIndexBM = HJ_RA4;
                     validName = true;
-                }
-                else if(!(name.compare("llj1"))) {
+                } else if (!(name.compare("llj1"))) {
                     hingeJointIndexBM = HJ_LL1;
                     validName = true;
-                }
-                else if(!(name.compare("llj2"))) {
+                } else if (!(name.compare("llj2"))) {
                     hingeJointIndexBM = HJ_LL2;
                     validName = true;
-                }
-                else if(!(name.compare("llj3"))) {
+                } else if (!(name.compare("llj3"))) {
                     hingeJointIndexBM = HJ_LL3;
                     validName = true;
-                }
-                else if(!(name.compare("llj4"))) {
+                } else if (!(name.compare("llj4"))) {
                     hingeJointIndexBM = HJ_LL4;
                     validName = true;
-                }
-                else if(!(name.compare("llj5"))) {
+                } else if (!(name.compare("llj5"))) {
                     hingeJointIndexBM = HJ_LL5;
                     validName = true;
-                }
-                else if(!(name.compare("llj6"))) {
+                } else if (!(name.compare("llj6"))) {
                     hingeJointIndexBM = HJ_LL6;
                     validName = true;
-                }
-                else if(!(name.compare("llj7"))) {
+                } else if (!(name.compare("llj7"))) {
                     hingeJointIndexBM = HJ_LL7;
                     validName = true;
-                }
-                else if(!(name.compare("rlj1"))) {
+                } else if (!(name.compare("rlj1"))) {
                     hingeJointIndexBM = HJ_RL1;
                     validName = true;
-                }
-                else if(!(name.compare("rlj2"))) {
+                } else if (!(name.compare("rlj2"))) {
                     hingeJointIndexBM = HJ_RL2;
                     validName = true;
-                }
-                else if(!(name.compare("rlj3"))) {
+                } else if (!(name.compare("rlj3"))) {
                     hingeJointIndexBM = HJ_RL3;
                     validName = true;
-                }
-                else if(!(name.compare("rlj4"))) {
+                } else if (!(name.compare("rlj4"))) {
                     hingeJointIndexBM = HJ_RL4;
                     validName = true;
-                }
-                else if(!(name.compare("rlj5"))) {
+                } else if (!(name.compare("rlj5"))) {
                     hingeJointIndexBM = HJ_RL5;
                     validName = true;
-                }
-                else if(!(name.compare("rlj6"))) {
+                } else if (!(name.compare("rlj6"))) {
                     hingeJointIndexBM = HJ_RL6;
                     validName = true;
-                }
-                else if(!(name.compare("rlj7"))) {
+                } else if (!(name.compare("rlj7"))) {
                     hingeJointIndexBM = HJ_RL7;
                     validName = true;
                 }
             }
         }
 
-        if(!tokens[i].compare("ax")) {
-            if(i + 1 < tokens.size()) {
+        if (!tokens[i].compare("ax")) {
+            if (i + 1 < tokens.size()) {
 
                 angle = atof(tokens[i + 1].c_str());
                 validAngle = true;
@@ -187,7 +164,7 @@ bool Parser::parseHingeJoint(const string &str) {
 
     valid = validName && validAngle;
 
-    if(valid) {
+    if (valid) {
         bodyModel->setJointAngle(hingeJointIndexBM, angle);
     }
 
@@ -200,7 +177,7 @@ vector<string> Parser::segment(const string &str, const bool &omitEnds) {
     int ptr = 0;
     int length = str.length();
 
-    if(omitEnds) {
+    if (omitEnds) {
         ptr = 1;
         length = str.length() - 1;
     }
@@ -211,35 +188,34 @@ vector<string> Parser::segment(const string &str, const bool &omitEnds) {
 
     do {
 
-        while(ptr < length && str.at(ptr) != '(') {
+        while (ptr < length && str.at(ptr) != '(') {
             ptr++;
         }
 
-        if(ptr < length) {
+        if (ptr < length) {
 
             currentString = "";
 
             do {
                 char c = str.at(ptr);
 
-                if(c == '(') {
+                if (c == '(') {
                     bracCount++;
-                }
-                else if(c == ')') {
+                } else if (c == ')') {
                     bracCount--;
                 }
 
                 currentString.append(1, c);
                 ptr++;
 
-            } while(bracCount != 0 && ptr < length);
+            } while (bracCount != 0 && ptr < length);
 
-            if(bracCount == 0) {
+            if (bracCount == 0) {
                 v.push_back(currentString);
                 currentString = "";
             }
         }
-    } while(ptr < length);
+    } while (ptr < length);
 
     return v;
 }
@@ -248,13 +224,12 @@ bool Parser::parse(const string &input) {
     bool valid = true;
     vector<string> inputSegments = segment(input, false);
 
-    for(size_t i = 0; i < inputSegments.size(); ++i) {
+    for (size_t i = 0; i < inputSegments.size(); ++i) {
         //Time
-        if(inputSegments[i].at(1)== 't') {
+        if (inputSegments[i].at(1) == 't') {
             valid = parseTime(inputSegments[i]) && valid;
-        }
-        //Hinge Joint
-        else if(inputSegments[i].at(1) == 'H') {
+        }//Hinge Joint
+        else if (inputSegments[i].at(1) == 'H') {
             valid = parseHingeJoint(inputSegments[i]) && valid;
         }
     }

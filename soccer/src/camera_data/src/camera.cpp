@@ -53,13 +53,13 @@ void Camera::detectAndDisplay(Mat frame) {
     imshow(window_name, frame);
 }
 
-void Camera::detect_ball() {   
+void Camera::detect_ball() {
     rng = RNG(12345);
     VideoCapture capture;
     Mat frame;
 
     //-- 1. Load the cascades
-//    std::string fullpath(path);
+    //    std::string fullpath(path);
     std::string fullpath = path + ball_cascade_name;
     cout << fullpath << endl;
     if (!ball_cascade.load(fullpath)) {

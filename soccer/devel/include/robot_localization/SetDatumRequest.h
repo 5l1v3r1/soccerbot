@@ -17,128 +17,120 @@
 
 #include <geographic_msgs/GeoPose.h>
 
-namespace robot_localization
-{
-template <class ContainerAllocator>
-struct SetDatumRequest_
-{
-  typedef SetDatumRequest_<ContainerAllocator> Type;
+namespace robot_localization {
 
-  SetDatumRequest_()
-    : geo_pose()  {
+    template <class ContainerAllocator>
+    struct SetDatumRequest_ {
+        typedef SetDatumRequest_<ContainerAllocator> Type;
+
+        SetDatumRequest_()
+        : geo_pose() {
+        }
+
+        SetDatumRequest_(const ContainerAllocator& _alloc)
+        : geo_pose(_alloc) {
+            (void) _alloc;
+        }
+
+
+
+        typedef ::geographic_msgs::GeoPose_<ContainerAllocator> _geo_pose_type;
+        _geo_pose_type geo_pose;
+
+
+
+
+        typedef boost::shared_ptr< ::robot_localization::SetDatumRequest_<ContainerAllocator> > Ptr;
+        typedef boost::shared_ptr< ::robot_localization::SetDatumRequest_<ContainerAllocator> const> ConstPtr;
+
+    }; // struct SetDatumRequest_
+
+    typedef ::robot_localization::SetDatumRequest_<std::allocator<void> > SetDatumRequest;
+
+    typedef boost::shared_ptr< ::robot_localization::SetDatumRequest > SetDatumRequestPtr;
+    typedef boost::shared_ptr< ::robot_localization::SetDatumRequest const> SetDatumRequestConstPtr;
+
+    // constants requiring out of line definition
+
+    template<typename ContainerAllocator>
+    std::ostream& operator<<(std::ostream& s, const ::robot_localization::SetDatumRequest_<ContainerAllocator> & v) {
+        ros::message_operations::Printer< ::robot_localization::SetDatumRequest_<ContainerAllocator> >::stream(s, "", v);
+        return s;
     }
-  SetDatumRequest_(const ContainerAllocator& _alloc)
-    : geo_pose(_alloc)  {
-  (void)_alloc;
-    }
-
-
-
-   typedef  ::geographic_msgs::GeoPose_<ContainerAllocator>  _geo_pose_type;
-  _geo_pose_type geo_pose;
-
-
-
-
-  typedef boost::shared_ptr< ::robot_localization::SetDatumRequest_<ContainerAllocator> > Ptr;
-  typedef boost::shared_ptr< ::robot_localization::SetDatumRequest_<ContainerAllocator> const> ConstPtr;
-
-}; // struct SetDatumRequest_
-
-typedef ::robot_localization::SetDatumRequest_<std::allocator<void> > SetDatumRequest;
-
-typedef boost::shared_ptr< ::robot_localization::SetDatumRequest > SetDatumRequestPtr;
-typedef boost::shared_ptr< ::robot_localization::SetDatumRequest const> SetDatumRequestConstPtr;
-
-// constants requiring out of line definition
-
-
-
-template<typename ContainerAllocator>
-std::ostream& operator<<(std::ostream& s, const ::robot_localization::SetDatumRequest_<ContainerAllocator> & v)
-{
-ros::message_operations::Printer< ::robot_localization::SetDatumRequest_<ContainerAllocator> >::stream(s, "", v);
-return s;
-}
 
 } // namespace robot_localization
 
-namespace ros
-{
-namespace message_traits
-{
+namespace ros {
+    namespace message_traits {
 
 
 
-// BOOLTRAITS {'IsFixedSize': True, 'IsMessage': True, 'HasHeader': False}
-// {'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg'], 'geographic_msgs': ['/opt/ros/kinetic/share/geographic_msgs/cmake/../msg'], 'geometry_msgs': ['/opt/ros/kinetic/share/geometry_msgs/cmake/../msg'], 'uuid_msgs': ['/opt/ros/kinetic/share/uuid_msgs/cmake/../msg']}
+        // BOOLTRAITS {'IsFixedSize': True, 'IsMessage': True, 'HasHeader': False}
+        // {'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg'], 'geographic_msgs': ['/opt/ros/kinetic/share/geographic_msgs/cmake/../msg'], 'geometry_msgs': ['/opt/ros/kinetic/share/geometry_msgs/cmake/../msg'], 'uuid_msgs': ['/opt/ros/kinetic/share/uuid_msgs/cmake/../msg']}
 
-// !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
+        // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
 
+        template <class ContainerAllocator>
+        struct IsFixedSize< ::robot_localization::SetDatumRequest_<ContainerAllocator> >
+        : TrueType {
+        };
 
+        template <class ContainerAllocator>
+        struct IsFixedSize< ::robot_localization::SetDatumRequest_<ContainerAllocator> const>
+        : TrueType {
+        };
 
+        template <class ContainerAllocator>
+        struct IsMessage< ::robot_localization::SetDatumRequest_<ContainerAllocator> >
+        : TrueType {
+        };
 
-template <class ContainerAllocator>
-struct IsFixedSize< ::robot_localization::SetDatumRequest_<ContainerAllocator> >
-  : TrueType
-  { };
+        template <class ContainerAllocator>
+        struct IsMessage< ::robot_localization::SetDatumRequest_<ContainerAllocator> const>
+        : TrueType {
+        };
 
-template <class ContainerAllocator>
-struct IsFixedSize< ::robot_localization::SetDatumRequest_<ContainerAllocator> const>
-  : TrueType
-  { };
+        template <class ContainerAllocator>
+        struct HasHeader< ::robot_localization::SetDatumRequest_<ContainerAllocator> >
+        : FalseType {
+        };
 
-template <class ContainerAllocator>
-struct IsMessage< ::robot_localization::SetDatumRequest_<ContainerAllocator> >
-  : TrueType
-  { };
+        template <class ContainerAllocator>
+        struct HasHeader< ::robot_localization::SetDatumRequest_<ContainerAllocator> const>
+        : FalseType {
+        };
 
-template <class ContainerAllocator>
-struct IsMessage< ::robot_localization::SetDatumRequest_<ContainerAllocator> const>
-  : TrueType
-  { };
+        template<class ContainerAllocator>
+        struct MD5Sum< ::robot_localization::SetDatumRequest_<ContainerAllocator> > {
 
-template <class ContainerAllocator>
-struct HasHeader< ::robot_localization::SetDatumRequest_<ContainerAllocator> >
-  : FalseType
-  { };
+            static const char* value() {
+                return "fe903ca95d0210defda73a1629604439";
+            }
 
-template <class ContainerAllocator>
-struct HasHeader< ::robot_localization::SetDatumRequest_<ContainerAllocator> const>
-  : FalseType
-  { };
+            static const char* value(const ::robot_localization::SetDatumRequest_<ContainerAllocator>&) {
+                return value();
+            }
+            static const uint64_t static_value1 = 0xfe903ca95d0210deULL;
+            static const uint64_t static_value2 = 0xfda73a1629604439ULL;
+        };
 
+        template<class ContainerAllocator>
+        struct DataType< ::robot_localization::SetDatumRequest_<ContainerAllocator> > {
 
-template<class ContainerAllocator>
-struct MD5Sum< ::robot_localization::SetDatumRequest_<ContainerAllocator> >
-{
-  static const char* value()
-  {
-    return "fe903ca95d0210defda73a1629604439";
-  }
+            static const char* value() {
+                return "robot_localization/SetDatumRequest";
+            }
 
-  static const char* value(const ::robot_localization::SetDatumRequest_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xfe903ca95d0210deULL;
-  static const uint64_t static_value2 = 0xfda73a1629604439ULL;
-};
+            static const char* value(const ::robot_localization::SetDatumRequest_<ContainerAllocator>&) {
+                return value();
+            }
+        };
 
-template<class ContainerAllocator>
-struct DataType< ::robot_localization::SetDatumRequest_<ContainerAllocator> >
-{
-  static const char* value()
-  {
-    return "robot_localization/SetDatumRequest";
-  }
+        template<class ContainerAllocator>
+        struct Definition< ::robot_localization::SetDatumRequest_<ContainerAllocator> > {
 
-  static const char* value(const ::robot_localization::SetDatumRequest_<ContainerAllocator>&) { return value(); }
-};
-
-template<class ContainerAllocator>
-struct Definition< ::robot_localization::SetDatumRequest_<ContainerAllocator> >
-{
-  static const char* value()
-  {
-    return "geographic_msgs/GeoPose geo_pose\n\
+            static const char* value() {
+                return "geographic_msgs/GeoPose geo_pose\n\
 \n\
 ================================================================================\n\
 MSG: geographic_msgs/GeoPose\n\
@@ -175,49 +167,45 @@ float64 y\n\
 float64 z\n\
 float64 w\n\
 ";
-  }
+            }
 
-  static const char* value(const ::robot_localization::SetDatumRequest_<ContainerAllocator>&) { return value(); }
-};
+            static const char* value(const ::robot_localization::SetDatumRequest_<ContainerAllocator>&) {
+                return value();
+            }
+        };
 
-} // namespace message_traits
+    } // namespace message_traits
 } // namespace ros
 
-namespace ros
-{
-namespace serialization
-{
+namespace ros {
+    namespace serialization {
 
-  template<class ContainerAllocator> struct Serializer< ::robot_localization::SetDatumRequest_<ContainerAllocator> >
-  {
-    template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
-    {
-      stream.next(m.geo_pose);
-    }
+        template<class ContainerAllocator> struct Serializer< ::robot_localization::SetDatumRequest_<ContainerAllocator> > {
 
-    ROS_DECLARE_ALLINONE_SERIALIZER
-  }; // struct SetDatumRequest_
+            template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m) {
+                stream.next(m.geo_pose);
+            }
 
-} // namespace serialization
+            ROS_DECLARE_ALLINONE_SERIALIZER
+        }; // struct SetDatumRequest_
+
+    } // namespace serialization
 } // namespace ros
 
-namespace ros
-{
-namespace message_operations
-{
+namespace ros {
+    namespace message_operations {
 
-template<class ContainerAllocator>
-struct Printer< ::robot_localization::SetDatumRequest_<ContainerAllocator> >
-{
-  template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::robot_localization::SetDatumRequest_<ContainerAllocator>& v)
-  {
-    s << indent << "geo_pose: ";
-    s << std::endl;
-    Printer< ::geographic_msgs::GeoPose_<ContainerAllocator> >::stream(s, indent + "  ", v.geo_pose);
-  }
-};
+        template<class ContainerAllocator>
+        struct Printer< ::robot_localization::SetDatumRequest_<ContainerAllocator> > {
 
-} // namespace message_operations
+            template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::robot_localization::SetDatumRequest_<ContainerAllocator>& v) {
+                s << indent << "geo_pose: ";
+                s << std::endl;
+                Printer< ::geographic_msgs::GeoPose_<ContainerAllocator> >::stream(s, indent + "  ", v.geo_pose);
+            }
+        };
+
+    } // namespace message_operations
 } // namespace ros
 
 #endif // ROBOT_LOCALIZATION_MESSAGE_SETDATUMREQUEST_H

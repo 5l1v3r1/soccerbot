@@ -19,12 +19,12 @@ using namespace std;
     \return the VecPosition corresponding to the given arguments */
 VecPosition::VecPosition(double x, double y, double z, CoordSystemT cs) {
 
-    setVecPosition(x, y, z, cs );
+    setVecPosition(x, y, z, cs);
 }
 
-ostream& operator <<( ostream &os, const VecPosition &v ) {
+ostream& operator<<(ostream &os, const VecPosition &v) {
 
-    return ( os << "( " << v.m_x << ", " << v.m_y << ", " << v.m_z << " )" );
+    return ( os << "( " << v.m_x << ", " << v.m_y << ", " << v.m_z << " )");
 }
 
 /*! This method writes the current VecPosition to standard output. It
@@ -32,14 +32,13 @@ ostream& operator <<( ostream &os, const VecPosition &v ) {
 
     \param cs a CoordSystemtT indicating whether a POLAR or CARTESIAN
     representation of the current VecPosition should be printed */
-void VecPosition::show( CoordSystemT cs ) {
+void VecPosition::show(CoordSystemT cs) {
 
-    if( cs == CARTESIAN )
+    if (cs == CARTESIAN)
         cout << *this << endl;
     else
-        cout << "( r: " << getMagnitude() << ", theta: " << getTheta( ) << ", phi: " << getPhi() << "  )";
+        cout << "( r: " << getMagnitude() << ", theta: " << getTheta() << ", phi: " << getPhi() << "  )";
 }
-
 
 /*! This method (re)sets the coordinates of the current
     VecPosition. The given coordinates can either be polar or
@@ -56,16 +55,15 @@ void VecPosition::show( CoordSystemT cs ) {
 
     \param cs a CoordSystemT indicating whether x and y denote
     cartesian coordinates or polar coordinates */
-void VecPosition::setVecPosition( double dX, double dY, double dZ, CoordSystemT cs) {
+void VecPosition::setVecPosition(double dX, double dY, double dZ, CoordSystemT cs) {
 
-    if( cs == CARTESIAN ) {
+    if (cs == CARTESIAN) {
 
         m_x = dX;
         m_y = dY;
         m_z = dZ;
-    }
-    else
-        *this = getVecPositionFromPolar( dX, dY, dZ );
+    } else
+        *this = getVecPositionFromPolar(dX, dY, dZ);
 }
 
 /*! This method adjusts the coordinates of the current VecPosition in
@@ -80,12 +78,11 @@ void VecPosition::setVecPosition( double dX, double dY, double dZ, CoordSystemT 
     \return the result of scaling the vector corresponding with the
     current VecPosition to the given magnitude thus yielding a
     different VecPosition */
-VecPosition VecPosition::setMagnitude( double d )
-{
-    if( getMagnitude( ) > EPSILON )
-        ( *this ) *= ( d / getMagnitude( ) );
+VecPosition VecPosition::setMagnitude(double d) {
+    if (getMagnitude() > EPSILON)
+        (*this) *= (d / getMagnitude());
 
-    return ( *this );
+    return ( *this);
 }
 
 /*! This method determines the magnitude (length) of the vector
@@ -94,9 +91,9 @@ VecPosition VecPosition::setMagnitude( double d )
 
     \return the length of the vector corresponding with the current
     VecPosition */
-double VecPosition::getMagnitude( ) const {
+double VecPosition::getMagnitude() const {
 
-    return ( sqrt( m_x * m_x + m_y * m_y + m_z * m_z) );
+    return ( sqrt(m_x * m_x + m_y * m_y + m_z * m_z));
 }
 
 /*! This method determines the direction of the vector corresponding
@@ -107,9 +104,9 @@ double VecPosition::getMagnitude( ) const {
 
     \return the direction in degrees of the vector corresponding with
     the current VecPosition */
-double VecPosition::getTheta( ) const {
+double VecPosition::getTheta() const {
 
-    return ( atan2Deg( m_y, m_x ) );
+    return ( atan2Deg(m_y, m_x));
 }
 
 /*! This method determines the direction of the vector corresponding
@@ -120,14 +117,14 @@ double VecPosition::getTheta( ) const {
 
     \return the direction in degrees of the vector corresponding with
     the current VecPosition */
-double VecPosition::getPhi( ) const {
+double VecPosition::getPhi() const {
 
-    return ( atan2Deg( m_z, sqrt(m_x * m_x + m_y * m_y)) );
+    return ( atan2Deg(m_z, sqrt(m_x * m_x + m_y * m_y)));
 }
 
-VecPosition VecPosition::normalize( ) {
+VecPosition VecPosition::normalize() {
 
-    return ( setMagnitude( 1.0 ) );
+    return ( setMagnitude(1.0));
 }
 
 VecPosition VecPosition::getVecPositionFromPolar(double r, double theta, double phi) {
@@ -138,7 +135,7 @@ VecPosition VecPosition::getVecPositionFromPolar(double r, double theta, double 
     double y = r * cosDeg(phi) * sinDeg(theta);
     double z = r * sinDeg(phi);
 
-    return ( VecPosition(x, y, z) );
+    return ( VecPosition(x, y, z));
 }
 
 VecPosition VecPosition::getCartesianFromPolar() {
@@ -148,13 +145,10 @@ VecPosition VecPosition::getCartesianFromPolar() {
     return cartesian;
 }
 
-
 VecPosition VecPosition::getPolarFromCartesian() {
-    VecPosition polar( getMagnitude(), getTheta(), getPhi() );
+    VecPosition polar(getMagnitude(), getTheta(), getPhi());
     return polar;
 }
-
-
 
 /*! This method normalizes an angle. This means that the resulting
     angle lies between -180 and 180 degrees.
@@ -162,14 +156,13 @@ VecPosition VecPosition::getPolarFromCartesian() {
     \param angle the angle which must be normalized
 
     \return the result of normalizing the given angle */
-double VecPosition::normalizeAngle( double angle ) {
+double VecPosition::normalizeAngle(double angle) {
 
-    while( angle > 180.0  ) angle -= 360.0;
-    while( angle < -180.0 ) angle += 360.0;
+    while (angle > 180.0) angle -= 360.0;
+    while (angle < -180.0) angle += 360.0;
 
-    return ( angle );
+    return ( angle);
 }
-
 
 VecPosition VecPosition::translate(VecPosition t) {
 
@@ -225,13 +218,12 @@ double VecPosition::getAngleWithVector(VecPosition v) {
     double m1 = getMagnitude();
     double m2 = v.getMagnitude();
 
-    if(m1 < EPSILON || m2 < EPSILON) {
+    if (m1 < EPSILON || m2 < EPSILON) {
         return 0;
     }
 
     return acosDeg(d / (m1 * m2));
 }
-
 
 VecPosition VecPosition::crossProduct(VecPosition v) {
 

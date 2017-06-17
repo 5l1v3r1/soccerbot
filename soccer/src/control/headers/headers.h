@@ -13,29 +13,27 @@ using std::stringstream;
 
 // TODO: is there a better way to map string to enum??????
 // What is this class? see: http://stackoverflow.com/questions/726664/string-to-enum
+
 template<typename T>
-class EnumParser
-{
+class EnumParser {
     map<string, T> string2enum;
     map<T, string> enum2String;
     EnumParser();
     EnumParser(const EnumParser& that); // [nstiurca] disable copy constructor
 
     T
-    _getEnumFromString(const string &value) const
-    {
-        if( string2enum.find( value ) != string2enum.end() ) {
-            return string2enum.find( value )->second;
+    _getEnumFromString(const string &value) const {
+        if (string2enum.find(value) != string2enum.end()) {
+            return string2enum.find(value)->second;
         } else {
             throw "string->enum mapping doesn't exist for " + value;
         }
     }
 
     string
-    _getStringFromEnum(const T &value) const
-    {
-        if( enum2String.find( value ) != enum2String.end() ) {
-            return enum2String.find( value )->second;
+    _getStringFromEnum(const T &value) const {
+        if (enum2String.find(value) != enum2String.end()) {
+            return enum2String.find(value)->second;
         } else {
             stringstream ss;
             ss << "enum->string mapping doesn't exist. ";
@@ -47,12 +45,12 @@ class EnumParser
 public:
     // [nstiurca] implement singleton pattern
     static const EnumParser<T> parser;
-    static string getStringFromEnum(const T &value)
-    {
+
+    static string getStringFromEnum(const T &value) {
         return parser._getStringFromEnum(value);
     }
-    static T getEnumFromString(const string &value)
-    {
+
+    static T getEnumFromString(const string &value) {
         return parser._getEnumFromString(value);
     }
 };
@@ -92,6 +90,7 @@ public:
 
 
 //Effectors
+
 enum Effectors {
     // NOTE!!! In any change to the enum please update the mappings in headers.cc
     EFF_H1,
@@ -185,6 +184,7 @@ enum Effectors {
 
 
 //INDICES for body segments
+
 enum BodyParts {
     // NOTE!!! In any change to the enum please update the mappings in headers.cc
     TORSO,
@@ -202,18 +202,20 @@ enum BodyParts {
 class bad_leg_index : public std::exception {
     std::string what_;
 public:
-    bad_leg_index(const int &legIndex) throw() {
+
+    bad_leg_index(const int &legIndex) throw () {
         stringstream ss;
         ss << "Bad leg index: " << legIndex << ". Expected LEG_LEFT("
-           << LEG_LEFT << ") or LEG_RIGHT(" << LEG_RIGHT << ").";
+                << LEG_LEFT << ") or LEG_RIGHT(" << LEG_RIGHT << ").";
         what_ = ss.str();
     }
 
-    virtual const char* what() const throw() {
+    virtual const char* what() const throw () {
         return what_.c_str();
     }
 
-    virtual ~bad_leg_index() throw() {}
+    virtual ~bad_leg_index() throw () {
+    }
 };
 /*
  * and the mapping from string to enum in headers.cc (TODO: better way?)
@@ -262,6 +264,7 @@ const double EPSILON = 0.0001;
 #define DIR_BACK  2
 
 //Skills
+
 enum SkillType {
     SKILL_WALK_OMNI,
 
@@ -292,11 +295,10 @@ enum SkillType {
 
 #define GAZEBO_AGENT_TYPE -1
 
-
 template<typename T>
 std::ostream& operator<<(std::ostream& out, const std::vector<T>& t) {
     out << "[";
-    for(typename std::vector<T>::const_iterator it = t.begin(); it != t.end(); ++it) {
+    for (typename std::vector<T>::const_iterator it = t.begin(); it != t.end(); ++it) {
         out << (*it) << ", ";
     }
     return out << "]";
@@ -307,7 +309,7 @@ std::ostream& operator<<(std::ostream& out, const std::vector<T>& t) {
 #define LOG(x)          LOG_BASE << (#x) << ": " << (x) << endl
 #define LOG_MSG(msg, x) LOG_BASE << msg << ": " << x << endl
 #define LOG_ST(var)     LOG_BASE << #var << ": " \
-						<< EnumParser<SkillType>::getStringFromEnum(var) << endl
+                                                << EnumParser<SkillType>::getStringFromEnum(var) << endl
 
 
 

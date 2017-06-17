@@ -3,7 +3,7 @@
 Ball::Ball(ros::NodeHandle n) {
     this->n = n;
     ball_pub = n.advertise<visualization_msgs::Marker>("ball", 1);
-    
+
     marker.header.frame_id = "/world";
     marker.header.stamp = ros::Time::now();
     marker.ns = "objects";
@@ -16,14 +16,15 @@ Ball::Ball(ros::NodeHandle n) {
     marker.lifetime = ros::Duration();
 }
 
-Ball::~Ball() {}
+Ball::~Ball() {
+}
 
 int Ball::circumference() {
     return 2 * PI*radius;
 }
 
-void update_location(geometry_msgs::Transform){
-    
+void update_location(geometry_msgs::Transform) {
+
 }
 
 void Ball::draw() {

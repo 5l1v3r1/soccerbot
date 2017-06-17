@@ -11,7 +11,7 @@ BodyModel::BodyModel(WorldModel *worldModel) {
     gyroRates = VecPosition(0, 0, 0);
     accelRates = VecPosition(0, 0, 0);
 
-    for(int i = 0; i < HJ_NUM; ++i) {
+    for (int i = 0; i < HJ_NUM; ++i) {
         joint.push_back(SIMJoint());
     }
 
@@ -84,15 +84,14 @@ BodyModel::BodyModel(const BodyModel *current, const int legIndex, const double 
     rl4 = HCTMatrix(current->rl4);
     rl5 = HCTMatrix(current->rl5);
 
-    if(LEG_LEFT == legIndex) {
+    if (LEG_LEFT == legIndex) {
         joint[HJ_LL1].angle = a1;
         joint[HJ_LL2].angle = a2;
         joint[HJ_LL3].angle = a3;
         joint[HJ_LL4].angle = a4;
         joint[HJ_LL5].angle = a5;
         joint[HJ_LL6].angle = a6;
-    }
-    else if (LEG_RIGHT == legIndex) {
+    } else if (LEG_RIGHT == legIndex) {
         joint[HJ_RL1].angle = a1;
         joint[HJ_RL2].angle = a2;
         joint[HJ_RL3].angle = a3;
@@ -118,7 +117,7 @@ BodyModel::~BodyModel() {
 
 void BodyModel::initialiseEffectors() {
 
-    for(int i = 0; i < EFF_NUM; ++i) {
+    for (int i = 0; i < EFF_NUM; ++i) {
         effector.push_back(Effector(0, 0, 0, 0, 0, 0));
     }
 
@@ -133,39 +132,39 @@ void BodyModel::initialiseEffectors() {
     }
 
     //                          minAng  maxAng
-    effector[EFF_H1] = Effector(-120.0, 120.0, P, I, D, ET);//NECK
-    effector[EFF_H2] = Effector(-45.0, 45.0, P, I, D, ET);//HEAD
+    effector[EFF_H1] = Effector(-120.0, 120.0, P, I, D, ET); //NECK
+    effector[EFF_H2] = Effector(-45.0, 45.0, P, I, D, ET); //HEAD
 
-    effector[EFF_LA1] = Effector(-120.0, 120.0, P, I, D, ET);//SHOULDER (-y)
-    effector[EFF_LA2] = Effector(-1.0, 95.0, P, I, D, ET);//UPPERARM (z)
-    effector[EFF_LA3] = Effector(-120.0, 120.0, P, I, D, ET);//LOWERARM (x)
-    effector[EFF_LA4] = Effector(-90.0, 1.0, P, I, D, ET);//ELBOW (z)
+    effector[EFF_LA1] = Effector(-120.0, 120.0, P, I, D, ET); //SHOULDER (-y)
+    effector[EFF_LA2] = Effector(-1.0, 95.0, P, I, D, ET); //UPPERARM (z)
+    effector[EFF_LA3] = Effector(-120.0, 120.0, P, I, D, ET); //LOWERARM (x)
+    effector[EFF_LA4] = Effector(-90.0, 1.0, P, I, D, ET); //ELBOW (z)
 
-    effector[EFF_RA1] = Effector(-120.0, 120.0, P, I, D, ET);//SHOULDER (-y)
-    effector[EFF_RA2] = Effector(-95.0, 1.0, P, I, D, ET);//UPPERARM (z)
-    effector[EFF_RA3] = Effector(-120.0, 120.0, P, I, D, ET);//LOWERARM (x)
-    effector[EFF_RA4] = Effector(-1.0, 90.0, P, I, D, ET);//ELBOW (z)
+    effector[EFF_RA1] = Effector(-120.0, 120.0, P, I, D, ET); //SHOULDER (-y)
+    effector[EFF_RA2] = Effector(-95.0, 1.0, P, I, D, ET); //UPPERARM (z)
+    effector[EFF_RA3] = Effector(-120.0, 120.0, P, I, D, ET); //LOWERARM (x)
+    effector[EFF_RA4] = Effector(-1.0, 90.0, P, I, D, ET); //ELBOW (z)
 
-    effector[EFF_LL1] = Effector(-90.0, 1.0, P, I, D, ET);//HIP1 (y, -z)
-    effector[EFF_LL2] = Effector(-25.0, 45.0, P, I, D, ET);//HIP2 (x)
-    effector[EFF_LL3] = Effector(-25.0, 100.0, P, I, D, ET);//HIP3 (-y)
-    effector[EFF_LL4] = Effector(-130.0, 1.0, P, I, D, ET);//KNEE (-y)
-    effector[EFF_LL5] = Effector(-45.0, 75.0, P, I, D, ET);//ANKLE PITCH (-y)
-    effector[EFF_LL6] = Effector(-45.0, 25.0, P, I, D, ET);//ANKLE ROLL (x)
-    effector[EFF_LL7] = Effector(-1.0, 70.0, P, I, D, ET);//TOE
+    effector[EFF_LL1] = Effector(-90.0, 1.0, P, I, D, ET); //HIP1 (y, -z)
+    effector[EFF_LL2] = Effector(-25.0, 45.0, P, I, D, ET); //HIP2 (x)
+    effector[EFF_LL3] = Effector(-25.0, 100.0, P, I, D, ET); //HIP3 (-y)
+    effector[EFF_LL4] = Effector(-130.0, 1.0, P, I, D, ET); //KNEE (-y)
+    effector[EFF_LL5] = Effector(-45.0, 75.0, P, I, D, ET); //ANKLE PITCH (-y)
+    effector[EFF_LL6] = Effector(-45.0, 25.0, P, I, D, ET); //ANKLE ROLL (x)
+    effector[EFF_LL7] = Effector(-1.0, 70.0, P, I, D, ET); //TOE
 
-    effector[EFF_RL1] = Effector(-90.0, 1.0, P, I, D, ET);//HIP1 (y, z)
-    effector[EFF_RL2] = Effector(-45.0, 25.0, P, I, D, ET);//HIP2 (x)
-    effector[EFF_RL3] = Effector(-25.0, 100.0, P, I, D, ET);//HIP3 (-y)
-    effector[EFF_RL4] = Effector(-130.0, 1.0, P, I, D, ET);//KNEE (-y)
-    effector[EFF_RL5] = Effector(-45.0, 75.0, P, I, D, ET);//ANKLE PITCH (-y)
-    effector[EFF_RL6] = Effector(-25.0, 45.0, P, I, D, ET);//ANKLE ROLL (x)
-    effector[EFF_RL7] = Effector(-1.0, 70.0, P, I, D, ET);//TOE
+    effector[EFF_RL1] = Effector(-90.0, 1.0, P, I, D, ET); //HIP1 (y, z)
+    effector[EFF_RL2] = Effector(-45.0, 25.0, P, I, D, ET); //HIP2 (x)
+    effector[EFF_RL3] = Effector(-25.0, 100.0, P, I, D, ET); //HIP3 (-y)
+    effector[EFF_RL4] = Effector(-130.0, 1.0, P, I, D, ET); //KNEE (-y)
+    effector[EFF_RL5] = Effector(-45.0, 75.0, P, I, D, ET); //ANKLE PITCH (-y)
+    effector[EFF_RL6] = Effector(-25.0, 45.0, P, I, D, ET); //ANKLE ROLL (x)
+    effector[EFF_RL7] = Effector(-1.0, 70.0, P, I, D, ET); //TOE
 
 
     // Inializing reflection logic
-    reflectedEffector.resize( EFF_NUM );
-    toReflectAngle.resize( EFF_NUM );
+    reflectedEffector.resize(EFF_NUM);
+    toReflectAngle.resize(EFF_NUM);
     reflectedEffector[EFF_H1] = EFF_H1;
     toReflectAngle[EFF_H1] = false;
     reflectedEffector[EFF_H2] = EFF_H2;
@@ -223,7 +222,7 @@ void BodyModel::initialiseEffectors() {
 
 void BodyModel::initialiseComponents() {
 
-    for(int i = 0; i < COMP_NUM; ++i) {
+    for (int i = 0; i < COMP_NUM; ++i) {
         component.push_back(Component(0, 0, VecPosition(0, 0, 0), VecPosition(0, 0, 0), VecPosition(0, 0, 0)));
     }
 
@@ -445,7 +444,7 @@ void BodyModel::initialiseComponents() {
 void BodyModel::refresh() {
 
 
-    for(int i = 0; i < HJ_NUM; ++i) {
+    for (int i = 0; i < HJ_NUM; ++i) {
         setCurrentAngle(i, joint[i].angle);
     }
 
@@ -541,7 +540,7 @@ void BodyModel::display() {
 
     cout << "*****************Body Model******************************\n";
 
-    
+
     cout << "HJ_H1: " << getJointAngle(HJ_H1) << " ";
     cout << "HJ_H2: " << getJointAngle(HJ_H2) << "\n";
 
@@ -613,21 +612,21 @@ void BodyModel::displayDerived() {
       worldModel->getRVSender()->drawCircle("rfootcg", rightFootCG.getX(), rightFootCG.getY(), 0.01, RVSender::PINK);
       worldModel->getRVSender()->drawCircle("larmcg", leftArmCG.getX(), leftArmCG.getY(), 0.01, RVSender::PINK);
       worldModel->getRVSender()->drawCircle("rarmcg", rightArmCG.getX(), rightArmCG.getY(), 0.01, RVSender::PINK);
-    */
+     */
 }
 
 bool BodyModel::targetsReached() {
 
     bool valid = true;
 
-    for(int i = 0; i < EFF_NUM; ++i) {
+    for (int i = 0; i < EFF_NUM; ++i) {
         // Don't do this for the head joints now that we're panning as
         // otherwise we might never reach our targets.
         if ((i == EFF_H1) || (i == EFF_H2)) {
             continue;
         }
 
-        if(!(effector[i].targetReached())) {
+        if (!(effector[i].targetReached())) {
             //      cout << i << " not reached\n";
             //      cout << effector[i].targetAngle << ", " << effector[i].currentAngle << ", " << effector[i].currentError << "\n";
             valid = false;
@@ -646,12 +645,11 @@ VecPosition BodyModel::getFootCG(const int &legIndex, const double &ang1, const 
     return m.transform(VecPosition(0, 0, 0));
 }
 
-
 void BodyModel::getFootTransform(const int &legIndex, HCTMatrix &m, const double &ang1, const double &ang2, const double &ang3, const double &ang4, const double &ang5, const double &ang6) const {
 
     m = HCTMatrix(component[COMP_TORSO].transformFromRoot);
 
-    if(legIndex == LEG_LEFT) {
+    if (legIndex == LEG_LEFT) {
 
         m.multiply(component[COMP_LHIP1].translateMatrix);
         m.multiply(HCTMatrix(HCT_GENERALIZED_ROTATE, component[COMP_LHIP1].axis, ang1));
@@ -671,8 +669,7 @@ void BodyModel::getFootTransform(const int &legIndex, HCTMatrix &m, const double
 
         m.multiply(HCTMatrix(HCT_GENERALIZED_ROTATE, component[COMP_LFOOT].axis, ang6));
         m.multiply(component[COMP_LFOOT].backTranslateMatrix);
-    }
-    else if(legIndex == LEG_RIGHT) {
+    } else if (legIndex == LEG_RIGHT) {
 
         m.multiply(component[COMP_RHIP1].translateMatrix);
         m.multiply(HCTMatrix(HCT_GENERALIZED_ROTATE, component[COMP_RHIP1].axis, ang1));
@@ -698,17 +695,16 @@ void BodyModel::getFootTransform(const int &legIndex, HCTMatrix &m, const double
 
 VecPosition BodyModel::getFootCG(const int &legIndex) const {
 
-    double a1,a2, a3, a4, a5, a6;
+    double a1, a2, a3, a4, a5, a6;
 
-    if(legIndex == LEG_LEFT) {
+    if (legIndex == LEG_LEFT) {
         a1 = getCurrentAngle(EFF_LL1);
         a2 = getCurrentAngle(EFF_LL2);
         a3 = getCurrentAngle(EFF_LL3);
         a4 = getCurrentAngle(EFF_LL4);
         a5 = getCurrentAngle(EFF_LL5);
         a6 = getCurrentAngle(EFF_LL6);
-    }
-    else {
+    } else {
         a1 = getCurrentAngle(EFF_RL1);
         a2 = getCurrentAngle(EFF_RL2);
         a3 = getCurrentAngle(EFF_RL3);
@@ -723,20 +719,18 @@ VecPosition BodyModel::getFootCG(const int &legIndex) const {
     return m.transform(VecPosition(0, 0, 0));
 }
 
-
 void BodyModel::getFootGlobalCGAndAxes(const int &legIndex, VecPosition &CG, VecPosition &xAxis, VecPosition &yAxis, VecPosition &zAxis) {
 
-    double a1,a2, a3, a4, a5, a6;
+    double a1, a2, a3, a4, a5, a6;
 
-    if(legIndex == LEG_LEFT) {
+    if (legIndex == LEG_LEFT) {
         a1 = getCurrentAngle(EFF_LL1);
         a2 = getCurrentAngle(EFF_LL2);
         a3 = getCurrentAngle(EFF_LL3);
         a4 = getCurrentAngle(EFF_LL4);
         a5 = getCurrentAngle(EFF_LL5);
         a6 = getCurrentAngle(EFF_LL6);
-    }
-    else {
+    } else {
         a1 = getCurrentAngle(EFF_RL1);
         a2 = getCurrentAngle(EFF_RL2);
         a3 = getCurrentAngle(EFF_RL3);
@@ -804,8 +798,6 @@ VecPosition BodyModel::getBallWRTLeftFoot(WorldModel *worldModel) {
 
     return relative;
 }
-
-
 
 VecPosition BodyModel::getBallWRTRightFoot(WorldModel *worldModel) {
     vector<double> rightLegAngles;
@@ -903,7 +895,7 @@ bool BodyModel::applyStabilization(const int &legIndex, const VecPosition zmp, d
         throw bad_leg_index(legIndex);
     }
 
-//	cout << "\tAttempting stabilization over the " << (legIndex == LEG_LEFT ? "left" : "right") << " leg." << endl;
+    //	cout << "\tAttempting stabilization over the " << (legIndex == LEG_LEFT ? "left" : "right") << " leg." << endl;
     double a1 = getTargetAngle(legIndex == LEG_LEFT ? EFF_LL1 : EFF_RL1);
     double a2 = getTargetAngle(legIndex == LEG_LEFT ? EFF_LL2 : EFF_RL2);
     double a3 = getTargetAngle(legIndex == LEG_LEFT ? EFF_LL3 : EFF_RL3);
@@ -925,11 +917,11 @@ bool BodyModel::applyStabilization(const int &legIndex, const VecPosition zmp, d
     // First make everything relative to the foot and find direction of motion for center of mass
     HCTMatrix footRelOrigin = HCTMatrix();
     getFootTransform(legIndex, footRelOrigin, a1, a2, a3, a4, a5, a6);
-//	VecPosition absoluteZmp = worldModel->l2g(footRelOrigin.transform(VecPosition(0,0,0)) + zmp);
-//	worldModel->getRVSender()->drawCircle(/*"zmp0.1", */absoluteZmp.getX(), absoluteZmp.getY(), 0.1, RVSender::LIGHTBLUE);
-//	worldModel->getRVSender()->drawCircle(/*"zmp0.01", */absoluteZmp.getX(), absoluteZmp.getY(), 0.01, RVSender::LIGHTBLUE);
+    //	VecPosition absoluteZmp = worldModel->l2g(footRelOrigin.transform(VecPosition(0,0,0)) + zmp);
+    //	worldModel->getRVSender()->drawCircle(/*"zmp0.1", */absoluteZmp.getX(), absoluteZmp.getY(), 0.1, RVSender::LIGHTBLUE);
+    //	worldModel->getRVSender()->drawCircle(/*"zmp0.01", */absoluteZmp.getX(), absoluteZmp.getY(), 0.01, RVSender::LIGHTBLUE);
     HCTMatrix originRelFoot = footRelOrigin.getInverse();
-    if (originRelFoot.isIdentity()) {  // Could not find an inverse
+    if (originRelFoot.isIdentity()) { // Could not find an inverse
         cerr << "Tried to invert matrix with 0 determinant" << endl;
         return false; // This shouldn't happen since the matrix should have non-zero determinant
     }
@@ -1016,7 +1008,7 @@ bool BodyModel::applyStabilization(const int &legIndex, const VecPosition zmp, d
         double llComMag = hypot(llCom.getZ(), llCom.getY());
         double rlComMag = hypot(rlCom.getZ(), rlCom.getY());
 
-        sinTheta = ((dirToMove.getY() * bodyMass) / (legLength * (bodyMass - llMass - rlMass) + llComMag * llMass + rlComMag * rlMass));// + sin(a6);
+        sinTheta = ((dirToMove.getY() * bodyMass) / (legLength * (bodyMass - llMass - rlMass) + llComMag * llMass + rlComMag * rlMass)); // + sin(a6);
         if (sinTheta < -1 || sinTheta > 1) {
             return false;
         } else {
@@ -1037,7 +1029,7 @@ void BodyModel::applyStabilizationArm(const int armIndex, double &stab_a1, doubl
         return;
     }
     bool l = armIndex == ARM_LEFT;
-    double armMass= 0;
+    double armMass = 0;
     VecPosition armComRelShoulder = getCenterOfMass(armIndex, armMass);
     double initialMag = dirToMove.getMagnitude();
     dirToMove.normalize();
@@ -1051,7 +1043,7 @@ void BodyModel::applyStabilizationArm(const int armIndex, double &stab_a1, doubl
         sinTheta = dirToMove.getY() / (armComRelShoulder.getMagnitude() * cos(Deg2Rad(stab_a1)));
     }
     if (sinTheta > 1 || sinTheta < -1) { // Arms alone will not solve stabilization
-        stab_a2 = ((sinTheta > 1) == (dirToMove.getX() > 0)) ? (effector[l ? EFF_LA2 : EFF_RA2].maxAngle + (l ? -5 : 0)) : (effector[l ? EFF_LA2 : EFF_RA2].minAngle  + (l ? 0 : 5));
+        stab_a2 = ((sinTheta > 1) == (dirToMove.getX() > 0)) ? (effector[l ? EFF_LA2 : EFF_RA2].maxAngle + (l ? -5 : 0)) : (effector[l ? EFF_LA2 : EFF_RA2].minAngle + (l ? 0 : 5));
     } else {
         stab_a2 = Rad2Deg(asin(sinTheta));
     }
@@ -1069,10 +1061,10 @@ VecPosition BodyModel::transformCameraToOrigin(const VecPosition &v) {
  * send reference variables to be set
  */
 void BodyModel::
-getReflection( const int& effID,
-               const double& angle,
-               int& reflectedEffID,
-               double& reflectedAngle ) {
+getReflection(const int& effID,
+        const double& angle,
+        int& reflectedEffID,
+        double& reflectedAngle) {
 
     reflectedEffID = reflectedEffector[effID];
     reflectedAngle = toReflectAngle[effID] ? -angle : angle;
@@ -1083,10 +1075,10 @@ getReflection( const int& effID,
  * send reference variables to be set
  */
 void BodyModel::
-getReflection( const int& legIDX,
-               const Pos6DOF& pos,
-               int& reflectedLegIDX,
-               Pos6DOF& reflectedPos ) {
+getReflection(const int& legIDX,
+        const Pos6DOF& pos,
+        int& reflectedLegIDX,
+        Pos6DOF& reflectedPos) {
     reflectedLegIDX = legIDX == LEG_LEFT ? LEG_RIGHT : LEG_LEFT;
     reflectedPos = pos.reflect();
 }
@@ -1113,7 +1105,7 @@ bool BodyModel::setInitialArm(const int &arm) {
     ang3 = 0;
     ang4 = -50.0;
 
-    if(arm == ARM_LEFT) {
+    if (arm == ARM_LEFT) {
 
         setTargetAngle(EFF_LA1, ang1);
         setTargetAngle(EFF_LA2, ang2);
@@ -1122,8 +1114,7 @@ bool BodyModel::setInitialArm(const int &arm) {
 
         reached = getTargetReached(EFF_LA1) && getTargetReached(EFF_LA2) && getTargetReached(EFF_LA3) && getTargetReached(EFF_LA4);
 
-    }
-    else { //ARM_RIGHT
+    } else { //ARM_RIGHT
 
         setTargetAngle(EFF_RA1, ang1);
         setTargetAngle(EFF_RA2, -ang2);
@@ -1149,7 +1140,7 @@ bool BodyModel::setInitialLeg(const int &leg) {
     double ang6 = -6.0;
     double ang7 = 0;
 
-    if(leg == LEG_LEFT) {
+    if (leg == LEG_LEFT) {
 
         setTargetAngle(EFF_LL1, ang1);
         setTargetAngle(EFF_LL2, ang2);
@@ -1159,10 +1150,9 @@ bool BodyModel::setInitialLeg(const int &leg) {
         setTargetAngle(EFF_LL6, ang6);
         setTargetAngle(EFF_LL7, ang7);
 
-        reached = getTargetReached(EFF_LL1) && getTargetReached(EFF_LL2) && getTargetReached(EFF_LL3) && getTargetReached(EFF_LL4) && getTargetReached(EFF_LL5) && getTargetReached(EFF_LL6) && (!hasToe() || getTargetReached(EFF_LL7)) ;
+        reached = getTargetReached(EFF_LL1) && getTargetReached(EFF_LL2) && getTargetReached(EFF_LL3) && getTargetReached(EFF_LL4) && getTargetReached(EFF_LL5) && getTargetReached(EFF_LL6) && (!hasToe() || getTargetReached(EFF_LL7));
 
-    }
-    else {
+    } else {
 
         setTargetAngle(EFF_RL1, ang1);
         setTargetAngle(EFF_RL2, -ang2);
@@ -1296,6 +1286,7 @@ Pos6DOF::reflect() const {
 
     return reflected;
 }
+
 std::ostream& operator<<(std::ostream &out, const Pos6DOF &pos) {
     return out << pos.xyz << " " << pos.rpy;
 }

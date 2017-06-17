@@ -12,7 +12,7 @@ HCTMatrix::HCTMatrix(const HCTMatrix& m) {
 
 HCTMatrix::HCTMatrix(const int &mode) {
 
-    if(mode != HCT_IDENTITY) {
+    if (mode != HCT_IDENTITY) {
         std::cout << "(HCTMatrix) Constructor Error; mode: " << mode << ".\n";
     }
 
@@ -21,33 +21,29 @@ HCTMatrix::HCTMatrix(const int &mode) {
 
 HCTMatrix::HCTMatrix(const int &mode, const double &rotateAngle) {
 
-    if(mode == HCT_ROTATE_X) {
+    if (mode == HCT_ROTATE_X) {
         createRotateX(rotateAngle);
-    }
-    else if(mode == HCT_ROTATE_Y) {
+    } else if (mode == HCT_ROTATE_Y) {
         createRotateY(rotateAngle);
-    }
-    else if(mode == HCT_ROTATE_Z) {
+    } else if (mode == HCT_ROTATE_Z) {
         createRotateZ(rotateAngle);
-    }
-    else {
+    } else {
         std::cout << "(HCTMatrix) Constructor Error; mode: " << mode << "; rotateAngle: " << rotateAngle << ".\n";
     }
 }
 
 HCTMatrix::HCTMatrix(const int &mode, const VecPosition &axis, const double &rotateAngle) {
 
-    if(mode == HCT_GENERALIZED_ROTATE) {
+    if (mode == HCT_GENERALIZED_ROTATE) {
         createRotateGeneral(axis, rotateAngle);
-    }
-    else {
+    } else {
         std::cout << "(HCTMatrix) Constructor Error; mode: " << mode << "; axis: " << axis << "; rotateAngle: " << rotateAngle << ".\n";
     }
 }
 
 HCTMatrix::HCTMatrix(const int &mode, const VecPosition &translateVector) {
 
-    if(mode != HCT_TRANSLATE) {
+    if (mode != HCT_TRANSLATE) {
         std::cout << "(HCTMatrix) Constructor Error; mode: " << mode << "; translateVector: " << translateVector << ".\n";
     }
 
@@ -58,8 +54,8 @@ void HCTMatrix::display() {
 
     std::cout << "\n";
 
-    for(int i = 0; i < 4; ++i) {
-        for(int j = 0; j < 4; ++j) {
+    for (int i = 0; i < 4; ++i) {
+        for (int j = 0; j < 4; ++j) {
 
             std::cout << getCell(i, j) << "\t";
         }

@@ -17,128 +17,120 @@
 
 #include <geometry_msgs/PoseWithCovarianceStamped.h>
 
-namespace robot_localization
-{
-template <class ContainerAllocator>
-struct SetPoseRequest_
-{
-  typedef SetPoseRequest_<ContainerAllocator> Type;
+namespace robot_localization {
 
-  SetPoseRequest_()
-    : pose()  {
+    template <class ContainerAllocator>
+    struct SetPoseRequest_ {
+        typedef SetPoseRequest_<ContainerAllocator> Type;
+
+        SetPoseRequest_()
+        : pose() {
+        }
+
+        SetPoseRequest_(const ContainerAllocator& _alloc)
+        : pose(_alloc) {
+            (void) _alloc;
+        }
+
+
+
+        typedef ::geometry_msgs::PoseWithCovarianceStamped_<ContainerAllocator> _pose_type;
+        _pose_type pose;
+
+
+
+
+        typedef boost::shared_ptr< ::robot_localization::SetPoseRequest_<ContainerAllocator> > Ptr;
+        typedef boost::shared_ptr< ::robot_localization::SetPoseRequest_<ContainerAllocator> const> ConstPtr;
+
+    }; // struct SetPoseRequest_
+
+    typedef ::robot_localization::SetPoseRequest_<std::allocator<void> > SetPoseRequest;
+
+    typedef boost::shared_ptr< ::robot_localization::SetPoseRequest > SetPoseRequestPtr;
+    typedef boost::shared_ptr< ::robot_localization::SetPoseRequest const> SetPoseRequestConstPtr;
+
+    // constants requiring out of line definition
+
+    template<typename ContainerAllocator>
+    std::ostream& operator<<(std::ostream& s, const ::robot_localization::SetPoseRequest_<ContainerAllocator> & v) {
+        ros::message_operations::Printer< ::robot_localization::SetPoseRequest_<ContainerAllocator> >::stream(s, "", v);
+        return s;
     }
-  SetPoseRequest_(const ContainerAllocator& _alloc)
-    : pose(_alloc)  {
-  (void)_alloc;
-    }
-
-
-
-   typedef  ::geometry_msgs::PoseWithCovarianceStamped_<ContainerAllocator>  _pose_type;
-  _pose_type pose;
-
-
-
-
-  typedef boost::shared_ptr< ::robot_localization::SetPoseRequest_<ContainerAllocator> > Ptr;
-  typedef boost::shared_ptr< ::robot_localization::SetPoseRequest_<ContainerAllocator> const> ConstPtr;
-
-}; // struct SetPoseRequest_
-
-typedef ::robot_localization::SetPoseRequest_<std::allocator<void> > SetPoseRequest;
-
-typedef boost::shared_ptr< ::robot_localization::SetPoseRequest > SetPoseRequestPtr;
-typedef boost::shared_ptr< ::robot_localization::SetPoseRequest const> SetPoseRequestConstPtr;
-
-// constants requiring out of line definition
-
-
-
-template<typename ContainerAllocator>
-std::ostream& operator<<(std::ostream& s, const ::robot_localization::SetPoseRequest_<ContainerAllocator> & v)
-{
-ros::message_operations::Printer< ::robot_localization::SetPoseRequest_<ContainerAllocator> >::stream(s, "", v);
-return s;
-}
 
 } // namespace robot_localization
 
-namespace ros
-{
-namespace message_traits
-{
+namespace ros {
+    namespace message_traits {
 
 
 
-// BOOLTRAITS {'IsFixedSize': False, 'IsMessage': True, 'HasHeader': False}
-// {'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg'], 'geographic_msgs': ['/opt/ros/kinetic/share/geographic_msgs/cmake/../msg'], 'geometry_msgs': ['/opt/ros/kinetic/share/geometry_msgs/cmake/../msg'], 'uuid_msgs': ['/opt/ros/kinetic/share/uuid_msgs/cmake/../msg']}
+        // BOOLTRAITS {'IsFixedSize': False, 'IsMessage': True, 'HasHeader': False}
+        // {'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg'], 'geographic_msgs': ['/opt/ros/kinetic/share/geographic_msgs/cmake/../msg'], 'geometry_msgs': ['/opt/ros/kinetic/share/geometry_msgs/cmake/../msg'], 'uuid_msgs': ['/opt/ros/kinetic/share/uuid_msgs/cmake/../msg']}
 
-// !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
+        // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
 
+        template <class ContainerAllocator>
+        struct IsFixedSize< ::robot_localization::SetPoseRequest_<ContainerAllocator> >
+        : FalseType {
+        };
 
+        template <class ContainerAllocator>
+        struct IsFixedSize< ::robot_localization::SetPoseRequest_<ContainerAllocator> const>
+        : FalseType {
+        };
 
+        template <class ContainerAllocator>
+        struct IsMessage< ::robot_localization::SetPoseRequest_<ContainerAllocator> >
+        : TrueType {
+        };
 
-template <class ContainerAllocator>
-struct IsFixedSize< ::robot_localization::SetPoseRequest_<ContainerAllocator> >
-  : FalseType
-  { };
+        template <class ContainerAllocator>
+        struct IsMessage< ::robot_localization::SetPoseRequest_<ContainerAllocator> const>
+        : TrueType {
+        };
 
-template <class ContainerAllocator>
-struct IsFixedSize< ::robot_localization::SetPoseRequest_<ContainerAllocator> const>
-  : FalseType
-  { };
+        template <class ContainerAllocator>
+        struct HasHeader< ::robot_localization::SetPoseRequest_<ContainerAllocator> >
+        : FalseType {
+        };
 
-template <class ContainerAllocator>
-struct IsMessage< ::robot_localization::SetPoseRequest_<ContainerAllocator> >
-  : TrueType
-  { };
+        template <class ContainerAllocator>
+        struct HasHeader< ::robot_localization::SetPoseRequest_<ContainerAllocator> const>
+        : FalseType {
+        };
 
-template <class ContainerAllocator>
-struct IsMessage< ::robot_localization::SetPoseRequest_<ContainerAllocator> const>
-  : TrueType
-  { };
+        template<class ContainerAllocator>
+        struct MD5Sum< ::robot_localization::SetPoseRequest_<ContainerAllocator> > {
 
-template <class ContainerAllocator>
-struct HasHeader< ::robot_localization::SetPoseRequest_<ContainerAllocator> >
-  : FalseType
-  { };
+            static const char* value() {
+                return "4f3e0bbe7a24e1f929488cd1970222d3";
+            }
 
-template <class ContainerAllocator>
-struct HasHeader< ::robot_localization::SetPoseRequest_<ContainerAllocator> const>
-  : FalseType
-  { };
+            static const char* value(const ::robot_localization::SetPoseRequest_<ContainerAllocator>&) {
+                return value();
+            }
+            static const uint64_t static_value1 = 0x4f3e0bbe7a24e1f9ULL;
+            static const uint64_t static_value2 = 0x29488cd1970222d3ULL;
+        };
 
+        template<class ContainerAllocator>
+        struct DataType< ::robot_localization::SetPoseRequest_<ContainerAllocator> > {
 
-template<class ContainerAllocator>
-struct MD5Sum< ::robot_localization::SetPoseRequest_<ContainerAllocator> >
-{
-  static const char* value()
-  {
-    return "4f3e0bbe7a24e1f929488cd1970222d3";
-  }
+            static const char* value() {
+                return "robot_localization/SetPoseRequest";
+            }
 
-  static const char* value(const ::robot_localization::SetPoseRequest_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x4f3e0bbe7a24e1f9ULL;
-  static const uint64_t static_value2 = 0x29488cd1970222d3ULL;
-};
+            static const char* value(const ::robot_localization::SetPoseRequest_<ContainerAllocator>&) {
+                return value();
+            }
+        };
 
-template<class ContainerAllocator>
-struct DataType< ::robot_localization::SetPoseRequest_<ContainerAllocator> >
-{
-  static const char* value()
-  {
-    return "robot_localization/SetPoseRequest";
-  }
+        template<class ContainerAllocator>
+        struct Definition< ::robot_localization::SetPoseRequest_<ContainerAllocator> > {
 
-  static const char* value(const ::robot_localization::SetPoseRequest_<ContainerAllocator>&) { return value(); }
-};
-
-template<class ContainerAllocator>
-struct Definition< ::robot_localization::SetPoseRequest_<ContainerAllocator> >
-{
-  static const char* value()
-  {
-    return "geometry_msgs/PoseWithCovarianceStamped pose\n\
+            static const char* value() {
+                return "geometry_msgs/PoseWithCovarianceStamped pose\n\
 \n\
 ================================================================================\n\
 MSG: geometry_msgs/PoseWithCovarianceStamped\n\
@@ -199,49 +191,45 @@ float64 y\n\
 float64 z\n\
 float64 w\n\
 ";
-  }
+            }
 
-  static const char* value(const ::robot_localization::SetPoseRequest_<ContainerAllocator>&) { return value(); }
-};
+            static const char* value(const ::robot_localization::SetPoseRequest_<ContainerAllocator>&) {
+                return value();
+            }
+        };
 
-} // namespace message_traits
+    } // namespace message_traits
 } // namespace ros
 
-namespace ros
-{
-namespace serialization
-{
+namespace ros {
+    namespace serialization {
 
-  template<class ContainerAllocator> struct Serializer< ::robot_localization::SetPoseRequest_<ContainerAllocator> >
-  {
-    template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
-    {
-      stream.next(m.pose);
-    }
+        template<class ContainerAllocator> struct Serializer< ::robot_localization::SetPoseRequest_<ContainerAllocator> > {
 
-    ROS_DECLARE_ALLINONE_SERIALIZER
-  }; // struct SetPoseRequest_
+            template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m) {
+                stream.next(m.pose);
+            }
 
-} // namespace serialization
+            ROS_DECLARE_ALLINONE_SERIALIZER
+        }; // struct SetPoseRequest_
+
+    } // namespace serialization
 } // namespace ros
 
-namespace ros
-{
-namespace message_operations
-{
+namespace ros {
+    namespace message_operations {
 
-template<class ContainerAllocator>
-struct Printer< ::robot_localization::SetPoseRequest_<ContainerAllocator> >
-{
-  template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::robot_localization::SetPoseRequest_<ContainerAllocator>& v)
-  {
-    s << indent << "pose: ";
-    s << std::endl;
-    Printer< ::geometry_msgs::PoseWithCovarianceStamped_<ContainerAllocator> >::stream(s, indent + "  ", v.pose);
-  }
-};
+        template<class ContainerAllocator>
+        struct Printer< ::robot_localization::SetPoseRequest_<ContainerAllocator> > {
 
-} // namespace message_operations
+            template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::robot_localization::SetPoseRequest_<ContainerAllocator>& v) {
+                s << indent << "pose: ";
+                s << std::endl;
+                Printer< ::geometry_msgs::PoseWithCovarianceStamped_<ContainerAllocator> >::stream(s, indent + "  ", v.pose);
+            }
+        };
+
+    } // namespace message_operations
 } // namespace ros
 
 #endif // ROBOT_LOCALIZATION_MESSAGE_SETPOSEREQUEST_H

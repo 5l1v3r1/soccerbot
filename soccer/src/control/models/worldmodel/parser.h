@@ -20,7 +20,6 @@ class VecPosition;
 using namespace std;
 
 class Parser {
-
 private:
 
     WorldModel *worldModel;
