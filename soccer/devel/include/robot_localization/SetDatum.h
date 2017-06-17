@@ -12,112 +12,110 @@
 #include <robot_localization/SetDatumResponse.h>
 
 
-namespace robot_localization
-{
+namespace robot_localization {
 
-struct SetDatum
-{
+    struct SetDatum {
+        typedef SetDatumRequest Request;
+        typedef SetDatumResponse Response;
+        Request request;
+        Response response;
 
-typedef SetDatumRequest Request;
-typedef SetDatumResponse Response;
-Request request;
-Response response;
+        typedef Request RequestType;
+        typedef Response ResponseType;
 
-typedef Request RequestType;
-typedef Response ResponseType;
-
-}; // struct SetDatum
+    }; // struct SetDatum
 } // namespace robot_localization
 
 
-namespace ros
-{
-namespace service_traits
-{
+namespace ros {
+    namespace service_traits {
+
+        template<>
+        struct MD5Sum< ::robot_localization::SetDatum > {
+
+            static const char* value() {
+                return "fe903ca95d0210defda73a1629604439";
+            }
+
+            static const char* value(const ::robot_localization::SetDatum&) {
+                return value();
+            }
+        };
+
+        template<>
+        struct DataType< ::robot_localization::SetDatum > {
+
+            static const char* value() {
+                return "robot_localization/SetDatum";
+            }
+
+            static const char* value(const ::robot_localization::SetDatum&) {
+                return value();
+            }
+        };
 
 
-template<>
-struct MD5Sum< ::robot_localization::SetDatum > {
-  static const char* value()
-  {
-    return "fe903ca95d0210defda73a1629604439";
-  }
+        // service_traits::MD5Sum< ::robot_localization::SetDatumRequest> should match 
+        // service_traits::MD5Sum< ::robot_localization::SetDatum > 
 
-  static const char* value(const ::robot_localization::SetDatum&) { return value(); }
-};
+        template<>
+        struct MD5Sum< ::robot_localization::SetDatumRequest> {
 
-template<>
-struct DataType< ::robot_localization::SetDatum > {
-  static const char* value()
-  {
-    return "robot_localization/SetDatum";
-  }
+            static const char* value() {
+                return MD5Sum< ::robot_localization::SetDatum >::value();
+            }
 
-  static const char* value(const ::robot_localization::SetDatum&) { return value(); }
-};
+            static const char* value(const ::robot_localization::SetDatumRequest&) {
+                return value();
+            }
+        };
 
+        // service_traits::DataType< ::robot_localization::SetDatumRequest> should match 
+        // service_traits::DataType< ::robot_localization::SetDatum > 
 
-// service_traits::MD5Sum< ::robot_localization::SetDatumRequest> should match 
-// service_traits::MD5Sum< ::robot_localization::SetDatum > 
-template<>
-struct MD5Sum< ::robot_localization::SetDatumRequest>
-{
-  static const char* value()
-  {
-    return MD5Sum< ::robot_localization::SetDatum >::value();
-  }
-  static const char* value(const ::robot_localization::SetDatumRequest&)
-  {
-    return value();
-  }
-};
+        template<>
+        struct DataType< ::robot_localization::SetDatumRequest> {
 
-// service_traits::DataType< ::robot_localization::SetDatumRequest> should match 
-// service_traits::DataType< ::robot_localization::SetDatum > 
-template<>
-struct DataType< ::robot_localization::SetDatumRequest>
-{
-  static const char* value()
-  {
-    return DataType< ::robot_localization::SetDatum >::value();
-  }
-  static const char* value(const ::robot_localization::SetDatumRequest&)
-  {
-    return value();
-  }
-};
+            static const char* value() {
+                return DataType< ::robot_localization::SetDatum >::value();
+            }
 
-// service_traits::MD5Sum< ::robot_localization::SetDatumResponse> should match 
-// service_traits::MD5Sum< ::robot_localization::SetDatum > 
-template<>
-struct MD5Sum< ::robot_localization::SetDatumResponse>
-{
-  static const char* value()
-  {
-    return MD5Sum< ::robot_localization::SetDatum >::value();
-  }
-  static const char* value(const ::robot_localization::SetDatumResponse&)
-  {
-    return value();
-  }
-};
+            static const char* value(const ::robot_localization::SetDatumRequest&) {
+                return value();
+            }
+        };
 
-// service_traits::DataType< ::robot_localization::SetDatumResponse> should match 
-// service_traits::DataType< ::robot_localization::SetDatum > 
-template<>
-struct DataType< ::robot_localization::SetDatumResponse>
-{
-  static const char* value()
-  {
-    return DataType< ::robot_localization::SetDatum >::value();
-  }
-  static const char* value(const ::robot_localization::SetDatumResponse&)
-  {
-    return value();
-  }
-};
+        // service_traits::MD5Sum< ::robot_localization::SetDatumResponse> should match 
+        // service_traits::MD5Sum< ::robot_localization::SetDatum > 
 
-} // namespace service_traits
+        template<>
+        struct MD5Sum< ::robot_localization::SetDatumResponse> {
+
+            static const char* value() {
+                return MD5Sum< ::robot_localization::SetDatum >::value();
+            }
+
+            static const char* value(const ::robot_localization::SetDatumResponse&) {
+                return value();
+            }
+        };
+
+        // service_traits::DataType< ::robot_localization::SetDatumResponse> should match 
+        // service_traits::DataType< ::robot_localization::SetDatum > 
+
+        template<>
+        struct DataType< ::robot_localization::SetDatumResponse> {
+
+            static const char* value() {
+                return DataType< ::robot_localization::SetDatum >::value();
+            }
+
+            static const char* value(const ::robot_localization::SetDatumResponse&) {
+                return value();
+            }
+        };
+
+    } // namespace service_traits
 } // namespace ros
 
 #endif // ROBOT_LOCALIZATION_MESSAGE_SETDATUM_H

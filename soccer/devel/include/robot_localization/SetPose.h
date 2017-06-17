@@ -12,112 +12,110 @@
 #include <robot_localization/SetPoseResponse.h>
 
 
-namespace robot_localization
-{
+namespace robot_localization {
 
-struct SetPose
-{
+    struct SetPose {
+        typedef SetPoseRequest Request;
+        typedef SetPoseResponse Response;
+        Request request;
+        Response response;
 
-typedef SetPoseRequest Request;
-typedef SetPoseResponse Response;
-Request request;
-Response response;
+        typedef Request RequestType;
+        typedef Response ResponseType;
 
-typedef Request RequestType;
-typedef Response ResponseType;
-
-}; // struct SetPose
+    }; // struct SetPose
 } // namespace robot_localization
 
 
-namespace ros
-{
-namespace service_traits
-{
+namespace ros {
+    namespace service_traits {
+
+        template<>
+        struct MD5Sum< ::robot_localization::SetPose > {
+
+            static const char* value() {
+                return "4f3e0bbe7a24e1f929488cd1970222d3";
+            }
+
+            static const char* value(const ::robot_localization::SetPose&) {
+                return value();
+            }
+        };
+
+        template<>
+        struct DataType< ::robot_localization::SetPose > {
+
+            static const char* value() {
+                return "robot_localization/SetPose";
+            }
+
+            static const char* value(const ::robot_localization::SetPose&) {
+                return value();
+            }
+        };
 
 
-template<>
-struct MD5Sum< ::robot_localization::SetPose > {
-  static const char* value()
-  {
-    return "4f3e0bbe7a24e1f929488cd1970222d3";
-  }
+        // service_traits::MD5Sum< ::robot_localization::SetPoseRequest> should match 
+        // service_traits::MD5Sum< ::robot_localization::SetPose > 
 
-  static const char* value(const ::robot_localization::SetPose&) { return value(); }
-};
+        template<>
+        struct MD5Sum< ::robot_localization::SetPoseRequest> {
 
-template<>
-struct DataType< ::robot_localization::SetPose > {
-  static const char* value()
-  {
-    return "robot_localization/SetPose";
-  }
+            static const char* value() {
+                return MD5Sum< ::robot_localization::SetPose >::value();
+            }
 
-  static const char* value(const ::robot_localization::SetPose&) { return value(); }
-};
+            static const char* value(const ::robot_localization::SetPoseRequest&) {
+                return value();
+            }
+        };
 
+        // service_traits::DataType< ::robot_localization::SetPoseRequest> should match 
+        // service_traits::DataType< ::robot_localization::SetPose > 
 
-// service_traits::MD5Sum< ::robot_localization::SetPoseRequest> should match 
-// service_traits::MD5Sum< ::robot_localization::SetPose > 
-template<>
-struct MD5Sum< ::robot_localization::SetPoseRequest>
-{
-  static const char* value()
-  {
-    return MD5Sum< ::robot_localization::SetPose >::value();
-  }
-  static const char* value(const ::robot_localization::SetPoseRequest&)
-  {
-    return value();
-  }
-};
+        template<>
+        struct DataType< ::robot_localization::SetPoseRequest> {
 
-// service_traits::DataType< ::robot_localization::SetPoseRequest> should match 
-// service_traits::DataType< ::robot_localization::SetPose > 
-template<>
-struct DataType< ::robot_localization::SetPoseRequest>
-{
-  static const char* value()
-  {
-    return DataType< ::robot_localization::SetPose >::value();
-  }
-  static const char* value(const ::robot_localization::SetPoseRequest&)
-  {
-    return value();
-  }
-};
+            static const char* value() {
+                return DataType< ::robot_localization::SetPose >::value();
+            }
 
-// service_traits::MD5Sum< ::robot_localization::SetPoseResponse> should match 
-// service_traits::MD5Sum< ::robot_localization::SetPose > 
-template<>
-struct MD5Sum< ::robot_localization::SetPoseResponse>
-{
-  static const char* value()
-  {
-    return MD5Sum< ::robot_localization::SetPose >::value();
-  }
-  static const char* value(const ::robot_localization::SetPoseResponse&)
-  {
-    return value();
-  }
-};
+            static const char* value(const ::robot_localization::SetPoseRequest&) {
+                return value();
+            }
+        };
 
-// service_traits::DataType< ::robot_localization::SetPoseResponse> should match 
-// service_traits::DataType< ::robot_localization::SetPose > 
-template<>
-struct DataType< ::robot_localization::SetPoseResponse>
-{
-  static const char* value()
-  {
-    return DataType< ::robot_localization::SetPose >::value();
-  }
-  static const char* value(const ::robot_localization::SetPoseResponse&)
-  {
-    return value();
-  }
-};
+        // service_traits::MD5Sum< ::robot_localization::SetPoseResponse> should match 
+        // service_traits::MD5Sum< ::robot_localization::SetPose > 
 
-} // namespace service_traits
+        template<>
+        struct MD5Sum< ::robot_localization::SetPoseResponse> {
+
+            static const char* value() {
+                return MD5Sum< ::robot_localization::SetPose >::value();
+            }
+
+            static const char* value(const ::robot_localization::SetPoseResponse&) {
+                return value();
+            }
+        };
+
+        // service_traits::DataType< ::robot_localization::SetPoseResponse> should match 
+        // service_traits::DataType< ::robot_localization::SetPose > 
+
+        template<>
+        struct DataType< ::robot_localization::SetPoseResponse> {
+
+            static const char* value() {
+                return DataType< ::robot_localization::SetPose >::value();
+            }
+
+            static const char* value(const ::robot_localization::SetPoseResponse&) {
+                return value();
+            }
+        };
+
+    } // namespace service_traits
 } // namespace ros
 
 #endif // ROBOT_LOCALIZATION_MESSAGE_SETPOSE_H

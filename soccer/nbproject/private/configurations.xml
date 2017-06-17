@@ -13,6 +13,10 @@
             </df>
           </df>
           <df name="CMakeFiles">
+            <df name="audio_receiver_node.dir">
+              <df name="src">
+              </df>
+            </df>
             <df name="roscpp_generate_messages_cpp.dir">
             </df>
             <df name="roscpp_generate_messages_eus.dir">
@@ -155,6 +159,8 @@
           <df name="download_extra_data.dir">
           </df>
           <df name="doxygen.dir">
+          </df>
+          <df name="Progress">
           </df>
           <df name="run_tests.dir">
           </df>
@@ -572,6 +578,8 @@
           </df>
         </df>
         <df name="lib">
+          <df name="audio_receiver">
+          </df>
           <df name="ball_tracker">
           </df>
           <df name="camera_data">
@@ -675,13 +683,23 @@
       <df name="src">
         <df name="audio_receiver">
           <df name="src">
+            <in>audio_packet.hpp</in>
+            <in>audio_receiver_node.cpp</in>
             <in>constants.hpp</in>
+            <in>reciever.cpp</in>
+            <in>reciever.h</in>
+            <in>transmitter.cpp</in>
+            <in>transmitter.h</in>
           </df>
         </df>
         <df name="camera_data">
           <df name="cascades">
           </df>
           <df name="matlab">
+            <df name="image_urls">
+              <df name="n04254680">
+              </df>
+            </df>
             <df name="ImageNetToolbox">
               <in>ToolboxDemo.m</in>
               <in>XPathExecuteQuery.m</in>
@@ -696,6 +714,8 @@
               <in>wnidToDefinition.m</in>
               <in>wnidToGloss.m</in>
               <in>wnidToWords.m</in>
+            </df>
+            <df name="test">
             </df>
             <in>detect_balls.m</in>
             <in>download_images.m</in>

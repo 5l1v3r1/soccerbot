@@ -17,21 +17,21 @@
 class Ball {
 private:
     int circumference();
-    
+
     // Publishers and subscribers
     ros::NodeHandle n;
     ros::Publisher ball_pub;
     ros::Subscriber ball_sub;
-    
+
     // The marker to draw
     visualization_msgs::Marker marker;
-    
+
 public:
     static const int radius = BALL_RADIUS; // Radius in millimeters
 
     Ball(ros::NodeHandle n);
     ~Ball();
-    
+
     void draw();
     void update_location(geometry_msgs::Transform);
 };

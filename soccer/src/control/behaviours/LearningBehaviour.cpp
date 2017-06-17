@@ -3,7 +3,7 @@
 #include "../skills/skillparser.h"
 
 NaoBehaviour::NaoBehaviour(const std::string teamName, int uNum, const map <std::string, std::string>& namedParams_, const std::string& rsg_) :
-namedParams(namedParams_), rsg(rsg_) {	
+namedParams(namedParams_), rsg(rsg_) {
     worldModel = new WorldModel();
     bodyModel = new BodyModel(worldModel);
     parser = new Parser(worldModel, bodyModel);
@@ -25,7 +25,7 @@ std::string NaoBehaviour::Think(const std::string& message) {
     worldModel->setLastSkill(skillSequence[currentSkillIndex]);
     std::string action = composeAction();
     std::cout << bodyModel->getCenterOfMass() << std::endl;
-	return action;
+    return action;
 }
 
 std::string NaoBehaviour::composeAction() {
@@ -68,5 +68,5 @@ std::string NaoBehaviour::composeAction() {
 }
 
 std::string NaoBehaviour::getMonMessage() {
-	return "";
+    return "";
 }

@@ -1,7 +1,6 @@
 #include "../behaviours/naobehaviour.h"
 
-class Optimizer
-{
+class Optimizer {
 public:
     Optimizer(NaoBehaviour*& behaviour);
     ~Optimizer();

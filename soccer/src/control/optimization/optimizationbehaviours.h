@@ -5,7 +5,7 @@
 
 bool isBallMoving(const WorldModel *worldModel);
 
-class OptimizationBehaviourFixedKick: public NaoBehaviour {
+class OptimizationBehaviourFixedKick : public NaoBehaviour {
     const string outputFile;
 
     double timeStart;
@@ -26,7 +26,7 @@ class OptimizationBehaviourFixedKick: public NaoBehaviour {
 public:
 
     OptimizationBehaviourFixedKick(const std::string teamName, int uNum, const map<
-                                  string, string>& namedParams_, const string& rsg_, const string& outputFile_);
+            string, string>& namedParams_, const string& rsg_, const string& outputFile_);
 
     virtual void beam(double& beamX, double& beamY, double& beamAngle);
     virtual SkillType selectSkill();
@@ -50,7 +50,7 @@ public:
 
     OptimizationBehaviourWalkForward(const std::string teamName, int uNum, const map<string, string>& namedParams_, const string& rsg_, const string& outputFile_);
 
-    virtual void beam( double& beamX, double& beamY, double& beamAngle );
+    virtual void beam(double& beamX, double& beamY, double& beamAngle);
     virtual SkillType selectSkill();
     virtual void updateFitness();
 

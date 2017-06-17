@@ -1,46 +1,47 @@
-%% Training Soccer Ball detection
-% Load the positive samples data from a MAT file. The file contains
-% a table specifying bounding boxes for several object categories.
-% The table was exported from the Training Image Labeler app.
-%%
-% Load positive samples.
-load('../training_images/ball/ball.mat');
-%%
+% % Training Soccer Ball detection
+        % Load the positive samples data from a MAT file. The file contains
+        % a table specifying bounding boxes for several object categories.
+        % The table was exported from the Training Image Labeler app.
+        % %
+        % Load positive samples.
+        load('../training_images/ball/ball.mat');
+% %
 % Select the bounding boxes for stop signs from the table.
-positiveInstances = ball(:,1:2);
-%%
+        positiveInstances = ball( :, 1 : 2);
+% %
 % Add the image directory to the MATLAB path.
-imDir = '../training_images/ball/';
+        imDir = '../training_images/ball/';
 addpath(imDir);
-%%
+% %
 % Specify the folder for negative images.
-negativeFolder = '../training_images/negative/';
+        negativeFolder = '../training_images/negative/';
 publicNegative = '../training_images/haarcascade-negatives/images';
-%%
-% Create an |imageDatastore| object containing negative images.
-negativeImages = imageDatastore({publicNegative});
-%%
+% %
+% Create an | imageDatastore | object containing negative images.
+        negativeImages = imageDatastore({publicNegative});
+% %
 % Train a cascade object detector called 'stopSignDetector.xml'
 % using HOG features.
-% NOTE: The command can take several minutes to run.
-trainCascadeObjectDetector('ball.xml',positiveInstances, ...
-    negativeFolder,'FalseAlarmRate',0.01,'NumCascadeStages',4,'FeatureType','Haar');
+% NOTE : The command can take several minutes to run.
+trainCascadeObjectDetector('ball.xml', positiveInstances, ...
+        negativeFolder, 'FalseAlarmRate', 0.01, 'NumCascadeStages', 4, 'FeatureType', 'Haar');
 movefile('ball.xml', '../cascades/ball.xml')
-%%
+% %
 % Use the newly trained classifier to detect a stop sign in an image.
 detector = vision.CascadeObjectDetector('../cascades/ball.xml');
-%%
+% %
 % Read the test image.
-img = imread('ball5.jpg');
-%%
+        img = imread('ball5.jpg');
+% %
 % Detect a stop sign.
-bbox = step(detector,img); 
-%%
+        bbox = step(detector, img);
+% %
 % Insert bounding box rectangles and return the marked image.
- detectedImg = insertObjectAnnotation(img,'rectangle',bbox,'ball');
-%%
+        detectedImg = insertObjectAnnotation(img, 'rectangle', bbox, 'ball');
+% %
 % Display the detected stop sign.
-figure; imshow(detectedImg);
-%%
+figure;
+imshow(detectedImg);
+% %
 % Remove the image directory from the path.
 rmpath(imDir); 

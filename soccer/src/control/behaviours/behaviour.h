@@ -4,7 +4,6 @@
 #include <string>
 
 class Behaviour {
-
 public:
 
     Behaviour();
@@ -16,7 +15,7 @@ public:
 
     /** called for every message received from the server; should
         return an action string
-    */
+     */
     virtual std::string Think(const std::string& message) = 0;
 
     /** Get message for sending to the server through the monitor port */

@@ -28,7 +28,7 @@ public:
     Camera();
     ~Camera();
     std::string path;
-    
+
     void detect_edges();
     void detect_ball();
 };
