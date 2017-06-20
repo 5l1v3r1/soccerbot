@@ -1,8 +1,8 @@
-prefix=/home/soccer/soccerbot/soccer/devel
+prefix=/home/justin/soccerbot/soccer/devel
 
 Name: camera_data
 Description: Description of camera_data
 Version: 0.0.0
 Cflags: 
-Libs: -L/home/soccer/soccerbot/soccer/devel/lib 
+Libs: -L/home/justin/soccerbot/soccer/devel/lib 
 Requires: 

@@ -1,0 +1,10 @@
+robotname1: Jason
+rosdistro: 'kinetic
+
+  '
+roslaunch:
+  uris: {host_justin_ubuntu__32939: 'http://Justin-Ubuntu:32939/'}
+rosversion: '1.12.7
+
+  '
+run_id: 923c4528-554e-11e7-bf79-74dfbfe38a0b

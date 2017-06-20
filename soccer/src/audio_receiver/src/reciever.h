@@ -6,6 +6,7 @@ public:
     Reciever();
     Reciever(const Reciever& orig);
     virtual ~Reciever();
+    
 private:
 
 };

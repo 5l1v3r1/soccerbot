@@ -1,47 +1,20 @@
-% % Training Soccer Ball detection
-        % Load the positive samples data from a MAT file. The file contains
-        % a table specifying bounding boxes for several object categories.
-        % The table was exported from the Training Image Labeler app.
-        % %
-        % Load positive samples.
-        load('../training_images/ball/ball.mat');
-% %
-% Select the bounding boxes for stop signs from the table.
-        positiveInstances = ball( :, 1 : 2);
-% %
-% Add the image directory to the MATLAB path.
-        imDir = '../training_images/ball/';
+load('../training_images/ball/ball.mat');
+positiveInstances = ball( :, 1 : 2);
+
+imDir = '../training_images/ball/';
+negativeFolder = '../training_images/negative/';
+
 addpath(imDir);
-% %
-% Specify the folder for negative images.
-        negativeFolder = '../training_images/negative/';
-publicNegative = '../training_images/haarcascade-negatives/images';
-% %
-% Create an | imageDatastore | object containing negative images.
-        negativeImages = imageDatastore({publicNegative});
-% %
-% Train a cascade object detector called 'stopSignDetector.xml'
-% using HOG features.
-% NOTE : The command can take several minutes to run.
-trainCascadeObjectDetector('ball.xml', positiveInstances, ...
-        negativeFolder, 'FalseAlarmRate', 0.01, 'NumCascadeStages', 4, 'FeatureType', 'Haar');
+negativeImages = imageDatastore(negativeFolder);
+
+trainCascadeObjectDetector('ball.xml', positiveInstances, negativeFolder, 'FalseAlarmRate', 0.01, 'NumCascadeStages', 4, 'FeatureType', 'Haar');
+
 movefile('ball.xml', '../cascades/ball.xml')
-% %
-% Use the newly trained classifier to detect a stop sign in an image.
+
 detector = vision.CascadeObjectDetector('../cascades/ball.xml');
-% %
-% Read the test image.
-        img = imread('ball5.jpg');
-% %
-% Detect a stop sign.
-        bbox = step(detector, img);
-% %
-% Insert bounding box rectangles and return the marked image.
-        detectedImg = insertObjectAnnotation(img, 'rectangle', bbox, 'ball');
-% %
-% Display the detected stop sign.
+img = imread('test/ball5.jpg');
+bbox = step(detector, img);
+detectedImg = insertObjectAnnotation(img, 'rectangle', bbox, 'ball');
 figure;
 imshow(detectedImg);
-% %
-% Remove the image directory from the path.
 rmpath(imDir); 
