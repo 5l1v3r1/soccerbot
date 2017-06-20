@@ -313,6 +313,7 @@ void Done() {
 
 bool SelectInput() {
 
+	//why return 1 here? does the function work properly..?
     return 1;
     fd_set readfds;
     struct timeval tv = {60, 0};
