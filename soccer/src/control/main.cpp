@@ -492,7 +492,8 @@ void Run() {
 
         GetMessage(msg);
         std::string msgToServer = behaviour->Think(msg);
-        //float fitness = optimizer->getFitness();
+        //add fallen test here
+
         // To support agent sync mode
         msgToServer.append("(syn)");
         PutMessage(msgToServer);
