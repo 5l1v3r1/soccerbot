@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="." name="0">
+      <df name="src">
+        <df name="audio_receiver">
+          <df name="src">
+            <in>audio_packet.hpp</in>
+            <in>audio_receiver_node.cpp</in>
+            <in>reciever.cpp</in>
+            <in>reciever.h</in>
+            <in>transmitter.cpp</in>
+            <in>transmitter.h</in>
+          </df>
+        </df>
+        <df name="camera_data">
+          <df name="src">
+            <in>camera.cpp</in>
+            <in>camera_data.cpp</in>
+            <in>houghcircle.cpp</in>
+          </df>
+        </df>
+        <df name="control">
+          <df name="behaviours">
+            <in>LearningBehaviour.cpp</in>
+            <in>behaviour.cpp</in>
+            <in>naobehaviour.cpp</in>
+          </df>
+          <df name="headers">
+            <in>headers.cpp</in>
+          </df>
+          <df name="math">
+            <in>Geometry.cpp</in>
+            <in>hctmatrix.cpp</in>
+            <in>vecposition.cpp</in>
+          </df>
+          <df name="models">
+            <df name="bodymodel">
+              <in>bodymodel.cpp</in>
+            </df>
+            <df name="worldmodel">
+              <in>parser.cpp</in>
+              <in>worldmodel.cpp</in>
+            </df>
+          </df>
+          <df name="optimization">
+            <in>Optimizer.cpp</in>
+            <in>optimizationbehaviours.cpp</in>
+          </df>
+          <df name="skills">
+            <in>curve3d.cpp</in>
+            <in>skill.cpp</in>
+          </df>
+          <in>main.cpp</in>
+        </df>
+        <df name="soccer_field">
+          <df name="src">
+            <in>ball.cpp</in>
+            <in>ball_node.cpp</in>
+            <in>field.cpp</in>
+            <in>field_node.cpp</in>
+            <in>object.cpp</in>
+          </df>
+        </df>
+      </df>
+    </df>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>nbproject/private/launcher.properties</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
+  <projectmakefile></projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <flagsDictionary>
+        <element flagsID="0" commonFlags="-fPIC"/>
+        <element flagsID="1" commonFlags="-std=c++11"/>
+        <element flagsID="2" commonFlags="-std=c++11 -fPIC"/>
+      </flagsDictionary>
+      <codeAssistance>
+      </codeAssistance>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>catkin_make --directory soccerbot/soccer</buildCommand>
+          <cleanCommand>rm -rf build/</cleanCommand>
+          <executablePath></executablePath>
+        </makeTool>
+        <preBuild>
+          <preBuildCommandWorkingDir>.</preBuildCommandWorkingDir>
+          <preBuildCommand></preBuildCommand>
+        </preBuild>
+      </makefileType>
+      <folder path="0/src/camera_data">
+        <ccTool>
+          <incDir>
+            <pElem>/opt/ros/kinetic/share</pElem>
+          </incDir>
+        </ccTool>
+      </folder>
+      <folder path="0/src/control">
+        <ccTool>
+          <incDir>
+            <pElem>/opt/ros/kinetic/share</pElem>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+      </folder>
+      <folder path="0/src/soccer_field">
+        <ccTool>
+          <incDir>
+            <pElem>/opt/ros/kinetic/include</pElem>
+            <pElem>/opt/ros/kinetic/include/xmlrpcpp</pElem>
+            <pElem>src/soccer_field/src</pElem>
+            <pElem>build/soccer_field</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>ROSCONSOLE_BACKEND_LOG4CXX</Elem>
+            <Elem>ROS_BUILD_SHARED_LIBS=1</Elem>
+            <Elem>ROS_PACKAGE_NAME="soccer_field"</Elem>
+          </preprocessorList>
+        </ccTool>
+      </folder>
+      <item path="src/audio_receiver/src/audio_packet.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/audio_receiver/src/audio_receiver_node.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/audio_receiver/src/reciever.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/audio_receiver/src/reciever.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/audio_receiver/src/transmitter.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/audio_receiver/src/transmitter.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/camera_data/src/camera.cpp" ex="false" tool="1" flavor2="8">
+        <ccTool flags="2">
+          <incDir>
+            <pElem>/opt/ros/kinetic/include</pElem>
+            <pElem>/opt/ros/kinetic/include/opencv-3.2.0-dev</pElem>
+            <pElem>/opt/ros/kinetic/include/opencv-3.2.0-dev/opencv</pElem>
+            <pElem>/opt/ros/kinetic/include/xmlrpcpp</pElem>
+            <pElem>src/camera_data/sadfs</pElem>
+            <pElem>build/camera_data</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>ROSCONSOLE_BACKEND_LOG4CXX</Elem>
+            <Elem>ROS_BUILD_SHARED_LIBS=1</Elem>
+            <Elem>ROS_PACKAGE_NAME="camera_data"</Elem>
+            <Elem>camera_EXPORTS</Elem>
+          </preprocessorList>
+        </ccTool>
+      </item>
+      <item path="src/camera_data/src/camera_data.cpp"
+            ex="false"
+            tool="1"
+            flavor2="8">
+        <ccTool flags="1">
+          <incDir>
+            <pElem>/opt/ros/kinetic/include</pElem>
+            <pElem>/opt/ros/kinetic/include/opencv-3.2.0-dev</pElem>
+            <pElem>/opt/ros/kinetic/include/opencv-3.2.0-dev/opencv</pElem>
+            <pElem>/opt/ros/kinetic/include/xmlrpcpp</pElem>
+            <pElem>src/camera_data/sadfs</pElem>
+            <pElem>build/camera_data</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>ROSCONSOLE_BACKEND_LOG4CXX</Elem>
+            <Elem>ROS_BUILD_SHARED_LIBS=1</Elem>
+            <Elem>ROS_PACKAGE_NAME="camera_data"</Elem>
+          </preprocessorList>
+        </ccTool>
+      </item>
+      <item path="src/camera_data/src/houghcircle.cpp"
+            ex="false"
+            tool="1"
+            flavor2="4">
+        <ccTool>
+          <incDir>
+            <pElem>/opt/ros/kinetic/share</pElem>
+          </incDir>
+        </ccTool>
+      </item>
+      <item path="src/control/behaviours/LearningBehaviour.cpp"
+            ex="false"
+            tool="1"
+            flavor2="4">
+      </item>
+      <item path="src/control/behaviours/behaviour.cpp"
+            ex="false"
+            tool="1"
+            flavor2="4">
+      </item>
+      <item path="src/control/behaviours/naobehaviour.cpp"
+            ex="false"
+            tool="1"
+            flavor2="4">
+      </item>
+      <item path="src/control/headers/headers.cpp" ex="false" tool="1" flavor2="4">
+      </item>
+      <item path="src/control/main.cpp" ex="false" tool="1" flavor2="4">
+      </item>
+      <item path="src/control/math/Geometry.cpp" ex="false" tool="1" flavor2="4">
+      </item>
+      <item path="src/control/math/hctmatrix.cpp" ex="false" tool="1" flavor2="4">
+      </item>
+      <item path="src/control/math/vecposition.cpp" ex="false" tool="1" flavor2="4">
+      </item>
+      <item path="src/control/models/bodymodel/bodymodel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="4">
+      </item>
+      <item path="src/control/models/worldmodel/parser.cpp"
+            ex="false"
+            tool="1"
+            flavor2="4">
+      </item>
+      <item path="src/control/models/worldmodel/worldmodel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="4">
+      </item>
+      <item path="src/control/optimization/Optimizer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="4">
+      </item>
+      <item path="src/control/optimization/optimizationbehaviours.cpp"
+            ex="false"
+            tool="1"
+            flavor2="4">
+      </item>
+      <item path="src/control/skills/curve3d.cpp" ex="false" tool="1" flavor2="4">
+      </item>
+      <item path="src/control/skills/skill.cpp" ex="false" tool="1" flavor2="4">
+      </item>
+      <item path="src/soccer_field/src/ball.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool flags="0">
+          <preprocessorList>
+            <Elem>soccer_field_EXPORTS</Elem>
+          </preprocessorList>
+        </ccTool>
+      </item>
+      <item path="src/soccer_field/src/ball_node.cpp" ex="false" tool="1" flavor2="4">
+      </item>
+      <item path="src/soccer_field/src/field.cpp" ex="false" tool="1" flavor2="4">
+        <ccTool flags="0">
+          <preprocessorList>
+            <Elem>soccer_field_EXPORTS</Elem>
+          </preprocessorList>
+        </ccTool>
+      </item>
+      <item path="src/soccer_field/src/field_node.cpp"
+            ex="false"
+            tool="1"
+            flavor2="4">
+      </item>
+      <item path="src/soccer_field/src/object.cpp" ex="false" tool="1" flavor2="4">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

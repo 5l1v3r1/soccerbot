@@ -1,0 +1,5 @@
+[user]
+	email = ctf.chan@mail.utoronto.ca
+	name = Chris Chan
+[gc]
+	autoDetach = false

@@ -1,0 +1,28 @@
+# All hidden folders and files
+.*
+!/.gitignore
+!/.gitconfig
+
+# Linux Folders
+/Videos/
+/Pictures/
+/Music/
+/Desktop/
+/Downloads/
+!/Documents/
+
+# ROS files
+/soccer/build/
+!/soccer/build/.project
+/soccer/devel/lib/*
+/soccer/**/build/**
+/soccer/nbproject/private/*
+/soccer/devel/lib/*
+/soccer/devel/share/**
+
+# SIMSpark
+/simspark/**/build/**
+
+# pkgconfig
+/soccer/devel/lib/pjgconfig/**
+# Gazebo (Might need to fix in future)
