@@ -5,8 +5,14 @@
 NaoBehaviour::NaoBehaviour(const std::string teamName, int uNum, const map <std::string, std::string>& namedParams_, const std::string& rsg_) :
 namedParams(namedParams_), rsg(rsg_) {
 
+    /**********************************************************
+     * test isFallen first                                    *
+     * compile shows cannot read the stand.skl and wave.skills*
+     * fix later                                              *
+     **********************************************************/                      
     readSkillsFromFile("../skills/stand.skl");
     readSkillsFromFile("../skills/wave.skl");
+    //readSkillsFromFile("test.skl");
 
     worldModel = new WorldModel();
     bodyModel = new BodyModel(worldModel);
@@ -89,8 +95,7 @@ std::string NaoBehaviour::getMonMessage() {
 
 void NaoBehaviour::readSkillsFromFile(const std::string& filename) {
     SkillParser skillParser(skills, bodyModel);
-    string skillDescription =
-            skillParser.preprocess(filename, namedParams);
+    string skillDescription = skillParser.preprocess(filename, namedParams);
     parse_info<iterator_t> info = parse(skillDescription.c_str(),
             skillParser,
             (space_p | comment_p("#"))
