@@ -1,31 +1,3 @@
-<<<<<<< HEAD
-# UTRA Soccer Control Team
-Bipedal control! Based on [UT Austin Villa](https://github.com/LARG/utaustinvilla3d).
-
-## Building
-Make sure that you have rcssserver3d-dev (the -dev part is important) installed. [Instructions here](http://simspark.sourceforge.net/wiki/index.php/Installation_on_Linux).
-
-```bash
-cd build
-cmake ..
-make
-```
-
-## Running
-Once you've built successfully, start the simulation server in one terminal window using:
-
-```bash
-rcsoccersim3d
-```
-
-The soccer field should come up. Then start an agent in another window with (from inside of the build directory)
-
-```bash
-./utracontrol
-```
-
-May the torque be with you.
-=======
 # UTRA Soccer Team  
 We are an amateur soccer team at the University of Toronto making an attempt to compete in the 2018 RoboCup
 
@@ -76,4 +48,3 @@ sudo sh configure_simspark.sh
 git config user.email "your_email@example.com"
 git config user.name "Your Name"
 ```
->>>>>>> 3009868590ad80b5f6f5b3fb5afacf51a9f3aa85
