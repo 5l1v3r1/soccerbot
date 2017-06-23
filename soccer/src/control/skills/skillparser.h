@@ -100,22 +100,18 @@ struct SkillParser : public grammar<SkillParser> {
         fstream skillFile(filename.c_str(), ios_base::in);
         skillFile.read(buff, buffsize);
 
-        
 
-        //testing block for loading file
-        ofstream ofile;
-        ofile.open("test.txt");  
-        ofile << "testing for opening the file" << endl;
-        ofile.close();
+        ifstream test;
+        test.open("./test.txt");
+        if (test.fail()) cout << "Unable to load the file" << endl << endl;
 
-        ifstream ifile;
-        ifile.open("test.txt");
-        string name;
-        ifile >> name;
-        cout << name << endl << endl;
-        cout << "finishing" << endl;
+        string name ;
+        test >> name;
+        cout << name << endl;
 
 
+
+        cout << endl;
 
 
 
