@@ -1,8 +1,0 @@
-prefix=/home/vuwij/soccerbot/soccer/devel
-
-Name: field_mapper
-Description: Description of field_mapper
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/vuwij/soccerbot/soccer/devel/lib 
-Requires: 
