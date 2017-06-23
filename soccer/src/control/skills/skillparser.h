@@ -102,19 +102,19 @@ struct SkillParser : public grammar<SkillParser> {
 
         
 
-        //here is the test block for open the file
-        string name;
-        ifstream test;
-        cout << filename << endl;
-        test.open("./stand.skl");
-        
-        if (test.fail()) throw "Unable to open the file";
+        //testing block for loading file
+        ofstream ofile;
+        ofile.open("test.txt");  
+        ofile << "testing for opening the file" << endl;
+        ofile.close();
 
-        while(!test.eof()){
-            cin >> name;
-            cout << name;
-        }
-        test.close();
+        ifstream ifile;
+        ifile.open("test.txt");
+        string name;
+        ifile >> name;
+        cout << name << endl << endl;
+        cout << "finishing" << endl;
+
 
 
 

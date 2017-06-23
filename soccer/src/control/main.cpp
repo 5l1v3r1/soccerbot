@@ -514,13 +514,20 @@ main(int argc, char* argv[]) {
     signal(SIGINT, handler);
 
 
-        ofstream file;
-        file.open("test.txt");  
-        file << "testing for opening the file" << endl;
-        file.close();
+    /*
+    //testing block for loading file
+    ofstream ofile;
+    ofile.open("test.txt");  
+    ofile << "testing for opening the file" << endl;
+    ofile.close();
 
-        cout << "finishing" << endl;
-
+    ifstream ifile;
+    ifile.open("test.txt");
+    string name;
+    ifile >> name;
+    cout << name << endl << endl;
+    cout << "finishing" << endl;
+    */
 
 
 
