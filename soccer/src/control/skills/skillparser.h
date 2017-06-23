@@ -100,24 +100,41 @@ struct SkillParser : public grammar<SkillParser> {
         fstream skillFile(filename.c_str(), ios_base::in);
         skillFile.read(buff, buffsize);
 
-
+        /*
+        //now here the block can load the file successfully
         ifstream test;
         test.open("./test.txt");
         if (test.fail()) cout << "Unable to load the file" << endl << endl;
-
         string name ;
         test >> name;
-        cout << name << endl;
+        cout << name << "\n";
+        cout << "--------------!!!justic line!!!-------------\n" << endl;
+
+        ifstream test1;
+        test.open("./skills/test.txt");
+        if (test1.fail()) cout << "Unable to load the file" << endl << endl;
+        test >> name;
+        cout << name << " subfolader successfully load\n";
+        cout << "--------------!!!justic line!!!-------------\n" << endl;
+        */
 
 
-
-        cout << endl;
-
-
-
-        if (skillFile.fail()) {
-            throw "failed to read the whole skill file " + filename;
+        /*//try to load stand.skl
+        ifstream stand;
+        stand.open("./skills/stand.skl");
+        if(stand.fail()) cout << "Unable to load the file" << endl << endl;
+        while (stand.eof()){
+            stand >> name;
+            cout << name;
         }
+        cout << endl;
+        */
+
+
+
+        //if (skillFile.fail()) {
+          //  throw "failed to read the whole skill file " + filename;
+        //}
 
         numRead = skillFile.gcount();
 
