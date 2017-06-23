@@ -101,13 +101,13 @@ struct SkillParser : public grammar<SkillParser> {
         skillFile.read(buff, buffsize);
 
         
-        cout << filename << endl;
-    
+
         //here is the test block for open the file
         string name;
         ifstream test;
-        test.open("../skills/test");
-
+        cout << filename << endl;
+        test.open("./stand.skl");
+        
         if (test.fail()) throw "Unable to open the file";
 
         while(!test.eof()){
