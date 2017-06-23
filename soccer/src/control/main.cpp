@@ -489,13 +489,15 @@ void Run() {
     std::string msg;
 
     while (gLoop) {
-        cout << "testing"<< endl;
+        
         GetMessage(msg);
         std::string msgToServer = behaviour->Think(msg);
+
         //add fallen test
-        if(behaviour->isFallen()){
-            cout << "what?I am fallen!" << endl;
-        }
+        //if(behaviour->isFallen()){
+        //    cout << "what?I am fallen!" << endl;
+        //}
+
         // To support agent sync mode
         msgToServer.append("(syn)");
         PutMessage(msgToServer);

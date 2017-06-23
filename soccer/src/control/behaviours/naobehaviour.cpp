@@ -10,9 +10,9 @@ namedParams(namedParams_), rsg(rsg_) {
      * compile shows cannot read the stand.skl and wave.skills*
      * fix later                                              *
      **********************************************************/                      
-    readSkillsFromFile("../skills/stand.skl");
-    readSkillsFromFile("../skills/wave.skl");
-    //readSkillsFromFile("test.skl");
+    //readSkillsFromFile("../skills/stand.skl");
+    //readSkillsFromFile("../skills/wave.skl");
+    readSkillsFromFile("../skills/test.skl");
 
     worldModel = new WorldModel();
     bodyModel = new BodyModel(worldModel);
