@@ -494,9 +494,9 @@ void Run() {
         std::string msgToServer = behaviour->Think(msg);
 
         //add fallen test
-        //if(behaviour->isFallen()){
-        //    cout << "what?I am fallen!" << endl;
-        //}
+        if(behaviour->isFallen()){
+            cout << "what?I am fallen!" << endl;
+        }
 
         // To support agent sync mode
         msgToServer.append("(syn)");

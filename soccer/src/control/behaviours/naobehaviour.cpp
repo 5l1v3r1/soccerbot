@@ -5,9 +5,11 @@
 NaoBehaviour::NaoBehaviour(const std::string teamName, int uNum, const map <std::string, std::string>& namedParams_, const std::string& rsg_) :
 namedParams(namedParams_), rsg(rsg_) {
 
-    //note here the file is connet with main.cpp so the output file is created under control not in control/skill                  
+    //note here the file is connet with main.cpp so the output/input file is created under control not in control/skill                  
     readSkillsFromFile("./skills/stand.skl");
     readSkillsFromFile("./skills/wave.skl");
+    //readSkillsFromFile("./skills/test.skl");
+
 
     worldModel = new WorldModel();
     bodyModel = new BodyModel(worldModel);
