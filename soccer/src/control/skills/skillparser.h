@@ -119,16 +119,17 @@ struct SkillParser : public grammar<SkillParser> {
         */
 
 
-        /*//try to load stand.skl
+        //try to load stand.skl
         ifstream stand;
-        stand.open("./skills/stand.skl");
+        int name1;
+        stand.open("./skills/test.skl");
         if(stand.fail()) cout << "Unable to load the file" << endl << endl;
         while (stand.eof()){
-            stand >> name;
-            cout << name;
+            stand >> name1;
+            cout << name1;
         }
-        cout << endl;
-        */
+        cout << "--------------!!!justic line!!!-------------\n" << endl;   
+        
 
 
 

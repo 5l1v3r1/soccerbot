@@ -1,14 +1,11 @@
 # Time is in seconds.
 # Angles are in degrees.
-STARTSKILL TEST_SKILL
-
-STARTSTATE
-settar EFF_H1 1 end
-settar EFF_RL1 0 end
-settar EFF_LL1 0 end
-settar EFF_LA1 30 end
-ENDSTATE
-
-
-
-ENDSKILL 
+1
+2
+3
+4
+4
+6
+6
+8
+7

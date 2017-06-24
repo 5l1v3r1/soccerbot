@@ -513,24 +513,6 @@ main(int argc, char* argv[]) {
     // registering the handler, catching SIGINT signals
     signal(SIGINT, handler);
 
-
-    /*
-    //testing block for loading file
-    ofstream ofile;
-    ofile.open("test.txt");  
-    ofile << "testing for opening the file" << endl;
-    ofile.close();
-
-    ifstream ifile;
-    ifile.open("test.txt");
-    string name;
-    ifile >> name;
-    cout << name << endl << endl;
-    cout << "finishing" << endl;
-    */
-
-
-
     // Actually print out the errors that are thrown.
     try {
         PrintGreeting();
