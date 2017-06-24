@@ -264,7 +264,7 @@ const double EPSILON = 0.0001;
 #define DIR_BACK  2
 
 //Skills
-
+//add new skill here -------------------------------------------------------------------
 enum SkillType {
     SKILL_WALK_OMNI,
 
@@ -278,8 +278,10 @@ enum SkillType {
     SKILL_KICK_IK_0_LEFT_LEG,
     SKILL_KICK_IK_0_RIGHT_LEG,
 
-    SKILL_NONE
+    SKILL_NONE,
 
+    //add one for testing to avoid breaking someting
+    SKILL_TEST
 };
 
 
