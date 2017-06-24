@@ -43,7 +43,9 @@ std::string NaoBehaviour::Think(const std::string& message) {
     }
     worldModel->setLastSkill(skillSequence[currentSkillIndex]);
     std::string action = composeAction();
-    std::cout << bodyModel->getCenterOfMass() << std::endl;
+
+    //hide the center of mass
+    //std::cout << bodyModel->getCenterOfMass() << std::endl;
     return action;
 }
 
