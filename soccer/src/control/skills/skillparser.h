@@ -117,7 +117,7 @@ struct SkillParser : public grammar<SkillParser> {
         cout << "--------------!!!justic line!!!-------------\n" << endl;
         */
 
-        //so here cannont use .fail() funciton...may be 
+        //so here cannont use .fail() funciton...cause .skl file is not like .txt
         if (!skillFile.is_open()) {
             throw "failed to read the whole skill file " + filename;
         }
