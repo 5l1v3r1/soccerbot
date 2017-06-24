@@ -2,7 +2,7 @@ Files for defining skills represented as a series of fixed frame poses. Skill fi
 
 To add a new skill to an agent the skill's skill file should be loaded in by calling readSkillsFromFile() in NaoBehavior::NaoBehavior(). The skill should also be added to enum SkillType in headers.h and to EnumParser<SkillType> in headers.cc.
 
-        Skill files are in the following format:
+        $Skill files are in the following format:
 
 Begin and name skill
 
