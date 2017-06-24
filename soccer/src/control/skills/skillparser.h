@@ -100,42 +100,27 @@ struct SkillParser : public grammar<SkillParser> {
         fstream skillFile(filename.c_str(), ios_base::in);
         skillFile.read(buff, buffsize);
 
-        /*
-        //now here the block can load the file successfully
-        ifstream test;
-        test.open("./test.txt");
+        
+        //OK now here is the testing function..output successfully but cannot load .skl file
+        /*ofstream test;
+        test.open("./skills/test.skl");
         if (test.fail()) cout << "Unable to load the file" << endl << endl;
-        string name ;
-        test >> name;
-        cout << name << "\n";
+        test << "testing for test.skl" << endl;
+        test << "--------------!!!justic line!!!-------------\n" << endl;
         cout << "--------------!!!justic line!!!-------------\n" << endl;
 
-        ifstream test1;
-        test.open("./skills/test.txt");
-        if (test1.fail()) cout << "Unable to load the file" << endl << endl;
-        test >> name;
-        cout << name << " subfolader successfully load\n";
+        ifstream file;
+        if (file.fail()) cout << "Unable to load the file" << endl << endl;
+        string name;
+        file >> name;
+        cout << name << endl;
         cout << "--------------!!!justic line!!!-------------\n" << endl;
         */
 
-
-        //try to load stand.skl
-        ifstream stand;
-        int name1;
-        stand.open("./skills/test.skl");
-        if(stand.fail()) cout << "Unable to load the file" << endl << endl;
-        while (stand.eof()){
-            stand >> name1;
-            cout << name1;
+        //so here cannont use .fail() funciton...may be 
+        if (!skillFile.is_open()) {
+            throw "failed to read the whole skill file " + filename;
         }
-        cout << "--------------!!!justic line!!!-------------\n" << endl;   
-        
-
-
-
-        //if (skillFile.fail()) {
-          //  throw "failed to read the whole skill file " + filename;
-        //}
 
         numRead = skillFile.gcount();
 
