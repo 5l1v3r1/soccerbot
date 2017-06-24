@@ -121,6 +121,9 @@ struct SkillParser : public grammar<SkillParser> {
         if (!skillFile.is_open()) {
             throw "failed to read the whole skill file " + filename;
         }
+        else {
+            cout << "opening file " + filename << endl;
+        }
 
         numRead = skillFile.gcount();
 

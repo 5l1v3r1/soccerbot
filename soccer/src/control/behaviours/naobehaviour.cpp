@@ -7,7 +7,7 @@ namedParams(namedParams_), rsg(rsg_) {
 
     //note here the file is connet with main.cpp so the output/input file is created under control not in control/skill                  
     readSkillsFromFile("./skills/stand.skl");
-    readSkillsFromFile("./skills/wave.skl");
+    //readSkillsFromFile("./skills/wave.skl");
     //readSkillsFromFile("./skills/test.skl");
 
 
