@@ -5,17 +5,19 @@
 NaoBehaviour::NaoBehaviour(const std::string teamName, int uNum, const map <std::string, std::string>& namedParams_, const std::string& rsg_) :
 namedParams(namedParams_), rsg(rsg_) {
 
-    //note here the file is connet with main.cpp so the output/input file is created under control not in control/skill                  
+    //note here the file is connet with main.cpp so the output/input file is created under control not in control/skill 
+    //and also add the skill name below"skillType arr"                 
     readSkillsFromFile("./skills/stand.skl");
     //readSkillsFromFile("./skills/wave.skl");
-    //readSkillsFromFile("./skills/test.skl");
+    readSkillsFromFile("./skills/test.skl");
 
 
     worldModel = new WorldModel();
     bodyModel = new BodyModel(worldModel);
     parser = new Parser(worldModel, bodyModel);
 
-    static const SkillType arr[] = {SKILL_STAND, SKILL_WAVE};
+    //add the new skill here !!
+    static const SkillType arr[] = {SKILL_STAND, SKILL_TEST};
     skillSequence = vector<SkillType>(arr, arr + sizeof (arr) / sizeof (arr[0]));
     currentSkillIndex = 0;
 }
@@ -107,6 +109,6 @@ void NaoBehaviour::readSkillsFromFile(const std::string& filename) {
 //to check if the agent is fallen down
 bool NaoBehaviour::isFallen() {
     VecPosition COM = bodyModel->getCenterOfMass();
-    return (COM.getZ() > -0.07);
+    return (COM.getZ() > -0.06);
 }
 

@@ -272,6 +272,9 @@ enum SkillType {
 
     SKILL_WAVE,
 
+    //add one for testing to avoid breaking someting
+    SKILL_TEST,
+
     SKILL_KICK_LEFT_LEG,
     SKILL_KICK_RIGHT_LEG,
 
@@ -280,8 +283,6 @@ enum SkillType {
 
     SKILL_NONE,
 
-    //add one for testing to avoid breaking someting
-    SKILL_TEST
 };
 
 
