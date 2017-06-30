@@ -1,14 +1,16 @@
 STARTSKILL SKILL_TEST
 
+
+
 STARTSTATE
-inctar EFF_RL6 7 end
+inctar EFF_RL6 5 end
 wait 3 end
 ENDSTATE
 
 STARTSTATE
-inctar EFF_RL3 30 end
-inctar EFF_RL4 -40 end
-inctar EFF_RL5 -10 end
+inctar EFF_LL3 30 end
+inctar EFF_LL4 -40 end
+inctar EFF_LL5 -10 end
 wait 3 end
 ENDSTATE
 
