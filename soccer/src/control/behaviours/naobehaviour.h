@@ -31,9 +31,10 @@ public:
     virtual std::string Think(const std::string& message);
 
     bool isFallen();
-
+    
     void setMonMessage(const std::string& msg);
     std::string getMonMessage();
+
 };
 
 #endif
