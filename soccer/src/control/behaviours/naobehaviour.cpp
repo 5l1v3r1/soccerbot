@@ -116,7 +116,8 @@ bool NaoBehaviour::isFallen() {
 
 
 //to get and print the position
-/*void NaoBehaviour::printPos(){
-    VecPosition temp = worldModel->setMyPosition(worldModel->getMyPosition());
-    cout << temp << endl;
-}*/
+void NaoBehaviour::printPos(){
+    
+
+    cout << worldModel->getMyPosition() << endl;
+}

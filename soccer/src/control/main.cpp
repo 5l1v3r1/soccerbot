@@ -497,8 +497,8 @@ void Run() {
         if(behaviour->isFallen()){
             cout << "what?I am fallen!" << endl;
         }
-        
 
+        behaviour->printPos();
         // To support agent sync mode
         msgToServer.append("(syn)");
         PutMessage(msgToServer);
