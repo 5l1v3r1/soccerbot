@@ -1,6 +1,6 @@
 STARTSKILL SKILL_TEST
 
-#start moving
+##start moving
 STARTSTATE
 inctar EFF_RL6 -5 end
 wait 0.5 end

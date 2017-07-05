@@ -49,7 +49,7 @@ std::string NaoBehaviour::Think(const std::string& message) {
 
     //hide the center of mass
     //std::cout << "The center of mass is "<< bodyModel->getCenterOfMass() << std::endl;
-    cout << "The location of agent is " << worldModel->getMyPosition() << endl;
+    //cout << "The location of agent is " << worldModel->getMyPosition() << endl;
     return action;
 }
 
@@ -110,14 +110,15 @@ void NaoBehaviour::readSkillsFromFile(const std::string& filename) {
 
 //to check if the agent is fallen down
 bool NaoBehaviour::isFallen() {
-    VecPosition COM = bodyModel->getCenterOfMass();
-    return (COM.getZ() > -0.06);
+    //VecPosition COM = bodyModel->getCenterOfMass();
+    //return (COM.getZ() > -0.06);
+    return worldModel->isFallen();
 }
 
 
 //to get and print the position
-void NaoBehaviour::printPos(){
+void NaoBehaviour::getAccer(){
     
 
-    cout << worldModel->getMyPosition() << endl;
+    cout << bodyModel->getAccelRates() << endl;
 }
