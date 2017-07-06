@@ -488,16 +488,18 @@ void Run() {
 
     std::string msg;
 
+    const clock_t beginTime = clock();
+
     while (gLoop) {
         
         GetMessage(msg);
         std::string msgToServer = behaviour->Think(msg);
 
         //add fallen test
-        if(behaviour->isFallen()){
-            cout << "what?I am fallen!" << endl;
-        }
-        behaviour->getAccer();
+        //if(behaviour->isFallen()){
+        //    cout << "what?I am fallen!" << endl;
+        //}
+        optimizer->countTime(beginTime);
 
         // To support agent sync mode
         msgToServer.append("(syn)");
