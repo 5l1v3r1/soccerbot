@@ -17,7 +17,7 @@ bool Optimizer::isFallen() {
     return behaviour->isFallen();
 }
 
-//just count time
+//just count time now
 void Optimizer::countTime(clock_t beginTime){
 	std::cout << float( clock () - beginTime ) /  CLOCKS_PER_SEC << endl;
 }
