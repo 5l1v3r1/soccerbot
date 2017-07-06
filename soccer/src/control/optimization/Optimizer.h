@@ -6,6 +6,7 @@ public:
     Optimizer(NaoBehaviour*& behaviour);
     ~Optimizer();
     bool isFallen();
+    void countTime(clock_t beginTime);
     // updateBehaviour
     // runOptimization
 

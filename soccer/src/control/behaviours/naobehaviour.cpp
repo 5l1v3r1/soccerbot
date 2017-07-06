@@ -110,15 +110,7 @@ void NaoBehaviour::readSkillsFromFile(const std::string& filename) {
 
 //to check if the agent is fallen down
 bool NaoBehaviour::isFallen() {
-    //VecPosition COM = bodyModel->getCenterOfMass();
     //return (COM.getZ() > -0.06);
-    return worldModel->isFallen();
 }
 
 
-//to get and print the position
-void NaoBehaviour::getAccer(){
-    
-
-    cout << bodyModel->getAccelRates() << endl;
-}
