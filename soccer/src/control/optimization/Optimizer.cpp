@@ -26,7 +26,7 @@ void Optimizer::countTime(clock_t beginTime){
 //to output the center of mass for calculation
 void Optimizer::outputCenterOfMass(){
 	std::ofstream optimizing;
-	optimizing.open("./optimizing.txt");
+	optimizing.open("../optimization/optimizing.txt", ios::app);
 	if(!optimizing.is_open()){
 		cout << "fail to the output file" << endl;
 	}
