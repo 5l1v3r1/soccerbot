@@ -33,7 +33,7 @@ public:
     virtual std::string Think(const std::string& message);
 
     bool isFallen();
-    void getAccer();
+    VecPosition outCenterOfMass();
 
     void setMonMessage(const std::string& msg);
     std::string getMonMessage();

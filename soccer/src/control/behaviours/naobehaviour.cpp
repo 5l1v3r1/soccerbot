@@ -114,3 +114,8 @@ bool NaoBehaviour::isFallen() {
 }
 
 
+//to return the center of mass for optimization
+VecPosition NaoBehaviour::outCenterOfMass(){
+    return bodyModel->getCenterOfMass();
+}
+

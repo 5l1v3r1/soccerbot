@@ -9,6 +9,7 @@ public:
     void countTime(clock_t beginTime);
     // updateBehaviour
     // runOptimization
+    void outputCenterOfMass();
 
 protected:
     NaoBehaviour *behaviour;

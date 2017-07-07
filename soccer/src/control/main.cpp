@@ -499,7 +499,8 @@ void Run() {
         //if(behaviour->isFallen()){
         //    cout << "what?I am fallen!" << endl;
         //}
-        optimizer->countTime(beginTime);
+        //optimizer->countTime(beginTime);
+        optimizer->outputCenterOfMass();
 
         // To support agent sync mode
         msgToServer.append("(syn)");
