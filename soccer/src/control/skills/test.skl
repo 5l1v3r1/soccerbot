@@ -1,0 +1,70 @@
+STARTSKILL SKILL_TEST
+
+##start moving
+STARTSTATE
+inctar EFF_RL6 -5 end
+wait 0.5 end
+ENDSTATE
+
+STARTSTATE
+inctar EFF_LL3 20 end
+inctar EFF_LL4 -20 end
+inctar EFF_RL5 3 end 
+wait 0.5 end
+ENDSTATE
+
+STARTSTATE
+inctar EFF_RL3 20 end
+inctar EFF_RL4 -20 end
+wait 0.5 end
+ENDSTATE
+
+STARTSTATE
+inctar EFF_RL6 5 end
+inctar EFF_RL5 -3 end
+wait 0.5 end
+ENDSTATE
+
+STARTSTATE
+inctar EFF_RL3 -20 end
+inctar EFF_RL4 20 end
+inctar EFF_LL3 -20 end
+inctar EFF_LL4 20 end
+wait 0.5 end
+ENDSTATE
+
+#start moving
+STARTSTATE
+inctar EFF_RL6 -5 end
+wait 0.5 end
+ENDSTATE
+
+STARTSTATE
+inctar EFF_LL3 20 end
+inctar EFF_LL4 -20 end
+inctar EFF_RL5 3 end 
+wait 0.5 end
+ENDSTATE
+
+STARTSTATE
+inctar EFF_RL3 20 end
+inctar EFF_RL4 -20 end
+wait 0.5 end
+ENDSTATE
+
+STARTSTATE
+inctar EFF_RL6 5 end
+inctar EFF_RL5 -3 end
+wait 0.5 end
+ENDSTATE
+
+STARTSTATE
+inctar EFF_RL3 -20 end
+inctar EFF_RL4 20 end
+inctar EFF_LL3 -20 end
+inctar EFF_LL4 20 end
+wait 0.5 end
+ENDSTATE
+
+
+ENDSKILL 

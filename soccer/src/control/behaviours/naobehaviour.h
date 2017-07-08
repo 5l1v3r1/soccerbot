@@ -8,6 +8,7 @@
 #include "../models/bodymodel/bodymodel.h"
 #include "../skills/skill.h"
 
+
 class NaoBehaviour : public Behaviour {
 protected:
     map< SkillType, boost::shared_ptr<Skill> > skills;
@@ -16,6 +17,7 @@ protected:
     BodyModel *bodyModel;
     WorldModel *worldModel;
     Parser *parser;
+
 
     vector<SkillType> skillSequence;
     int currentSkillIndex;
@@ -31,9 +33,11 @@ public:
     virtual std::string Think(const std::string& message);
 
     bool isFallen();
+    VecPosition outCenterOfMass();
 
     void setMonMessage(const std::string& msg);
     std::string getMonMessage();
+
 };
 
 #endif

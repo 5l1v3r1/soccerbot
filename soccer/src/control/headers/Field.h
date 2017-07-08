@@ -6,7 +6,7 @@
 #include <stdio.h>
 
 
-// setup constants for field size, landmark locations, etc
+// setup constants for field size(meter), landmark locations, etc
 // New Field
 
 const double FIELD_Y = 20;

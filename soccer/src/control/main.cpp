@@ -313,6 +313,7 @@ void Done() {
 
 bool SelectInput() {
 
+	//why return 1 here? does the function work properly..?
     return 1;
     fd_set readfds;
     struct timeval tv = {60, 0};
@@ -487,11 +488,20 @@ void Run() {
 
     std::string msg;
 
-    while (gLoop) {
+    const clock_t beginTime = clock();
 
+    while (gLoop) {
+        
         GetMessage(msg);
         std::string msgToServer = behaviour->Think(msg);
-        //float fitness = optimizer->getFitness();
+
+        //add fallen test
+        //if(behaviour->isFallen()){
+        //    cout << "what?I am fallen!" << endl;
+        //}
+        //optimizer->countTime(beginTime);
+        optimizer->outputCenterOfMass();
+
         // To support agent sync mode
         msgToServer.append("(syn)");
         PutMessage(msgToServer);

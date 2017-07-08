@@ -4,8 +4,8 @@
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
             <name>soccer</name>
-            <c-extensions>c,m</c-extensions>
-            <cpp-extensions>cpp,cxx</cpp-extensions>
+            <c-extensions>m</c-extensions>
+            <cpp-extensions>cpp</cpp-extensions>
             <header-extensions>h,hpp</header-extensions>
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects/>

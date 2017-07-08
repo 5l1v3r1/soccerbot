@@ -52,13 +52,15 @@ EnumParser<SkillType>::EnumParser() {
     string2enum["SKILL_WAVE"] = SKILL_WAVE;
     enum2String[SKILL_WAVE] = "SKILL_WAVE";
 
+    //add one for testing to avoid breaking someting
+    string2enum["SKILL_TEST"] = SKILL_TEST;
+    enum2String[SKILL_TEST] = "SKILL_TEST";
+
     string2enum["SKILL_KICK_LEFT_LEG"] = SKILL_KICK_LEFT_LEG;
     enum2String[SKILL_KICK_LEFT_LEG] = "SKILL_KICK_LEFT_LEG";
 
     string2enum["SKILL_KICK_RIGHT_LEG"] = SKILL_KICK_RIGHT_LEG;
     enum2String[SKILL_KICK_RIGHT_LEG] = "SKILL_KICK_RIGHT_LEG";
-
-
 
     // INVERSE KINEMATICS KICKS
     string2enum["SKILL_KICK_IK_0_LEFT_LEG"] = SKILL_KICK_IK_0_LEFT_LEG;
@@ -69,10 +71,10 @@ EnumParser<SkillType>::EnumParser() {
 
 
     // END INVERSE KINEMATICS KICKS
-
-
     string2enum["SKILL_NONE"] = SKILL_NONE;
     enum2String[SKILL_NONE] = "SKILL_NONE";
+
+
 
 }
 template class EnumParser<SkillType>;

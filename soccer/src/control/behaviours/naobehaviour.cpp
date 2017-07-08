@@ -5,14 +5,19 @@
 NaoBehaviour::NaoBehaviour(const std::string teamName, int uNum, const map <std::string, std::string>& namedParams_, const std::string& rsg_) :
 namedParams(namedParams_), rsg(rsg_) {
 
-    readSkillsFromFile("../skills/stand.skl");
-    readSkillsFromFile("../skills/wave.skl");
+    //note here the file is connet with main.cpp so the output/input file is created under control not in control/skill 
+    //and also add the skill name below"skillType arr"                 
+    readSkillsFromFile("./skills/stand.skl");
+    //readSkillsFromFile("./skills/wave.skl");
+    readSkillsFromFile("./skills/test.skl");
+
 
     worldModel = new WorldModel();
     bodyModel = new BodyModel(worldModel);
     parser = new Parser(worldModel, bodyModel);
 
-    static const SkillType arr[] = {SKILL_STAND, SKILL_WAVE};
+    //add the new skill here !!
+    static const SkillType arr[] = {SKILL_STAND, SKILL_TEST, SKILL_TEST, SKILL_TEST, SKILL_TEST, SKILL_TEST, SKILL_TEST};
     skillSequence = vector<SkillType>(arr, arr + sizeof (arr) / sizeof (arr[0]));
     currentSkillIndex = 0;
 }
@@ -40,7 +45,11 @@ std::string NaoBehaviour::Think(const std::string& message) {
     }
     worldModel->setLastSkill(skillSequence[currentSkillIndex]);
     std::string action = composeAction();
-    std::cout << bodyModel->getCenterOfMass() << std::endl;
+
+
+    //hide the center of mass
+    //std::cout << "The center of mass is "<< bodyModel->getCenterOfMass() << std::endl;
+    //cout << "The location of agent is " << worldModel->getMyPosition() << endl;
     return action;
 }
 
@@ -89,8 +98,7 @@ std::string NaoBehaviour::getMonMessage() {
 
 void NaoBehaviour::readSkillsFromFile(const std::string& filename) {
     SkillParser skillParser(skills, bodyModel);
-    string skillDescription =
-            skillParser.preprocess(filename, namedParams);
+    string skillDescription = skillParser.preprocess(filename, namedParams);
     parse_info<iterator_t> info = parse(skillDescription.c_str(),
             skillParser,
             (space_p | comment_p("#"))
@@ -100,8 +108,14 @@ void NaoBehaviour::readSkillsFromFile(const std::string& filename) {
     }
 }
 
+//to check if the agent is fallen down
 bool NaoBehaviour::isFallen() {
-    VecPosition COM = bodyModel->getCenterOfMass();
-    return (COM.getZ() > -0.07);
+    //return (COM.getZ() > -0.06);
+}
+
+
+//to return the center of mass for optimization
+VecPosition NaoBehaviour::outCenterOfMass(){
+    return bodyModel->getCenterOfMass();
 }
 

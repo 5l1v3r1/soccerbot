@@ -99,9 +99,32 @@ struct SkillParser : public grammar<SkillParser> {
 
         fstream skillFile(filename.c_str(), ios_base::in);
         skillFile.read(buff, buffsize);
-        if (!skillFile.eof()) {
+
+        
+        //OK now here is the testing function..output successfully but cannot load .skl file
+        /*ofstream test;
+        test.open("./skills/test.skl");
+        if (test.fail()) cout << "Unable to load the file" << endl << endl;
+        test << "testing for test.skl" << endl;
+        test << "--------------!!!justic line!!!-------------\n" << endl;
+        cout << "--------------!!!justic line!!!-------------\n" << endl;
+
+        ifstream file;
+        if (file.fail()) cout << "Unable to load the file" << endl << endl;
+        string name;
+        file >> name;
+        cout << name << endl;
+        cout << "--------------!!!justic line!!!-------------\n" << endl;
+        */
+
+        //so here cannont use .fail() funciton...cause .skl file is not like .txt
+        if (!skillFile.is_open()) {
             throw "failed to read the whole skill file " + filename;
         }
+        else {
+            cout << "opening file " + filename << endl;
+        }
+
         numRead = skillFile.gcount();
 
         // padding with \0 at the end

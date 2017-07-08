@@ -10,9 +10,10 @@ enum destination_type {
     unicast,
 };
 
-typedef class audio_packet {
+typedef class AudioPacket {
     string message;
     destination_type destination = destination_type.broadcast;
+    int frequency = 1000;
 };
 
 
