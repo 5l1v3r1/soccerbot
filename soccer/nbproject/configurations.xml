@@ -53,6 +53,12 @@
           </df>
           <in>main.cpp</in>
         </df>
+        <df name="robot_tf">
+          <df name="src">
+            <in>tf_broadcaster.cpp</in>
+            <in>tf_listener.cpp</in>
+          </df>
+        </df>
         <df name="soccer_field">
           <df name="src">
             <in>ball.cpp</in>
@@ -260,6 +266,13 @@
       <item path="src/control/skills/curve3d.cpp" ex="false" tool="1" flavor2="4">
       </item>
       <item path="src/control/skills/skill.cpp" ex="false" tool="1" flavor2="4">
+      </item>
+      <item path="src/robot_tf/src/tf_broadcaster.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/robot_tf/src/tf_listener.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/soccer_field/src/ball.cpp" ex="false" tool="1" flavor2="4">
         <ccTool flags="0">

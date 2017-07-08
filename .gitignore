@@ -16,7 +16,7 @@
 !/soccer/build/.project
 /soccer/devel/lib/*
 /soccer/**/build/**
-/soccer/devel/share/**
+/soccer/devel/share/
 
 # SIMSpark
 /simspark/**/build/**
