@@ -17,7 +17,7 @@ namedParams(namedParams_), rsg(rsg_) {
     parser = new Parser(worldModel, bodyModel);
 
     //add the new skill here !!
-    static const SkillType arr[] = {SKILL_STAND, SKILL_TEST, SKILL_TEST, SKILL_TEST, SKILL_TEST, SKILL_TEST, SKILL_TEST};
+    static const SkillType arr[] = {SKILL_STAND, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK};
     skillSequence = vector<SkillType>(arr, arr + sizeof (arr) / sizeof (arr[0]));
     currentSkillIndex = 0;
 }

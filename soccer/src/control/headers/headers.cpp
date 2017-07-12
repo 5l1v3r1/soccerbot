@@ -51,6 +51,9 @@ EnumParser<SkillType>::EnumParser() {
 
     string2enum["SKILL_WAVE"] = SKILL_WAVE;
     enum2String[SKILL_WAVE] = "SKILL_WAVE";
+    
+    string2enum["SKILL_WALK"] = SKILL_WALK;
+    enum2String[SKILL_WALK] = "SKILL_WALK";
 
     //add one for testing to avoid breaking someting
     string2enum["SKILL_TEST"] = SKILL_TEST;

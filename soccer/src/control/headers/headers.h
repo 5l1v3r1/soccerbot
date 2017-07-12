@@ -272,6 +272,7 @@ enum SkillType {
 
     SKILL_WAVE,
 
+    SKILL_WALK,
     //add one for testing to avoid breaking someting
     SKILL_TEST,
 
