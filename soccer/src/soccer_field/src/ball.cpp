@@ -3,7 +3,6 @@
 Ball::Ball(ros::NodeHandle n) {
     this->n = n;
     ball_pub = n.advertise<visualization_msgs::Marker>("ball", 1);
-
     marker.header.frame_id = "/world";
     marker.header.stamp = ros::Time::now();
     marker.ns = "objects";
