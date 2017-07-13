@@ -1,5 +1,6 @@
 //h file to check the robot is fallen
 #include "../behaviours/naobehaviour.h"
+#include <fstream>
 
 class Optimizer {
 public:
@@ -13,6 +14,7 @@ public:
 
 protected:
     NaoBehaviour *behaviour;
+    ofstream optimizing;
 
 private:
 };

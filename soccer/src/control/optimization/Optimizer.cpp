@@ -5,12 +5,21 @@
 
 //change to constructor later
 Optimizer::Optimizer(NaoBehaviour*& behaviour_) {
+    cout << "--------------Initializing the optimizer----------" << endl;
     behaviour = behaviour_;
+    //to initialize the file 
+    optimizing.open("./optimization/optimizing.txt");
+    optimizing << "Starting output center of mass" << endl;
+	if(!optimizing.is_open()){
+		cout << "--------------Fail to initialize output file-------------" << endl;
+	}
+	else cout << "--------------Initializing successfully----------" << endl;
 }
 
 //destructor
 Optimizer::~Optimizer() {
     delete behaviour;
+    optimizing.close();
 }
 
 //call the function in behaviout to detect fall
@@ -25,12 +34,6 @@ void Optimizer::countTime(clock_t beginTime){
 
 //to output the center of mass for calculation
 void Optimizer::outputCenterOfMass(){
-	std::ofstream optimizing;
-	optimizing.open("../optimization/optimizing.txt", ios::app);
-	if(!optimizing.is_open()){
-		cout << "fail to the output file" << endl;
-	}
 	VecPosition centerOfMassVec = behaviour->outCenterOfMass();
 	optimizing << centerOfMassVec << endl;
-
 }

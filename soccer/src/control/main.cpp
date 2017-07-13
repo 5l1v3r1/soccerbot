@@ -495,10 +495,6 @@ void Run() {
         GetMessage(msg);
         std::string msgToServer = behaviour->Think(msg);
 
-        //add fallen test
-        //if(behaviour->isFallen()){
-        //    cout << "what?I am fallen!" << endl;
-        //}
         //optimizer->countTime(beginTime);
         optimizer->outputCenterOfMass();
 
