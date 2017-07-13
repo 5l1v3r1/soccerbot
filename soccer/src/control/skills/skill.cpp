@@ -601,14 +601,14 @@ bool Skill::done(BodyModel *bodyModel, const WorldModel *worldModel) {
 }
 
 bool Skill::execute(BodyModel *bodyModel, const WorldModel *worldModel) {
-    Optimizer *optimizer;
+    //Optimizer *optimizer;
     const double &currentTime = worldModel->getTime();
 
     if (done(bodyModel, worldModel)) return true;
 
     if (keyFrames[currentKeyFrame]->done(bodyModel, worldModel, currentKeyFrameSetTime)) {
         std::cout << "Finished keyframe " << currentKeyFrame << " of " << skillName << std::endl;
-        optimizer->outputFrame(currentKeyFrame, skillName);
+        //optimizer->outputFrame(currentKeyFrame, skillName);
         currentKeyFrame += 1;
         currentKeyFrameSet = false;
         currentKeyFrameSetTime = -1;
