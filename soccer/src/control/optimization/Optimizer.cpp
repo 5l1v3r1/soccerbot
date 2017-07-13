@@ -38,6 +38,8 @@ void Optimizer::outputCenterOfMass(){
 	optimizing << centerOfMassVec << endl;
 }
 
+/*
 void Optimizer::outputFrame(int currentKeyFrame, string skillName){
 	optimizing << "Finished keyframe " << currentKeyFrame << " of " << skillName << endl;
 }
+*/

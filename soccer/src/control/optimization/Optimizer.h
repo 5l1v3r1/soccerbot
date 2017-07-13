@@ -15,6 +15,7 @@ public:
 
 protected:
     NaoBehaviour *behaviour;
+    //for output data
     ofstream optimizing;
 
 private:
