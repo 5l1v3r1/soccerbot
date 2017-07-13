@@ -111,7 +111,7 @@ void NaoBehaviour::readSkillsFromFile(const std::string& filename) {
 
 //to check if the agent is fallen down
 bool NaoBehaviour::isFallen() {
-    //return (COM.getZ() > -0.06);
+    return true;
 }
 
 

@@ -11,6 +11,7 @@ public:
     // updateBehaviour
     // runOptimization
     void outputCenterOfMass();
+    void outputFrame(int currentKeyFrame, string skillName);
 
 protected:
     NaoBehaviour *behaviour;

@@ -1,5 +1,6 @@
 #include <boost/foreach.hpp>
 #include "skill.h"
+#include "../optimization/Optimizer.h"
 
 #define foreach         BOOST_FOREACH
 
@@ -600,12 +601,14 @@ bool Skill::done(BodyModel *bodyModel, const WorldModel *worldModel) {
 }
 
 bool Skill::execute(BodyModel *bodyModel, const WorldModel *worldModel) {
+    Optimizer *optimizer;
     const double &currentTime = worldModel->getTime();
 
     if (done(bodyModel, worldModel)) return true;
 
     if (keyFrames[currentKeyFrame]->done(bodyModel, worldModel, currentKeyFrameSetTime)) {
         std::cout << "Finished keyframe " << currentKeyFrame << " of " << skillName << std::endl;
+        optimizer->outputFrame(currentKeyFrame, skillName);
         currentKeyFrame += 1;
         currentKeyFrameSet = false;
         currentKeyFrameSetTime = -1;

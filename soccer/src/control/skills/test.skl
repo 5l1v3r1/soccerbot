@@ -1,19 +1,76 @@
 STARTSKILL SKILL_TEST
 
-##start moving
-STARTSTATE
-inctar EFF_RA2 -90 end
-ENDSTATE
-
 
 STARTSTATE
-inctar EFF_LA3 -90 end
+settar EFF_H1 1 end
+wait 1 end
 ENDSTATE
 
 STARTSTATE
-inctar EFF_RA3 -90 end
+settar EFF_H1 -1 end
+wait 1 end
 ENDSTATE
 
 STARTSTATE
+settar EFF_LL3 5 end
+settar EFF_RL3 5 end
+wait 1 end
+ENDSTATE
+
+STARTSTATE
+settar EFF_LL3 10 end
+settar EFF_RL3 10 end
+wait 1 end
+ENDSTATE
+
+STARTSTATE
+settar EFF_RL5 5 end
+settar EFF_LL5 5 end
+wait 1 end
+ENDSTATE
+
+STARTSTATE
+settar EFF_RL4 -5 end
+settar EFF_LL4 -5 end
+wait 1 end
+ENDSTATE
+
+STARTSTATE
+settar EFF_RL4 -15 end
+settar EFF_LL4 -15 end
+wait 1 end
+ENDSTATE
+
+STARTSTATE
+inctar EFF_RL5 5 end
+inctar EFF_LL5 5 end
+wait 1 end
+ENDSTATE
+
+STARTSTATE
+inctar EFF_RL4 -5 end
+inctar EFF_LL4 -5 end
+wait 1 end
+ENDSTATE
+
+STARTSTATE
+inctar EFF_RL5 5 end
+inctar EFF_LL5 5 end
+wait 1 end
+ENDSTATE
+
+STARTSTATE
+inctar EFF_RL4 -5 end
+inctar EFF_LL4 -5 end
+wait 1 end
+ENDSTATE
+
+#put down hands
+STARTSTATE
+inctar EFF_RA1 -90 end
 inctar EFF_LA1 -90 end
+wait 1 end
 ENDSTATE
+
+
+ENDSKILL 
