@@ -16,13 +16,9 @@
 !/soccer/build/.project
 /soccer/devel/lib/*
 /soccer/**/build/**
-<<<<<<< HEAD
 /soccer/devel/share/
-=======
 /soccer/nbproject/private/*
-/soccer/devel/lib/*
 /soccer/devel/share/**
->>>>>>> 98f712e2eeafd3e2addf3edd7308b26fda187dba
 
 # SIMSpark
 /simspark/**/build/**

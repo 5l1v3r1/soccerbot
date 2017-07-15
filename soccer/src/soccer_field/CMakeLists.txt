@@ -9,10 +9,11 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   visualization_msgs
   geometry_msgs
+  gazebo_ros
 )
 
 ## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
+find_package(gazebo REQUIRED)
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -101,52 +102,42 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES field_mapper
-#  CATKIN_DEPENDS roscpp std_msgs
-#  DEPENDS system_lib
+  INCLUDE_DIRS include
+#  LIBRARIES soccer_field
+  CATKIN_DEPENDS roscpp std_msgs
+  DEPENDS system_lib gazebo_ros
 )
 
 ###########
 ## Build ##
 ###########
 
-## Specify additional locations of header files
-## Your package locations should be listed before other locations
-# include_directories(include)
-include_directories(
-  ${catkin_INCLUDE_DIRS}
-  src/
+set(SRCS
+    src/ball.cpp
+    src/field.cpp
+    src/object.cpp
 )
 
-## Declare a C++ library
- add_library(soccer_field
-   src/ball.cpp
-   src/field.cpp
- )
-
-## Add cmake target dependencies of the library
-## as an example, code may need to be generated before libraries
-## either from message generation or dynamic reconfigure
- add_dependencies(soccer_field ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+## Specify additional locations of header files
+## Your package locations should be listed before other locations
+include_directories(include)
+include_directories(
+  ${catkin_INCLUDE_DIRS}
+  ${GAZEBO_INCLUDE_DIRS}
+  ${SDFormat_INCLUDE_DIRS}
+)
 
 ## Declare a C++ executable
- add_executable(ball_node src/ball_node.cpp)
- add_executable(field_node src/field_node.cpp)
-
-## Add cmake target dependencies of the executable
-## same as for the library above
+ add_executable(ball_node src/ball_node.cpp ${SRCS})
  add_dependencies(ball_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
- add_dependencies(field_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-
-## Specify libraries to link a library or executable target against
- target_link_libraries(field_node
-   ${catkin_LIBRARIES}
-   soccer_field
- )
  target_link_libraries(ball_node
    ${catkin_LIBRARIES}
-   soccer_field
+ )
+
+ add_executable(field_node src/field_node.cpp ${SRCS})
+ add_dependencies(field_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+ target_link_libraries(field_node
+   ${catkin_LIBRARIES}
  )
 
 #############
