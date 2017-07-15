@@ -18,19 +18,21 @@ private:
     Mat edges;
 
     /** Global variables */
-    String ball_cascade_name = "/src/camera_data/cascades/ball.xml";
+    string ball_cascade_name = "soccerbot/soccer/src/camera_data/cascades/ball.xml";
     CascadeClassifier ball_cascade;
     string window_name = "Capture - Ball detection";
     RNG rng;
 
-    void detectAndDisplay(Mat frame);
+    void detect_ball(Mat frame);
 public:
     Camera();
     ~Camera();
     std::string path;
 
-    void detect_edges();
+    void loop();
+    
     void detect_ball();
+    void detect_field_lines();
 };
 
 #endif /* CAMERA_INPUT_HPP */

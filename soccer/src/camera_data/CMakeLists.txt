@@ -116,33 +116,18 @@ set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-# include_directories(include)
+include_directories(include)
 include_directories(
   ${catkin_INCLUDE_DIRS}
   ${OpenCV_INCLUDE_DIRES}
-    sadfs
-)
-
-## Declare a C++ library
-add_library(camera
-  src/camera.cpp
 )
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-add_dependencies(camera ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-
-## Declare a C++ executable
-add_executable(camera_data src/camera_data.cpp)
-
-## Add cmake target dependencies of the executable
-## same as for the library above
+add_executable(camera_data src/camera_data.cpp src/camera.cpp)
 add_dependencies(camera_data ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-
-## Specify libraries to link a library or executable target against
-target_link_libraries(camera ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
-target_link_libraries(camera_data ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} camera)
+target_link_libraries(camera_data ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
 #############
 ## Install ##
