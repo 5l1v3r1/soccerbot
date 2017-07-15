@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(audio_receiver)
+project(audio_transceiver)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -99,10 +99,9 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES audio_receiver
-#  CATKIN_DEPENDS roscpp std_msgs
-#  DEPENDS system_lib
+  INCLUDE_DIRS include
+  CATKIN_DEPENDS roscpp std_msgs
+  DEPENDS system_lib
 )
 
 ###########
@@ -111,30 +110,27 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-# include_directories(include)
+include_directories(include)
 include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-## Declare a C++ library
-# add_library(audio_receiver
-#   src/${PROJECT_NAME}/audio_receiver.cpp
-# )
+set(SRCS
+    src/receiver.cpp
+    src/transmitter.cpp
+)
 
-## Add cmake target dependencies of the library
-## as an example, code may need to be generated before libraries
-## either from message generation or dynamic reconfigure
-# add_dependencies(audio_receiver ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+## Executables
+add_executable(transmitter_node src/transmitter_node.cpp ${SRCS})
+add_dependencies(transmitter_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(transmitter_node
+   ${catkin_LIBRARIES}
+)
 
-## Declare a C++ executable
-add_executable(audio_receiver_node src/audio_receiver_node.cpp)
 
-## Add cmake target dependencies of the executable
-## same as for the library above
-add_dependencies(audio_receiver_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-
-## Specify libraries to link a library or executable target against
-target_link_libraries(audio_receiver_node
+add_executable(reciever_node src/receiver_node.cpp ${SRCS})
+add_dependencies(reciever_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(reciever_node
    ${catkin_LIBRARIES}
 )
 
@@ -153,7 +149,7 @@ target_link_libraries(audio_receiver_node
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS audio_receiver audio_receiver_node
+# install(TARGETS audio_transceiver audio_transceiver_node
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -178,7 +174,7 @@ target_link_libraries(audio_receiver_node
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_audio_receiver.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_audio_transceiver.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

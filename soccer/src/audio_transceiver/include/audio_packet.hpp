@@ -5,15 +5,16 @@
 
 using namespace std;
 
-enum destination_type {
+typedef enum destination_type {
     broadcast,
     unicast,
-};
+} DestinationType;
 
-typedef class AudioPacket {
+class AudioPacket {
+public:
     string message;
-    destination_type destination = destination_type.broadcast;
-    int frequency = 1000;
+    DestinationType destination;
+    int frequency;
 };
 
 
