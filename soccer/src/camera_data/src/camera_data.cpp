@@ -16,8 +16,11 @@ int main(int argc, char **argv) {
     path = path.substr(0, idx - 1);
     camera.path = path;
     
-    camera.loop();
-    camera.test_field_lines();
+    // For testing
+    camera.run_tests();
+    
+    //camera.loop();
+    //camera.test();
     
     ROS_INFO("Cam Tested!");
 }
