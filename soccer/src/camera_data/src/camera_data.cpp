@@ -18,9 +18,9 @@ int main(int argc, char **argv) {
     camera.initialize();
     
     // For testing
-    camera.run_tests();
+    // camera.run_tests();
     
-    //camera.loop();
+    camera.loop();
     //camera.test();
     
     ROS_INFO("Cam Tested!");

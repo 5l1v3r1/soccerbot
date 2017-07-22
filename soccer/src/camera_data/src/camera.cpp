@@ -41,7 +41,7 @@ void Camera::loop() {
         
         frame_out = frame_in;
         
-        //detect_ball();
+        // detect_ball();
         detect_field_lines();
         
         if ((char) waitKey(10) == 27)  break;
@@ -53,7 +53,7 @@ void Camera::detect_ball() {
     Mat frame_gray;
     cvtColor(frame_in, frame_gray, COLOR_BGR2GRAY);
     equalizeHist(frame_gray, frame_gray);
-    ball_cascade.detectMultiScale(frame_gray, ball, 1.1, 2, 0 | CASCADE_SCALE_IMAGE, Size(30, 30));
+    ball_cascade.detectMultiScale(frame_gray, ball, 1.1, 1, 0 | CASCADE_SCALE_IMAGE, Size(60,60));
     
     for (size_t i = 0; i < ball.size(); i++) {
         Point center(ball[i].x + ball[i].width / 2, ball[i].y + ball[i].height / 2);
@@ -61,13 +61,22 @@ void Camera::detect_ball() {
         Mat faceROI = frame_gray(ball[i]);
     }
     
-    imshow(camera_window, frame_in);
+    // imshow(camera_window, frame_in);
+    imshow(camera_window, frame_out);
 }
 
 void Camera::detect_field_lines() {
-    Mat s1, s2;
+    Mat s1, s2, imgThreshold;
+
     blur(frame_in, s1, Size(3,3) );
+    imshow(camera_window+" blur", s1);
+
+    inRange(s1, Scalar(0, 0, 200, 0), Scalar(180, 255, 255, 0), imgThreshold);
+    imshow(camera_window+" white", imgThreshold);
+
     Canny(s1, s2, 100, 200, 3);
+    imshow(camera_window+" canny", s2);
+
     cvtColor(s2, frame_out, CV_GRAY2BGR);
 
     vector<Vec4i> lines;
