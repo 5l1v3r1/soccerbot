@@ -35,6 +35,7 @@ public:
     void loop();
     
     void detect_ball();
+    void detect_circle();
     void detect_field_lines();
     
     void test(string folder, void (Camera::*test_function)(void));
