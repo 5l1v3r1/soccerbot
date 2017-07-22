@@ -38,6 +38,7 @@ public:
     void detect_field_lines();
     
     void test(string folder, void (Camera::*test_function)(void));
+    vector<string> get_image_names(string folder);
     void run_tests();
 };
 
