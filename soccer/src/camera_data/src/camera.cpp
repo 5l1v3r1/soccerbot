@@ -8,18 +8,20 @@ using namespace std;
 namespace fs = boost::filesystem;
 
 Camera::Camera() {
-    // Loads the cascade classifiers
-    path = path + "soccerbot/soccer/src/camera_data/";
-    string fullpath = path + ball_cascade_name;
-    cout << fullpath << endl;
-    if (!ball_cascade.load(fullpath)) {
-        printf("--(!)Error loading ball cascade\n");
-        return;
-    };
+    
 }
 
 Camera::~Camera() {
 
+}
+
+void Camera::initialize() {
+    // Loads the cascade classifiers
+    string fullpath = path + ball_cascade_name;
+    if (!ball_cascade.load(fullpath)) {
+        printf("--(!)Error loading ball cascade\n");
+        return;
+    };
 }
 
 void Camera::loop() {
@@ -92,6 +94,6 @@ void Camera::test(string folder, void (Camera::*test_function)(void)) {
 }
 
 void Camera::run_tests() {
-    test("training_images/ball/", &Camera::detect_ball);
-    test("training_images/field_lines/", &Camera::detect_field_lines);
+    //test("training_images/ball/", &Camera::detect_ball);
+    //test("training_images/field_lines/", &Camera::detect_field_lines);
 }

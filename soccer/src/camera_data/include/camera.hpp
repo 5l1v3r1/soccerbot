@@ -31,6 +31,7 @@ public:
     ~Camera();
     std::string path;
     
+    void initialize();
     void loop();
     
     void detect_ball();

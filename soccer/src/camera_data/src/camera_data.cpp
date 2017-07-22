@@ -14,7 +14,8 @@ int main(int argc, char **argv) {
     std::string path(argv[0]);
     int idx = path.find("devel/lib/camera_data/camera_data");
     path = path.substr(0, idx - 1);
-    camera.path = path;
+    camera.path = path + "/src/camera_data/";
+    camera.initialize();
     
     // For testing
     camera.run_tests();
