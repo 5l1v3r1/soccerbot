@@ -488,15 +488,16 @@ void Run() {
 
     std::string msg;
 
-    const clock_t beginTime = clock();
+    //start counting time
+    //const clock_t beginTime = clock();
 
     while (gLoop) {
         
         GetMessage(msg);
         std::string msgToServer = behaviour->Think(msg);
 
-        //optimizer->countTime(beginTime);
-        optimizer->outputCenterOfMass();
+        optimizer->countTime();    
+        //optimizer->outputAccerOfCOM();
 
         // To support agent sync mode
         msgToServer.append("(syn)");
