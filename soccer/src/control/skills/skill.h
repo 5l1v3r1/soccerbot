@@ -270,6 +270,7 @@ protected:
     bool currentKeyFrameSet;
     double currentKeyFrameSetTime;
     std::string skillName;
+    bool finishKeyFrame;
 
 public:
 
@@ -295,6 +296,8 @@ public:
     void display();
 
     int getCurrentKeyFrame();
+
+    bool checkFinishOfKeyFrame();
 };
 
 

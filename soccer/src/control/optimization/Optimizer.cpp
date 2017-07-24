@@ -52,9 +52,3 @@ void Optimizer::outputAccerOfCOM(){
 	VecPosition acceOfCOM = (changeInCOM.getX(), changeInCOM.getY(), changeInCOM.getZ()) / pow(interval,2);
 	cout << acceOfCOM << endl;
 }
-
-/*
-void Optimizer::outputFrame(int currentKeyFrame, string skillName){
-	optimizing << "Finished keyframe " << currentKeyFrame << " of " << skillName << endl;
-}
-*/

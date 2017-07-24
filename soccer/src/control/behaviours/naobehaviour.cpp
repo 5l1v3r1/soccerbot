@@ -41,15 +41,21 @@ std::string NaoBehaviour::Think(const std::string& message) {
     //below is the skill type
     boost::shared_ptr<Skill> skillToExecute = skills[skillSequence[currentSkillIndex]];
     // Loop through the skill sequence
-    if (skillToExecute->execute(bodyModel, worldModel)) {
-        std::cout << "Finished executing skadjshfalksdv aaoisdjfaslkdjf;l" << skillToExecute->getName() << std::endl;
+    bool checkFinishSkill = skillToExecute->execute(bodyModel, worldModel);
+    
+    if(skillToExecute->checkFinishOfKeyFrame()){
+      cout << "testing" << endl;
+    }
+
+    if (checkFinishSkill == true) {
+        std::cout << "Finished executing " << skillToExecute->getName() << std::endl;
         skillToExecute->reset();
         currentSkillIndex += 1;
         currentSkillIndex %= skillSequence.size();
     }
+
     worldModel->setLastSkill(skillSequence[currentSkillIndex]);
     std::string action = composeAction();
-
 
     //hide the center of mass
     //std::cout << "The center of mass is "<< bodyModel->getCenterOfMass() << std::endl;
