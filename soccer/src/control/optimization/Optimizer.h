@@ -8,7 +8,7 @@ public:
     Optimizer(NaoBehaviour*& behaviour);
     ~Optimizer();
     bool isFallen();
-    void countTime();
+    double countTime();
     // updateBehaviour
     // runOptimization
     void outputAccerOfCOM();
@@ -18,7 +18,8 @@ protected:
     NaoBehaviour *behaviour;
     //for output data
     ofstream optimizing;
-    clock_t time;
+    clock_t timePrevious;
+    VecPosition COMPrevious;
 
 private:
 };

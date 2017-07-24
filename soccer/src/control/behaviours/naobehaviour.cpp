@@ -8,8 +8,8 @@ namedParams(namedParams_), rsg(rsg_) {
     //note here the file is connet with main.cpp so the output/input file is created under control not in control/skill 
     //and also add the skill name below"skillType arr"                 
     readSkillsFromFile("./skills/stand.skl");
-    //readSkillsFromFile("./skills/wave.skl");
-    readSkillsFromFile("./skills/walk.skl");
+    readSkillsFromFile("./skills/test.skl");
+    //readSkillsFromFile("./skills/walk.skl");
 
 
     worldModel = new WorldModel();
@@ -17,8 +17,8 @@ namedParams(namedParams_), rsg(rsg_) {
     parser = new Parser(worldModel, bodyModel);
 
     //add the new skill here !!
-    static const SkillType arr[] = {SKILL_STAND, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK};
-    //static const SkillType arr[] = {SKILL_TEST};
+    //static const SkillType arr[] = {SKILL_STAND, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK};
+    static const SkillType arr[] = {SKILL_TEST};
     skillSequence = vector<SkillType>(arr, arr + sizeof (arr) / sizeof (arr[0]));
     currentSkillIndex = 0;
 }
@@ -111,7 +111,7 @@ void NaoBehaviour::readSkillsFromFile(const std::string& filename) {
 
 //to check if the agent is fallen down
 bool NaoBehaviour::isFallen() {
-    return true;
+    return false;
 }
 
 

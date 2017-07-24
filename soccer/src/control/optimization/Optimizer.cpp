@@ -1,4 +1,3 @@
-//cpp file for checking the robot is fallen
 #include "Optimizer.h"
 #include <ctime>
 #include <fstream>
@@ -7,7 +6,8 @@
 Optimizer::Optimizer(NaoBehaviour*& behaviour_) {
     cout << "----------Initializing the optimizer----------" << endl;
     behaviour = behaviour_;
-	time = clock();
+	timePrevious = clock();
+	COMPrevious = behaviour->outCenterOfMass();
     //to initialize the output file 
     optimizing.open("./optimization/optimizing.txt");
     optimizing << "Starting output center of mass" << endl;
@@ -23,22 +23,32 @@ Optimizer::~Optimizer() {
     optimizing.close();
 }
 
+//after to change fallen check in optimization
+//after to change fallen check in optimization
+//after to change fallen check in optimization
+//after to change fallen check in optimization
+
 //call the function in behaviout to detect fall
 bool Optimizer::isFallen() {
     return behaviour->isFallen();
 }
 
 //just count time now
-void Optimizer::countTime(){
-	cout << "Time interval is " << float( clock () - time ) /  CLOCKS_PER_SEC << endl;
-	//refresh the time 
-	time = clock ();
+double Optimizer::countTime(){
+	double interval = double( clock () - timePrevious ) /  CLOCKS_PER_SEC;
+	timePrevious = clock();
+	//cout << "Time interval is " << interval << endl;
+	return interval;
 }
 
 //to output the center of mass for calculation
 void Optimizer::outputAccerOfCOM(){
+	double interval = countTime();
 	VecPosition centerOfMassVec = behaviour->outCenterOfMass();
-	optimizing << centerOfMassVec << endl;
+	VecPosition changeInCOM = centerOfMassVec - COMPrevious;
+	COMPrevious = centerOfMassVec;
+	//equation S = ut + 1/2* at^2 ???
+	
 }
 
 /*
