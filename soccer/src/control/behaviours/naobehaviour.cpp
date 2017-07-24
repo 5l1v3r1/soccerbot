@@ -16,8 +16,19 @@ namedParams(namedParams_), rsg(rsg_) {
     worldModel = new WorldModel();
     bodyModel = new BodyModel(worldModel);
     parser = new Parser(worldModel, bodyModel);
+    
     //optimizer = new optimizer();
+    //chage to optimizer later
+    timePrevious = clock();
+    COMPrevious = bodyModel->getCenterOfMass();
+    //to initialize the output file 
+    optimizing.open("./optimization/optimizing.txt");
+    optimizing << "Starting output center of mass" << endl;
+    if(!optimizing.is_open()){
+        cout << "----------Fail to initialize output file----------" << endl;
+    }
 
+    
     //add the new skill here !!
     static const SkillType arr[] = {SKILL_STAND, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK};
     //static const SkillType arr[] = {SKILL_TEST};
@@ -42,9 +53,10 @@ std::string NaoBehaviour::Think(const std::string& message) {
     boost::shared_ptr<Skill> skillToExecute = skills[skillSequence[currentSkillIndex]];
     // Loop through the skill sequence
     bool checkFinishSkill = skillToExecute->execute(bodyModel, worldModel);
-    
+
+    //Ok here if you cannot insert inside the class you can let it reutrn a value to upper loop
     if(skillToExecute->checkFinishOfKeyFrame()){
-      cout << "testing" << endl;
+        outputAccerOfCOM();
     }
 
     if (checkFinishSkill == true) {
@@ -123,9 +135,28 @@ bool NaoBehaviour::isFallen() {
     return false;
 }
 
-
-//to return the center of mass for optimization
 VecPosition NaoBehaviour::outCenterOfMass(){
     return bodyModel->getCenterOfMass();
+}
+
+
+//just count time now
+double NaoBehaviour::countTime(){
+    double interval = double( clock () - timePrevious ) /  CLOCKS_PER_SEC;
+    timePrevious = clock();
+    //cout << "Time interval is " << interval << endl;
+    return interval;
+}
+
+//to output the center of mass for calculation
+void NaoBehaviour::outputAccerOfCOM(){
+    double interval = countTime();
+    VecPosition centerOfMassVec = outCenterOfMass();
+    VecPosition changeInCOM = centerOfMassVec - COMPrevious;
+    COMPrevious = centerOfMassVec;
+    //cout << changeInCOM << endl;
+    //equation S = ut + 1/2* at^2 ???
+    VecPosition acceOfCOM = (changeInCOM.getX(), changeInCOM.getY(), changeInCOM.getZ()) / pow(interval,2);
+    cout << acceOfCOM << endl;
 }
 

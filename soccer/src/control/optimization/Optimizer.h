@@ -1,3 +1,6 @@
+#ifndef OPTIMIZER_H
+#define OPTIMIZER_H
+
 #include "../behaviours/naobehaviour.h"
 #include <fstream>
 #include <ctime>
@@ -11,7 +14,6 @@ public:
     // updateBehaviour
     // runOptimization
     void outputAccerOfCOM();
-    void outputFrame(int currentKeyFrame, string skillName);
 
 protected:
     NaoBehaviour *behaviour;
@@ -22,3 +24,5 @@ protected:
 
 private:
 };
+
+#endif

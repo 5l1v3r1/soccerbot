@@ -7,6 +7,8 @@
 #include "../models/worldmodel/parser.h"
 #include "../models/bodymodel/bodymodel.h"
 #include "../skills/skill.h"
+#include <fstream>
+#include <ctime>
 //#include "../optimization/Optimizer.h"
 
 
@@ -18,8 +20,12 @@ protected:
     BodyModel *bodyModel;
     WorldModel *worldModel;
     Parser *parser;
-    //mmove optimizer inside naobehavior
-    //Optimizer* optimizer;
+
+    //chage to optimizer later
+    ofstream optimizing;
+    clock_t timePrevious;
+    VecPosition COMPrevious;
+
 
     vector<SkillType> skillSequence;
     int currentSkillIndex;
@@ -39,6 +45,11 @@ public:
 
     void setMonMessage(const std::string& msg);
     std::string getMonMessage();
+
+
+    //chage to optimizer later
+    double countTime();
+    void outputAccerOfCOM();
 
 };
 
