@@ -5,7 +5,7 @@
 //change to constructor later
 Optimizer::Optimizer(NaoBehaviour*& behaviour_) {
     cout << "----------Initializing the optimizer----------" << endl;
-    behaviour = behaviour_;
+    //behaviour = behaviour_;
 	timePrevious = clock();
 	COMPrevious = behaviour->outCenterOfMass();
     //to initialize the output file 
@@ -47,8 +47,10 @@ void Optimizer::outputAccerOfCOM(){
 	VecPosition centerOfMassVec = behaviour->outCenterOfMass();
 	VecPosition changeInCOM = centerOfMassVec - COMPrevious;
 	COMPrevious = centerOfMassVec;
+	//cout << changeInCOM << endl;
 	//equation S = ut + 1/2* at^2 ???
-	
+	VecPosition acceOfCOM = (changeInCOM.getX(), changeInCOM.getY(), changeInCOM.getZ()) / pow(interval,2);
+	cout << acceOfCOM << endl;
 }
 
 /*

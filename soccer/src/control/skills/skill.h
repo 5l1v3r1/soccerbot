@@ -222,7 +222,6 @@ class KeyFrame {
 private:
 protected:
     vector< boost::shared_ptr<Macro> > macros;
-
     bool toWaitTime; // Default: false.
     double waitTime; // Default: 0.
 

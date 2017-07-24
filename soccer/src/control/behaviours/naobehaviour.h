@@ -7,6 +7,7 @@
 #include "../models/worldmodel/parser.h"
 #include "../models/bodymodel/bodymodel.h"
 #include "../skills/skill.h"
+//#include "../optimization/Optimizer.h"
 
 
 class NaoBehaviour : public Behaviour {
@@ -17,7 +18,8 @@ protected:
     BodyModel *bodyModel;
     WorldModel *worldModel;
     Parser *parser;
-
+    //mmove optimizer inside naobehavior
+    //Optimizer* optimizer;
 
     vector<SkillType> skillSequence;
     int currentSkillIndex;

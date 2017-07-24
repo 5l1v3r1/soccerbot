@@ -497,7 +497,7 @@ void Run() {
         std::string msgToServer = behaviour->Think(msg);
 
         //optimizer->countTime();    
-        optimizer->outputAccerOfCOM();
+        //optimizer->outputAccerOfCOM();
 
         // To support agent sync mode
         msgToServer.append("(syn)");

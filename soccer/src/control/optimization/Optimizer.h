@@ -1,4 +1,3 @@
-//h file to check the robot is fallen
 #include "../behaviours/naobehaviour.h"
 #include <fstream>
 #include <ctime>
