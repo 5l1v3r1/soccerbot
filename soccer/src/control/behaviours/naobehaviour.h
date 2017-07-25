@@ -22,9 +22,9 @@ protected:
     Parser *parser;
 
     //chage to optimizer later
-    ofstream optimizing;
-    clock_t timePrevious;
+    double timePrevious;
     VecPosition COMPrevious;
+    VecPosition acceOfCOM;
 
 
     vector<SkillType> skillSequence;
@@ -48,7 +48,7 @@ public:
 
 
     //chage to optimizer later
-    double countTime();
+    double returnTimeInSecond();
     void outputAccerOfCOM();
 
 };

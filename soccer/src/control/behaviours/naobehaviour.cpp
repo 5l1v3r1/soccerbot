@@ -17,21 +17,16 @@ namedParams(namedParams_), rsg(rsg_) {
     bodyModel = new BodyModel(worldModel);
     parser = new Parser(worldModel, bodyModel);
     
-    //optimizer = new optimizer();
-    //chage to optimizer later
-    timePrevious = clock();
-    COMPrevious = bodyModel->getCenterOfMass();
-    //to initialize the output file 
-    optimizing.open("./optimization/optimizing.txt");
-    optimizing << "Starting output center of mass" << endl;
-    if(!optimizing.is_open()){
-        cout << "----------Fail to initialize output file----------" << endl;
-    }
 
+    //chage to optimizer later
+    timePrevious = returnTimeInSecond();
+    COMPrevious = bodyModel->getCenterOfMass();
+    acceOfCOM = (0, 0, 0);
+    
     
     //add the new skill here !!
-    static const SkillType arr[] = {SKILL_STAND, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK};
-    //static const SkillType arr[] = {SKILL_TEST};
+    //static const SkillType arr[] = {SKILL_STAND, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK};
+    static const SkillType arr[] = {SKILL_TEST};
     skillSequence = vector<SkillType>(arr, arr + sizeof (arr) / sizeof (arr[0]));
     currentSkillIndex = 0;
 }
@@ -54,8 +49,12 @@ std::string NaoBehaviour::Think(const std::string& message) {
     // Loop through the skill sequence
     bool checkFinishSkill = skillToExecute->execute(bodyModel, worldModel);
 
-    //Ok here if you cannot insert inside the class you can let it reutrn a value to upper loop
-    if(skillToExecute->checkFinishOfKeyFrame()){
+    //Ok here if you cannot insert inside the another class you can let it reutrn a value to upper loop
+    //if(skillToExecute->checkFinishOfKeyFrame()){
+    //    outputAccerOfCOM();
+    //}
+    //here now the keyframe are too few so the time interval is relatively large refresh time set to 0.5s
+    if((returnTimeInSecond() - timePrevious) > 0.1){
         outputAccerOfCOM();
     }
 
@@ -140,23 +139,21 @@ VecPosition NaoBehaviour::outCenterOfMass(){
 }
 
 
-//just count time now
-double NaoBehaviour::countTime(){
-    double interval = double( clock () - timePrevious ) /  CLOCKS_PER_SEC;
-    timePrevious = clock();
-    //cout << "Time interval is " << interval << endl;
-    return interval;
+//return time in seconds but this is little bit faster
+double NaoBehaviour::returnTimeInSecond(){
+    return (double(clock ()) /  CLOCKS_PER_SEC * 100);
 }
 
 //to output the center of mass for calculation
 void NaoBehaviour::outputAccerOfCOM(){
-    double interval = countTime();
+    double interval = (returnTimeInSecond() - timePrevious);
+    timePrevious = returnTimeInSecond();
     VecPosition centerOfMassVec = outCenterOfMass();
     VecPosition changeInCOM = centerOfMassVec - COMPrevious;
     COMPrevious = centerOfMassVec;
     //cout << changeInCOM << endl;
     //equation S = ut + 1/2* at^2 ???
-    VecPosition acceOfCOM = (changeInCOM.getX(), changeInCOM.getY(), changeInCOM.getZ()) / pow(interval,2);
-    cout << acceOfCOM << endl;
+    //accerOf Z direction is very small
+    acceOfCOM = (changeInCOM.getX(), changeInCOM.getY(), changeInCOM.getZ()) * 2 / pow(interval,2);
 }
 
