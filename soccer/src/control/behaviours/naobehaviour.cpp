@@ -55,12 +55,12 @@ std::string NaoBehaviour::Think(const std::string& message) {
     //    outputAccerOfCOM();
     //}
     //here now the keyframe are too few so the time interval is relatively large refresh time set to 0.5s
-    if((returnTimeInSecond()/* - timePrevious*/) < 11){
-        calcChangeOfCOM();
-    }
+    //if((returnTimeInSecond()/* - timePrevious*/) < 7){
+    //    calcChangeOfCOM();
+    //}
     //check fallen state
-    isFallen();
-
+    //isFallen();
+    cout << "The center of mass is " << outCenterOfMass() << endl;
 
 
 
@@ -166,7 +166,7 @@ VecPosition NaoBehaviour::calcChangeOfCOM(){
     //equation S = ut + 1/2* at^2 ???
     //accerOf Z direction is very small
     //acceOfCOM = (changeOfCOM.getX(), changeOfCOM.getY(), changeOfCOM.getZ()) * 2 / pow(interval,2);
-    cout << changeOfCOM << endl;
+    //cout << changeOfCOM << endl;
     return changeOfCOM;
 }
 
