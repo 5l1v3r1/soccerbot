@@ -34,6 +34,7 @@ private:
     SIM::AngDeg myAngDegrees;
     bool confident;
 
+
     VecPosition myLastPosition;
     SIM::AngDeg myLastAngDegrees;
     bool fUseGroundTruthDataForLocalization;
