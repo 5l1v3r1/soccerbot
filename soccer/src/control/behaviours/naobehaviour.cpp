@@ -165,6 +165,6 @@ void NaoBehaviour::outputAccerOfCOM(){
     //equation S = ut + 1/2* at^2 ???
     //accerOf Z direction is very small
     acceOfCOM = (changeInCOM.getX(), changeInCOM.getY(), changeInCOM.getZ()) * 2 / pow(interval,2);
-    cout << acceOfCOM << endl;
+    cout << outCenterOfMass() << endl;
 }
 

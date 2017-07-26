@@ -37,7 +37,8 @@ private:
     VecPosition myLastPosition;
     SIM::AngDeg myLastAngDegrees;
     bool fUseGroundTruthDataForLocalization;
-    // TODO: comment it out if we don't want ground truth
+
+// TODO: comment it out if we don't want ground truth
 #define GROUND_TRUTH_SERVER
 #ifdef GROUND_TRUTH_SERVER
     VecPosition myPositionGroundTruth;
@@ -95,6 +96,7 @@ public:
             VecPosition& fieldXMinusYPlus,
             VecPosition& fieldXMinusYMinus);
 
+    //update the pos 
     inline void setMyPosition(const VecPosition& newPos) {
         myPosition = newPos;
     }
