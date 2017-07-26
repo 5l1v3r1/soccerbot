@@ -233,6 +233,7 @@ void BodyModel::initialiseComponents() {
     VecPosition anchor;
     VecPosition axis;
 
+    //So in the bodyWorld torso is the origin
     //TORSO
     index = COMP_TORSO;
     parent = COMP_TORSO;
@@ -1174,10 +1175,15 @@ VecPosition BodyModel::getCenterOfMass() const {
     for (unsigned i = 0; i < COMP_NUM; i++) {
         Component bodyPart = component[i];
         double mass = bodyPart.mass;
+        
+        //transformFromRoot is a matrix.. it has a menmber function can change the para to new position?
         VecPosition location = bodyPart.transformFromRoot.transform(VecPosition(0, 0, 0));
+        //cout << "location of component[" << i << "] is" << location << endl;
+        cout << "mass of component[" << i << "] is" << mass << endl;
         com += location * mass;
         totalMass += mass;
     }
+    cout << endl;
     com /= totalMass;
     return com;
 }
