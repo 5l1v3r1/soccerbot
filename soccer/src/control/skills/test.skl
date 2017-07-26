@@ -3,13 +3,18 @@ STARTSKILL SKILL_TEST
 
 STARTSTATE
 settar EFF_H1 1 end
-wait 3 end
+wait 2 end
 ENDSTATE
 
+#STARTSTATE
+#settar EFF_RA1 130 end
+#settar EFF_LA1 -130 end
+#wait 2 end
+#ENDSTATE
+
 STARTSTATE
-settar EFF_RA1 130 end
-settar EFF_LA1 130 end
-wait 100 end
+settar EFF_RL3 -100 end
+wait 3 end
 ENDSTATE
 
 

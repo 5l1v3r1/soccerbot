@@ -34,6 +34,8 @@ private:
     SIM::AngDeg myAngDegrees;
     bool confident;
 
+    //origin set to the center of field
+    VecPosition originOfField;
 
     VecPosition myLastPosition;
     SIM::AngDeg myLastAngDegrees;

@@ -49,7 +49,7 @@ public:
 
     //chage to optimizer later
     double returnTimeInSecond();
-    void outputAccerOfCOM();
+    VecPosition calcChangeOfCOM();
 
 };
 

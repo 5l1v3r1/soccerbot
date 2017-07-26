@@ -498,6 +498,7 @@ void Run() {
 
         //optimizer->countTime();    
         //optimizer->outputAccerOfCOM();
+        //behaviour->getAngle();
 
         // To support agent sync mode
         msgToServer.append("(syn)");

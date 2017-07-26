@@ -15,8 +15,9 @@ namedParams(namedParams_), rsg(rsg_) {
 
     worldModel = new WorldModel();
     bodyModel = new BodyModel(worldModel);
+    //parser has same body and world model with naobehavior
     parser = new Parser(worldModel, bodyModel);
-    
+
 
     //chage to optimizer later
     timePrevious = returnTimeInSecond();
@@ -54,11 +55,14 @@ std::string NaoBehaviour::Think(const std::string& message) {
     //    outputAccerOfCOM();
     //}
     //here now the keyframe are too few so the time interval is relatively large refresh time set to 0.5s
-    if((returnTimeInSecond() - timePrevious) > 0.5){
-        outputAccerOfCOM();
+    if((returnTimeInSecond()/* - timePrevious*/) < 11){
+        calcChangeOfCOM();
     }
     //check fallen state
     isFallen();
+
+
+
 
     if (checkFinishSkill == true) {
         std::cout << "Finished executing " << skillToExecute->getName() << std::endl;
@@ -134,13 +138,12 @@ void NaoBehaviour::readSkillsFromFile(const std::string& filename) {
 //to check if the agent is fallen down
 bool NaoBehaviour::isFallen() {
     //fallen backward
-    if(acceOfCOM.getX() < -0.1) {
+    if (returnTimeInSecond() < 3) return false;
+    //for begining state
+    else if(calcChangeOfCOM().getX() < -0.001 && returnTimeInSecond() > 3) {
         cout << "I am fallen backward!" << endl;
         return true;
     }
-    //for begining state
-    else if (returnTimeInSecond() < 3) return false;
-
     else return false;
 }
 
@@ -155,16 +158,15 @@ double NaoBehaviour::returnTimeInSecond(){
 }
 
 //to output the center of mass for calculation
-void NaoBehaviour::outputAccerOfCOM(){
-    double interval = (returnTimeInSecond() - timePrevious);
+VecPosition NaoBehaviour::calcChangeOfCOM(){
     timePrevious = returnTimeInSecond();
     VecPosition centerOfMassVec = outCenterOfMass();
-    VecPosition changeInCOM = centerOfMassVec - COMPrevious;
+    VecPosition changeOfCOM = centerOfMassVec - COMPrevious;
     COMPrevious = centerOfMassVec;
-    //cout << changeInCOM << endl;
     //equation S = ut + 1/2* at^2 ???
     //accerOf Z direction is very small
-    acceOfCOM = (changeInCOM.getX(), changeInCOM.getY(), changeInCOM.getZ()) * 2 / pow(interval,2);
-    cout << outCenterOfMass() << endl;
+    //acceOfCOM = (changeOfCOM.getX(), changeOfCOM.getY(), changeOfCOM.getZ()) * 2 / pow(interval,2);
+    cout << changeOfCOM << endl;
+    return changeOfCOM;
 }
 

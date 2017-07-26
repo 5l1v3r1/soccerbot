@@ -31,6 +31,7 @@ WorldModel::WorldModel() {
     fLocalized = false;
     fFallen = false;
 
+    originOfField.setVecPosition(0, 0, 0);
 
     // TODO: this is not correct, but anyway localization should update it
     // Is there a better solution for init them?
