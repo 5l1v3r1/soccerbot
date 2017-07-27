@@ -582,6 +582,7 @@ Skill::Skill(std::string name) {
     keyFrames.clear();
     reset();
     currentKeyFrame = -1; // set to invalid
+    finishKeyFrame = true;
 }
 
 std::string Skill::getName() {
@@ -604,11 +605,18 @@ bool Skill::execute(BodyModel *bodyModel, const WorldModel *worldModel) {
 
     if (done(bodyModel, worldModel)) return true;
 
+    
+    if(finishKeyFrame){
+        finishKeyFrame = false;
+    }
+
     if (keyFrames[currentKeyFrame]->done(bodyModel, worldModel, currentKeyFrameSetTime)) {
         std::cout << "Finished keyframe " << currentKeyFrame << " of " << skillName << std::endl;
         currentKeyFrame += 1;
         currentKeyFrameSet = false;
         currentKeyFrameSetTime = -1;
+        //for proccessing the time interval in accerOfCOM
+        finishKeyFrame = true;
     }
 
     if (!currentKeyFrameSet) {
@@ -616,6 +624,7 @@ bool Skill::execute(BodyModel *bodyModel, const WorldModel *worldModel) {
         currentKeyFrameSet = true;
         currentKeyFrameSetTime = currentTime;
     }
+
 
     return false;
 }
@@ -676,4 +685,9 @@ void Skill::display() {
 
 int Skill::getCurrentKeyFrame() {
     return currentKeyFrame;
+}
+
+bool Skill::checkFinishOfKeyFrame(){
+    //cout << "returning value of " << finishKeyFrame << endl;
+    return finishKeyFrame;
 }

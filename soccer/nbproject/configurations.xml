@@ -29,7 +29,6 @@
           <df name="src">
             <in>camera.cpp</in>
             <in>camera_data.cpp</in>
-            <in>houghcircle.cpp</in>
           </df>
         </df>
         <df name="control">
@@ -247,9 +246,8 @@
         <element flagsID="3" commonFlags="-fopenmp"/>
         <element flagsID="4" commonFlags="-fopenmp -fPIC"/>
         <element flagsID="5" commonFlags="-std=c++11"/>
-        <element flagsID="6" commonFlags="-std=c++11 -fPIC"/>
-        <element flagsID="7" commonFlags="-std=c++14"/>
-        <element flagsID="8" commonFlags="-std=c11"/>
+        <element flagsID="6" commonFlags="-std=c++14"/>
+        <element flagsID="7" commonFlags="-std=c11"/>
       </flagsDictionary>
       <codeAssistance>
       </codeAssistance>
@@ -300,7 +298,7 @@
             flavor2="4">
       </item>
       <item path="build/CMakeFiles/feature_tests.c" ex="false" tool="0" flavor2="10">
-        <cTool flags="8">
+        <cTool flags="7">
           <incDir>
             <pElem>build/CMakeFiles/CMakeTmp</pElem>
           </incDir>
@@ -310,7 +308,7 @@
             ex="false"
             tool="1"
             flavor2="11">
-        <ccTool flags="7">
+        <ccTool flags="6">
           <incDir>
             <pElem>build/CMakeFiles/CMakeTmp</pElem>
           </incDir>
@@ -369,8 +367,18 @@
       <folder path="0/src/camera_data">
         <ccTool>
           <incDir>
-            <pElem>/opt/ros/kinetic/share</pElem>
+            <pElem>src/camera_data/include</pElem>
+            <pElem>/opt/ros/kinetic/include</pElem>
+            <pElem>/opt/ros/kinetic/include/opencv-3.2.0-dev</pElem>
+            <pElem>/opt/ros/kinetic/include/opencv-3.2.0-dev/opencv</pElem>
+            <pElem>/opt/ros/kinetic/include/xmlrpcpp</pElem>
+            <pElem>build/camera_data</pElem>
           </incDir>
+          <preprocessorList>
+            <Elem>ROSCONSOLE_BACKEND_LOG4CXX</Elem>
+            <Elem>ROS_BUILD_SHARED_LIBS=1</Elem>
+            <Elem>ROS_PACKAGE_NAME="camera_data"</Elem>
+          </preprocessorList>
         </ccTool>
       </folder>
       <folder path="0/src/control/headers">
@@ -786,7 +794,7 @@
       <item path="src/audio_transceiver/src/receiver.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="src/audio_transceiver/src/receiver_node.cpp"
             ex="false"
@@ -796,7 +804,7 @@
       <item path="src/audio_transceiver/src/transmitter.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="src/audio_transceiver/src/transmitter_node.cpp"
             ex="false"
@@ -804,21 +812,7 @@
             flavor2="4">
       </item>
       <item path="src/camera_data/src/camera.cpp" ex="false" tool="1" flavor2="8">
-        <ccTool flags="6">
-          <incDir>
-            <pElem>/opt/ros/kinetic/include</pElem>
-            <pElem>/opt/ros/kinetic/include/opencv-3.2.0-dev</pElem>
-            <pElem>/opt/ros/kinetic/include/opencv-3.2.0-dev/opencv</pElem>
-            <pElem>/opt/ros/kinetic/include/xmlrpcpp</pElem>
-            <pElem>src/camera_data/sadfs</pElem>
-            <pElem>build/camera_data</pElem>
-          </incDir>
-          <preprocessorList>
-            <Elem>ROSCONSOLE_BACKEND_LOG4CXX</Elem>
-            <Elem>ROS_BUILD_SHARED_LIBS=1</Elem>
-            <Elem>ROS_PACKAGE_NAME="camera_data"</Elem>
-            <Elem>camera_EXPORTS</Elem>
-          </preprocessorList>
+        <ccTool flags="5">
         </ccTool>
       </item>
       <item path="src/camera_data/src/camera_data.cpp"
@@ -826,25 +820,7 @@
             tool="1"
             flavor2="8">
         <ccTool flags="5">
-          <incDir>
-            <pElem>/opt/ros/kinetic/include</pElem>
-            <pElem>/opt/ros/kinetic/include/opencv-3.2.0-dev</pElem>
-            <pElem>/opt/ros/kinetic/include/opencv-3.2.0-dev/opencv</pElem>
-            <pElem>/opt/ros/kinetic/include/xmlrpcpp</pElem>
-            <pElem>src/camera_data/sadfs</pElem>
-            <pElem>build/camera_data</pElem>
-          </incDir>
-          <preprocessorList>
-            <Elem>ROSCONSOLE_BACKEND_LOG4CXX</Elem>
-            <Elem>ROS_BUILD_SHARED_LIBS=1</Elem>
-            <Elem>ROS_PACKAGE_NAME="camera_data"</Elem>
-          </preprocessorList>
         </ccTool>
-      </item>
-      <item path="src/camera_data/src/houghcircle.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
       </item>
       <item path="src/control/behaviours/LearningBehaviour.cpp"
             ex="false"
@@ -1155,28 +1131,28 @@
       <item path="src/navigation/costmap_2d/plugins/inflation_layer.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="2">
         </ccTool>
       </item>
       <item path="src/navigation/costmap_2d/plugins/obstacle_layer.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="2">
         </ccTool>
       </item>
       <item path="src/navigation/costmap_2d/plugins/static_layer.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="2">
         </ccTool>
       </item>
       <item path="src/navigation/costmap_2d/plugins/voxel_layer.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="2">
         </ccTool>
       </item>
@@ -1203,21 +1179,21 @@
       <item path="src/navigation/costmap_2d/src/costmap_2d_cloud.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="1">
         </ccTool>
       </item>
       <item path="src/navigation/costmap_2d/src/costmap_2d_markers.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="1">
         </ccTool>
       </item>
       <item path="src/navigation/costmap_2d/src/costmap_2d_node.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="1">
         </ccTool>
       </item>

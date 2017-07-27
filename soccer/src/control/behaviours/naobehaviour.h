@@ -7,6 +7,9 @@
 #include "../models/worldmodel/parser.h"
 #include "../models/bodymodel/bodymodel.h"
 #include "../skills/skill.h"
+#include <fstream>
+#include <ctime>
+//#include "../optimization/Optimizer.h"
 
 
 class NaoBehaviour : public Behaviour {
@@ -17,6 +20,11 @@ protected:
     BodyModel *bodyModel;
     WorldModel *worldModel;
     Parser *parser;
+
+    //chage to optimizer later
+    double timePrevious;
+    VecPosition COMPrevious;
+    VecPosition acceOfCOM;
 
 
     vector<SkillType> skillSequence;
@@ -37,6 +45,11 @@ public:
 
     void setMonMessage(const std::string& msg);
     std::string getMonMessage();
+
+
+    //chage to optimizer later
+    double returnTimeInSecond();
+    VecPosition calcChangeOfCOM();
 
 };
 

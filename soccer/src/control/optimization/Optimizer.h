@@ -1,22 +1,28 @@
-//h file to check the robot is fallen
+#ifndef OPTIMIZER_H
+#define OPTIMIZER_H
+
 #include "../behaviours/naobehaviour.h"
 #include <fstream>
+#include <ctime>
 
 class Optimizer {
 public:
     Optimizer(NaoBehaviour*& behaviour);
     ~Optimizer();
     bool isFallen();
-    void countTime(clock_t beginTime);
+    double countTime();
     // updateBehaviour
     // runOptimization
-    void outputCenterOfMass();
-    void outputFrame(int currentKeyFrame, string skillName);
+    void outputAccerOfCOM();
 
 protected:
     NaoBehaviour *behaviour;
     //for output data
     ofstream optimizing;
+    clock_t timePrevious;
+    VecPosition COMPrevious;
 
 private:
 };
+
+#endif

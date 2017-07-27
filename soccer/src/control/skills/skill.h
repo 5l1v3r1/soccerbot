@@ -222,7 +222,6 @@ class KeyFrame {
 private:
 protected:
     vector< boost::shared_ptr<Macro> > macros;
-
     bool toWaitTime; // Default: false.
     double waitTime; // Default: 0.
 
@@ -271,6 +270,7 @@ protected:
     bool currentKeyFrameSet;
     double currentKeyFrameSetTime;
     std::string skillName;
+    bool finishKeyFrame;
 
 public:
 
@@ -296,6 +296,8 @@ public:
     void display();
 
     int getCurrentKeyFrame();
+
+    bool checkFinishOfKeyFrame();
 };
 
 

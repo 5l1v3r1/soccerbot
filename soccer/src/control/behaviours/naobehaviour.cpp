@@ -1,6 +1,7 @@
 #include "naobehaviour.h"
 #include "../headers/headers.h"
 #include "../skills/skillparser.h"
+//#include "../optimization/Optimizer.h"
 
 NaoBehaviour::NaoBehaviour(const std::string teamName, int uNum, const map <std::string, std::string>& namedParams_, const std::string& rsg_) :
 namedParams(namedParams_), rsg(rsg_) {
@@ -8,16 +9,24 @@ namedParams(namedParams_), rsg(rsg_) {
     //note here the file is connet with main.cpp so the output/input file is created under control not in control/skill 
     //and also add the skill name below"skillType arr"                 
     readSkillsFromFile("./skills/stand.skl");
-    //readSkillsFromFile("./skills/wave.skl");
+    readSkillsFromFile("./skills/test.skl");
     readSkillsFromFile("./skills/walk.skl");
 
 
     worldModel = new WorldModel();
     bodyModel = new BodyModel(worldModel);
+    //parser has same body and world model with naobehavior
     parser = new Parser(worldModel, bodyModel);
 
+
+    //chage to optimizer later
+    timePrevious = returnTimeInSecond();
+    COMPrevious = bodyModel->getCenterOfMass();
+    acceOfCOM = (0, 0, 0);
+    
+    
     //add the new skill here !!
-    static const SkillType arr[] = {SKILL_STAND, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK};
+    static const SkillType arr[] = {SKILL_STAND, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK, SKILL_WALK};
     //static const SkillType arr[] = {SKILL_TEST};
     skillSequence = vector<SkillType>(arr, arr + sizeof (arr) / sizeof (arr[0]));
     currentSkillIndex = 0;
@@ -36,17 +45,34 @@ std::string NaoBehaviour::Init() {
 std::string NaoBehaviour::Think(const std::string& message) {
     bool parseSuccess = parser->parse(message);
     bodyModel->refresh();
+    //below is the skill type
     boost::shared_ptr<Skill> skillToExecute = skills[skillSequence[currentSkillIndex]];
     // Loop through the skill sequence
-    if (skillToExecute->execute(bodyModel, worldModel)) {
+    bool checkFinishSkill = skillToExecute->execute(bodyModel, worldModel);
+
+    //Ok here if you cannot insert inside the another class you can let it reutrn a value to upper loop
+    //if(skillToExecute->checkFinishOfKeyFrame()){
+    //    outputAccerOfCOM();
+    //}
+    //here now the keyframe are too few so the time interval is relatively large refresh time set to 0.5s
+    //if((returnTimeInSecond()/* - timePrevious*/) < 7){
+    //    calcChangeOfCOM();
+    //}
+    //check fallen state
+    //isFallen();
+    cout << "The center of mass is " << outCenterOfMass() << endl;
+
+
+
+    if (checkFinishSkill == true) {
         std::cout << "Finished executing " << skillToExecute->getName() << std::endl;
         skillToExecute->reset();
         currentSkillIndex += 1;
         currentSkillIndex %= skillSequence.size();
     }
+
     worldModel->setLastSkill(skillSequence[currentSkillIndex]);
     std::string action = composeAction();
-
 
     //hide the center of mass
     //std::cout << "The center of mass is "<< bodyModel->getCenterOfMass() << std::endl;
@@ -111,12 +137,36 @@ void NaoBehaviour::readSkillsFromFile(const std::string& filename) {
 
 //to check if the agent is fallen down
 bool NaoBehaviour::isFallen() {
-    return true;
+    //fallen backward
+    if (returnTimeInSecond() < 3) return false;
+    //for begining state
+    else if(calcChangeOfCOM().getX() < -0.001 && returnTimeInSecond() > 3) {
+        cout << "I am fallen backward!" << endl;
+        return true;
+    }
+    else return false;
+}
+
+VecPosition NaoBehaviour::outCenterOfMass(){
+    return bodyModel->getCenterOfMass();
 }
 
 
-//to return the center of mass for optimization
-VecPosition NaoBehaviour::outCenterOfMass(){
-    return bodyModel->getCenterOfMass();
+//return time in seconds but this is little bit faster
+double NaoBehaviour::returnTimeInSecond(){
+    return (double(clock ()) /  CLOCKS_PER_SEC * 100);
+}
+
+//to output the center of mass for calculation
+VecPosition NaoBehaviour::calcChangeOfCOM(){
+    timePrevious = returnTimeInSecond();
+    VecPosition centerOfMassVec = outCenterOfMass();
+    VecPosition changeOfCOM = centerOfMassVec - COMPrevious;
+    COMPrevious = centerOfMassVec;
+    //equation S = ut + 1/2* at^2 ???
+    //accerOf Z direction is very small
+    //acceOfCOM = (changeOfCOM.getX(), changeOfCOM.getY(), changeOfCOM.getZ()) * 2 / pow(interval,2);
+    //cout << changeOfCOM << endl;
+    return changeOfCOM;
 }
 
