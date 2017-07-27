@@ -1,4 +1,5 @@
 #include "transmitter.h"
+#include "portaudio.h"
 
 Transmitter::Transmitter() {
 }

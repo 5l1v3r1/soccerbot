@@ -2,6 +2,7 @@
 #define TRANSMITTER_H
 
 #include <audio_packet.hpp>
+#include "portaudio.h"
 
 class Transmitter {
 public:

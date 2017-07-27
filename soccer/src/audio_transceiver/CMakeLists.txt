@@ -118,20 +118,34 @@ include_directories(
 set(SRCS
     src/receiver.cpp
     src/transmitter.cpp
+    src/audio_packet.cpp
+)
+
+set(LINKER_FLAGS
+    -lrt
+    -lm
+    -lasound
+    -ljack
+    -lportaudio
+    pthread
 )
 
 ## Executables
 add_executable(transmitter_node src/transmitter_node.cpp ${SRCS})
 add_dependencies(transmitter_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
 target_link_libraries(transmitter_node
-   ${catkin_LIBRARIES}
+    ${catkin_LIBRARIES}
+    ${LINKER_FLAGS}
 )
+
 
 
 add_executable(reciever_node src/receiver_node.cpp ${SRCS})
 add_dependencies(reciever_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(reciever_node
    ${catkin_LIBRARIES}
+   ${LINKER_FLAGS} 
 )
 
 #############
