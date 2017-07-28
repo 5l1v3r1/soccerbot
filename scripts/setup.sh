@@ -70,3 +70,10 @@ echo "source ~/soccerbot/soccer/devel/setup.bash" >> ~/.bashrc
 ### MATLAB ###
 wget http://esd.mathworks.com/R2017a/Linux_x86_64/INST_432557/matlab_R2017a_glnxa64.zip
 unzip matlab_R2017a_glnxa42.zip
+
+## Libportaudio
+sudo apt-get install libasound-dev
+cd ../libraries
+./configure && make
+sudo make install
+cd ../scripts
