@@ -125,7 +125,7 @@ set(LINKER_FLAGS
     -lrt
     -lm
     -lasound
-    -ljack
+#    -ljack
     -lportaudio
     pthread
 )
