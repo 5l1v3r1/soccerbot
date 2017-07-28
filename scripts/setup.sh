@@ -73,7 +73,7 @@ unzip matlab_R2017a_glnxa42.zip
 
 ## Libportaudio
 sudo apt-get install libasound-dev
-cd ../libraries
+cd ../libraries/portaudio/
 ./configure && make
 sudo make install
-cd ../scripts
+cd ../../scripts
