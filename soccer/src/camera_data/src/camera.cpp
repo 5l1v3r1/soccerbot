@@ -65,8 +65,8 @@ void Camera::detect_ball() {
 
 void Camera::detect_circle() {
     Mat s1;
-    cvtColor(frame_in, s1, COLOR_BGR2GRAY);
-    
+    cvtColor(frame_in, s1, cv::COLOR_RGB2HSV);
+//    cv::inRange
 //    mask = cv2.inRange(hsv, greenLower, greenUpper)
 //    mask = cv2.erode(mask, None, iterations=2)
 //    mask = cv2.dilate(mask, None, iterations=2)
@@ -116,7 +116,11 @@ void Camera::detect_field_lines() {
     blur(frame_in, s1, Size(3, 3));
     Canny(s1, s2, 100, 200, 3);
     imshow(camera_window+" canny", s2);
-
+    
+    const Scalar upper = Scalar(0,0,0);
+    const Scalar lower = Scalar(0,0,0);
+    
+    
     cvtColor(s2, frame_out, CV_GRAY2BGR);
 
     vector<Vec4i> lines;

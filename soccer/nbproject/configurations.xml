@@ -19,6 +19,7 @@
       <df name="src">
         <df name="audio_transceiver">
           <df name="src">
+            <in>audio_packet.cpp</in>
             <in>receiver.cpp</in>
             <in>receiver_node.cpp</in>
             <in>transmitter.cpp</in>
@@ -790,6 +791,11 @@
             flavor2="4">
         <ccTool flags="1">
         </ccTool>
+      </item>
+      <item path="src/audio_transceiver/src/audio_packet.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
       </item>
       <item path="src/audio_transceiver/src/receiver.cpp"
             ex="false"

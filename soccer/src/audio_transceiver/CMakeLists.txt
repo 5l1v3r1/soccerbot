@@ -133,7 +133,6 @@ set(LINKER_FLAGS
 ## Executables
 add_executable(transmitter_node src/transmitter_node.cpp ${SRCS})
 add_dependencies(transmitter_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-
 target_link_libraries(transmitter_node
     ${catkin_LIBRARIES}
     ${LINKER_FLAGS}
@@ -141,9 +140,9 @@ target_link_libraries(transmitter_node
 
 
 
-add_executable(reciever_node src/receiver_node.cpp ${SRCS})
-add_dependencies(reciever_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(reciever_node
+add_executable(receiver_node src/receiver_node.cpp ${SRCS})
+add_dependencies(receiver_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(receiver_node
    ${catkin_LIBRARIES}
    ${LINKER_FLAGS} 
 )

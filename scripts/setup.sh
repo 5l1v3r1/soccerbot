@@ -28,7 +28,7 @@ source /opt/ros/kinetic/setup.bash
 sudo apt-get install python-rosinstall -y
 
 ### NETBEANS ###
-wget wget download.netbeans.org/netbeans/8.2/final/bundles/netbeans-8.2-cpp-linux-x64.sh
+wget download.netbeans.org/netbeans/8.2/final/bundles/netbeans-8.2-cpp-linux-x64.sh
 
 chmod +x netbeans-8.2-cpp-linux-x64.sh
 
