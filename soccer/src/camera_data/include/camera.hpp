@@ -15,7 +15,10 @@ using namespace std;
 class Camera {
 private:
     Mat frame_in;     // A frame of the camera
-    Mat frame_out; // The processed image
+    
+    Mat frame_in_hsv; // Intermediates
+    
+    Mat frame_out;    // The processed image
     
     // Cascades
     string ball_cascade_name = "cascades/ball.xml";
