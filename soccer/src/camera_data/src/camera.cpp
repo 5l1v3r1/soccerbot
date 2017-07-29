@@ -38,9 +38,11 @@ void Camera::loop() {
             printf(" --(!) No captured frame -- Break!");
             break;
         }
-
+        
+        // Intermediate stages
         frame_out = frame_in;
-
+        cv::cvtColor(frame_in, frame_in_hsv, cv::COLOR_BGR2HSV);
+        
         //detect_ball();
         detect_field_lines();
 
@@ -115,7 +117,9 @@ void Camera::detect_field_lines() {
     Mat s1, s2;
     blur(frame_in, s1, Size(3, 3));
     Canny(s1, s2, 100, 200, 3);
-    imshow(camera_window+" canny", s2);
+    imshow(camera_window + " canny", s2);
+    
+    cv::cvtColor(bgr_image, hsv_image, cv::COLOR_BGR2HSV);
     
     const Scalar upper = Scalar(0,0,0);
     const Scalar lower = Scalar(0,0,0);
