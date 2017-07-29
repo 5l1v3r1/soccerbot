@@ -9,7 +9,9 @@ public:
     bool send_message(AudioPacket& packet);
     
     Transmitter();
+    Transmitter(string command, DestinationType destCommand);
     Transmitter(const Transmitter& orig);
+    bool generateAudioPacket(string command, DestinationType destCommand); 
     virtual ~Transmitter();
 private:
 
