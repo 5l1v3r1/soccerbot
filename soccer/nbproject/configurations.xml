@@ -25,6 +25,7 @@
             <in>transmitter.cpp</in>
             <in>transmitter_node.cpp</in>
           </df>
+          <in>ErrorList.txt</in>
         </df>
         <df name="camera_data">
           <df name="src">
@@ -792,7 +793,22 @@
         <ccTool flags="1">
         </ccTool>
       </item>
+      <item path="src/audio_transceiver/ErrorList.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/audio_transceiver/include/audio_packet_queue.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="src/audio_transceiver/src/audio_packet.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/audio_transceiver/src/audio_packet_queue.cpp"
             ex="false"
             tool="1"
             flavor2="0">

@@ -11,7 +11,7 @@ int main(int argc, char **argv) {
     Transmitter t();
     
     AudioPacket p;
-    p.message = "Hello World";
+    p.set_message("Hello World");
     
     //t.send_message(p);
     
