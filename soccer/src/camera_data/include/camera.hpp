@@ -35,6 +35,7 @@ public:
     std::string path;
     
     void initialize();
+    void process_intermediates();
     void loop();
     
     void detect_ball();

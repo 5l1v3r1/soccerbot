@@ -39,15 +39,20 @@ void Camera::loop() {
             break;
         }
         
-        // Intermediate stages
-        frame_out = frame_in;
-        cv::cvtColor(frame_in, frame_in_hsv, cv::COLOR_BGR2HSV);
+        // Creates intermediate stages between in and out
+        process_intermediates();
         
+        // Actual Loop through all the detections
         //detect_ball();
         detect_field_lines();
 
         if ((char) waitKey(10) == 27) break;
     }
+}
+
+void Camera::process_intermediates() {
+    frame_out = frame_in;
+    cv::cvtColor(frame_in, frame_in_hsv, cv::COLOR_BGR2HSV);
 }
 
 void Camera::detect_ball() {
@@ -114,27 +119,29 @@ void Camera::detect_circle() {
 }
 
 void Camera::detect_field_lines() {
-    Mat s1, s2;
-    blur(frame_in, s1, Size(3, 3));
-    Canny(s1, s2, 100, 200, 3);
-    imshow(camera_window + " canny", s2);
+    Mat mask, mask2, mask3;
+    const Scalar lower = Scalar(0,0,190);
+    const Scalar upper = Scalar(255,100,255);
+    cv::inRange(frame_in_hsv, lower, upper, mask);
     
-    cv::cvtColor(bgr_image, hsv_image, cv::COLOR_BGR2HSV);
+    Canny(mask, mask2, 50, 150, 3);
     
-    const Scalar upper = Scalar(0,0,0);
-    const Scalar lower = Scalar(0,0,0);
+    int erosion_size = 1;
+    Mat element = getStructuringElement(
+            cv::MORPH_ELLIPSE,
+            Size(2*erosion_size+1, 2*erosion_size+1),
+            Point(erosion_size, erosion_size));
     
+    cv::dilate(mask2, mask3, element);
     
-    cvtColor(s2, frame_out, CV_GRAY2BGR);
-
     vector<Vec4i> lines;
-    HoughLinesP(s2, lines, 1, CV_PI / 180, 50, 50, 10);
+    
+    HoughLinesP(mask3, lines, 1, CV_PI / 180 / 4, 60, 70, 2);
     for (size_t i = 0; i < lines.size(); i++) {
         Vec4i l = lines[i];
-        line(frame_out, Point(l[0], l[1]), Point(l[2], l[3]), Scalar(0, 0, 255), 3, CV_AA);
+        line(frame_out, Point(l[0], l[1]), Point(l[2], l[3]), Scalar(0, 0, 255), 1, CV_AA);
     }
-
-    imshow(camera_window, frame_out);
+    //frame_out = mask3;
 }
 
 vector<string> Camera::get_image_names(string folder) {
@@ -164,6 +171,7 @@ void Camera::test(string folder, void (Camera::*test_function)(void)) {
     
     for (auto it = imgs.begin(); it != imgs.end(); ++it) {
         frame_in = imread(path + folder + (*it));
+        process_intermediates();
         (this->*test_function)();
         imwrite(path + folder + "test/" + (*it), frame_out);
     }
