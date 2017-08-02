@@ -3,6 +3,7 @@
 
 #include <audio_packet.hpp>
 #include "portaudio.h"
+#include <string.h>
 
 class Transmitter {
 public:
@@ -15,6 +16,9 @@ public:
     virtual ~Transmitter();
 private:
     PaStreamParameters outputParameters;
+    PaError err;
+    PaStream *stream;
+    
     // This is just here if we have multiple commands going in faster 
     // than the processing speed of the robot. 
     //std::queue<AudioPacket> transmit_queue;

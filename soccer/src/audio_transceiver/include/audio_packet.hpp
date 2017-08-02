@@ -20,11 +20,7 @@ typedef enum destination_type {
     unicast,
 } DestinationType;
 
-typedef struct raw_audio{
-    int frameIndex; /* Index into sample array. */
-    int maxFrameIndex;
-    SAMPLE *recordedSamples;
-} RawAudio;
+
 
 class AudioPacket {
 private:
@@ -47,13 +43,10 @@ private:
     // Probably make a list from where we can choose which one to take something like enum.
     
     // Every 100ms we would be trying to figure out the 
-    float tone_buffer[9600][5][5];
-    
-    const int numChannels = 2;
-    const int num_low_freqs = 5; 
-    const int num_high_freqs = 5; 
-    float lower_freq[5] =  {5,5,5,5,5}; 
-    float higher_freq[5] =  {10,10,10,10,10}; 
+    //float tone_buffer[9600][5][5];
+
+    float lower_freq = 50; 
+    float higher_freq = 500; 
     const int numSamples = 4800;
     
     // Will be used to convert message to rawAudio data. 
@@ -64,13 +57,13 @@ private:
     int frequency;
     
     RawAudio data;
-    
+    PaError Err; 
     // The destination would store all the information about the receiver. 
     DestinationType destination;
 public:
     // The constructor function has been kept for security purposes. Could be found useful 
     // maybe to generate random noise for no reason with invalid tokens. This might help
-    // us in the future. For now this would be empyt but later on this would have various
+    // us in the future. For now this would be empty but later on this would have various
     // different frequency noises. 
     AudioPacket();
     
@@ -93,8 +86,9 @@ public:
     //void update_priority(); 
     //--------------------------------------------------------------------------
 
-    // Take the message to convert to raw audio file. 
-    void convert_message_to_raw_audio();
+    // Take the message to convert to raw audio file.
+    // Not sure if this would be required.
+    //void convert_message_to_raw_audio();
 };
 
 
