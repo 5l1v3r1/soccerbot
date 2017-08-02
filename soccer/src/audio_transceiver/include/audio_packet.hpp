@@ -1,9 +1,13 @@
 #ifndef AUDIO_PACKET_HPP
 #define AUDIO_PACKET_HPP
 
+// 40 STEPS/SECOND OF AUDIO DATA  
+//#define SAMPLE_RATE 48000
+
 #include <iostream>
 #include "constants.hpp"
 #include "portaudio.h"
+
 
 using namespace std;
 
@@ -24,8 +28,8 @@ typedef struct raw_audio{
 
 class AudioPacket {
 private:
-    
-    int priority;
+     
+    //int priority;
     // CONFUSION: 
     // --------------------------------------------------------------------------
     // Samples per frame = (sample rate)/FPS
@@ -41,7 +45,16 @@ private:
     // Have to understand how to connect the number of samples to the sampling rate. 
     // Sampling rate can be different for different devices. 
     // Probably make a list from where we can choose which one to take something like enum.
-    static int numSamples ;
+    
+    // Every 100ms we would be trying to figure out the 
+    float tone_buffer[9600][5][5];
+    
+    const int numChannels = 2;
+    const int num_low_freqs = 5; 
+    const int num_high_freqs = 5; 
+    float lower_freq[5] =  {5,5,5,5,5}; 
+    float higher_freq[5] =  {10,10,10,10,10}; 
+    const int numSamples = 4800;
     
     // Will be used to convert message to rawAudio data. 
     string message;
@@ -71,12 +84,14 @@ public:
     void set_message(const string& _message); 
     
     
-    void get_priority(); 
+    // Let's just use it without any priority.
+    // -------------------------------------------------------------------------
+    //void get_priority(); 
     //update_priority will be called every time we would be able to send a message successfully. 
     // Will be called by update priority queue. 
     // should be updated in audio_packet_queue
-    void update_priority(); 
-    
+    //void update_priority(); 
+    //--------------------------------------------------------------------------
 
     // Take the message to convert to raw audio file. 
     void convert_message_to_raw_audio();

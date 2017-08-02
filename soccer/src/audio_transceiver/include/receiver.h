@@ -15,10 +15,9 @@ public:
     
     void record_playback();
 private:
-    PaStreamParameters inputParameters,outputParameters;
+    PaStreamParameters inputParameters;
     PaStream* stream;
-    
-    std::queue<AudioPacket> audio_queue;
+    std::queue<AudioPacket> received_queue;
 };
 
 #endif /* RECIEVER_H */

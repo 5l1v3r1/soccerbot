@@ -2,6 +2,8 @@
 #include "portaudio.h"
 #include <string.h>
 // The constructor should be used to generate an audio packet depending on certain action
+// This needs to be called once the robots are all set on their respective positions. 
+// All 5 robots would be transmitters. 
 Transmitter::Transmitter() {
     
 }
@@ -10,6 +12,10 @@ Transmitter::Transmitter() {
 // All communication can occur using this then.
 // change command to a template.
 Transmitter::Transmitter(std::string command, DestinationType destCommand){ 
+    outputParameters.channelCount = 2; /* stereo input */
+    outputParameters.sampleFormat = PA_SAMPLE_TYPE;
+    outputParameters.suggestedLatency = Pa_GetDeviceInfo(outputParameters.device)->defaultLowInputLatency;
+    outputParameters.hostApiSpecificStreamInfo = NULL;
     if (command.compare("P")){ 
         std::string temp = "Pass";
         generateAudioPacket(temp,destCommand); 
