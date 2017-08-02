@@ -7,7 +7,7 @@ Transmitter::Transmitter() {
     Pa_Initialize();  
     if( err != paNoError ){
         std::cout <<"Could not initialize the Portaudio Object in transmitter"<< std::endl; 
-        //delete *(this);
+        this->~Transmitter( );;
     }
     outputParameters.channelCount = 2; /* stereo input */
     outputParameters.sampleFormat = PA_SAMPLE_TYPE;
