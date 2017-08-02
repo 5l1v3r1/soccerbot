@@ -6,8 +6,8 @@
 Transmitter::Transmitter() {
     Pa_Initialize();  
     if( err != paNoError ){
-        std::cout <<"Could not initialize the Portaudio Object in transmitter"<<std::endl; 
-        delete Transmitter;
+        std::cout <<"Could not initialize the Portaudio Object in transmitter"<< std::endl; 
+        //delete *(this);
     }
     outputParameters.channelCount = 2; /* stereo input */
     outputParameters.sampleFormat = PA_SAMPLE_TYPE;
@@ -53,14 +53,14 @@ bool Transmitter::generateAudioPacket(std::string command, DestinationType destC
     AudioPacket newPacket(command,destCommand);
     
     
-    err = Pa_OpenStream(&stream,
+    /*err = Pa_OpenStream(&stream,
                         NULL, // no input 
                         &outputParameters,
                         SAMPLE_RATE,
                         FRAMES_PER_BUFFER,
                         paClipOff,      
                         patestCallback,
-                        &data );
+                        &data );*/
 }
 
 // This would be controlled by the hardware at all times. As soon as the hardware
