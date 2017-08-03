@@ -76,7 +76,8 @@ public:
     const string& get_message(); 
     void set_message(const string& _message); 
     
-    
+    RawAudio& get_data(); 
+    void set_data(const RawAudio& _message); 
     // Let's just use it without any priority.
     // -------------------------------------------------------------------------
     //void get_priority(); 

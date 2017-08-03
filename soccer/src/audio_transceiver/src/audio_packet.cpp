@@ -74,3 +74,8 @@ float sweep(double f_start, double f_end, double interval, int n_steps) {
         return 3 * sin(phase);
     }
 }
+
+RawAudio& AudioPacket::get_data(){
+    return data; 
+    
+}

@@ -7,7 +7,7 @@ Transmitter::Transmitter() {
     Pa_Initialize();  
     if( err != paNoError ){
         std::cout <<"Could not initialize the Portaudio Object in transmitter"<< std::endl; 
-        this->~Transmitter( );;
+        this->~Transmitter( );
     }
     outputParameters.channelCount = 2; /* stereo input */
     outputParameters.sampleFormat = PA_SAMPLE_TYPE;
@@ -19,6 +19,8 @@ Transmitter::Transmitter() {
 // This would be converted to a big switch case statement. 
 // All communication can occur using this then.
 // change command to a template.
+// This should not exist actually 
+// We should do this in the get message command
 Transmitter::Transmitter(std::string command, DestinationType destCommand){ 
     outputParameters.channelCount = 2; /* stereo input */
     outputParameters.sampleFormat = PA_SAMPLE_TYPE;
@@ -53,14 +55,39 @@ bool Transmitter::generateAudioPacket(std::string command, DestinationType destC
     AudioPacket newPacket(command,destCommand);
     
     
-    /*err = Pa_OpenStream(&stream,
+    err = Pa_OpenStream(&stream,
                         NULL, // no input 
                         &outputParameters,
                         SAMPLE_RATE,
                         FRAMES_PER_BUFFER,
                         paClipOff,      
-                        patestCallback,
-                        &data );*/
+                        paTestCallBack,
+                        &(newPacket.get_data()));
+    
+}
+
+int Transmitter::paTestCallBack( const void *inputBuffer, void *outputBuffer,
+                                        unsigned long framesPerBuffer,
+                                        const PaStreamCallbackTimeInfo* timeInfo,
+                                        PaStreamCallbackFlags statusFlags,
+                                        void *userData ){
+    /* Cast data passed through stream to our structure. */
+    RawAudio *data = (RawAudio*)userData;
+    float *out = (float*)outputBuffer;
+    unsigned int i;
+    (void) inputBuffer; /* Prevent unused variable warning. */
+    for( i=0; i<framesPerBuffer; i++ ){
+        *out++ = data->left_phase;  /* left */
+        *out++ = data->right_phase;  /* right */
+        /* Generate simple sawtooth phaser that ranges between -1.0 and 1.0. */
+        data->left_phase += 0.01f;
+        /* When signal reaches top, drop back down. */
+        if( data->left_phase >= 1.0f ) data->left_phase -= 2.0f;
+        /* higher pitch so we can distinguish left and right. */
+        data->right_phase += 0.03f;
+        if( data->right_phase >= 1.0f ) data->right_phase -= 2.0f;
+    }
+    return 0;
 }
 
 // This would be controlled by the hardware at all times. As soon as the hardware
