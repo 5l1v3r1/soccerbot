@@ -77,5 +77,4 @@ float sweep(double f_start, double f_end, double interval, int n_steps) {
 
 RawAudio& AudioPacket::get_data(){
     return data; 
-    
 }

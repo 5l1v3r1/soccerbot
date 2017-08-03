@@ -7,7 +7,7 @@ Transmitter::Transmitter() {
     Pa_Initialize();  
     if( err != paNoError ){
         std::cout <<"Could not initialize the Portaudio Object in transmitter"<< std::endl; 
-        this->~Transmitter( );
+        this->~Transmitter();
     }
     outputParameters.channelCount = 2; /* stereo input */
     outputParameters.sampleFormat = PA_SAMPLE_TYPE;
@@ -64,6 +64,31 @@ bool Transmitter::generateAudioPacket(std::string command, DestinationType destC
                         paTestCallBack,
                         &(newPacket.get_data()));
     
+    if( err != paNoError ){
+        std::cout<<"Error in opening stream"<<endl;
+    }
+    err = Pa_SetStreamFinishedCallback( stream, &StreamFinished );
+    if( err != paNoError ) std::cout<<"Could not set the final callback\n";
+   
+    err = Pa_StartStream( stream );
+    if( err != paNoError ) std::cout<<"Could not open stream\n";
+    
+    err = Pa_StopStream( stream );
+    if( err != paNoError ) std::cout <<"Could not stop stream \n";
+
+    err = Pa_CloseStream( stream );
+    if( err != paNoError ) std::cout <<"Could not close stream\n";
+
+    Pa_Terminate();
+    std::cout<<"Test finished.\n";
+
+    return err;
+    
+}
+
+void Transmitter::StreamFinished( void* userData ){
+    RawAudio *data = (RawAudio *) userData;
+    std::cout<< "Stream Completed.\n";
 }
 
 int Transmitter::paTestCallBack( const void *inputBuffer, void *outputBuffer,
@@ -77,15 +102,15 @@ int Transmitter::paTestCallBack( const void *inputBuffer, void *outputBuffer,
     unsigned int i;
     (void) inputBuffer; /* Prevent unused variable warning. */
     for( i=0; i<framesPerBuffer; i++ ){
-        *out++ = data->left_phase;  /* left */
-        *out++ = data->right_phase;  /* right */
+        *out++ = data->tone_buffer[data->left_phase];  /* left */
+        *out++ = data->tone_buffer[data->right_phase];  /* right */
         /* Generate simple sawtooth phaser that ranges between -1.0 and 1.0. */
-        data->left_phase += 0.01f;
+        data->left_phase += 1;
         /* When signal reaches top, drop back down. */
-        if( data->left_phase >= 1.0f ) data->left_phase -= 2.0f;
+        if( data->left_phase >= BUFFER_SIZE ) data->left_phase -= 2*BUFFER_SIZE;
         /* higher pitch so we can distinguish left and right. */
-        data->right_phase += 0.03f;
-        if( data->right_phase >= 1.0f ) data->right_phase -= 2.0f;
+        data->right_phase += 3;
+        if( data->right_phase >= BUFFER_SIZE ) data->right_phase -= 2*BUFFER_SIZE;
     }
     return 0;
 }
@@ -93,7 +118,7 @@ int Transmitter::paTestCallBack( const void *inputBuffer, void *outputBuffer,
 // This would be controlled by the hardware at all times. As soon as the hardware
 // crashes the transmitter should get deleted. 
 Transmitter::~Transmitter(){ 
-    cout <<"Deleting transmitter object"; 
+    cout <<"Deleting transmitter object\n"; 
     Pa_Terminate();
   // clear out all the messages by the machine if broken. 
   // Delete the node now. 

@@ -18,6 +18,7 @@ public:
     Transmitter(string command, DestinationType destCommand);
     Transmitter(const Transmitter& orig);
     bool generateAudioPacket(string command, DestinationType destCommand); 
+    static void StreamFinished( void* userData );
     virtual ~Transmitter();
 private:
     PaStreamParameters outputParameters;

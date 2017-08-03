@@ -10,7 +10,7 @@
 #define NUM_SECONDS     (5)
 #define NUM_CHANNELS    (2)
 #define DITHER_FLAG     (0) /* #define DITHER_FLAG     (paDitherOff) */
-
+#define BUFFER_SIZE     (9600) // defines the size. 4800 *2 (samples * number of channels) 
 // Audio Format
 #define PA_SAMPLE_TYPE  paFloat32
 typedef float SAMPLE;
@@ -23,7 +23,7 @@ typedef float SAMPLE;
 typedef struct raw_audio{
     int left_phase; 
     int right_phase; 
-    float tone_buffer[9600]; 
+    float tone_buffer[BUFFER_SIZE]; 
     int frameIndex; /* Index into sample array. */
     int maxFrameIndex;
     SAMPLE *recordedSamples;
