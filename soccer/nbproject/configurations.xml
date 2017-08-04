@@ -823,6 +823,18 @@
             tool="1"
             flavor2="4">
       </item>
+      <item path="src/camera_data/include/camera_transformer.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/camera_data/include/constant.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/camera_data/include/constants.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="src/camera_data/src/camera.cpp" ex="false" tool="1" flavor2="8">
         <ccTool flags="5">
         </ccTool>
@@ -833,6 +845,11 @@
             flavor2="8">
         <ccTool flags="5">
         </ccTool>
+      </item>
+      <item path="src/camera_data/src/camera_transformer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
       </item>
       <item path="src/control/behaviours/LearningBehaviour.cpp"
             ex="false"

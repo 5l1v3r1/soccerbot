@@ -55,6 +55,10 @@ void Camera::process_intermediates() {
     cv::cvtColor(frame_in, frame_in_hsv, cv::COLOR_BGR2HSV);
 }
 
+void Camera::detect_field() {
+    //cv::cvtColor(frame_in, frame_in_hsv, cv::COLOR_BGR2HSV);
+}
+
 void Camera::detect_ball() {
     std::vector<Rect> ball;
     Mat frame_gray;
@@ -136,7 +140,7 @@ void Camera::detect_field_lines() {
     
     vector<Vec4i> lines;
     
-    HoughLinesP(mask3, lines, 1, CV_PI / 180 / 4, 60, 70, 2);
+    HoughLinesP(mask3, lines, 1, CV_PI / 180 / 4, 60, 40, 2);
     for (size_t i = 0; i < lines.size(); i++) {
         Vec4i l = lines[i];
         line(frame_out, Point(l[0], l[1]), Point(l[2], l[3]), Scalar(0, 0, 255), 1, CV_AA);
