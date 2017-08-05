@@ -9,6 +9,7 @@ using namespace std;
 int main(int argc, char **argv) {
     
     ros::init(argc, argv, "camera_data");
+    ros::NodeHandle n;
     Camera camera;
     
     std::string path(argv[0]);

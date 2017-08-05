@@ -1,5 +1,5 @@
 #include "audio_packet.hpp"
-#include <math.h>
+
 static const double PI = 3.14157; 
 static const double FADE_LENGTH = 1;
 //int AudioPacket::numSamples = 0;
@@ -73,4 +73,8 @@ float sweep(double f_start, double f_end, double interval, int n_steps) {
         while (phase > 2 * PI) phase -= 2 * PI; // optional
         return 3 * sin(phase);
     }
+}
+
+RawAudio& AudioPacket::get_data(){
+    return data; 
 }

@@ -8,11 +8,17 @@
 class Transmitter {
 public:
     bool send_message(AudioPacket& packet);
-    
+    static int paTestCallBack(  const void *inputBuffer, 
+                                void *outputBuffer,
+                                unsigned long framesPerBuffer,
+                                const PaStreamCallbackTimeInfo* timeInfo,
+                                PaStreamCallbackFlags statusFlags,
+                                void *userData );
     Transmitter();
     Transmitter(string command, DestinationType destCommand);
     Transmitter(const Transmitter& orig);
     bool generateAudioPacket(string command, DestinationType destCommand); 
+    static void StreamFinished( void* userData );
     virtual ~Transmitter();
 private:
     PaStreamParameters outputParameters;

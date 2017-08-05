@@ -8,6 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
   cv_bridge
   roscpp
   sensor_msgs
+  geometry_msgs
   std_msgs
   image_transport
 )
@@ -125,7 +126,7 @@ include_directories(
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-add_executable(camera_data src/camera_data.cpp src/camera.cpp)
+add_executable(camera_data src/camera_data.cpp src/camera.cpp src/camera_transformer.cpp)
 add_dependencies(camera_data ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(camera_data ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 

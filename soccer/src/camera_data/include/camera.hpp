@@ -39,6 +39,7 @@ public:
     void process_intermediates();
     void loop();
     
+    void detect_field();
     void detect_ball();
     void detect_circle();
     void detect_field_lines();
