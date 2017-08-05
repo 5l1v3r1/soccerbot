@@ -28,9 +28,13 @@
           <in>ErrorList.txt</in>
         </df>
         <df name="camera_data">
+          <df name="include">
+            <in>settings.hpp</in>
+          </df>
           <df name="src">
             <in>camera.cpp</in>
             <in>camera_data.cpp</in>
+            <in>settings.cpp</in>
           </df>
         </df>
         <df name="control">
@@ -823,6 +827,11 @@
             tool="1"
             flavor2="4">
       </item>
+      <item path="src/camera_data/include/settings.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="src/camera_data/src/camera.cpp" ex="false" tool="1" flavor2="8">
         <ccTool flags="5">
         </ccTool>
@@ -833,6 +842,8 @@
             flavor2="8">
         <ccTool flags="5">
         </ccTool>
+      </item>
+      <item path="src/camera_data/src/settings.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/control/behaviours/LearningBehaviour.cpp"
             ex="false"

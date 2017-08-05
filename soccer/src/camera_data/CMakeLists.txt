@@ -120,13 +120,13 @@ set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
 include_directories(include)
 include_directories(
   ${catkin_INCLUDE_DIRS}
-  ${OpenCV_INCLUDE_DIRES}
+  ${OpenCV_INCLUDE_DIRS}
 )
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-add_executable(camera_data src/camera_data.cpp src/camera.cpp src/camera_transformer.cpp)
+add_executable(camera_data src/camera_data.cpp src/camera.cpp src/camera_transformer.cpp src/settings.cpp)
 add_dependencies(camera_data ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(camera_data ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 

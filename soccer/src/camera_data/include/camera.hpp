@@ -7,7 +7,7 @@
 #include <opencv2/objdetect/objdetect.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <iostream>
-#include <iostream>
+#include "settings.hpp"
 
 using namespace cv;
 using namespace std;
@@ -22,6 +22,7 @@ private:
     
     // Cascades
     string ball_cascade_name = "cascades/ball.xml";
+    const string calibrationFile = "src/in_VID5.xml";
     CascadeClassifier ball_cascade;
     
     // Camera Window for drawing all the detecting
@@ -33,6 +34,7 @@ public:
     Camera();
     ~Camera();
     std::string path;
+    Settings settings;
     
     void initialize();
     void calibrateCamera();

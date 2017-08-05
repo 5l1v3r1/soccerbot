@@ -19,7 +19,7 @@ int main(int argc, char **argv) {
     camera.initialize();
     
     // For testing
-    camera.run_tests();
+    //camera.run_tests();
     
     // camera.loop();
     //camera.test();
