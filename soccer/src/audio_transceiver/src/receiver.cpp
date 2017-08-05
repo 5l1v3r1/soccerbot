@@ -21,8 +21,7 @@ Receiver::Receiver() {
     inputParameters.hostApiSpecificStreamInfo = NULL;
 }
 
-float goertzel_mag(int numSamples,int TARGET_FREQUENCY,int SAMPLING_RATE, float* data)
-{
+float goertzel_mag(int numSamples,int TARGET_FREQUENCY,int SAMPLING_RATE, float* data){
     int     k,i;
     float   floatnumSamples;
     float   omega,sine,cosine,coeff,q0,q1,q2,magnitude,real,imag;
@@ -51,7 +50,7 @@ float goertzel_mag(int numSamples,int TARGET_FREQUENCY,int SAMPLING_RATE, float*
     real = (q1 - q2 * cosine) / scalingFactor;
     imag = (q2 * sine) / scalingFactor;
 
-    magnitude = sqrtf(real*real + imag*imag);
+    magnitude = sqrt(real*real + imag*imag);
     return magnitude;
 }
 
