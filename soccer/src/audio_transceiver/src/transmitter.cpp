@@ -9,6 +9,12 @@ Transmitter::Transmitter() {
         std::cout <<"Could not initialize the Portaudio Object in transmitter"<< std::endl; 
         this->~Transmitter();
     }
+    outputParameters.device = Pa_GetDefaultOutputDevice();
+    if (outputParameters.device == paNoDevice) {
+        std::cout<<"No output device \n";
+        this->~Transmitter();
+        
+    }
     outputParameters.channelCount = 2; /* stereo input */
     outputParameters.sampleFormat = PA_SAMPLE_TYPE;
     outputParameters.suggestedLatency = Pa_GetDeviceInfo(outputParameters.device)->defaultLowInputLatency;
@@ -26,7 +32,7 @@ Transmitter::Transmitter(std::string command, DestinationType destCommand){
     outputParameters.sampleFormat = PA_SAMPLE_TYPE;
     outputParameters.suggestedLatency = Pa_GetDeviceInfo(outputParameters.device)->defaultLowInputLatency;
     outputParameters.hostApiSpecificStreamInfo = NULL;
-    
+    // Not the right place to have this.
     if (command.compare("P")){ 
         std::string temp = "Pass";
         generateAudioPacket(temp,destCommand); 

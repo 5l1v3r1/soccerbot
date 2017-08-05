@@ -7,7 +7,7 @@
 #include <iostream>
 #include "constants.hpp"
 #include "portaudio.h"
-
+#include <math.h>
 
 using namespace std;
 

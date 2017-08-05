@@ -1,5 +1,5 @@
 #include "audio_packet.hpp"
-#include <math.h>
+
 static const double PI = 3.14157; 
 static const double FADE_LENGTH = 1;
 //int AudioPacket::numSamples = 0;
