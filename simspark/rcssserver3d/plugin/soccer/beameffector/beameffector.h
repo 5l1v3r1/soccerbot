@@ -4,7 +4,7 @@
    Fri May 9 2003
    Copyright (C) 2002,2003 Koblenz University
    Copyright (C) 2003 RoboCup Soccer Server 3D Maintenance Group
-   $Id: beameffector.h 394 2015-05-16 01:17:59Z patmac369 $
+   $Id: beameffector.h 415 2017-07-08 15:42:38Z patmac369 $
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -80,6 +80,10 @@ protected:
 
     /** amount of noise added to beam angle value */
     float mBeamNoiseAngle;
+
+    /** Allow starting at any field position including on opponent's
+        side of the field */
+    bool mStartAnyFieldPosition;
 };
 
 DECLARE_CLASS(BeamEffector);
