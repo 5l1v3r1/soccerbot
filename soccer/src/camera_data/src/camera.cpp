@@ -2,6 +2,9 @@
 #include "boost/filesystem/operations.hpp"
 #include "boost/filesystem/path.hpp"
 #include "boost/progress.hpp"
+#include "constants.hpp"
+#include <opencv2/calib3d/calib3d.hpp>
+#include <vector>
 
 using namespace cv;
 using namespace std;
@@ -22,6 +25,10 @@ void Camera::initialize() {
         printf("--(!)Error loading ball cascade\n");
         return;
     };
+
+    // Calibrate camera
+    if (CALIBRATE_CAMERA)
+        calibrateCamera();
 }
 
 void Camera::loop() {
@@ -38,16 +45,15 @@ void Camera::loop() {
             printf(" --(!) No captured frame -- Break!");
             break;
         }
-        
+
         // Creates intermediate stages between in and out
         process_intermediates();
-        
+
         // Actual Loop through all the detections
         //detect_ball();
         // detect_field_lines();
         detect_circle();
 
-        if ((char) waitKey(10) == 27) break;
     }
 }
 
@@ -56,8 +62,42 @@ void Camera::process_intermediates() {
     cv::cvtColor(frame_in, frame_in_hsv, cv::COLOR_BGR2HSV);
 }
 
-
 void Camera::calibrateCamera() {
+    // Open the camera and capture a single picture
+    VideoCapture capture;
+    capture.open(-1);
+    if (!capture.isOpened()) {
+        printf("--(!)Error opening video capture\n");
+        return;
+    }
+
+    while ((char) waitKey(10) != 27); // Press ESC to capture
+
+    capture.read(frame_in);
+    if (frame_in.empty()) {
+        printf(" --(!) No captured frame -- Break!");
+        return;
+    }
+    capture.release();
+
+    // Do the camera calibration
+    Size size(9, 7);
+    vector<Point2f> ptvec;
+    bool found = findChessboardCorners(frame_in, size, ptvec, CALIB_CB_ADAPTIVE_THRESH);
+
+    // Read camera parameters from XML/YAML file
+    FileStorage fs(filename, FileStorage::READ);
+    Mat intrinsics, distortion;
+    fs["camera_matrix"] >> intrinsics;
+    fs["distortion_coefficients"] >> distortion;
+
+    // Now we are ready to find a chessboard pose using solvePnP
+    vector<Point3f> boardPoints;
+    // fill the array
+
+    solvePnP(Mat(boardPoints), Mat(foundBoardCorners), cameraMatrix,
+            distCoeffs, rvec, tvec, false);
+
 
 }
 
@@ -80,48 +120,48 @@ void Camera::detect_ball() {
     }
 }
 
-void Camera::detect_circle() {    
- 
+void Camera::detect_circle() {
+
     // Construct a mask for the color "green", then perform
     // a series of dilations and erosions to remove any small
     // blobs left in the mask
     Mat mask, mask2, mask3;
-    
-    const Scalar lower = Scalar(0,0,190);
-    const Scalar upper = Scalar(255,100,255);
+
+    const Scalar lower = Scalar(0, 0, 190);
+    const Scalar upper = Scalar(255, 100, 255);
     cv::inRange(frame_in_hsv, lower, upper, mask);
-    
+
 
     Canny(mask, mask2, 50, 150, 3);
-    
+
     int erosion_size = 1;
     Mat element = getStructuringElement(
             cv::MORPH_ELLIPSE,
-            Size(2*erosion_size+1, 2*erosion_size+1),
+            Size(2 * erosion_size + 1, 2 * erosion_size + 1),
             Point(erosion_size, erosion_size));
-    
+
     cv::dilate(mask2, mask3, element);
     // frame_out = mask3;
     // return;
-    
+
     // find contours in the mask and initialize the current
     // (x, y) center of the ball
     Point center;
-    
+
     std::vector<vector<Point> > contours;
     std::vector<Vec4i> hierarchy;
-    cv::findContours( mask3, contours, hierarchy, CV_RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0,0) );
-    
+    cv::findContours(mask3, contours, hierarchy, CV_RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0, 0));
+
     // only proceed if at least one contour was found
     std::cout << "The size of contour is : " << contours.size() << endl;
     if (contours.size() > 0) {
-        
+
         // Find the largest contour in the mask        
         // For now go for the first one 
         std::vector<Point> chosen_contour;
         double max_size = 0.0;
         double temp;
-        
+
         for (auto it = contours.begin(), ite = contours.end(); it != ite; ++it) {
 
             temp = cv::contourArea(*it, false);
@@ -129,9 +169,9 @@ void Camera::detect_circle() {
                 temp = max_size;
                 chosen_contour = *it;
             }
-            
-        
-            
+
+
+
             // Use it to compute the minimum enclosing circle and centroid
             float radius;
             Point2f I_dont_know;
@@ -139,9 +179,9 @@ void Camera::detect_circle() {
 
             // Compute the center coordinates: centroids
             cv::Moments M = cv::moments(chosen_contour, false);
-            center.x = (int(M.m10/M.m00));
-            center.y = (int(M.m01/M.m00));
-                    
+            center.x = (int(M.m10 / M.m00));
+            center.y = (int(M.m01 / M.m00));
+
             // Check to ensure that the radius of the minimum enclosing
             // only proceed if the radius meets a minimum size
             std::cout << "The radius of contour is : " << radius << endl;
@@ -154,28 +194,28 @@ void Camera::detect_circle() {
             }
         }
     }
-    
-    
+
+
 }
 
 void Camera::detect_field_lines() {
     Mat mask, mask2, mask3;
-    const Scalar lower = Scalar(0,0,190);
-    const Scalar upper = Scalar(255,100,255);
+    const Scalar lower = Scalar(0, 0, 190);
+    const Scalar upper = Scalar(255, 100, 255);
     cv::inRange(frame_in_hsv, lower, upper, mask);
-    
+
     Canny(mask, mask2, 50, 150, 3);
-    
+
     int erosion_size = 1;
     Mat element = getStructuringElement(
             cv::MORPH_ELLIPSE,
-            Size(2*erosion_size+1, 2*erosion_size+1),
+            Size(2 * erosion_size + 1, 2 * erosion_size + 1),
             Point(erosion_size, erosion_size));
-    
+
     cv::dilate(mask2, mask3, element);
-    
+
     vector<Vec4i> lines;
-    
+
     HoughLinesP(mask3, lines, 1, CV_PI / 180 / 4, 60, 40, 2);
     for (size_t i = 0; i < lines.size(); i++) {
         Vec4i l = lines[i];
@@ -205,10 +245,10 @@ vector<string> Camera::get_image_names(string folder) {
 void Camera::test(string folder, void (Camera::*test_function)(void)) {
     vector<string> imgs = get_image_names(folder);
     cout << "Running tests on " << folder << endl;
-    fs::path rootPath (path + folder + "test/");
+    fs::path rootPath(path + folder + "test/");
     boost::system::error_code returnedError;
-    fs::create_directories( rootPath, returnedError );
-    
+    fs::create_directories(rootPath, returnedError);
+
     for (auto it = imgs.begin(); it != imgs.end(); ++it) {
         frame_in = imread(path + folder + (*it));
         process_intermediates();

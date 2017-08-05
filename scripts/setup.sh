@@ -66,6 +66,8 @@ sudo apt-get install ros-kinetic-geographic-msgs -y
 
 rosinstall ../soccer/include/ ../soccer/include/packages.rosinstall
 echo "source ~/soccerbot/soccer/devel/setup.bash" >> ~/.bashrc
+sudo apt-get install libopencv-dev python-opencv -y
+
 
 ### MATLAB ###
 wget http://esd.mathworks.com/R2017a/Linux_x86_64/INST_432557/matlab_R2017a_glnxa64.zip
