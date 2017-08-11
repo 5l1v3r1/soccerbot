@@ -55,7 +55,6 @@ void Camera::loop() {
         // detect_field_lines();
         detect_circle();
 
-        if ((char) waitKey(10) == 27) break;
     }
 }
 

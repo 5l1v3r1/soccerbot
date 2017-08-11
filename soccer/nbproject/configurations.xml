@@ -260,7 +260,7 @@
       <makefileType>
         <makeTool>
           <buildCommandWorkingDir>.</buildCommandWorkingDir>
-          <buildCommand>catkin_make --directory soccerbot/soccer</buildCommand>
+          <buildCommand>/opt/ros/kinetic/bin/catkin_make --directory ~/soccerbot/soccer</buildCommand>
           <cleanCommand>rm -rf build/</cleanCommand>
           <executablePath></executablePath>
         </makeTool>
