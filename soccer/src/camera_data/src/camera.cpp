@@ -72,8 +72,8 @@ void Camera::calibrateCamera() {
         return;
     }
     fs["Settings"] >> settings;
+    //cout << settings.aspectRatio << endl;
     fs.release(); // close Settings file
-    cout << "Actuttally " << endl;
     
     if (!settings.goodInput) {
         cout << "Invalid input detected. Application stopping. " << endl;
