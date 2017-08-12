@@ -31,7 +31,7 @@ private:
     
     void detect_ball(Mat frame);
 public:
-    Camera();
+    Camera(string path);
     ~Camera();
     std::string path;
     Settings settings;

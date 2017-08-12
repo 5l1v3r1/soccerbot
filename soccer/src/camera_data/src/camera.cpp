@@ -12,8 +12,9 @@ using namespace cv;
 using namespace std;
 namespace fs = boost::filesystem;
 
-Camera::Camera() {
-
+Camera::Camera(string path) {
+    this->path = path;
+    initialize();
 }
 
 Camera::~Camera() {
@@ -268,7 +269,7 @@ void Camera::detect_circle() {
     cv::findContours(mask3, contours, hierarchy, CV_RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0, 0));
 
     // only proceed if at least one contour was found
-    std::cout << "The size of contour is : " << contours.size() << endl;
+    //std::cout << "The size of contour is : " << contours.size() << endl;
     if (contours.size() > 0) {
 
         // Find the largest contour in the mask        
@@ -285,8 +286,6 @@ void Camera::detect_circle() {
                 chosen_contour = *it;
             }
 
-
-
             // Use it to compute the minimum enclosing circle and centroid
             float radius;
             Point2f I_dont_know;
@@ -299,7 +298,7 @@ void Camera::detect_circle() {
 
             // Check to ensure that the radius of the minimum enclosing
             // only proceed if the radius meets a minimum size
-            std::cout << "The radius of contour is : " << radius << endl;
+            //std::cout << "The radius of contour is : " << radius << endl;
 
             if (radius > 10.0) {
                 // draw the circle and centroid on the frame
@@ -309,8 +308,6 @@ void Camera::detect_circle() {
             }
         }
     }
-
-
 }
 
 void Camera::detect_field_lines() {

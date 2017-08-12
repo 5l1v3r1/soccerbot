@@ -1,7 +1,7 @@
 #ifndef CONSTANTS_HPP
 #define CONSTANTS_HPP
 
-#define RECALIBRATE_CAMERA true
+#define RECALIBRATE_CAMERA false
 
 // All measurements are in millimeters
 #define ROBOT_HEIGHT 600

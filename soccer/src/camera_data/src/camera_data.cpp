@@ -10,16 +10,15 @@ int main(int argc, char **argv) {
     
     ros::init(argc, argv, "camera_data");
     ros::NodeHandle n;
-    Camera camera;
     
     std::string path(argv[0]);
     int idx = path.find("devel/lib/camera_data/camera_data");
     path = path.substr(0, idx - 1);
-    camera.path = path + "/src/camera_data/";
-    camera.initialize();
+    
+    Camera camera(path + "/src/camera_data/");
     
     // For testing
-    //camera.run_tests();
+    camera.run_tests();
     
     // camera.loop();
     //camera.test();
