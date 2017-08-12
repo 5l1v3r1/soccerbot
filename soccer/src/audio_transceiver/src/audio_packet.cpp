@@ -7,8 +7,6 @@ static const double FADE_LENGTH = 1;
 float sweep(double f_start, double f_end, double interval, int n_steps); 
 
 
-// Very poor code. Because copy paste. 
-
 AudioPacket::AudioPacket() {
     // for each pair of low and high frequencies
     // f1 is basically a value out of the low freq 

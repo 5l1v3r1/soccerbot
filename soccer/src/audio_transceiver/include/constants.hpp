@@ -7,9 +7,12 @@
 // Audio Settings
 #define SAMPLE_RATE  (48000) /* #define SAMPLE_RATE  (17932) // Test failure to open with this value. */
 
-#define FRAMES_PER_BUFFER (2400)
 // Earlier frames per buffer were 512 
-// Logically should be 2400
+// Logically should be 9600
+#define FRAMES_PER_BUFFER (9600)
+
+
+#define NUM_SAMPLES     (4800)
 #define NUM_SECONDS     (5)
 #define NUM_CHANNELS    (2)
 #define DITHER_FLAG     (0) /* #define DITHER_FLAG     (paDitherOff) */
@@ -33,3 +36,4 @@ typedef struct raw_audio{
 } RawAudio;
 
 #endif /* AUDIO_RECEIVER_SRC_CONSTANTS_HPP_ */
+

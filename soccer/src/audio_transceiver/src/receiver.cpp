@@ -21,24 +21,21 @@ Receiver::Receiver() {
     inputParameters.hostApiSpecificStreamInfo = NULL;
 }
 
+// float* data will take in toneBuffer as an array of audio data. 
 float goertzel_mag(int numSamples,int TARGET_FREQUENCY,int SAMPLING_RATE, float* data){
-    int     k,i;
-    float   floatnumSamples;
-    float   omega,sine,cosine,coeff,q0,q1,q2,magnitude,real,imag;
-
+       
+    float   q0 = 0 ,q1 = 0,q2 = 0; 
     float   scalingFactor = numSamples / 2.0;
 
-    floatnumSamples = (float) numSamples;
-    k = (int) (0.5 + ((floatnumSamples * TARGET_FREQUENCY) / SAMPLING_RATE));
-    omega = (2.0 * M_PI * k) / floatnumSamples;
-    sine = sin(omega);
-    cosine = cos(omega);
-    coeff = 2.0 * cosine;
-    q0=0;
-    q1=0;
-    q2=0;
-
-    for(i=0; i<numSamples; i++)
+    // w= (2*pi*k)/N
+    // sine = sin(w) and cosine = cos(w)
+    int k = (int) (0.5 + (((float)(numSamples * TARGET_FREQUENCY)) / SAMPLING_RATE));
+    float omega = (2.0 * M_PI * k) / numSamples;
+    float sine = sin(omega);
+    float cosine = cos(omega);
+    float coeff = 2.0 * cosine;
+    
+    for(int i=0; i<numSamples; i++)
     {
         q0 = coeff * q1 - q2 + data[i];
         q2 = q1;
@@ -47,13 +44,24 @@ float goertzel_mag(int numSamples,int TARGET_FREQUENCY,int SAMPLING_RATE, float*
 
     // calculate the real and imaginary results
     // scaling appropriately
-    real = (q1 - q2 * cosine) / scalingFactor;
-    imag = (q2 * sine) / scalingFactor;
+    float real = (q1 - q2 * cosine) / scalingFactor;
+    float imag = (q2 * sine) / scalingFactor;
 
-    magnitude = sqrt(real*real + imag*imag);
+    float magnitude = sqrt(real*real + imag*imag);
     return magnitude;
 }
 
+// There is a Hann function that mallocs an array dataOut. 
+float* HannFunction(int numSamples, float* dataIn){
+    
+    float dataOut[BUFFER_SIZE];
+    double multiplier; 
+    for (int i =0; i< numSamples; ++i){
+        multiplier = 0.5*(1-cos((2*M_PI*i)/(numSamples-1)))
+        dataOut[i] = multiplier*dataIn[i];
+    }
+    return dataOut; 
+}
 
 static int recordCallback(  const void *inputBuffer, void *outputBuffer,
                             unsigned long framesPerBuffer,
@@ -112,10 +120,10 @@ void Receiver::record_playback() {
             paClipOff, //we won't output out of range samples so don't bother clipping them 
             recordCallback,
             data);
-    if (err != paNoError) throw;
+    if (err != paNoError){ std::cout<<"Could not open the input stream.";}
 
     err = Pa_StartStream(stream);
-    if (err != paNoError) throw;
+    if (err != paNoError) {std::cout<<"Could not start input stream";}
     fflush(stdout);
 
     while ((err = Pa_IsStreamActive(stream)) == 1) {
@@ -123,29 +131,11 @@ void Receiver::record_playback() {
         printf("index = %d\n", data->frameIndex);
         fflush(stdout);
     }
-    if (err < 0) throw;
+    if (err < 0){ std::cout<<"Error reading input stream.";}
 
     err = Pa_CloseStream(stream);
-    if (err != paNoError) throw;
+    if (err != paNoError){ std::cout<<"Could not close input stream";}
 
-//     THIS CALCULATION IS NOT REALLY NECESSARY. 
-//    // Measure maximum peak amplitude. 
-//    int max = 0;
-//    int average = 0.0;
-//    // Assuming the buffer size is equal to the sample size. 
-//    for (int i = 0; i < BUFFER_SIZE; i++) {
-//        int val = data->recordedSamples[i];
-//        if (val < 0) val = -val; // ABS
-//        if (val > max) {
-//            max = val;
-//        }
-//        average += val;
-//    }
-//
-//    average = average / (double) AudioPacket::numSamples;
-//
-//    printf("sample max amplitude = "PRINTF_S_FORMAT"\n", max);
-//    printf("sample average = %lf\n", average);
 }
 
 Receiver::~Receiver() {

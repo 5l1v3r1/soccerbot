@@ -4,6 +4,7 @@
 #include <queue>
 #include "audio_packet.hpp"
 #include "portaudio.h"
+#include "ros/ros.h"
 
 using namespace std;
 

@@ -3,16 +3,19 @@
 // The constructor should be used to generate an audio packet depending on certain action
 // This needs to be called once the robots are all set on their respective positions. 
 // All 5 robots would be transmitters. 
-Transmitter::Transmitter() {
+Transmitter::Transmitter(int argc, char** argv) {
+    ros::init(argc, argv, "talker");
+    ros::NodeHandle n; 
+    ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
     Pa_Initialize();  
     if( err != paNoError ){
-        std::cout <<"Could not initialize the Portaudio Object in transmitter"<< std::endl; 
+        std::cout <<"Could not initialize the PortAudio Object in transmitter"<< std::endl; 
         this->~Transmitter();
     }
     outputParameters.device = Pa_GetDefaultOutputDevice();
     if (outputParameters.device == paNoDevice) {
         std::cout<<"No output device \n";
-        this->~Transmitter();
+        this->Transmitter();
         
     }
     outputParameters.channelCount = 2; /* stereo input */
@@ -20,6 +23,9 @@ Transmitter::Transmitter() {
     outputParameters.suggestedLatency = Pa_GetDeviceInfo(outputParameters.device)->defaultLowInputLatency;
     outputParameters.hostApiSpecificStreamInfo = NULL;
     // Set a PaDeviceIndex using hardware or we will ask for user input. 
+    std::string temp = "Hello"; 
+    DestinationType destCommand = DestinationType::broadcast; 
+    generateAudioPacket(temp,destCommand); 
 }
 
 // This would be converted to a big switch case statement. 
@@ -27,7 +33,7 @@ Transmitter::Transmitter() {
 // change command to a template.
 // This should not exist actually 
 // We should do this in the get message command
-Transmitter::Transmitter(std::string command, DestinationType destCommand){ 
+Transmitter::Transmitter(int argc, char** argv,std::string command, DestinationType destCommand){ 
     outputParameters.channelCount = 2; /* stereo input */
     outputParameters.sampleFormat = PA_SAMPLE_TYPE;
     outputParameters.suggestedLatency = Pa_GetDeviceInfo(outputParameters.device)->defaultLowInputLatency;
