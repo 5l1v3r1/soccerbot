@@ -79,3 +79,7 @@ cd ../libraries/portaudio/
 ./configure && make
 sudo make install
 cd ../../scripts
+
+## AWS
+pip install awscli
+

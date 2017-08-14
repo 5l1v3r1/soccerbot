@@ -123,6 +123,11 @@ include_directories(
   ${OpenCV_INCLUDE_DIRS}
 )
 
+## The Pose Estimation Library
+#add_library(pose_estimation
+#   src/pose_estimation/main_detection.cpp
+#)
+
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure

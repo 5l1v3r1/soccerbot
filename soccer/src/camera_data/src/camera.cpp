@@ -176,6 +176,7 @@ void Camera::calibrateCamera() {
         if (mode == CALIBRATED && settings.showUndistorsed) {
             Mat temp = view.clone();
             undistort(temp, view, cameraMatrix, distCoeffs);
+            return;
         }
 
         //------------------------------ Show image and check for input commands -------------------
@@ -218,7 +219,13 @@ void Camera::calibrateCamera() {
 }
 
 void Camera::detect_field() {
-    //cv::cvtColor(frame_in, frame_in_hsv, cv::COLOR_BGR2HSV);
+    Mat mask;
+    const Scalar lower = Scalar(45, 100, 50);
+    const Scalar upper = Scalar(85, 255, 200);
+    cv::inRange(frame_in_hsv, lower, upper, mask);
+    
+    // Draw a bounding box around the area
+    frame_out = mask;
 }
 
 void Camera::detect_ball() {
@@ -371,5 +378,6 @@ void Camera::test(string folder, void (Camera::*test_function)(void)) {
 
 void Camera::run_tests() {
     test("training_images/ball/", &Camera::detect_circle);
+    test("training_images/field/", &Camera::detect_field);
     test("training_images/field_lines/", &Camera::detect_field_lines);
 }
