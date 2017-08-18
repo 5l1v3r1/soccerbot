@@ -27,7 +27,7 @@ find_package(catkin REQUIRED COMPONENTS
 ################################################
 
 ## To declare and build messages, services or actions from within this
-## package, follow these steps:
+## packagce, follow these steps:
 ## * Let MSG_DEP_SET be the set of packages whose message types you use in
 ##   your messages/services/actions (e.g. std_msgs, actionlib_msgs, ...).
 ## * In the file package.xml:
@@ -124,8 +124,28 @@ include_directories(
 )
 
 ## The Pose Estimation Library
+#catkin_package(
+#    INCLUDE_DIRS include
+#    LIBRARIES pose_estimation
+#    CATKIN_DEPENDS
+#        cv_bridge
+#        roscpp
+#        std_msgs
+#        image_transport
+#)
+#
 #add_library(pose_estimation
-#   src/pose_estimation/main_detection.cpp
+#  src/pose_estimation/CsvReader.cpp
+#  src/pose_estimation/CsvWriter.cpp
+#  src/pose_estimation/Mesh.cpp
+#  src/pose_estimation/Model.cpp
+#  src/pose_estimation/ModelRegistration.cpp
+#  src/pose_estimation/PnPProblem.cpp
+#  src/pose_estimation/RobustMatcher.cpp
+#  src/pose_estimation/Utils.cpp
+#)
+#target_link_libraries(pose_estimation
+#    ${catkin_LIBRARIES}
 #)
 
 ## Add cmake target dependencies of the library

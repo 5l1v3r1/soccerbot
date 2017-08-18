@@ -53,6 +53,8 @@ sh scripts/gazebo8_install.sh
 cd scripts/
 rm -rf gazebo8_install.sh
 
+sudo apt-get install meshlab -y
+
 ### OTHER ###
 if ! grep -q ROS_WD ~/.bashrc;
 then

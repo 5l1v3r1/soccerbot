@@ -37,7 +37,7 @@ void drawPoints(cv::Mat image, std::vector<cv::Point2f> &list_points_2d, std::ve
 void draw2DPoints(cv::Mat image, std::vector<cv::Point2f> &list_points, cv::Scalar color);
 
 // Draw an arrow into the image
-void drawArrow(cv::Mat image, cv::Point2i p, cv::Point2i q, cv::Scalar color, int arrowMagnitude = 9, int thickness=1, int line_type=8, int shift=0);
+void drawArrow(cv::Mat image, cv::Point2i p, cv::Point2i q, cv::Scalar color, int arrowMagnitude = 9, int thickness = 1, int line_type = 8, int shift = 0);
 
 // Draw the 3D coordinate axes
 void draw3DCoordinateAxes(cv::Mat image, const std::vector<cv::Point2f> &list_points2d);
@@ -58,12 +58,12 @@ cv::Mat rot2euler(const cv::Mat & rotationMatrix);
 cv::Mat euler2rot(const cv::Mat & euler);
 
 // Converts a given string to an integer
-int StringToInt ( const std::string &Text );
+int StringToInt(const std::string &Text);
 
 // Converts a given float to a string
-std::string FloatToString ( float Number );
+std::string FloatToString(float Number);
 
 // Converts a given integer to a string
-std::string IntToString ( int Number );
+std::string IntToString(int Number);
 
 #endif /* UTILS_H_ */
