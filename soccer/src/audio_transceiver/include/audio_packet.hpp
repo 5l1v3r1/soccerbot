@@ -47,7 +47,7 @@ private:
 
     float lower_freq = 50; 
     float higher_freq = 500; 
-    const int numSamples = 4800;
+    const int numSamples = 100;
     
     // Will be used to convert message to rawAudio data. 
     string message;

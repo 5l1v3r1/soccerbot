@@ -57,7 +57,7 @@ float* HannFunction(int numSamples, float* dataIn){
     float dataOut[BUFFER_SIZE];
     double multiplier; 
     for (int i =0; i< numSamples; ++i){
-        multiplier = 0.5*(1-cos((2*M_PI*i)/(numSamples-1)))
+        multiplier = 0.5*(1-cos((2*M_PI*i)/(numSamples-1)));
         dataOut[i] = multiplier*dataIn[i];
     }
     return dataOut; 
@@ -70,13 +70,15 @@ static int recordCallback(  const void *inputBuffer, void *outputBuffer,
                             void *userData) {
     RawAudio* data = (RawAudio*) userData;
     const SAMPLE* rptr = (const SAMPLE*) inputBuffer;
+    int finished;
+    /*
     SAMPLE* wptr = &data->recordedSamples[data->frameIndex * NUM_CHANNELS];
     long framesToCalc;
     long i;
-    int finished;
+    
     unsigned long framesLeft = data->maxFrameIndex - data->frameIndex;
 
-    (void) outputBuffer; /* Prevent unused variable warnings. */
+    (void) outputBuffer; // Prevent unused variable warnings. 
     (void) timeInfo;
     (void) statusFlags;
     (void) userData;
@@ -91,16 +93,17 @@ static int recordCallback(  const void *inputBuffer, void *outputBuffer,
 
     if (inputBuffer == NULL) {
         for (i = 0; i < framesToCalc; i++) {
-            *wptr++ = SAMPLE_SILENCE; /* left */
-            if (NUM_CHANNELS == 2) *wptr++ = SAMPLE_SILENCE; /* right */
+            *wptr++ = SAMPLE_SILENCE; // left 
+            if (NUM_CHANNELS == 2) *wptr++ = SAMPLE_SILENCE; // right 
         }
     } else {
         for (i = 0; i < framesToCalc; i++) {
-            *wptr++ = *rptr++; /* left */
-            if (NUM_CHANNELS == 2) *wptr++ = *rptr++; /* right */
+            *wptr++ = *rptr++; //left 
+            if (NUM_CHANNELS == 2) *wptr++ = *rptr++; // right
         }
     }
     data->frameIndex += framesToCalc;
+    */
     return finished;
 }
 
@@ -128,7 +131,7 @@ void Receiver::record_playback() {
 
     while ((err = Pa_IsStreamActive(stream)) == 1) {
         Pa_Sleep(1000);
-        printf("index = %d\n", data->frameIndex);
+        //printf("index = %d\n", data->frameIndex);
         fflush(stdout);
     }
     if (err < 0){ std::cout<<"Error reading input stream.";}

@@ -3,28 +3,30 @@
 // The constructor should be used to generate an audio packet depending on certain action
 // This needs to be called once the robots are all set on their respective positions. 
 // All 5 robots would be transmitters. 
-Transmitter::Transmitter(int argc, char** argv) {
-    ros::init(argc, argv, "talker");
-    ros::NodeHandle n; 
-    ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
-    Pa_Initialize();  
-    if( err != paNoError ){
-        std::cout <<"Could not initialize the PortAudio Object in transmitter"<< std::endl; 
-        this->~Transmitter();
-    }
-    outputParameters.device = Pa_GetDefaultOutputDevice();
+Transmitter::Transmitter(){
+    //ros::init(argc, argv, "talker");
+    //ros::NodeHandle n; }
+    Pa_Initialize();
+    std::cout << Pa_GetDeviceCount()<< std::endl;
+    outputParameters.device = Pa_GetDefaultOutputDevice();/* default output device */
+    
     if (outputParameters.device == paNoDevice) {
-        std::cout<<"No output device \n";
-        this->Transmitter();
-        
+        std::cerr<<"Error: No default output device.\n";
+        this->~Transmitter();
     }
     outputParameters.channelCount = 2; /* stereo input */
     outputParameters.sampleFormat = PA_SAMPLE_TYPE;
-    outputParameters.suggestedLatency = Pa_GetDeviceInfo(outputParameters.device)->defaultLowInputLatency;
+    //outputParameters.device = Pa_GetDeviceCount();
+    std::string temp = "Hello test"; 
+    
+    //std::cout << Pa_GetDeviceInfo(outputParameters.device);
+    //outputParameters.suggestedLatency = Pa_GetDeviceInfo(outputParameters.device)->defaultLowInputLatency;
+          
+
     outputParameters.hostApiSpecificStreamInfo = NULL;
     // Set a PaDeviceIndex using hardware or we will ask for user input. 
-    std::string temp = "Hello"; 
-    DestinationType destCommand = DestinationType::broadcast; 
+     
+    DestinationType destCommand = broadcast; 
     generateAudioPacket(temp,destCommand); 
 }
 
@@ -33,7 +35,12 @@ Transmitter::Transmitter(int argc, char** argv) {
 // change command to a template.
 // This should not exist actually 
 // We should do this in the get message command
-Transmitter::Transmitter(int argc, char** argv,std::string command, DestinationType destCommand){ 
+Transmitter::Transmitter(std::string command, DestinationType destCommand){ 
+    outputParameters.device = Pa_GetDefaultOutputDevice(); /* default output device */
+        if (outputParameters.device == paNoDevice) {
+            fprintf(stderr,"Error: No default output device.\n");
+            this->~Transmitter();
+        }
     outputParameters.channelCount = 2; /* stereo input */
     outputParameters.sampleFormat = PA_SAMPLE_TYPE;
     outputParameters.suggestedLatency = Pa_GetDeviceInfo(outputParameters.device)->defaultLowInputLatency;
@@ -64,8 +71,8 @@ bool Transmitter::generateAudioPacket(std::string command, DestinationType destC
     
     // Every message should contain a unique token Number.
     //destCommand contains the information whether it is Unicast or broadcast  
-    AudioPacket newPacket(command,destCommand);
-    
+    AudioPacket newPacket;
+    //AudioPacket newPacket(command,destCommand);
     
     err = Pa_OpenStream(&stream,
                         NULL, // no input 
@@ -78,23 +85,35 @@ bool Transmitter::generateAudioPacket(std::string command, DestinationType destC
     
     if( err != paNoError ){
         std::cout<<"Error in opening stream"<<endl;
+        return false; 
     }
     err = Pa_SetStreamFinishedCallback( stream, &StreamFinished );
-    if( err != paNoError ) std::cout<<"Could not set the final callback\n";
-   
-    err = Pa_StartStream( stream );
-    if( err != paNoError ) std::cout<<"Could not open stream\n";
+    if( err != paNoError ) {
+        std::cout<<"Could not set the final callback\n";
+        return false; 
+    }
     
+    err = Pa_StartStream( stream );
+    if( err != paNoError ){
+        std::cout<<"Could not open stream\n";
+        return false; 
+    }
+    // Just for 5 seconds.
+    Pa_Sleep( 5 * 1000 );
     err = Pa_StopStream( stream );
-    if( err != paNoError ) std::cout <<"Could not stop stream \n";
-
+    if( err != paNoError ){
+        std::cout <<"Could not stop stream \n";
+        return false; 
+    }
     err = Pa_CloseStream( stream );
-    if( err != paNoError ) std::cout <<"Could not close stream\n";
-
+    if( err != paNoError ){
+        std::cout <<"Could not close stream\n";
+        return false; 
+    }
     Pa_Terminate();
     std::cout<<"Test finished.\n";
-
-    return err;
+            
+    return true;
     
 }
 
@@ -124,7 +143,7 @@ int Transmitter::paTestCallBack( const void *inputBuffer, void *outputBuffer,
         data->right_phase += 3;
         if( data->right_phase >= BUFFER_SIZE ) data->right_phase -= 2*BUFFER_SIZE;
     }
-    return 0;
+    return paContinue;
 }
 
 // This would be controlled by the hardware at all times. As soon as the hardware

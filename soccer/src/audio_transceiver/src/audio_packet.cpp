@@ -11,6 +11,8 @@ AudioPacket::AudioPacket() {
     // for each pair of low and high frequencies
     // f1 is basically a value out of the low freq 
     // f2 is basically a value out of the high freq 
+    data.left_phase  = 0; 
+    data.right_phase = 0; 
     int total_samples = numSamples * NUM_CHANNELS;
     for (int k = 0; k < numSamples; k++) {
         float f1 = lower_freq;
@@ -24,8 +26,8 @@ AudioPacket::AudioPacket() {
         //tone_buffer[k][i][j] =((short)amp_low [i] * sin(f1 * unit_hz)) + ((short)amp_high[j] * sin(f2 * unit_hz));
         // Modified sweep function that has been delivered.
         int index = k*NUM_CHANNELS;
-        data.tone_buffer[index] = sweep(f1, f2, 1.2, 5);
-
+        //data.tone_buffer[index] = sweep(f1, f2, 1.2, 5);
+        data.tone_buffer[index] = (float) sin( ((double)index/(double)total_samples) * M_PI * 2.0 );
         // Random interval passed right now.
         // Random steps.
         //sweep(f1,f2,1.2, 5)
@@ -40,6 +42,12 @@ AudioPacket::AudioPacket() {
         for (int l = index + 1; l < index + NUM_CHANNELS; l++) {
             data.tone_buffer[l] = data.tone_buffer[index];
         }
+    }
+    /*for (int k = 0; k < numSamples; k++) {
+        data.tone_buffer[k] += 50;
+    }*/
+    for (int k = 0; k < numSamples; k++) {
+        cout <<data.tone_buffer[k]<<" ";
     }
 }
 

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-#include "audio_packet_queue.h"
+#include "audio_packet_queue.hpp"
 
 
 AudioPacketQueue::AudioPacketQueue(){

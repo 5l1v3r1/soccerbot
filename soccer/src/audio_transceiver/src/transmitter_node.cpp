@@ -8,13 +8,13 @@ int main(int argc, char **argv) {
     ros::init(argc, argv, "audio_transceiver");
     ros::NodeHandle n;
 
-    Transmitter t();
-    
-    AudioPacket p;
-    p.set_message("Hello World");
+    Transmitter t;
+    //std::cout<<"CHECK DEBUG\n"; 
+    //AudioPacket p;
+    //p.set_message("Hello World");
     
     //t.send_message(p);
     
-    ros::spin();
+    //ros::spin();
     return EXIT_SUCCESS;
 }

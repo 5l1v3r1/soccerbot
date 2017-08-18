@@ -4,7 +4,7 @@
 #include "receiver.h"
 #include "audio_packet.hpp"
 
-int main(int argc, char **argv) {
+/*int main(int argc, char **argv) {
     ros::init(argc, argv, "audio_transceiver");
     ros::NodeHandle n;
 
@@ -14,4 +14,4 @@ int main(int argc, char **argv) {
     
     ros::spin();
     return EXIT_SUCCESS;
-}
+}*/

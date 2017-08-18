@@ -18,8 +18,12 @@
       </df>
       <df name="src">
         <df name="audio_transceiver">
+          <df name="include">
+            <in>audio_packet_queue.hpp</in>
+          </df>
           <df name="src">
             <in>audio_packet.cpp</in>
+            <in>audio_packet_queue.cpp</in>
             <in>receiver.cpp</in>
             <in>receiver_node.cpp</in>
             <in>transmitter.cpp</in>
@@ -262,7 +266,7 @@
           <buildCommandWorkingDir>.</buildCommandWorkingDir>
           <buildCommand>/opt/ros/kinetic/bin/catkin_make --directory ~/soccerbot/soccer</buildCommand>
           <cleanCommand>rm -rf build/</cleanCommand>
-          <executablePath></executablePath>
+          <executablePath>devel/lib/audio_transceiver/receiver_node</executablePath>
         </makeTool>
         <preBuild>
           <preBuildCommandWorkingDir>.</preBuildCommandWorkingDir>
@@ -802,7 +806,17 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="src/audio_transceiver/include/audio_packet_queue.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="src/audio_transceiver/src/audio_packet.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/audio_transceiver/src/audio_packet_queue.cpp"
             ex="false"
             tool="1"
             flavor2="0">

@@ -119,6 +119,9 @@ set(SRCS
     src/receiver.cpp
     src/transmitter.cpp
     src/audio_packet.cpp
+    src/audio_packet_queue.cpp
+    src/transmitter_node.cpp
+    src/receiver_node.cpp
 )
 
 set(LINKER_FLAGS
@@ -147,6 +150,7 @@ target_link_libraries(receiver_node
    ${LINKER_FLAGS} 
 )
 
+set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
 #############
 ## Install ##
 #############
