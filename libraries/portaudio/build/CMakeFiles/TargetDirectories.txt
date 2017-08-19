@@ -1,0 +1,8 @@
+/home/justin/soccerbot/libraries/portaudio/build/CMakeFiles/install.dir
+/home/justin/soccerbot/libraries/portaudio/build/CMakeFiles/list_install_components.dir
+/home/justin/soccerbot/libraries/portaudio/build/CMakeFiles/rebuild_cache.dir
+/home/justin/soccerbot/libraries/portaudio/build/CMakeFiles/edit_cache.dir
+/home/justin/soccerbot/libraries/portaudio/build/CMakeFiles/portaudio.dir
+/home/justin/soccerbot/libraries/portaudio/build/CMakeFiles/portaudio_static.dir
+/home/justin/soccerbot/libraries/portaudio/build/CMakeFiles/install/strip.dir
+/home/justin/soccerbot/libraries/portaudio/build/CMakeFiles/install/local.dir
