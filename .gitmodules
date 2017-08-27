@@ -1,0 +1,76 @@
+[submodule "libraries/ROBOTIS-Framework"] 
+  path = libraries/ROBOTIS-Framework
+  url = https://github.com/ROBOTIS-GIT/ROBOTIS-Framework
+
+[submodule "libraries/THORMANG/ROBOTIS-Math"] 
+  path = libraries/THORMANG/ROBOTIS-Math
+  url = https://github.com/ROBOTIS-GIT/ROBOTIS-Math
+
+[submodule "libraries/THORMANG/ROBOTIS-THORMANG-Common"] 
+  path = libraries/THORMANG/ROBOTIS-THORMANG-Common
+  url = https://github.com/ROBOTIS-GIT/ROBOTIS-THORMANG-Common
+
+[submodule "libraries/THORMANG/ROBOTIS-THORMANG-MPC"] 
+  path = libraries/THORMANG/ROBOTIS-THORMANG-MPC
+  url = https://github.com/ROBOTIS-GIT/ROBOTIS-THORMANG-MPC
+
+[submodule "libraries/THORMANG/ROBOTIS-THORMANG-OPC"] 
+  path = libraries/THORMANG/ROBOTIS-THORMANG-OPC
+  url = https://github.com/ROBOTIS-GIT/ROBOTIS-THORMANG-OPC
+
+[submodule "libraries/THORMANG/ROBOTIS-THORMANG-PPC"] 
+  path = libraries/THORMANG/ROBOTIS-THORMANG-PPC
+  url = https://github.com/ROBOTIS-GIT/ROBOTIS-THORMANG-PPC
+
+[submodule "libraries/THORMANG/ROBOTIS-THORMANG-Tools"] 
+  path = libraries/THORMANG/ROBOTIS-THORMANG-Tools
+  url = https://github.com/ROBOTIS-GIT/ROBOTIS-THORMANG-Tools
+
+[submodule "libraries/THORMANG/ROBOTIS-THORMANG-msgs"] 
+  path = libraries/THORMANG/ROBOTIS-THORMANG-msgs
+  url = https://github.com/ROBOTIS-GIT/ROBOTIS-THORMANG-msgs
+
+[submodule "soccer/src/DynamixelSDK"] 
+  path = soccer/src/DynamixelSDK
+  url = https://github.com/ROBOTIS-GIT/DynamixelSDK
+
+[submodule "soccer/src/humanoid_navigation"] 
+  path = soccer/src/humanoid_navigation
+  url = https://github.com/AravindaDP/humanoid_navigation
+
+[submodule "soccer/src/robot_localization"] 
+  path = soccer/src/robot_localization
+  url = https://github.com/cra-ros-pkg/robot_localization
+
+[submodule "soccer/src/navigation"] 
+  path = soccer/src/navigation
+  url = https://github.com/ros-planning/navigation
+
+[submodule "soccer/src/camera_data/training_images/haarcascade-negatives"] 
+  path = soccer/src/camera_data/training_images/haarcascade-negatives
+  url = https://github.com/JoakimSoderberg/haarcascade-negatives
+
+[submodule "libraries/sbpl"] 
+  path = libraries/sbpl
+  url = https://github.com/sbpl/sbpl
+
+[submodule "soccer/src/sbpl"] 
+  path = soccer/src/sbpl
+  url = https://github.com/sbpl/sbpl
+
+[submodule "rcsoccersim/rcssserver"] 
+  path = rcsoccersim/rcssserver
+  url = https://github.com/rcsoccersim/rcssserver/
+
+[submodule "rcsoccersim/rcssmonitor"] 
+  path = rcsoccersim/rcssmonitor
+  url = https://github.com/rcsoccersim/rcssmonitor/
+
+[submodule "rcsoccersim/rcsslogplayer"] 
+  path = rcsoccersim/rcsslogplayer
+  url = https://github.com/rcsoccersim/rcsslogplayer/
+
+[submodule "rcsoccersim/wrighteaglebase"] 
+  path = rcsoccersim/wrighteaglebase
+  url = https://github.com/wrighteagle2d/wrighteaglebase
+
