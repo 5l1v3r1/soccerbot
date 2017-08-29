@@ -198,3 +198,9 @@ set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+if(MSVC)  
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Zi")  
+else()  
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")  
+endif()

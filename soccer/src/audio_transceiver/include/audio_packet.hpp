@@ -8,6 +8,7 @@
 #include "constants.hpp"
 #include "portaudio.h"
 #include <math.h>
+#include <algorithm>  
 
 using namespace std;
 
@@ -37,7 +38,7 @@ private:
     //Related to the frame rate of the data. Again the theory not good enough for this 
     // type of communication. Frames accumulated must be equal to the num of samples thus
     // does not really make sense to actually call this function. 
-    int totalFrames;
+    //int totalFrames;
     // Have to understand how to connect the number of samples to the sampling rate. 
     // Sampling rate can be different for different devices. 
     // Probably make a list from where we can choose which one to take something like enum.
@@ -45,9 +46,9 @@ private:
     // Every 100ms we would be trying to figure out the 
     //float tone_buffer[9600][5][5];
 
-    float lower_freq = 50; 
-    float higher_freq = 500; 
-    const int numSamples = 100;
+    float lower_freq; 
+    float higher_freq; 
+    
     
     // Will be used to convert message to rawAudio data. 
     string message;

@@ -1,20 +1,28 @@
+#include <vector>
+
 #include "audio_packet.hpp"
 
 static const double PI = 3.14157; 
 static const double FADE_LENGTH = 1;
 //int AudioPacket::numSamples = 0;
 // Helper function. A lot of improvements to be done in the code written.
-float sweep(double f_start, double f_end, double interval, int n_steps); 
+std::array<float,NUMBER_OF_STEPS> sweep(double f_start, double f_end, double interval); 
 
 
 AudioPacket::AudioPacket() {
     // for each pair of low and high frequencies
     // f1 is basically a value out of the low freq 
     // f2 is basically a value out of the high freq 
-    data.left_phase  = 0; 
+    lower_freq  = 1; 
+    higher_freq = 5;
+    //totalFrames = 100;  
+    data.left_phase  = 0;
     data.right_phase = 0; 
-    int total_samples = numSamples * NUM_CHANNELS;
-    for (int k = 0; k < numSamples; k++) {
+    
+    
+    std::array<float,NUMBER_OF_STEPS>  tempArray; 
+    //BUFFER SIZE IS 88200
+    for (int k = 0; k < BUFFER_SIZE; k++) {
         float f1 = lower_freq;
         float f2 = higher_freq;
         // calculating the total samples. 
@@ -26,28 +34,26 @@ AudioPacket::AudioPacket() {
         //tone_buffer[k][i][j] =((short)amp_low [i] * sin(f1 * unit_hz)) + ((short)amp_high[j] * sin(f2 * unit_hz));
         // Modified sweep function that has been delivered.
         int index = k*NUM_CHANNELS;
-        //data.tone_buffer[index] = sweep(f1, f2, 1.2, 5);
-        data.tone_buffer[index] = (float) sin( ((double)index/(double)total_samples) * M_PI * 2.0 );
-        // Random interval passed right now.
-        // Random steps.
-        //sweep(f1,f2,1.2, 5)
+        for (int i = 0; i < NUM_CHANNELS; i++){
+            data.tone_buffer.push_back((float) sin( ((double)index/((double)BUFFER_SIZE)) * M_PI * 2.0 ));
+        }
+        
+        //tempArray = sweep(f1,f2,unit_hz);
+        for(int i = 0; i < data.tone_buffer.size(); i++) {
+            cout << data.tone_buffer[i] << " ";
+        }
+        cout << endl;
+        
+        //for (int i = 0; i < NUM_CHANNELS; i++){
+        //    data.tone_buffer.push_back(tempArray);
+        //}
+
         // fade out samples near the end of the buffer
-        float dist_to_end = total_samples - k;
+        float dist_to_end = (BUFFER_SIZE - k)/BUFFER_SIZE;
         float fade = 1.0;
         if (dist_to_end < FADE_LENGTH) {
             fade = dist_to_end / FADE_LENGTH;
         }
-        data.tone_buffer[index] *= fade;
-        // copy k_th sample to the remaining indexes in the same channel
-        for (int l = index + 1; l < index + NUM_CHANNELS; l++) {
-            data.tone_buffer[l] = data.tone_buffer[index];
-        }
-    }
-    /*for (int k = 0; k < numSamples; k++) {
-        data.tone_buffer[k] += 50;
-    }*/
-    for (int k = 0; k < numSamples; k++) {
-        cout <<data.tone_buffer[k]<<" ";
     }
 }
 
@@ -71,14 +77,17 @@ void AudioPacket::set_message(const string& _message){
     
 //}
 
-float sweep(double f_start, double f_end, double interval, int n_steps) {
-    for (int i = 0; i < n_steps; ++i) {
-        double delta = i / (float)n_steps;
-        double t = interval * delta;
+std::array<float,NUMBER_OF_STEPS> sweep(double f_start, double f_end, double interval) {
+    std::array<float,NUMBER_OF_STEPS> tempAudio; 
+    for (int i = 1; i <= NUMBER_OF_STEPS; i++) {
+        double delta = i/(double)NUMBER_OF_STEPS;
+        
+        double t = interval * delta; 
         double phase = 2 * PI * t * (f_start + (f_end - f_start) * delta / 2);
         while (phase > 2 * PI) phase -= 2 * PI; // optional
-        return 3 * sin(phase);
+        tempAudio[i] = (10 * sin(phase));
     }
+    return tempAudio;
 }
 
 RawAudio& AudioPacket::get_data(){

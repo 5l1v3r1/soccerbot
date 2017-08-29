@@ -21,47 +21,6 @@ Receiver::Receiver() {
     inputParameters.hostApiSpecificStreamInfo = NULL;
 }
 
-// float* data will take in toneBuffer as an array of audio data. 
-float goertzel_mag(int numSamples,int TARGET_FREQUENCY,int SAMPLING_RATE, float* data){
-       
-    float   q0 = 0 ,q1 = 0,q2 = 0; 
-    float   scalingFactor = numSamples / 2.0;
-
-    // w= (2*pi*k)/N
-    // sine = sin(w) and cosine = cos(w)
-    int k = (int) (0.5 + (((float)(numSamples * TARGET_FREQUENCY)) / SAMPLING_RATE));
-    float omega = (2.0 * M_PI * k) / numSamples;
-    float sine = sin(omega);
-    float cosine = cos(omega);
-    float coeff = 2.0 * cosine;
-    
-    for(int i=0; i<numSamples; i++)
-    {
-        q0 = coeff * q1 - q2 + data[i];
-        q2 = q1;
-        q1 = q0;
-    }
-
-    // calculate the real and imaginary results
-    // scaling appropriately
-    float real = (q1 - q2 * cosine) / scalingFactor;
-    float imag = (q2 * sine) / scalingFactor;
-
-    float magnitude = sqrt(real*real + imag*imag);
-    return magnitude;
-}
-
-// There is a Hann function that mallocs an array dataOut. 
-float* HannFunction(int numSamples, float* dataIn){
-    
-    float dataOut[BUFFER_SIZE];
-    double multiplier; 
-    for (int i =0; i< numSamples; ++i){
-        multiplier = 0.5*(1-cos((2*M_PI*i)/(numSamples-1)));
-        dataOut[i] = multiplier*dataIn[i];
-    }
-    return dataOut; 
-}
 
 static int recordCallback(  const void *inputBuffer, void *outputBuffer,
                             unsigned long framesPerBuffer,
@@ -69,7 +28,9 @@ static int recordCallback(  const void *inputBuffer, void *outputBuffer,
                             PaStreamCallbackFlags statusFlags,
                             void *userData) {
     RawAudio* data = (RawAudio*) userData;
+    
     const SAMPLE* rptr = (const SAMPLE*) inputBuffer;
+    
     int finished;
     /*
     SAMPLE* wptr = &data->recordedSamples[data->frameIndex * NUM_CHANNELS];
@@ -83,13 +44,13 @@ static int recordCallback(  const void *inputBuffer, void *outputBuffer,
     (void) statusFlags;
     (void) userData;
 
-    if (framesLeft < framesPerBuffer) {
-        framesToCalc = framesLeft;
-        finished = paComplete;
-    } else {
-        framesToCalc = framesPerBuffer;
-        finished = paContinue;
-    }
+//    if (framesLeft < framesPerBuffer) {
+//        framesToCalc = framesLeft;
+//        finished = paComplete;
+//    } else {
+//        framesToCalc = framesPerBuffer;
+//        finished = paContinue;
+//    }
 
     if (inputBuffer == NULL) {
         for (i = 0; i < framesToCalc; i++) {
@@ -146,3 +107,44 @@ Receiver::~Receiver() {
     Pa_Terminate();
 }
 
+// float* data will take in toneBuffer as an array of audio data. 
+float goertzel_mag(int numSamples,int TARGET_FREQUENCY,int SAMPLING_RATE, float* data){
+       
+    float   q0 = 0 ,q1 = 0,q2 = 0; 
+    float   scalingFactor = numSamples / 2.0;
+
+    // w= (2*pi*k)/N
+    // sine = sin(w) and cosine = cos(w)
+    int k = (int) (0.5 + (((float)(numSamples * TARGET_FREQUENCY)) / SAMPLING_RATE));
+    float omega = (2.0 * M_PI * k) / numSamples;
+    float sine = sin(omega);
+    float cosine = cos(omega);
+    float coeff = 2.0 * cosine;
+    
+    for(int i=0; i<numSamples; i++)
+    {
+        q0 = coeff * q1 - q2 + data[i];
+        q2 = q1;
+        q1 = q0;
+    }
+
+    // calculate the real and imaginary results
+    // scaling appropriately
+    float real = (q1 - q2 * cosine) / scalingFactor;
+    float imag = (q2 * sine) / scalingFactor;
+
+    float magnitude = sqrt(real*real + imag*imag);
+    return magnitude;
+}
+
+// There is a Hann function that mallocs an array dataOut. 
+float* HannFunction(int numSamples, float* dataIn){
+    
+    float dataOut[BUFFER_SIZE];
+    double multiplier; 
+    for (int i =0; i< numSamples; ++i){
+        multiplier = 0.5*(1-cos((2*M_PI*i)/(numSamples-1)));
+        dataOut[i] = multiplier*dataIn[i];
+    }
+    return dataOut; 
+}

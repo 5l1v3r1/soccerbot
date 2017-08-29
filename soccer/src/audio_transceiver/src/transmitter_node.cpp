@@ -9,6 +9,10 @@ int main(int argc, char **argv) {
     ros::NodeHandle n;
 
     Transmitter t;
+    
+    DestinationType destCommand = broadcast;
+    t.generateAudioPacket("Hello World", destCommand);
+    
     //std::cout<<"CHECK DEBUG\n"; 
     //AudioPacket p;
     //p.set_message("Hello World");
