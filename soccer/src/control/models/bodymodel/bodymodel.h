@@ -185,6 +185,7 @@ private:
         VecPosition zAxis = VecPosition(0, 0, 1.0);
         VecPosition bodyZAxis = (worldModel->l2g(VecPosition(0, 0, 1.0)) - worldModel->l2g(VecPosition(0, 0, 0))).normalize();
         fallAngle = VecPosition(0, 0, 0).getAngleBetweenPoints(zAxis, bodyZAxis);
+        //cout << fallAngle << endl;
     }
 
 public:
@@ -195,6 +196,7 @@ public:
 
     void initialiseEffectors();
     void initialiseComponents();
+
 
     inline double getJointAngle(const int &i) {
         return joint[i].angle;
@@ -363,6 +365,7 @@ public:
 
     bool hasToe();
     bool isGazebo();
+
 };
 
 #endif // BODY_MODEL_H

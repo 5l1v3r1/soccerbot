@@ -20,6 +20,7 @@ protected:
     BodyModel *bodyModel;
     WorldModel *worldModel;
     Parser *parser;
+    //PFLocalization *localization;
 
     //chage to optimizer later
     double timePrevious;
@@ -49,7 +50,7 @@ public:
 
     //chage to optimizer later
     double returnTimeInSecond();
-    VecPosition calcChangeOfCOM();
+    void getMyPosition();
 
 };
 

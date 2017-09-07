@@ -464,6 +464,7 @@ void BodyModel::refreshTorso() {
 
     component[COMP_TORSO].transformFromParent = HCTMatrix(bodyWorldInterface);
     component[COMP_TORSO].transformFromRoot = HCTMatrix(bodyWorldInterface);
+    cout << component[COMP_TORSO].transformFromRoot.transform((0, 0, 0)) << endl;
 }
 
 void BodyModel::refreshComponent(const int &index) {
@@ -1179,14 +1180,16 @@ VecPosition BodyModel::getCenterOfMass() const {
         //transformFromRoot is a matrix.. it has a menmber function can change the para to new position?
         VecPosition location = bodyPart.transformFromRoot.transform(VecPosition(0, 0, 0));
         //cout << "location of component[" << i << "] is" << location << endl;
-        cout << "mass of component[" << i << "] is" << mass << endl;
+        //cout << "mass of component[" << i << "] is" << mass << endl;
         com += location * mass;
         totalMass += mass;
     }
-    cout << endl;
     com /= totalMass;
+    
+    cout <<"Local to global is " << worldModel->l2g(com) << endl;
     return com;
 }
+
 
 /**
  * Find the center of mass of an arm relative to its shoulder, or the leg relative to a foot

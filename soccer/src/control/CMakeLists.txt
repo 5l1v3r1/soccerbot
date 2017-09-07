@@ -18,9 +18,39 @@ endif(NOT CMAKE_CXX_FLAGS)
 #set(RCSSNET3D_INCLUDE_DIR "/usr/include/simspark")
 #set(RCSSNET3D_LIBRARY "../../../soccerbot/simspark/rcssserver3d")
 
+set(CORE_PATH utwalk)
+
 include_directories(
+${CORE_PATH}
 ${RCSSNET3D_INCLUDE_DIR}
 )
+
+
+set(CORE_FILES
+  ${CORE_PATH}/MotionCore.cpp
+  ${CORE_PATH}/Module.cpp  
+  ${CORE_PATH}/common/NMatrix.cpp 
+  ${CORE_PATH}/math/MVTools.cpp 
+  ${CORE_PATH}/math/RotationMatrix.cpp 
+  ${CORE_PATH}/memory/Lock.cpp 
+  ${CORE_PATH}/memory/Logger.cpp   
+  ${CORE_PATH}/memory/Memory.cpp  
+  ${CORE_PATH}/memory/MemoryBlock.cpp  
+  ${CORE_PATH}/memory/PrivateMemory.cpp  
+  ${CORE_PATH}/memory/SharedMemory.cpp 
+  ${CORE_PATH}/motion/MotionModule.cpp
+  ${CORE_PATH}/motion/UTWalkEngine.cpp 
+  ${CORE_PATH}/sensor/SensorModule.cpp  
+  ${CORE_PATH}/sensor/InertialFilter.cpp 
+  ${CORE_PATH}/kinematics/InverseKinematics.cpp 
+  ${CORE_PATH}/kinematics/ForwardKinematics.cpp  
+  ${CORE_PATH}/kinematics/KinematicsModule.cpp  
+  ${CORE_PATH}/math/Geometry.cpp  
+  ${CORE_PATH}/common/PIDController.cpp 
+  ${CORE_PATH}/motion/WalkEngineParameters.cpp 
+)
+
+
 
 set(SRCS
     main.cpp

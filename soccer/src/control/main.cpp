@@ -12,6 +12,7 @@
 #include "behaviours/naobehaviour.h"
 #include "optimization/Optimizer.h"
 
+
 #include "headers/headers.h"
 
 using namespace rcss::net;
@@ -498,7 +499,7 @@ void Run() {
 
         //optimizer->countTime();    
         //optimizer->outputAccerOfCOM();
-        //behaviour->getAngle();
+        behaviour->getMyPosition();
 
         // To support agent sync mode
         msgToServer.append("(syn)");

@@ -1,7 +1,6 @@
 #include "naobehaviour.h"
 #include "../headers/headers.h"
 #include "../skills/skillparser.h"
-//#include "../optimization/Optimizer.h"
 
 NaoBehaviour::NaoBehaviour(const std::string teamName, int uNum, const map <std::string, std::string>& namedParams_, const std::string& rsg_) :
 namedParams(namedParams_), rsg(rsg_) {
@@ -17,6 +16,8 @@ namedParams(namedParams_), rsg(rsg_) {
     bodyModel = new BodyModel(worldModel);
     //parser has same body and world model with naobehavior
     parser = new Parser(worldModel, bodyModel);
+    motionCore = new MotionCore;
+    //localization = new PFLocalization(worldModel, bodyModel);
 
 
     //chage to optimizer later
@@ -60,9 +61,7 @@ std::string NaoBehaviour::Think(const std::string& message) {
     //}
     //check fallen state
     //isFallen();
-    cout << "The center of mass is " << outCenterOfMass() << endl;
-
-
+    //cout << "The center of mass is " << outCenterOfMass() << endl;
 
     if (checkFinishSkill == true) {
         std::cout << "Finished executing " << skillToExecute->getName() << std::endl;
@@ -137,14 +136,8 @@ void NaoBehaviour::readSkillsFromFile(const std::string& filename) {
 
 //to check if the agent is fallen down
 bool NaoBehaviour::isFallen() {
-    //fallen backward
-    if (returnTimeInSecond() < 3) return false;
-    //for begining state
-    else if(calcChangeOfCOM().getX() < -0.001 && returnTimeInSecond() > 3) {
-        cout << "I am fallen backward!" << endl;
-        return true;
-    }
-    else return false;
+    
+    return false;
 }
 
 VecPosition NaoBehaviour::outCenterOfMass(){
@@ -158,15 +151,12 @@ double NaoBehaviour::returnTimeInSecond(){
 }
 
 //to output the center of mass for calculation
-VecPosition NaoBehaviour::calcChangeOfCOM(){
-    timePrevious = returnTimeInSecond();
-    VecPosition centerOfMassVec = outCenterOfMass();
-    VecPosition changeOfCOM = centerOfMassVec - COMPrevious;
-    COMPrevious = centerOfMassVec;
-    //equation S = ut + 1/2* at^2 ???
-    //accerOf Z direction is very small
-    //acceOfCOM = (changeOfCOM.getX(), changeOfCOM.getY(), changeOfCOM.getZ()) * 2 / pow(interval,2);
-    //cout << changeOfCOM << endl;
-    return changeOfCOM;
+void NaoBehaviour::getMyPosition(){
+    
+    // compute position
+    
+    //localization->test();
+    cout << worldModel->getMyPosition();
+    
 }
 
