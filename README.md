@@ -30,6 +30,11 @@ https://drive.google.com/drive/folders/0B8OHQTLVTR6GQ3dqamQxMkZrUmc
 - ROS Tutorials
 http://wiki.ros.org/ROS/Tutorials
 
+## Deep Learning Readings
+
+- Strategy used
+http://www.dis.uniroma1.it/~bloisi/papers/bloisi-robocup2016-draft.pdf
+
 ## Installation
 1. Obtain a copy of Ubuntu, either through a virtual machine or a dual boot (Dual boot preferred)
 
