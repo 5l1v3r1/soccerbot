@@ -2,6 +2,8 @@
 #include "../headers/headers.h"
 #include "../skills/skillparser.h"
 
+#include <motion/MotionModule.h>
+
 NaoBehaviour::NaoBehaviour(const std::string teamName, int uNum, const map <std::string, std::string>& namedParams_, const std::string& rsg_) :
 namedParams(namedParams_), rsg(rsg_) {
 
@@ -16,7 +18,7 @@ namedParams(namedParams_), rsg(rsg_) {
     bodyModel = new BodyModel(worldModel);
     //parser has same body and world model with naobehavior
     parser = new Parser(worldModel, bodyModel);
-    motionCore = new MotionCore;
+    //motionCore = new MotionCore;
     //localization = new PFLocalization(worldModel, bodyModel);
 
 
