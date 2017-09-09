@@ -1,4 +1,4 @@
-#include "optimizationbehaviours.h"
+#include "optimizationbehaviors.h"
 #include <fstream>
 
 
@@ -9,37 +9,31 @@
  *
  *
  */
-//constructor
-
-OptimizationBehaviourFixedKick::OptimizationBehaviourFixedKick(const std::string teamName,
+OptimizationBehaviorFixedKick::OptimizationBehaviorFixedKick(const std::string teamName,
         int uNum, const map<string, string>& namedParams_, const string& rsg_,
         const string& outputFile_) :
-NaoBehavior(teamName, uNum, namedParams_, rsg_), outputFile(outputFile_),
-kick(0), INIT_WAIT_TIME(3.0) {
+    NaoBehavior(teamName, uNum, namedParams_, rsg_), outputFile(outputFile_),
+    kick(0), INIT_WAIT_TIME(3.0)
+{
     initKick();
 }
 
-//atof. Parses the C string str , interpreting its content as a floating point 
-// number and returns its value as a double . The function first discards as many 
-// whitespace characters (as in isspace ) as necessary until the first 
-// non-whitespace character is found.
-
-void OptimizationBehaviourFixedKick::beam(double& beamX, double& beamY,
+void OptimizationBehaviorFixedKick::beam(double& beamX, double& beamY,
         double& beamAngle) {
     beamX = atof(namedParams.find("kick_xoffset")->second.c_str());
     beamY = atof(namedParams.find("kick_yoffset")->second.c_str());
     beamAngle = atof(namedParams.find("kick_angle")->second.c_str());
 }
 
-SkillType OptimizationBehaviourFixedKick::selectSkill() {
-    double time = worldModel->getTime(); // worldModel comes from naobehavior class
+SkillType OptimizationBehaviorFixedKick::selectSkill() {
+    double time = worldModel->getTime();
     if (timeStart < 0) {
         initKick();
         return SKILL_STAND;
     }
 
     // Wait a bit before attempting kick
-    if (time - timeStart <= INIT_WAIT_TIME) {
+    if (time-timeStart <= INIT_WAIT_TIME) {
         return SKILL_STAND;
     }
 
@@ -51,10 +45,10 @@ SkillType OptimizationBehaviourFixedKick::selectSkill() {
     return SKILL_STAND;
 }
 
-void OptimizationBehaviourFixedKick::updateFitness() {
+void OptimizationBehaviorFixedKick::updateFitness() {
     static double totalFitness = 0.0;
     if (kick == 10) {
-        writeFitnessToOutputFile(totalFitness / (double(kick)));
+        writeFitnessToOutputFile(totalFitness/(double(kick)));
         return;
     }
 
@@ -62,12 +56,12 @@ void OptimizationBehaviourFixedKick::updateFitness() {
     VecPosition meTruth = worldModel->getMyPositionGroundTruth();
     meTruth.setZ(0);
 
-    if (time - timeStart <= INIT_WAIT_TIME) {
+    if (time-timeStart <= INIT_WAIT_TIME) {
         return;
     }
 
     static bool failedLastBeamCheck = false;
-    if (!beamChecked) {
+    if(!beamChecked) {
         cout << "Checking whether beam was successful\n";
         beamChecked = true;
         LOG_STR("Checking whether beam was successful");
@@ -83,7 +77,7 @@ void OptimizationBehaviourFixedKick::updateFitness() {
 
         // Check that we're close to our expected position and angle
         // and also that the ball is close to it's exepected position
-        if (distance > .1 || ballDistance > .1 || abs(angle - beamAngle) > 3) {
+        if(distance > .1 || ballDistance > .1 || abs(angle - beamAngle) > 3) {
             cout << distance << "\t" << ballDistance << "\n";
             LOG_STR("Problem with the beam!");
             LOG(distance);
@@ -154,8 +148,7 @@ void OptimizationBehaviourFixedKick::updateFitness() {
     }
 }
 
-void OptimizationBehaviourFixedKick::initKick() {
-    // initializes these variables
+void OptimizationBehaviorFixedKick::initKick() {
     hasKicked = false;
     beamChecked = false;
     backwards = false;
@@ -174,7 +167,7 @@ void OptimizationBehaviourFixedKick::initKick() {
     setMonMessage(msg);
 }
 
-void OptimizationBehaviourFixedKick::writeFitnessToOutputFile(double fitness) {
+void OptimizationBehaviorFixedKick::writeFitnessToOutputFile(double fitness) {
     static bool written = false;
     if (!written) {
         LOG(fitness);
@@ -189,6 +182,7 @@ void OptimizationBehaviourFixedKick::writeFitnessToOutputFile(double fitness) {
     }
 }
 
+
 /* Checks if the ball is currently moving */
 bool isBallMoving(const WorldModel *worldModel) {
     static VecPosition lastBall = worldModel->getBallGroundTruth();
@@ -200,31 +194,37 @@ bool isBallMoving(const WorldModel *worldModel) {
     thisBall.setZ(0);
     lastBall.setZ(0);
 
-    if (thisBall.getDistanceTo(lastBall) > 0.01) {
+    if(thisBall.getDistanceTo(lastBall) > 0.01)
+    {
         // the ball moved!
         lastBall = thisBall;
-        lastTime = thisTimePro;
+        lastTime = thisTime;
         return true;
     }
 
-    if (thisTime - lastTime < 0.5) {
+    if(thisTime - lastTime < 0.5)
+    {
         // not sure yet if the ball has settled
         return true;
-    } else {
+    }
+    else
+    {
         return false;
     }
 }
 
+
 void writeToOutputFile(const string &filename, const string &output) {
-    //  static bool written = false;
-    //  assert(!written);
+//  static bool written = false;
+//  assert(!written);
     //  LOG(output);
     fstream file;
     file.open(filename.c_str(), ios::out);
     file << output;
     file.close();
-    //  written = true;
+//  written = true;
 }
+
 
 /*
  *
@@ -234,30 +234,30 @@ void writeToOutputFile(const string &filename, const string &output) {
  *
  *
  */
-OptimizationBehaviourWalkForward::
-OptimizationBehaviourWalkForward(const std::string teamName,
-        int uNum,
-        const map<string, string>& namedParams_,
-        const string& rsg_,
-        const string& outputFile_)
-: NaoBehaviour(teamName,
-uNum,
-namedParams_,
-rsg_),
-outputFile(outputFile_) {
+OptimizationBehaviorWalkForward::
+OptimizationBehaviorWalkForward( const std::string teamName,
+                                 int uNum,
+                                 const map<string, string>& namedParams_,
+                                 const string& rsg_,
+                                 const string& outputFile_)
+    : NaoBehavior( teamName,
+                   uNum,
+                   namedParams_,
+                   rsg_ ),
+    outputFile( outputFile_ ) {
 
 
     INIT_WAIT = 3;
     run = 0;
     totalWalkDist = 0;
 
-    // Use ground truth localization for behaviour
+    // Use ground truth localization for behavior
     worldModel->setUseGroundTruthDataForLocalization(true);
 
     init();
 }
 
-void OptimizationBehaviourWalkForward::init() {
+void OptimizationBehaviorWalkForward::init() {
     startTime = worldModel->getTime();
     initialized = false;
     initBeamed = false;
@@ -266,14 +266,14 @@ void OptimizationBehaviourWalkForward::init() {
     setMonMessage(msg);
 }
 
-void OptimizationBehaviourWalkForward::
-beam(double& beamX, double& beamY, double& beamAngle) {
-    beamX = -HALF_FIELD_X + 3;
+void OptimizationBehaviorWalkForward::
+beam( double& beamX, double& beamY, double& beamAngle ) {
+    beamX = -HALF_FIELD_X+3;
     beamY = 0;
     beamAngle = 0;
 }
 
-bool OptimizationBehaviourWalkForward::checkBeam() {
+bool OptimizationBehaviorWalkForward::checkBeam() {
     LOG_STR("Checking whether beam was successful");
     VecPosition meTruth = worldModel->getMyPositionGroundTruth();
     meTruth.setZ(0);
@@ -281,8 +281,8 @@ bool OptimizationBehaviourWalkForward::checkBeam() {
     beam(beamX, beamY, beamAngle);
     VecPosition meDesired = VecPosition(beamX, beamY, 0);
     double distance = meTruth.getDistanceTo(meDesired);
-    double angleOffset = abs(worldModel->getMyAngDegGroundTruth() - beamAngle);
-    if (distance > 0.05 || angleOffset > 5) {
+    double angleOffset = abs(worldModel->getMyAngDegGroundTruth()-beamAngle);
+    if(distance > 0.05 || angleOffset > 5) {
         LOG_STR("Problem with the beam!");
         LOG(distance);
         LOG(meTruth);
@@ -292,10 +292,10 @@ bool OptimizationBehaviourWalkForward::checkBeam() {
     return true;
 }
 
-SkillType OptimizationBehaviourWalkForward::
+SkillType OptimizationBehaviorWalkForward::
 selectSkill() {
     double currentTime = worldModel->getTime();
-    if (currentTime - startTime < INIT_WAIT || startTime < 0) {
+    if (currentTime-startTime < INIT_WAIT || startTime < 0) {
         return SKILL_STAND;
     }
 
@@ -308,9 +308,9 @@ updateFitness() {
 
     if (run == 10) {
         if (!written) {
-            double fitness = totalWalkDist / (double) run;
+            double fitness = totalWalkDist/(double)run;
             fstream file;
-            file.open(outputFile.c_str(), ios::out);
+            file.open(outputFile.c_str(), ios::out );
             file << fitness << endl;
             file.close();
             written = true;
@@ -324,7 +324,7 @@ updateFitness() {
     }
 
     double currentTime = worldModel->getTime();
-    if (currentTime - startTime < INIT_WAIT) {
+    if (currentTime-startTime < INIT_WAIT) {
         return;
     }
 
@@ -350,13 +350,13 @@ updateFitness() {
         }
     }
 
-    if (currentTime - startTime >= 10.0 + INIT_WAIT) {
+    if (currentTime-startTime >= 10.0+INIT_WAIT) {
         VecPosition me = worldModel->getMyPositionGroundTruth();
         double beamX, beamY, beamAngle;
         beam(beamX, beamY, beamAngle);
         VecPosition start = VecPosition(beamX, beamY, 0);
 
-        double walkdist = (me - start).getX();
+        double walkdist = (me-start).getX();
         cout << "Run " << run << " distance walked: " << walkdist << endl;
         totalWalkDist += walkdist;
         run++;

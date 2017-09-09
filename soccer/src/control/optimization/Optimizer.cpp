@@ -3,7 +3,7 @@
 #include <fstream>
 
 //change to constructor later
-Optimizer::Optimizer(NaoBehaviour*& behaviour_) {
+Optimizer::Optimizer() {
     cout << "----------Initializing the optimizer----------" << endl;
     //behaviour = behaviour_;
 	timePrevious = clock();
@@ -19,7 +19,7 @@ Optimizer::Optimizer(NaoBehaviour*& behaviour_) {
 
 //destructor
 Optimizer::~Optimizer() {
-    delete behaviour;
+    //delete behaviour;
     optimizing.close();
 }
 

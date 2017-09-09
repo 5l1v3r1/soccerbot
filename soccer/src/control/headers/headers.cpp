@@ -4,7 +4,8 @@
 // be used by the parser (mainly) when reading from file
 
 template<>
-EnumParser<BodyParts>::EnumParser() {
+EnumParser<BodyParts>::EnumParser()
+{
     string2enum["TORSO"] = TORSO;
     enum2String[TORSO] = "TORSO";
 
@@ -42,7 +43,8 @@ const EnumParser<BodyParts> EnumParser<BodyParts>::parser = EnumParser<BodyParts
 //EnumParser<BodyParts> a = EnumParser<BodyParts>::parser;
 
 template<>
-EnumParser<SkillType>::EnumParser() {
+EnumParser<SkillType>::EnumParser()
+{
     string2enum["SKILL_WALK_OMNI"] = SKILL_WALK_OMNI;
     enum2String[SKILL_WALK_OMNI] = "SKILL_WALK_OMNI";
 
@@ -51,13 +53,6 @@ EnumParser<SkillType>::EnumParser() {
 
     string2enum["SKILL_WAVE"] = SKILL_WAVE;
     enum2String[SKILL_WAVE] = "SKILL_WAVE";
-    
-    string2enum["SKILL_WALK"] = SKILL_WALK;
-    enum2String[SKILL_WALK] = "SKILL_WALK";
-
-    //add one for testing to avoid breaking someting
-    string2enum["SKILL_TEST"] = SKILL_TEST;
-    enum2String[SKILL_TEST] = "SKILL_TEST";
 
     string2enum["SKILL_KICK_LEFT_LEG"] = SKILL_KICK_LEFT_LEG;
     enum2String[SKILL_KICK_LEFT_LEG] = "SKILL_KICK_LEFT_LEG";
@@ -65,7 +60,9 @@ EnumParser<SkillType>::EnumParser() {
     string2enum["SKILL_KICK_RIGHT_LEG"] = SKILL_KICK_RIGHT_LEG;
     enum2String[SKILL_KICK_RIGHT_LEG] = "SKILL_KICK_RIGHT_LEG";
 
-    // INVERSE KINEMATICS KICKS
+
+
+// INVERSE KINEMATICS KICKS
     string2enum["SKILL_KICK_IK_0_LEFT_LEG"] = SKILL_KICK_IK_0_LEFT_LEG;
     enum2String[SKILL_KICK_IK_0_LEFT_LEG] = "SKILL_KICK_IK_0_LEFT_LEG";
 
@@ -73,11 +70,11 @@ EnumParser<SkillType>::EnumParser() {
     enum2String[SKILL_KICK_IK_0_RIGHT_LEG] = "SKILL_KICK_IK_0_RIGHT_LEG";
 
 
-    // END INVERSE KINEMATICS KICKS
+// END INVERSE KINEMATICS KICKS
+
+
     string2enum["SKILL_NONE"] = SKILL_NONE;
     enum2String[SKILL_NONE] = "SKILL_NONE";
-
-
 
 }
 template class EnumParser<SkillType>;
@@ -85,7 +82,8 @@ template<>
 const EnumParser<SkillType> EnumParser<SkillType>::parser = EnumParser<SkillType>();
 
 template<>
-EnumParser<Effectors>::EnumParser() {
+EnumParser<Effectors>::EnumParser()
+{
     string2enum["EFF_H1"] = EFF_H1;
     enum2String[EFF_H1] = "EFF_H1";
 
@@ -162,14 +160,15 @@ EnumParser<Effectors>::EnumParser() {
 template class EnumParser<Effectors>;
 template<>
 const EnumParser<Effectors> EnumParser<Effectors>::parser = EnumParser<Effectors>();
-
-bool isKickSkill(SkillType skill) {
-    string skillStr = EnumParser<SkillType>::getStringFromEnum(skill);
+bool isKickSkill(SkillType skill)
+{
+    string skillStr = EnumParser<SkillType>::getStringFromEnum( skill );
     return skillStr.find("KICK") != string::npos;
 }
 
-bool isKickIKSkill(SkillType skill) {
-    string skillStr = EnumParser<SkillType>::getStringFromEnum(skill);
+bool isKickIKSkill(SkillType skill)
+{
+    string skillStr = EnumParser<SkillType>::getStringFromEnum( skill );
     return skillStr.find("KICK_IK") != string::npos;
 }
 

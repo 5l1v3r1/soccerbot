@@ -1,5 +1,6 @@
 #include <boost/foreach.hpp>
 #include "skill.h"
+#include "../ikfast/ikfast.h"
 
 #define foreach         BOOST_FOREACH
 
@@ -9,16 +10,16 @@
 
 // IncTar
 // -------
-
 IncTar::IncTar(const vector<int> &effectorIDs_, const vector<double> &increments_) :
-effectorIDs(effectorIDs_), increments(increments_) {
+    effectorIDs(effectorIDs_), increments(increments_) {
     // assuming two vectors are the same length
 }
 
+
 void IncTar::execute(BodyModel *bodyModel, const WorldModel *worldModel) {
     // assuming two vectors are the same length
-    for (size_t i = 0; i < effectorIDs.size(); ++i) {
-        bodyModel->increaseTargetAngle(effectorIDs[i], increments[i]);
+    for( size_t i = 0; i < effectorIDs.size(); ++i ) {
+        bodyModel->increaseTargetAngle( effectorIDs[i], increments[i] );
     }
 }
 
@@ -28,40 +29,40 @@ IncTar::getReflection(BodyModel *bodyModel) {
     vector<int> newEffIDs;
     vector<double> newIncs;
 
-    for (size_t i = 0; i < effectorIDs.size(); ++i) {
+    for( size_t i = 0; i < effectorIDs.size(); ++i ) {
         int newEffID;
         double newIncrement;
-        bodyModel->getReflection(effectorIDs[i],
-                increments[i],
-                newEffID,
-                newIncrement);
-        newEffIDs.push_back(newEffID);
-        newIncs.push_back(newIncrement);
+        bodyModel->getReflection( effectorIDs[i],
+                                  increments[i],
+                                  newEffID,
+                                  newIncrement );
+        newEffIDs.push_back( newEffID );
+        newIncs.push_back( newIncrement );
     }
 
-    return boost::shared_ptr<Macro>(new IncTar(newEffIDs, newIncs));
+    return boost::shared_ptr<Macro>( new IncTar(newEffIDs, newIncs) );
 }
 
 void IncTar::display() {
     cerr << "Displaying macro: IncTar" << endl;
-    for (size_t i = 0; i < effectorIDs.size(); ++i) {
+    for( size_t i = 0; i < effectorIDs.size(); ++i ) {
         cerr << "effID[" << i << "]=" << effectorIDs[i]
-                << " increment[" << i << "]=" << increments[i] << endl;
+             << " increment[" << i << "]=" << increments[i] << endl;
     }
 }
 
 // SetTar
 // -------
-
 SetTar::SetTar(const vector<int> &effectorIDs_, const vector<double> &targetAngles_) :
-effectorIDs(effectorIDs_), targetAngles(targetAngles_) {
+    effectorIDs(effectorIDs_), targetAngles(targetAngles_) {
     // assuming two vectors are the same length
 }
 
+
 void SetTar::execute(BodyModel *bodyModel, const WorldModel *worldModel) {
     // assuming two vectors are the same length
-    for (size_t i = 0; i < effectorIDs.size(); ++i) {
-        bodyModel->setTargetAngle(effectorIDs[i], targetAngles[i]);
+    for( size_t i = 0; i < effectorIDs.size(); ++i ) {
+        bodyModel->setTargetAngle( effectorIDs[i], targetAngles[i] );
     }
 }
 
@@ -71,31 +72,30 @@ SetTar::getReflection(BodyModel *bodyModel) {
     vector<int> newEffIDs;
     vector<double> newAngs;
 
-    for (size_t i = 0; i < effectorIDs.size(); ++i) {
+    for( size_t i = 0; i < effectorIDs.size(); ++i ) {
         int newEffID;
         double newAngle;
-        bodyModel->getReflection(effectorIDs[i],
-                targetAngles[i],
-                newEffID,
-                newAngle);
-        newEffIDs.push_back(newEffID);
-        newAngs.push_back(newAngle);
+        bodyModel->getReflection( effectorIDs[i],
+                                  targetAngles[i],
+                                  newEffID,
+                                  newAngle );
+        newEffIDs.push_back( newEffID );
+        newAngs.push_back( newAngle );
     }
 
-    return boost::shared_ptr<Macro>(new SetTar(newEffIDs, newAngs));
+    return boost::shared_ptr<Macro>( new SetTar(newEffIDs, newAngs) );
 }
 
 void SetTar::display() {
     cerr << "Displaying macro: SetTar" << endl;
-    for (size_t i = 0; i < effectorIDs.size(); ++i) {
+    for( size_t i = 0; i < effectorIDs.size(); ++i ) {
         cerr << "effID[" << i << "]=" << effectorIDs[i]
-                << " Angle[" << i << "]=" << targetAngles[i] << endl;
+             << " Angle[" << i << "]=" << targetAngles[i] << endl;
     }
 }
 
 // SetFoot
 // -------
-
 /**
  * Constructor.
  *
@@ -104,7 +104,7 @@ void SetTar::display() {
  *                    RPY component is absolute Euler angles.
  */
 SetFoot::SetFoot(const int &legIDX_, const Pos6DOF &targetPos_) :
-legIDX(legIDX_), targetPos(targetPos_) {
+    legIDX(legIDX_), targetPos(targetPos_) {
     assert(LEG_LEFT == legIDX || LEG_RIGHT == legIDX);
 }
 
@@ -115,6 +115,9 @@ legIDX(legIDX_), targetPos(targetPos_) {
  * \param worldModel a WorldModel
  */
 void SetFoot::execute(BodyModel *bodyModel, const WorldModel *worldModel) {
+    if (!bodyModel->reachOutLeg(legIDX, worldModel->getBallWrtTorso() + targetPos.xyz, targetPos.rpy)) {
+        //LOG("setfoot failed...");
+    }
 }
 
 /**
@@ -126,7 +129,11 @@ void SetFoot::execute(BodyModel *bodyModel, const WorldModel *worldModel) {
  * \return true iff the bodyModel can reach out the leg
  */
 bool SetFoot::canExecute(const BodyModel *bodyModel, const WorldModel *worldModel) const {
-    return true;
+    bool ret = bodyModel->canReachOutLeg(legIDX, worldModel->getBallWrtTorso() + targetPos.xyz, targetPos.rpy);
+    if(!ret) {
+        //LOG_MSG("Can't execute SetFoot", targetPos);
+    }
+    return ret;
 }
 
 /**
@@ -155,31 +162,29 @@ void SetFoot::display() {
 
 // Curve
 // ------
-
 Curve::Curve(const int &legIDX_, const vector<Pos6DOF> &controlPoints_) :
-legIDX(legIDX_),
-curveOffsetWrtBall(controlPoints_[0].xyz), // first control point is relative to the ball
-// the rest of the control points are relative to the first
-t(0.0f) {
+    legIDX(legIDX_),
+    curveOffsetWrtBall(controlPoints_[0].xyz),    // first control point is relative to the ball
+    // the rest of the control points are relative to the first
+    t(0.0f) {
     vector<VecPosition> xyz;
     vector<VecPosition> rpy;
-
-    foreach(const Pos6DOF &cp, controlPoints_) {
+    foreach( const Pos6DOF &cp, controlPoints_ ) {
         xyz.push_back(cp.xyz);
         rpy.push_back(cp.rpy);
     }
     xyz[0].setVecPosition(0, 0, 0);
     curve.reset(new HermiteSpline3D(xyz, .8f));
     rpy_curve.reset(new UniformBSpline3D(rpy));
-    //  rpy_curve.reset(new HermiteSpline3D(rpy, 1));
-    //  LOG(rpy);
+//  rpy_curve.reset(new HermiteSpline3D(rpy, 1));
+//  LOG(rpy);
 }
 
 Curve::~Curve() {
 }
 
 void Curve::execute(BodyModel *bodyModel, const WorldModel *worldModel) {
-    //#ifdef DRAW_CURVE_TO_RVIZ
+//#ifdef DRAW_CURVE_TO_RVIZ
     /* draws out curve to RoboViz
     float step = (1.0f / 50);
     VecPosition st;
@@ -198,9 +203,9 @@ void Curve::execute(BodyModel *bodyModel, const WorldModel *worldModel) {
     }
     worldModel->getRVSender()->swapBuffers(&str);
     //end draw out to roboviz*/
-    //#endif // DRAW_CURVE_TO_RVIZ
+//#endif // DRAW_CURVE_TO_RVIZ
 
-    if (t < .8) {
+    if(t < .8) {
         // When the Macro first starts executing, find the current offset of the
         // ball relative to the torso, apply the curve offset relative to the ball,
         // and set that as the offset of the curve relative to the torso
@@ -214,6 +219,13 @@ void Curve::execute(BodyModel *bodyModel, const WorldModel *worldModel) {
 
     VecPosition pos = curve->getPoint(t);
     VecPosition rpy = rpy_curve->getPoint(t);
+
+//  LOG(pos);
+//  LOG(rpy);
+
+    if(!bodyModel->reachOutLeg(legIDX, pos + curveOffsetWrtTorso, rpy)) {
+        //LOG(pos);
+    }
 }
 
 bool Curve::canExecute(const BodyModel *bodyModel, const WorldModel *worldModel) const {
@@ -267,7 +279,7 @@ bool Curve::canExecute(const BodyModel *bodyModel, const WorldModel *worldModel)
         return false;
       }
       return true;
-     */
+    */
 }
 
 boost::shared_ptr<Macro> Curve::getReflection(BodyModel *bodyModel) {
@@ -292,7 +304,7 @@ boost::shared_ptr<Macro> Curve::getReflection(BodyModel *bodyModel) {
 void Curve::display() {
     cerr << "Displaying macro: Bezier" << endl;
     cerr << "legIDX=" << legIDX << " controlPoints="
-            << curve->getControlPoints() << endl;
+         << curve->getControlPoints() << endl;
 }
 
 void Curve::setTimeParam(const float & t_) {
@@ -301,24 +313,23 @@ void Curve::setTimeParam(const float & t_) {
 
 // Reset
 // -----
-
 Reset::Reset(const std::vector<int>& components_) :
-components(components_) {
+    components( components_ ) {
 }
 
 void Reset::execute(BodyModel *bodyModel, const WorldModel *worldModel) {
-    vector<int>::iterator begin(components.begin()), end(components.end());
-    for (; begin != end; ++begin) {
+    vector<int>::iterator begin( components.begin() ), end( components.end() );
+    for( ; begin != end; ++begin ) {
         int currentJoint = *begin;
-        if (currentJoint == HEAD) {
+        if( currentJoint == HEAD ) {
             bodyModel->setInitialHead();
-        } else if (currentJoint == ARM_LEFT) {
+        } else if( currentJoint == ARM_LEFT ) {
             bodyModel->setInitialArm(ARM_LEFT);
-        } else if (currentJoint == ARM_RIGHT) {
+        } else if( currentJoint == ARM_RIGHT ) {
             bodyModel->setInitialArm(ARM_RIGHT);
-        } else if (currentJoint == LEG_LEFT) {
+        } else if( currentJoint == LEG_LEFT ) {
             bodyModel->setInitialLeg(LEG_LEFT);
-        } else if (currentJoint == LEG_RIGHT) {
+        } else if( currentJoint == LEG_RIGHT ) {
             bodyModel->setInitialLeg(LEG_RIGHT);
         }
     }
@@ -329,26 +340,26 @@ Reset::getReflection(BodyModel *bodyModel) {
 
     vector<int> newComponents = components;
 
-    for (unsigned i = 0; i < components.size(); ++i) {
+    for(unsigned i = 0; i < components.size(); ++i ) {
 
-        if (components[i] == ARM_LEFT) {
+        if( components[i] == ARM_LEFT ) {
             newComponents[i] = ARM_RIGHT;
-        } else if (components[i] == ARM_RIGHT) {
+        } else if ( components[i] == ARM_RIGHT ) {
             newComponents[i] = ARM_LEFT;
-        } else if (components[i] == LEG_LEFT) {
+        } else if ( components[i] == LEG_LEFT ) {
             newComponents[i] = LEG_RIGHT;
-        } else if (components[i] == LEG_RIGHT) {
+        } else if ( components[i] == LEG_RIGHT ) {
             newComponents[i] = LEG_LEFT;
         }
     }
-    return boost::shared_ptr<Macro>(new Reset(newComponents));
+    return boost::shared_ptr<Macro>( new Reset( newComponents ) );
 }
 
 void Reset::
 display() {
     cerr << "Displaying macro: Reset" << endl;
-    vector<int>::iterator it(components.begin()), end(components.end());
-    for (; it != end; ++it) {
+    vector<int>::iterator it( components.begin() ), end( components.end() );
+    for( ; it != end; ++it ) {
         cerr << *it << ' ';
     }
     cerr << endl;
@@ -359,14 +370,15 @@ display() {
 // --------
 
 SetScale::SetScale(const vector<int> &effectorIDs_, const vector<double> &targetScales_) :
-effectorIDs(effectorIDs_), targetScales(targetScales_) {
+    effectorIDs(effectorIDs_), targetScales(targetScales_) {
     // assuming two vectors are the same length
 }
 
+
 void SetScale::execute(BodyModel *bodyModel, const WorldModel *worldModel) {
     // assuming two vectors are the same length
-    for (size_t i = 0; i < effectorIDs.size(); ++i) {
-        bodyModel->setScale(effectorIDs[i], targetScales[i]);
+    for( size_t i = 0; i < effectorIDs.size(); ++i ) {
+        bodyModel->setScale( effectorIDs[i], targetScales[i] );
     }
 }
 
@@ -375,37 +387,36 @@ SetScale::getReflection(BodyModel *bodyModel) {
 
     vector<int> newEffIDs;
 
-    for (size_t i = 0; i < effectorIDs.size(); ++i) {
+    for( size_t i = 0; i < effectorIDs.size(); ++i ) {
         int newEffID;
         double dummyAngle1, dummyAngle2;
-        bodyModel->getReflection(effectorIDs[i],
-                dummyAngle1,
-                newEffID,
-                dummyAngle2);
-        newEffIDs.push_back(newEffID);
+        bodyModel->getReflection( effectorIDs[i],
+                                  dummyAngle1,
+                                  newEffID,
+                                  dummyAngle2 );
+        newEffIDs.push_back( newEffID );
     }
 
-    return boost::shared_ptr<Macro>(new SetScale(newEffIDs, targetScales));
+    return boost::shared_ptr<Macro>( new SetScale(newEffIDs, targetScales) );
 }
 
 void SetScale::display() {
     cerr << "Displaying macro: SetScale" << endl;
-    for (size_t i = 0; i < effectorIDs.size(); ++i) {
+    for( size_t i = 0; i < effectorIDs.size(); ++i ) {
         cerr << "effID[" << i << "]=" << effectorIDs[i]
-                << " Scale[" << i << "]=" << targetScales[i] << endl;
+             << " Scale[" << i << "]=" << targetScales[i] << endl;
     }
 }
 
 // Stabilize
 // -------
-
 /**
  * Constructor.
  *
  * \param legIndex     LEG_LEFT or LEG_RIGHT
  */
 Stabilize::Stabilize(const int &legIndex, const VecPosition zmp) :
-legIndex(legIndex), zmp(zmp) {
+    legIndex(legIndex), zmp(zmp) {
     this->zmp.setZ(0);
     assert(LEG_LEFT == legIndex || LEG_RIGHT == legIndex);
 }
@@ -424,7 +435,7 @@ void Stabilize::execute(BodyModel *bodyModel, const WorldModel *worldModel) {
  */
 bool Stabilize::canExecute(const BodyModel *bodyModel, const WorldModel *worldModel) const {
     bool ret = bodyModel->canStabilize(legIndex, zmp);
-    if (!ret) {
+    if(!ret) {
         //LOG_MSG("Can't execute SetFoot", targetPos);
     }
     return ret;
@@ -435,8 +446,8 @@ bool Stabilize::canExecute(const BodyModel *bodyModel, const WorldModel *worldMo
  */
 boost::shared_ptr<Macro> Stabilize::getReflection(BodyModel *bodyModel) {
     return boost::shared_ptr<Macro> (
-            new Stabilize(legIndex == LEG_LEFT ? LEG_RIGHT : LEG_LEFT,
-            VecPosition(zmp.getX(), -1.0 * zmp.getY(), 0)));
+               new Stabilize(legIndex == LEG_LEFT ? LEG_RIGHT : LEG_LEFT,
+                             VecPosition(zmp.getX(), -1.0 * zmp.getY(), 0)));
 }
 
 /**
@@ -453,7 +464,6 @@ void Stabilize::display() {
 /////////////////////////////////////////////////////////
 // KeyFrame
 /////////////////////////////////////////////////////////
-
 KeyFrame::KeyFrame() {
     // sets the default values
     toWaitTime = false;
@@ -465,25 +475,25 @@ KeyFrame::KeyFrame() {
 bool KeyFrame::done(BodyModel *bodyModel, const WorldModel *worldModel, const double &setTime) {
     const double currentTime = worldModel->getTime();
     // if invalid time - not done
-    if (setTime < 0) {
+    if( setTime < 0 ) {
         return false;
     }
 
     // Exceptional case. Break out of keyframe always.
     double elapsedTime = currentTime - setTime;
-    if (elapsedTime >= maxWaitTime) {
+    if(elapsedTime >= maxWaitTime) {
         return true;
     }
 
     // If we have to wait time, have we waited long enough?
     double epsilon = 1e-4;
-    if (toWaitTime && elapsedTime < waitTime - epsilon) {
+    if(toWaitTime && elapsedTime < waitTime - epsilon ) {
         updateCurveMacros(bodyModel, worldModel, elapsedTime / waitTime);
         return false;
     }
 
     // If we have to wait for targets to be reached, have they been reached?
-    if (toWaitTargets && !(bodyModel->targetsReached())) {
+    if(toWaitTargets && !(bodyModel->targetsReached())) {
         return false;
     }
 
@@ -492,13 +502,13 @@ bool KeyFrame::done(BodyModel *bodyModel, const WorldModel *worldModel, const do
 }
 
 void KeyFrame::updateCurveMacros(BodyModel *bodyModel, const WorldModel *worldModel, const double &t) {
-    assert(t >= 0.0);
-    assert(t <= 1.0);
-    for (size_t i = 0; i < macros.size(); ++i) {
+    assert(t>=0.0);
+    assert(t<=1.0);
+    for(size_t i = 0; i < macros.size(); ++i) {
         // Try to cast the macro to a Bezier macro
-        Curve *curve = dynamic_cast<Curve *> (macros[i].get());
+        Curve *curve = dynamic_cast<Curve *>(macros[i].get());
         // If cast was successful, update the Bezier macro
-        if (curve) {
+        if(curve) {
             curve->setTimeParam(t);
             curve->execute(bodyModel, worldModel);
         }
@@ -507,15 +517,15 @@ void KeyFrame::updateCurveMacros(BodyModel *bodyModel, const WorldModel *worldMo
 
 void KeyFrame::execute(BodyModel *bodyModel, const WorldModel *worldModel) {
     updateCurveMacros(bodyModel, worldModel, 0.0);
-    for (unsigned m = 0; m < macros.size(); m++) {
+    for(unsigned m = 0; m < macros.size(); m++) {
         macros[m]->execute(bodyModel, worldModel);
     }
 }
 
 bool KeyFrame::canExecute(const BodyModel *bodyModel, const WorldModel *worldModel) const {
     bool ret = true;
-    for (size_t i = 0; i < macros.size(); ++i) {
-        if (!macros[i]->canExecute(bodyModel, worldModel)) {
+    for(size_t i=0; i<macros.size(); ++i) {
+        if(!macros[i]->canExecute(bodyModel, worldModel)) {
             ret = false;
             //LOG_MSG("Can't execute Macro", i);
         }
@@ -523,24 +533,24 @@ bool KeyFrame::canExecute(const BodyModel *bodyModel, const WorldModel *worldMod
     return ret;
 }
 
-void KeyFrame::setToWaitTime(bool value) {
+void KeyFrame::setToWaitTime( bool value ) {
     toWaitTime = value;
 }
 
-void KeyFrame::setWaitTime(double value) {
+void KeyFrame::setWaitTime( double value ) {
     waitTime = value;
 }
 
-void KeyFrame::setToWaitTargets(bool value) {
+void KeyFrame::setToWaitTargets( bool value ) {
     toWaitTargets = value;
 }
 
-void KeyFrame::setMaxWaitTime(double value) {
+void KeyFrame::setMaxWaitTime( double value ) {
     maxWaitTime = value;
 }
 
 void KeyFrame::appendMacro(boost::shared_ptr<Macro> macro) {
-    macros.push_back(macro);
+    macros.push_back( macro );
 }
 
 boost::shared_ptr<KeyFrame> KeyFrame::getReflection(BodyModel *bodyModel) {
@@ -553,12 +563,13 @@ boost::shared_ptr<KeyFrame> KeyFrame::getReflection(BodyModel *bodyModel) {
     reflection->setMaxWaitTime(this->maxWaitTime);
 
     (reflection->macros).clear();
-    for (size_t m = 0; m < this->macros.size(); m++) {
+    for(size_t m = 0; m < this->macros.size(); m++) {
         reflection->appendMacro(this->macros[m]->getReflection(bodyModel));
     }
 
     return reflection;
 }
+
 
 void KeyFrame::display() {
     cerr << "Displaying Frame" << endl;
@@ -567,8 +578,8 @@ void KeyFrame::display() {
     cerr << "toWaitTargets=" << toWaitTargets << endl;
     cerr << "maxWaitTime=" << maxWaitTime << endl;
     cerr << "Macros:\n";
-    vector< boost::shared_ptr<Macro> >::iterator it(macros.begin()), end(macros.end());
-    for (; it != end; ++it) {
+    vector< boost::shared_ptr<Macro> >::iterator it( macros.begin() ), end( macros.end() );
+    for( ; it != end; ++it ) {
         (*it)->display();
     }
 }
@@ -576,17 +587,10 @@ void KeyFrame::display() {
 ////////////////////////////////////////////////////////////////
 // Skill
 ////////////////////////////////////////////////////////////////
-
-Skill::Skill(std::string name) {
-    skillName = name;
+Skill::Skill() {
     keyFrames.clear();
     reset();
     currentKeyFrame = -1; // set to invalid
-    finishKeyFrame = true;
-}
-
-std::string Skill::getName() {
-    return skillName;
 }
 
 void Skill::reset() {
@@ -597,36 +601,31 @@ void Skill::reset() {
 
 bool Skill::done(BodyModel *bodyModel, const WorldModel *worldModel) {
 
-    return ((currentKeyFrame == (int) (keyFrames.size() - 1)) && keyFrames[currentKeyFrame]->done(bodyModel, worldModel, currentKeyFrameSetTime));
+    return ((currentKeyFrame == (int)(keyFrames.size() - 1)) && keyFrames[currentKeyFrame]->done(bodyModel, worldModel, currentKeyFrameSetTime));
 }
 
-bool Skill::execute(BodyModel *bodyModel, const WorldModel *worldModel) {
+void Skill::execute(BodyModel *bodyModel, const WorldModel *worldModel) {
     const double &currentTime = worldModel->getTime();
-
-    if (done(bodyModel, worldModel)) return true;
-
-    
-    if(finishKeyFrame){
-        finishKeyFrame = false;
+    // Check. Can be removed.
+    if(done(bodyModel, worldModel)) {
+        // TODO: check why it prints it before kickoff - just a matter of initialization????
+//    cerr << "Ideally, this should not be printed.\n";
+        return ;
     }
 
-    if (keyFrames[currentKeyFrame]->done(bodyModel, worldModel, currentKeyFrameSetTime)) {
-        std::cout << "Finished keyframe " << currentKeyFrame << " of " << skillName << std::endl;
+    if(keyFrames[currentKeyFrame]->done(bodyModel, worldModel, currentKeyFrameSetTime)) {
         currentKeyFrame += 1;
         currentKeyFrameSet = false;
         currentKeyFrameSetTime = -1;
-        //for proccessing the time interval in accerOfCOM
-        finishKeyFrame = true;
     }
 
-    if (!currentKeyFrameSet) {
+    if(!currentKeyFrameSet) {
         keyFrames[currentKeyFrame]->execute(bodyModel, worldModel);
         currentKeyFrameSet = true;
         currentKeyFrameSetTime = currentTime;
     }
 
-
-    return false;
+    //cerr << "Skill::execute()  currentKeyFrame=" << currentKeyFrame << " currentTime=" << currentTime << "currentKeyFrameSetTime=" << currentKeyFrameSetTime << " done=" << keyFrames[currentKeyFrame]->done(bodyModel, currentKeyFrameSetTime, currentTime) << " currentKeyFrameSet=" << currentKeyFrameSet << endl;
 }
 
 /**
@@ -643,8 +642,8 @@ bool Skill::canExecute(const BodyModel *bodyModel, const WorldModel *worldModel)
     //return true;
 
     bool ret = true;
-    for (size_t i = 0; i < keyFrames.size(); ++i) {
-        if (!keyFrames[i]->canExecute(bodyModel, worldModel)) {
+    for(size_t i=0; i<keyFrames.size(); ++i) {
+        if(!keyFrames[i]->canExecute(bodyModel, worldModel)) {
             ret = false;
             //LOG_MSG("Can't execute KeyFrame", i);
         }
@@ -654,40 +653,54 @@ bool Skill::canExecute(const BodyModel *bodyModel, const WorldModel *worldModel)
 }
 
 void Skill::
-appendKeyFrame(boost::shared_ptr<KeyFrame> keyFrame) {
-    keyFrames.push_back(keyFrame);
+appendKeyFrame( boost::shared_ptr<KeyFrame> keyFrame ) {
+    keyFrames.push_back( keyFrame );
     reset(); // just in case, we do it for each key frame added
 }
 
 boost::shared_ptr<Skill> Skill::getReflection(BodyModel *bodyModel) {
 
-    boost::shared_ptr<Skill> reflection(new Skill(skillName + "_reflection"));
+    boost::shared_ptr<Skill> reflection(new Skill());
 
     reflection->currentKeyFrame = this->currentKeyFrame;
     reflection->currentKeyFrameSet = this->currentKeyFrameSet;
     reflection->currentKeyFrameSetTime = this->currentKeyFrameSetTime;
 
     (reflection->keyFrames).clear();
-    for (size_t k = 0; k < this->keyFrames.size(); k++) {
+    for(size_t k = 0; k < this->keyFrames.size(); k++) {
         reflection->appendKeyFrame(this->keyFrames[k]->getReflection(bodyModel));
     }
+    /*
+      // TODO: find a better way to reflect -
+      // The problem with the commented code in the above line is:
+      // When reflecting, it reflects left foot to right and right to left,
+      // and thus the robot can start a skill in the right leg, instead of always
+      // in the left. Below is a temp fix:
+      int size = this->keyFrames.size();
+      if (size % 2 != 0)
+        throw "Uneven number of frames";
+      for(int k = size / 2; k < size; k++){
+        reflection->appendKeyFrame(this->keyFrames[k]->getReflection(bodyModel));
+      }
+      for(int k = 0; k < size / 2; k++){
+        reflection->appendKeyFrame(this->keyFrames[k]->getReflection(bodyModel));
+      }
+
+    */
+
+
 
     return reflection;
 }
 
 void Skill::display() {
     cerr << "Displaying skill" << endl;
-    vector< boost::shared_ptr<KeyFrame> >::iterator it(keyFrames.begin()), end(keyFrames.end());
-    for (; it != end; ++it) {
+    vector< boost::shared_ptr<KeyFrame> >::iterator it( keyFrames.begin() ), end( keyFrames.end() );
+    for( ; it != end; ++it ) {
         (*it)->display();
     }
 }
 
 int Skill::getCurrentKeyFrame() {
     return currentKeyFrame;
-}
-
-bool Skill::checkFinishOfKeyFrame(){
-    //cout << "returning value of " << finishKeyFrame << endl;
-    return finishKeyFrame;
 }
