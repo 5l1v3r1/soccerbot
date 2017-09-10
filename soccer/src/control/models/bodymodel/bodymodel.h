@@ -1,21 +1,14 @@
 #ifndef BODY_MODEL_H
 #define BODY_MODEL_H
 
-#include "../headers/headers.h"
-#include "../math/vecposition.h"
-#include "../math/hctmatrix.h"
+#include "../../headers/headers.h"
+#include "../../math/vecposition.h"
+#include "../../math/hctmatrix.h"
 #include "../worldmodel/worldmodel.h"
-#include "../ikfast/ikfast.h"
 
 #include <sstream>
 
-// For UT Walk
-class SimEffectorBlock;
-class JointBlock;
-class JointCommandBlock;
-
 struct SIMJoint {
-
     double angle;
 
     SIMJoint() {
@@ -26,10 +19,9 @@ struct SIMJoint {
 /**
  * Pos6DOF represents a 6 degree-of-freedom pose.
  */
-struct Pos6DOF
-{
-    VecPosition xyz;      //< The XYZ component of the pose
-    VecPosition rpy;      //< The roll-pitch-yaw component of the pose
+struct Pos6DOF {
+    VecPosition xyz; //< The XYZ component of the pose
+    VecPosition rpy; //< The roll-pitch-yaw component of the pose
 
     Pos6DOF reflect() const;
 };
@@ -37,7 +29,6 @@ struct Pos6DOF
 std::ostream& operator<<(std::ostream &out, const Pos6DOF &pos);
 
 struct Effector {
-
     double minAngle;
     double maxAngle;
 
@@ -48,9 +39,9 @@ struct Effector {
     double k1, k2, k3;
 
     // Error terms
-    double currentError;// corr. k1
-    double cumulativeError;// corr. k2
-    double previousError;// corr. k3
+    double currentError; // corr. k1
+    double cumulativeError; // corr. k2
+    double previousError; // corr. k3
 
     // set point tolerance
     double errorTolerance;
@@ -83,22 +74,18 @@ struct Effector {
     }
 
     void updateErrors() {
-
         previousError = currentError;
         currentError = targetAngle - currentAngle;
         cumulativeError += currentError;
-
     }
 
     void setTargetAngle(const double &angle) {
 
-        if(angle < minAngle) {
+        if (angle < minAngle) {
             targetAngle = minAngle;
-        }
-        else if(angle > maxAngle) {
+        } else if (angle > maxAngle) {
             targetAngle = maxAngle;
-        }
-        else {
+        } else {
             targetAngle = angle;
         }
 
@@ -120,7 +107,6 @@ struct Effector {
 };
 
 struct Component {
-
     int parent;
 
     double mass;
@@ -151,11 +137,8 @@ struct Component {
     }
 };
 
-
 class BodyModel {
-
 private:
-
     WorldModel *worldModel;
 
     // Joints
@@ -189,8 +172,6 @@ private:
 
     double fallAngle;
 
-    bool fUseOmniWalk;
-
 
     void refreshTorso();
     void refreshComponent(const int &index);
@@ -201,10 +182,10 @@ private:
     void refreshRightLeg();
 
     inline void computeFallAngle() {
-
         VecPosition zAxis = VecPosition(0, 0, 1.0);
         VecPosition bodyZAxis = (worldModel->l2g(VecPosition(0, 0, 1.0)) - worldModel->l2g(VecPosition(0, 0, 0))).normalize();
         fallAngle = VecPosition(0, 0, 0).getAngleBetweenPoints(zAxis, bodyZAxis);
+        //cout << fallAngle << endl;
     }
 
 public:
@@ -216,9 +197,11 @@ public:
     void initialiseEffectors();
     void initialiseComponents();
 
+
     inline double getJointAngle(const int &i) {
         return joint[i].angle;
     }
+
     inline void setJointAngle(const int &i, const double &a) {
         joint[i].angle = a;
     }
@@ -229,6 +212,7 @@ public:
     inline double getCurrentAngle(const int &EffectorID) const {
         return effector[EffectorID].currentAngle;
     }
+
     inline void setCurrentAngle(const int &EffectorID, const double &angle) {
         effector[EffectorID].currentAngle = angle;
     }
@@ -236,9 +220,11 @@ public:
     inline double getTargetAngle(const int &EffectorID) const {
         return effector[EffectorID].targetAngle;
     }
+
     inline void setTargetAngle(const int &EffectorID, const double &angle) {
         effector[EffectorID].setTargetAngle(angle);
     }
+
     inline void increaseTargetAngle(const int &EffectorID, const double &increase) {
         effector[EffectorID].setTargetAngle(effector[EffectorID].targetAngle + increase);
     };
@@ -246,6 +232,7 @@ public:
     inline double getScale(const int &EffectorID) {
         return effector[EffectorID].scale;
     }
+
     inline void setScale(const int &EffectorID, double s) {
         effector[EffectorID].scale = s;
     }
@@ -256,18 +243,10 @@ public:
 
     double computeTorque(const int &effectorID);
 
-    // For UT Walk
-    double computeTorque(const int &effID, SimEffectorBlock* sim_effectors_, JointBlock* raw_joint_angles_, JointCommandBlock* raw_joint_commands_);
-    inline void setUseOmniWalk(bool fUseOmniWalk) {
-        this->fUseOmniWalk = fUseOmniWalk;
-    }
-    inline bool useOmniWalk() {
-        return fUseOmniWalk;
-    }
-
     inline VecPosition getGyroRates() {
         return gyroRates;
     }
+
     inline void setGyroRates(const double &rateX, const double &rateY, const double &rateZ) {
         gyroRates = VecPosition(rateX, rateY, rateZ);
     }
@@ -275,47 +254,58 @@ public:
     inline VecPosition getAccelRates() {
         return accelRates;
     }
+
     inline void setAccelRates(const double &rateX, const double &rateY, const double &rateZ) {
         accelRates = VecPosition(rateX, rateY, rateZ);
     }
 
-
     inline VecPosition getFRPCentreLeft() const {
         return FRPCentreLeft;
     }
+
     inline VecPosition getFRPForceLeft() const {
         return FRPForceLeft;
     }
+
     inline VecPosition getFRPCentreRight() const {
         return FRPCentreRight;
     }
+
     inline VecPosition getFRPForceRight() const {
         return FRPForceRight;
     }
+
     inline VecPosition getFRPCentreLeft1() const {
         return FRPCentreLeft1;
     }
+
     inline VecPosition getFRPForceLeft1() const {
         return FRPForceLeft1;
     }
+
     inline VecPosition getFRPCentreRight1() const {
         return FRPCentreRight1;
     }
+
     inline VecPosition getFRPForceRight1() const {
         return FRPForceRight1;
     }
+
     inline void setFRPLeft(const VecPosition &centre, const VecPosition &force) {
         FRPCentreLeft = VecPosition(centre);
         FRPForceLeft = VecPosition(force);
     }
+
     inline void setFRPRight(const VecPosition &centre, const VecPosition &force) {
         FRPCentreRight = VecPosition(centre);
         FRPForceRight = VecPosition(force);
     }
+
     inline void setFRPLeft1(const VecPosition &centre, const VecPosition &force) {
         FRPCentreLeft1 = VecPosition(centre);
         FRPForceLeft1 = VecPosition(force);
     }
+
     inline void setFRPRight1(const VecPosition &centre, const VecPosition &force) {
         FRPCentreRight1 = VecPosition(centre);
         FRPForceRight1 = VecPosition(force);
@@ -354,15 +344,15 @@ public:
 
     VecPosition transformCameraToOrigin(const VecPosition &v);
 
-    void getReflection( const int& effID,
-                        const double& angle,
-                        int& reflectedEffID,
-                        double& reflectedAngle );
+    void getReflection(const int& effID,
+            const double& angle,
+            int& reflectedEffID,
+            double& reflectedAngle);
 
-    void getReflection( const int& legIDX,
-                        const Pos6DOF& pos,
-                        int& reflectedLegIDX,
-                        Pos6DOF& reflectedPos );
+    void getReflection(const int& legIDX,
+            const Pos6DOF& pos,
+            int& reflectedLegIDX,
+            Pos6DOF& reflectedPos);
 
     VecPosition getCenterOfMass() const;
     VecPosition getCenterOfMass(int bodyPart, double &totalMass) const;
@@ -376,10 +366,6 @@ public:
     bool hasToe();
     bool isGazebo();
 
-protected:
-    void filterOutOfBounds(const int &legIndex, vector<joints_t> &solutions) const;
-    const joints_t& pickBestSolution(const int &legIndex, vector<joints_t> &solutions) const;
-    bool isInvalidSolution(const int &legIndex, const joints_t &solution) const;
 };
 
 #endif // BODY_MODEL_H

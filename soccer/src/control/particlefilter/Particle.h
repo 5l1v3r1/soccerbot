@@ -2,7 +2,7 @@
 #define _PARTICLE_H
 
 #include "../math/Geometry.h"
-#include "../worldmodel/WorldObject.h"
+#include "../models/worldmodel/WorldObject.h"
 
 
 class Particle

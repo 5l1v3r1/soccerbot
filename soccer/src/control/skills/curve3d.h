@@ -48,9 +48,9 @@ public:
     virtual VecPosition getPoint(float t) const;
 
 protected:
-    const size_t _n;              ///< degree
-    const size_t _m;              ///< m knots
-    std::vector<float> _T;      ///< knot vector
+    const size_t _n; ///< degree
+    const size_t _m; ///< m knots
+    std::vector<float> _T; ///< knot vector
 
     float b(int, int, float) const;
 

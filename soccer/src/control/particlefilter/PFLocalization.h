@@ -2,8 +2,8 @@
 #define _PF_Localization_H_
 
 #include "Particle.h"
-#include "../worldmodel/worldmodel.h"
-#include "../bodymodel/bodymodel.h"
+#include "../models/worldmodel/worldmodel.h"
+#include "../models/bodymodel/bodymodel.h"
 #include "../headers/Field.h"
 
 #include <MotionCore.h>

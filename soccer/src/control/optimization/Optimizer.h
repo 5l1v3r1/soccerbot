@@ -1,13 +1,13 @@
 #ifndef OPTIMIZER_H
 #define OPTIMIZER_H
 
-#include "../behaviors/naobehavior.h"
+#include "../behaviours/naobehaviour.h"
 #include <fstream>
 #include <ctime>
 
 class Optimizer {
 public:
-    Optimizer();
+    Optimizer(NaoBehaviour*& behaviour);
     ~Optimizer();
     bool isFallen();
     double countTime();
@@ -16,7 +16,7 @@ public:
     void outputAccerOfCOM();
 
 protected:
-    //NaoBehaviour *behaviour;
+    NaoBehaviour *behaviour;
     //for output data
     ofstream optimizing;
     clock_t timePrevious;

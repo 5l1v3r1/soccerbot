@@ -37,7 +37,7 @@ int nChooseK(const int n, const int k) {
  * \param controlPoints The control points defining the curve.
  */
 Curve3D::Curve3D(const std::vector<VecPosition> &controlPoints) :
-    _controlPoints(controlPoints) {
+_controlPoints(controlPoints) {
 }
 
 /**
@@ -52,7 +52,7 @@ Curve3D::~Curve3D() {
  * \param controlPoints The control points defining the curve.
  */
 Bezier3D::Bezier3D(const std::vector<VecPosition> &controlPoints) :
-    Curve3D(controlPoints), _coeff(controlPoints.size()) {
+Curve3D(controlPoints), _coeff(controlPoints.size()) {
     int n = controlPoints.size() - 1;
     for (int i = 0; i <= n; ++i) {
         _coeff[i] = nChooseK(n, i);
@@ -98,19 +98,19 @@ VecPosition Bezier3D::getPoint(float t) const {
  * Constructor.
  */
 UniformBSpline3D::UniformBSpline3D(const std::vector<VecPosition> &controlPoints) :
-    Curve3D(controlPoints),
-    _n(1),        // Linear
-    _m(controlPoints.size() + _n + 1),
-    _T(_m) {
+Curve3D(controlPoints),
+_n(1), // Linear
+_m(controlPoints.size() + _n + 1),
+_T(_m) {
     //LOG(_n);
     //LOG(_m);
-    float dt = 1.0f / (_m-1);
+    float dt = 1.0f / (_m - 1);
     //LOG(dt);
-    for(size_t i=0; i<_m; ++i) {
-        _T[i] = dt * i;     // uniform
+    for (size_t i = 0; i < _m; ++i) {
+        _T[i] = dt * i; // uniform
     }
     assert(0.0f == _T[0]);
-    assert(1.0f == _T[_m-1]);
+    assert(1.0f == _T[_m - 1]);
     //LOG(_T);
 }
 
@@ -121,30 +121,30 @@ UniformBSpline3D::~UniformBSpline3D() {
 }
 
 HermiteSpline3D::HermiteSpline3D(const std::vector<VecPosition> &controlPoints, float tangentScale)
-    : Curve3D(controlPoints), scale(tangentScale) {
+: Curve3D(controlPoints), scale(tangentScale) {
     // set up tangent points
     tangents.resize(_controlPoints.size());
     size_t len = tangents.size();
-    tangents[0] = VecPosition();//(controlPoints[1] - controlPoints[0]) * scale;
-    for(size_t i = 1; i < len - 1; ++i) {
-        tangents[i] = (controlPoints[i+1] - controlPoints[i-1]) * scale;
+    tangents[0] = VecPosition(); //(controlPoints[1] - controlPoints[0]) * scale;
+    for (size_t i = 1; i < len - 1; ++i) {
+        tangents[i] = (controlPoints[i + 1] - controlPoints[i - 1]) * scale;
     }
-    tangents[len - 1] = VecPosition();//(controlPoints[len - 1] - controlPoints[len - 2]) * scale;
+    tangents[len - 1] = VecPosition(); //(controlPoints[len - 1] - controlPoints[len - 2]) * scale;
 }
 
 VecPosition HermiteSpline3D::getPoint(float u) const {
-    assert( u >= 0 && u <= 1 );
+    assert(u >= 0 && u <= 1);
 
     // get associated index for curve
-    int idx = floor( (_controlPoints.size() - 1) * u);
+    int idx = floor((_controlPoints.size() - 1) * u);
     // get u between these corresponding points only
-    u = u * (_controlPoints.size()-1) - idx;
+    u = u * (_controlPoints.size() - 1) - idx;
 
     // compute cubic hermite parameters
     float h1 = 2 * pow(u, 3) - 3 * pow(u, 2) + 1;
     float h2 = -2 * pow(u, 3) + 3 * pow(u, 2);
     float h3 = pow(u, 3) - 2 * pow(u, 2) + u;
-    float h4 = pow(u, 3) -  pow(u, 2);
+    float h4 = pow(u, 3) - pow(u, 2);
 
     VecPosition p1, p2;
     p1 = _controlPoints[ idx ];
@@ -156,7 +156,8 @@ VecPosition HermiteSpline3D::getPoint(float u) const {
 /**
  * Destructor.
  */
-HermiteSpline3D::~HermiteSpline3D() {}
+HermiteSpline3D::~HermiteSpline3D() {
+}
 
 /**
  * Gets a point along the curve.
@@ -175,17 +176,17 @@ VecPosition UniformBSpline3D::getPoint(float t) const {
         throw std::domain_error("t must be <= 1.0");
     }
 
-    assert(_controlPoints.size() == _m -_n - 1);
+    assert(_controlPoints.size() == _m - _n - 1);
 
     VecPosition sum = VecPosition(0, 0, 0);
 
     // t really needs to be in the range [_T[_n], _T[_m-_n-1]]
-    float trange = _T[_m-_n-1] - _T[_n];
-    float newT = t*trange + _T[_n];
+    float trange = _T[_m - _n - 1] - _T[_n];
+    float newT = t * trange + _T[_n];
 
     for (size_t i = 0; i < _controlPoints.size(); ++i) {
         sum += _controlPoints[i] * b(i, _n, newT);
-//    LOG(sum);
+        //    LOG(sum);
     }
 
     return sum;
@@ -201,18 +202,18 @@ VecPosition UniformBSpline3D::getPoint(float t) const {
  */
 float UniformBSpline3D::b(const int j, const int n, const float t) const {
     // bounds checking
-//  if (j < 0) {
-//    throw std::domain_error("BSpline3D::b(): j must be >= 0");
-//  }
-//  if (j > _m-_n - 2) {
-//    throw std::domain_error("BSpline3D::b(): j must be <= m-n-2");
-//  }
-//  if (n < 0) {
-//    throw std::domain_error("BSpline3D::b(): n must be >= 0");
-//  }
-//  if (n > _m-2) {
-//    throw std::domain_error("BSpline3D::b(): n must be <= m-2");
-//  }
+    //  if (j < 0) {
+    //    throw std::domain_error("BSpline3D::b(): j must be >= 0");
+    //  }
+    //  if (j > _m-_n - 2) {
+    //    throw std::domain_error("BSpline3D::b(): j must be <= m-n-2");
+    //  }
+    //  if (n < 0) {
+    //    throw std::domain_error("BSpline3D::b(): n must be >= 0");
+    //  }
+    //  if (n > _m-2) {
+    //    throw std::domain_error("BSpline3D::b(): n must be <= m-2");
+    //  }
     if (t < 0.0) {
         throw std::domain_error("BSpline3D::b(): t must be >= 0.0");
     }
@@ -231,8 +232,8 @@ float UniformBSpline3D::b(const int j, const int n, const float t) const {
 
         }
 
-        return (t - _T.at(j))         / (_T.at(j + n)     - _T.at(j))     * b(j    , n - 1, t)
-               + (_T.at(j + n + 1) - t)  / (_T.at(j + n + 1) - _T.at(j + 1)) * b(j + 1, n - 1, t);
+        return (t - _T.at(j)) / (_T.at(j + n) - _T.at(j)) * b(j, n - 1, t)
+                + (_T.at(j + n + 1) - t) / (_T.at(j + n + 1) - _T.at(j + 1)) * b(j + 1, n - 1, t);
     } catch (std::out_of_range &e) {
         throw std::domain_error(e.what());
     }
