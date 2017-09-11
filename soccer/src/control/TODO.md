@@ -1,5 +1,13 @@
 # TODO
 
+## General
+
+ - Read through `motiongCore` and `memory`
+
+ - try to figure out the teleport location of agent
+
+ - compare with old file
+
 ## Optimization
  - Try to implement all possible file in the utaustin
 
@@ -12,3 +20,8 @@
 ## Physics
  - may be got the detail of movement command from control team
 
+
+# Finished
+
+ - merge the two file(control and utaustin)
+ - able to call single agent with default para
