@@ -1,8 +1,9 @@
 cmake_minimum_required(VERSION 2.8)
-project(UTRAFCBase CXX C)
+project(UTAustinVillaBase CXX C)
 
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
+set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/)
 
+find_package(Threads REQUIRED)
 find_package(Boost COMPONENTS system REQUIRED)
 find_package(Rcssnet3d REQUIRED)
 
@@ -15,16 +16,12 @@ if(NOT CMAKE_CXX_FLAGS)
   set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wno-unused")
 endif(NOT CMAKE_CXX_FLAGS)
 
-#set(RCSSNET3D_INCLUDE_DIR "/usr/include/simspark")
-#set(RCSSNET3D_LIBRARY "../../../soccerbot/simspark/rcssserver3d")
-
 set(CORE_PATH utwalk)
 
 include_directories(
 ${CORE_PATH}
 ${RCSSNET3D_INCLUDE_DIR}
 )
-
 
 set(CORE_FILES
   ${CORE_PATH}/MotionCore.cpp
@@ -50,30 +47,46 @@ set(CORE_FILES
   ${CORE_PATH}/motion/WalkEngineParameters.cpp 
 )
 
-
-
 set(SRCS
-    main.cpp
-    behaviours/behaviour.cpp
-    behaviours/naobehaviour.cpp
-    optimization/Optimizer.cpp
-    math/hctmatrix.cpp
-    math/vecposition.cpp
-    math/Geometry.cpp
-    models/worldmodel/worldmodel.cpp
-    models/worldmodel/parser.cpp
-    models/bodymodel/bodymodel.cpp
-    skills/skill.cpp
-    skills/curve3d.cpp
-    headers/headers.cpp
+  main.cc 
+  behaviors/behavior.cc
+  behaviors/naobehavior.cc
+  behaviors/checkfall.cc 
+  behaviors/kicking.cc 
+  behaviors/strategy.cc
+  behaviors/pkbehaviors.cc
+  behaviors/gazebobehavior.cc
+  servercomm/primitives.cc
+  parser/parser.cc 
+  math/hctmatrix.cc
+  math/vecposition.cc
+  math/Geometry.cc
+  worldmodel/worldmodel.cc
+  bodymodel/bodymodel.cc
+  particlefilter/PFLocalization.cc
+  particlefilter/Particle.cc
+  skills/skill.cc 
+  skills/curve3d.cc
+  ikfast/ikfast.cpp
+  headers/headers.cc
+  audio/audio.cc 
+  rvdraw/rvdraw.cc 
+  ${CORE_FILES}
+  kalman/BallKF.cpp
+  kalman/PlayerKF.cpp 
+  kalman/OrigKalmanFilter.cpp
+  optimization/optimizationbehaviors.cc
 )
 
-add_executable(utracontrol 
+add_executable(agentspark 
 ${SRCS}
 )
 
-target_link_libraries(utracontrol
- ${RCSSNET3D_LIBRARY}
- ${Boost_SYSTEM_LIBRARY}
+target_link_libraries(agentspark
+${RCSSNET3D_LIBRARY}
+${Boost_SYSTEM_LIBRARY}
+dl
+${CMAKE_THREAD_LIBS_INIT}
+rt 
 )
 

@@ -1,11 +1,14 @@
-##Optimization/Learning
-1. Check the fallen statement
+# TODO
 
-2. working on the strategy
+## Optimization
+ - Try to implement all possible file in the utaustin
 
-##Physics
-1. may be got the detail of movement command from control team
+ - Check the fallen statement
 
+ - Call multi-agent at once
 
+ - Working on the strategy
 
-Eventually: Tune PID controllers to not use the same value for every single joint, fix integral windup (if it occurs)
+## Physics
+ - may be got the detail of movement command from control team
+
