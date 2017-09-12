@@ -1,5 +1,5 @@
-#include "camera_transformer.hpp"
+#include "objects/camera_object.hpp"
 
-geometry_msgs::PoseWithCovarianceStamped CameraTransformer::cameraToRobotPosition(cv::Point position) {
+CameraObject::CameraObject() {
     
 }

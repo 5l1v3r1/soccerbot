@@ -33,9 +33,24 @@
         </df>
         <df name="camera_data">
           <df name="include">
+            <df name="objects">
+              <in>ball.hpp</in>
+              <in>camera_object_flann.hpp</in>
+              <in>field.hpp</in>
+              <in>net.hpp</in>
+              <in>player.hpp</in>
+            </df>
             <in>settings.hpp</in>
+            <in>vector2.hpp</in>
           </df>
           <df name="src">
+            <df name="objects">
+              <in>ball.cpp</in>
+              <in>camera_object_flann.cpp</in>
+              <in>field.cpp</in>
+              <in>net.cpp</in>
+              <in>player.cpp</in>
+            </df>
             <in>camera.cpp</in>
             <in>camera_data.cpp</in>
             <in>settings.cpp</in>
@@ -841,7 +856,37 @@
             tool="1"
             flavor2="4">
       </item>
+      <item path="src/camera_data/include/objects/ball.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/camera_data/include/objects/camera_object_flann.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/camera_data/include/objects/field.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/camera_data/include/objects/net.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/camera_data/include/objects/player.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="src/camera_data/include/settings.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/camera_data/include/vector2.hpp"
             ex="false"
             tool="3"
             flavor2="0">
@@ -856,6 +901,31 @@
             flavor2="8">
         <ccTool flags="5">
         </ccTool>
+      </item>
+      <item path="src/camera_data/src/objects/ball.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/camera_data/src/objects/camera_object_flann.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/camera_data/src/objects/field.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/camera_data/src/objects/net.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/camera_data/src/objects/player.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
       </item>
       <item path="src/camera_data/src/settings.cpp" ex="false" tool="1" flavor2="0">
       </item>

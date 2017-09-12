@@ -9,17 +9,17 @@
 #include <opencv2/objdetect/objdetect.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 
-class CameraTransformer {
+using namespace std;
+using namespace cv;
+
+class CameraObject {
 public :
-    static int robotHeight;
-    static int cameraDistance;
+    CameraObject();
     
-    
-    geometry_msgs::PoseWithCovarianceStamped cameraToRobotPosition(cv::Point position);
-    
+    vector<Point3f> model_points;
+    vector<Point3f> scene_points;
+    vector<Point2f> camera_points;
 private :
-    
-    
     
 };
 

@@ -14,7 +14,7 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 ## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
+find_package(Boost REQUIRED COMPONENTS system)
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -123,37 +123,40 @@ include_directories(
   ${OpenCV_INCLUDE_DIRS}
 )
 
-## The Pose Estimation Library
-#catkin_package(
-#    INCLUDE_DIRS include
-#    LIBRARIES pose_estimation
-#    CATKIN_DEPENDS
-#        cv_bridge
-#        roscpp
-#        std_msgs
-#        image_transport
-#)
-#
-#add_library(pose_estimation
-#  src/pose_estimation/CsvReader.cpp
-#  src/pose_estimation/CsvWriter.cpp
-#  src/pose_estimation/Mesh.cpp
-#  src/pose_estimation/Model.cpp
-#  src/pose_estimation/ModelRegistration.cpp
-#  src/pose_estimation/PnPProblem.cpp
-#  src/pose_estimation/RobustMatcher.cpp
-#  src/pose_estimation/Utils.cpp
-#)
-#target_link_libraries(pose_estimation
-#    ${catkin_LIBRARIES}
-#)
+add_library(pose_estimation
+  src/pose_estimation/CsvReader.cpp
+  src/pose_estimation/CsvWriter.cpp
+  src/pose_estimation/Mesh.cpp
+  src/pose_estimation/Model.cpp
+  src/pose_estimation/ModelRegistration.cpp
+  src/pose_estimation/PnPProblem.cpp
+  src/pose_estimation/RobustMatcher.cpp
+  src/pose_estimation/Utils.cpp
+)
+
+target_link_libraries(pose_estimation
+    ${catkin_LIBRARIES}
+)
+
+add_library(objects
+  src/objects/ball.cpp
+  src/objects/camera_object.cpp
+  src/objects/camera_object_flann.cpp
+  src/objects/field.cpp
+  src/objects/net.cpp
+  src/objects/player.cpp
+)
+
+target_link_libraries(objects
+    ${catkin_LIBRARIES}
+)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-add_executable(camera_data src/camera_data.cpp src/camera.cpp src/camera_transformer.cpp src/settings.cpp)
+add_executable(camera_data src/camera_data.cpp src/camera.cpp src/settings.cpp)
 add_dependencies(camera_data ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(camera_data ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+target_link_libraries(camera_data ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} objects pose_estimation)
 
 #############
 ## Install ##

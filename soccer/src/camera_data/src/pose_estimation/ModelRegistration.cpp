@@ -5,7 +5,7 @@
  *      Author: edgar
  */
 
-#include "ModelRegistration.h"
+#include "pose_estimation/ModelRegistration.h"
 
 ModelRegistration::ModelRegistration() {
     n_registrations_ = 0;

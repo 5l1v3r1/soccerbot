@@ -8,8 +8,8 @@
 #include <iostream>
 #include <sstream>
 
-#include "PnPProblem.h"
-#include "Mesh.h"
+#include "pose_estimation/PnPProblem.h"
+#include "pose_estimation/Mesh.h"
 
 #include <opencv2/calib3d/calib3d.hpp>
 

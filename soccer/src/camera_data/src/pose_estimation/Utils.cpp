@@ -7,9 +7,9 @@
 
 #include <iostream>
 
-#include "PnPProblem.h"
-#include "ModelRegistration.h"
-#include "Utils.h"
+#include "pose_estimation/PnPProblem.h"
+#include "pose_estimation/ModelRegistration.h"
+#include "pose_estimation/Utils.h"
 
 #include <opencv2/imgproc.hpp>
 #include <opencv2/calib3d.hpp>

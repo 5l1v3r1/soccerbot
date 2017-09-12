@@ -5,7 +5,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/)
 
 find_package(Threads REQUIRED)
 find_package(Boost COMPONENTS system REQUIRED)
-find_package(Rcssnet3d REQUIRED)
+#find_package(Rcssnet3d REQUIRED)
 
 if(NOT CMAKE_BUILD_TYPE)
   message(STATUS "No build type selected, default to Release")
@@ -83,7 +83,7 @@ ${SRCS}
 )
 
 target_link_libraries(agentspark
-${RCSSNET3D_LIBRARY}
+#${RCSSNET3D_LIBRARY}
 ${Boost_SYSTEM_LIBRARY}
 dl
 ${CMAKE_THREAD_LIBS_INIT}

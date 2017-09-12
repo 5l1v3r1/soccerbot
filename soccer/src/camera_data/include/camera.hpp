@@ -7,7 +7,12 @@
 #include <opencv2/objdetect/objdetect.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <iostream>
+#include <vector>
 #include "settings.hpp"
+#include "objects/ball.hpp"
+#include "objects/field.hpp"
+#include "objects/net.hpp"
+#include "objects/player.hpp"
 
 using namespace cv;
 using namespace std;
@@ -15,14 +20,12 @@ using namespace std;
 class Camera {
 private:
     Mat frame_in;     // A frame of the camera
-    
     Mat frame_in_hsv; // Intermediates
-    
     Mat frame_out;    // The processed image
     
     // Cascades
     string ball_cascade_name = "cascades/ball.xml";
-    const string calibrationFile = "src/in_VID5.xml";
+    const string calibrationFile = "src/configuration/in_VID5.xml";
     CascadeClassifier ball_cascade;
     
     // Camera Window for drawing all the detecting
@@ -41,9 +44,14 @@ public:
     void process_intermediates();
     void loop();
     
+    Ball ball;
+    Field field;
+    Net net;
+    Player player;
+    
     void detect_field();
-    void detect_ball();
-    void detect_circle();
+    void detect_ball_filter();
+    void detect_ball_hough();
     void detect_field_lines();
     
     void test(string folder, void (Camera::*test_function)(void));

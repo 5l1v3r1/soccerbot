@@ -2,11 +2,14 @@
 #include "boost/filesystem/operations.hpp"
 #include "boost/filesystem/path.hpp"
 #include "boost/progress.hpp"
+#include <boost/numeric/ublas/vector.hpp>
+#include <boost/numeric/ublas/io.hpp>
 #include <opencv2/core/core.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/calib3d/calib3d.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include "constants.hpp"
+#include <math.h>
 
 using namespace cv;
 using namespace std;
@@ -28,8 +31,8 @@ void Camera::initialize() {
         printf("--(!)Error loading ball cascade\n");
         return;
     };
-    
-    if(RECALIBRATE_CAMERA)
+
+    if (RECALIBRATE_CAMERA)
         calibrateCamera();
 }
 
@@ -52,10 +55,9 @@ void Camera::loop() {
         process_intermediates();
 
         // Actual Loop through all the detections
-        //detect_ball();
-        // detect_field_lines();
-        detect_circle();
-
+        detect_field();
+        detect_ball_hough();
+        detect_field_lines();
     }
 }
 
@@ -74,12 +76,12 @@ void Camera::calibrateCamera() {
     fs["Settings"] >> settings;
     //cout << settings.aspectRatio << endl;
     fs.release(); // close Settings file
-    
+
     if (!settings.goodInput) {
         cout << "Invalid input detected. Application stopping. " << endl;
         return;
     }
-    
+
     vector<vector<Point2f> > imagePoints;
     Mat cameraMatrix, distCoeffs;
     Size imageSize;
@@ -218,17 +220,118 @@ void Camera::calibrateCamera() {
     return;
 }
 
+static double angle(cv::Point pt1, cv::Point pt2, cv::Point pt0) {
+    double dx1 = pt1.x - pt0.x;
+    double dy1 = pt1.y - pt0.y;
+    double dx2 = pt2.x - pt0.x;
+    double dy2 = pt2.y - pt0.y;
+    return (dx1 * dx2 + dy1 * dy2) / sqrt((dx1 * dx1 + dy1 * dy1)*(dx2 * dx2 + dy2 * dy2) + 1e-10);
+}
+
+void setLabel(cv::Mat& im, const std::string label, std::vector<cv::Point>& contour) {
+    int fontface = cv::FONT_HERSHEY_SIMPLEX;
+    double scale = 0.4;
+    int thickness = 1;
+    int baseline = 0;
+
+    cv::Size text = cv::getTextSize(label, fontface, scale, thickness, &baseline);
+    cv::Rect r = cv::boundingRect(contour);
+
+    cv::Point pt(r.x + ((r.width - text.width) / 2), r.y + ((r.height + text.height) / 2));
+    cv::rectangle(im, pt + cv::Point(0, baseline), pt + cv::Point(text.width, -text.height), CV_RGB(255, 255, 255), CV_FILLED);
+    cv::putText(im, label, pt, fontface, scale, CV_RGB(0, 0, 0), thickness, 8);
+}
+
+int lengthVec4i(Vec4i l) {
+    return sqrt(((l[3] - l[1])^2 + (l[2] - l[0])^2));
+}
+
+float angleVec4i(Vec4i l) {
+    if(l[2] == l[0]) return 90;
+    float angle = (l[3] - l[1]) / (l[2] - l[0]); //dy/dx
+    return acos(angle) * 180 / 3.14156;
+}
+
+bool angleSort(Vec4i l1, Vec4i l2) {
+    return angleVec4i(l1) > angleVec4i(l2);
+}
+
 void Camera::detect_field() {
-    Mat mask;
+    Mat mask, mask2, mask3, mask4, mask5;
     const Scalar lower = Scalar(45, 100, 50);
     const Scalar upper = Scalar(85, 255, 200);
     cv::inRange(frame_in_hsv, lower, upper, mask);
+
+    int erosion_size = 15;
+    Mat element = getStructuringElement(
+            cv::MORPH_ELLIPSE,
+            Size(2 * erosion_size + 1, 2 * erosion_size + 1),
+            Point(erosion_size, erosion_size));
+
+    // Dilate and Erode for small parts
+    cv::dilate(mask, mask2, element);
+    cv::erode(mask2, mask3, element);
     
-    // Draw a bounding box around the area
-    frame_out = mask;
+    bitwise_not(mask3, mask3);
+    cv::dilate(mask3, mask3, element);
+    cv::erode(mask3, mask3, element);
+    bitwise_not(mask3, mask3);
+    
+    double minarea = ((double) (640 * 480) / 30);
+    double tmparea = 0.0;
+    vector<vector<Point> > contours;
+    vector<Vec4i> hierarchy;
+    findContours(mask3, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE);
+    for (size_t i = 0; i < contours.size(); i++) {
+        tmparea = contourArea(contours[i]);
+        if (tmparea < minarea) {
+            drawContours(mask3, contours, i, CV_RGB(0, 0, 0), CV_FILLED);
+        }
+    }
+    bitwise_not(mask3, mask3);
+    findContours(mask3, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE);
+    for (size_t i = 0; i < contours.size(); i++) {
+        tmparea = contourArea(contours[i]);
+        if (tmparea < minarea) {
+            drawContours(mask3, contours, i, CV_RGB(0, 0, 0), CV_FILLED);
+        }
+    }
+    bitwise_not(mask3, mask3);
+
+    cv::dilate(mask3, mask3, element);
+    cv::erode(mask3, mask3, element);
+
+    // Find the field lines
+    Canny(mask3, mask4, 20, 40, 3);
+    
+    // Straight lines only
+    vector<Vec4i> lines;
+    Vec4i longest;
+    int longestLength = 0;
+    HoughLinesP(mask4, lines, 1, CV_PI / 180, 25, 12, 40);
+    for (size_t i = 0; i < lines.size(); i++) {
+        Vec4i l = lines[i];
+        line(mask4, Point(l[0], l[1]), Point(l[2], l[3]), Scalar(255, 255, 255), 2, CV_AA);
+        if(lengthVec4i(l) > longestLength) {
+            longest = l;
+            longestLength = lengthVec4i(l);
+        }
+    }
+    
+    if(lines.size() == 0) return;
+    
+    line(mask4, Point(longest[0], longest[1]), Point(longest[2], longest[3]), Scalar(255, 255, 255), 4, CV_AA);
+    
+    sort(lines.begin(), lines.end(), angleSort);
+    for(auto it = lines.begin(); it != lines.end(); it++) {
+        cout << (*it)[0] << " " << (*it)[1] << " " << (*it)[2] << " " << (*it)[3] << endl;
+        cout << angleVec4i(*it) << endl;
+    }
+    
+    frame_out = mask4;
 }
 
-void Camera::detect_ball() {
+void Camera::detect_ball_filter() {
     std::vector<Rect> ball;
     Mat frame_gray;
     cvtColor(frame_in, frame_gray, COLOR_BGR2GRAY);
@@ -243,7 +346,7 @@ void Camera::detect_ball() {
     }
 }
 
-void Camera::detect_circle() {
+void Camera::detect_ball_hough() {
 
     // Construct a mask for the color "green", then perform
     // a series of dilations and erosions to remove any small
@@ -334,13 +437,15 @@ void Camera::detect_field_lines() {
     cv::dilate(mask2, mask3, element);
 
     vector<Vec4i> lines;
-
+    Vec4i longest;
+    int longestLength = 0;
     HoughLinesP(mask3, lines, 1, CV_PI / 180 / 4, 60, 40, 2);
     for (size_t i = 0; i < lines.size(); i++) {
         Vec4i l = lines[i];
+        
         line(frame_out, Point(l[0], l[1]), Point(l[2], l[3]), Scalar(0, 0, 255), 1, CV_AA);
     }
-    //frame_out = mask3;
+
 }
 
 vector<string> Camera::get_image_names(string folder) {
@@ -371,13 +476,14 @@ void Camera::test(string folder, void (Camera::*test_function)(void)) {
     for (auto it = imgs.begin(); it != imgs.end(); ++it) {
         frame_in = imread(path + folder + (*it));
         process_intermediates();
+        cout << *it << endl;
         (this->*test_function)();
         imwrite(path + folder + "test/" + (*it), frame_out);
     }
 }
 
 void Camera::run_tests() {
-    test("training_images/ball/", &Camera::detect_circle);
+    test("training_images/ball/", &Camera::detect_ball_hough);
     test("training_images/field/", &Camera::detect_field);
     test("training_images/field_lines/", &Camera::detect_field_lines);
 }
