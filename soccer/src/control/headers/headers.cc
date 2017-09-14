@@ -3,7 +3,14 @@
 // This file contains mapping between enums to strings, to
 // be used by the parser (mainly) when reading from file
 
+/****************************************************
+ * for template<> it is for the class EnumParser    *
+ * includeing BodyPart, SkillType, Effectors so on  *
+ ****************************************************/
+
+
 template<>
+//here <> tells the compiler T is BodyParts
 EnumParser<BodyParts>::EnumParser()
 {
     string2enum["TORSO"] = TORSO;
