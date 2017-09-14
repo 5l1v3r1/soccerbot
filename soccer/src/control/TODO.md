@@ -6,7 +6,7 @@
 
  - try to figure out the teleport location of agent
 
- - compare with old file
+ - let one agent play with ball
 
 ## Optimization
  - Try to implement all possible file in the utaustin

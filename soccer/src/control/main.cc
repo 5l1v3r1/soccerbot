@@ -137,7 +137,6 @@ string rsg("rsg/agent/nao/nao.rsg");
 //here the function would filter out the command and agent in the argv
 void ReadOptions(int argc, char* argv[])
 {
-    //LoadParams("testPara.txt");
     teamName = "UTAustinVilla_Base";
     uNum = 0; // Value of 0 means choose next available number
 
