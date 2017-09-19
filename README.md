@@ -39,7 +39,10 @@ http://www.dis.uniroma1.it/~bloisi/papers/bloisi-robocup2016-draft.pdf
 1. Obtain a copy of Ubuntu, either through a virtual machine or a dual boot (Dual boot preferred)
 
 2. Clone this repository in your HOME directory (eg. /home/jason/ or ~/soccerbot)
+```
+cd ~
 git clone https://github.com/utra-robosoccer/soccerbot/
+```
 
 3. Execute the installation scripts
 ```
