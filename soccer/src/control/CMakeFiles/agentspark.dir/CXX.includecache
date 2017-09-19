@@ -6,55 +6,55 @@
 
 #IncludeRegexTransform: 
 
-/home/color/Utra/soccerbot/soccer/src/control/audio/audio.cc
+/home/color/soccerbot/soccer/src/control/audio/audio.cc
 iostream
 -
 audio.h
-/home/color/Utra/soccerbot/soccer/src/control/audio/audio.h
+/home/color/soccerbot/soccer/src/control/audio/audio.h
 ../headers/Field.h
-/home/color/Utra/soccerbot/soccer/src/control/headers/Field.h
+/home/color/soccerbot/soccer/src/control/headers/Field.h
 
-/home/color/Utra/soccerbot/soccer/src/control/audio/audio.h
+/home/color/soccerbot/soccer/src/control/audio/audio.h
 string
 -
 vector
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/behavior.cc
+/home/color/soccerbot/soccer/src/control/behaviors/behavior.cc
 behavior.h
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/behavior.h
+/home/color/soccerbot/soccer/src/control/behaviors/behavior.h
 
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/behavior.h
+/home/color/soccerbot/soccer/src/control/behaviors/behavior.h
 string
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/checkfall.cc
+/home/color/soccerbot/soccer/src/control/behaviors/checkfall.cc
 naobehavior.h
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/naobehavior.h
+/home/color/soccerbot/soccer/src/control/behaviors/naobehavior.h
 
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/gazebobehavior.cc
+/home/color/soccerbot/soccer/src/control/behaviors/gazebobehavior.cc
 gazebobehavior.h
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/gazebobehavior.h
+/home/color/soccerbot/soccer/src/control/behaviors/gazebobehavior.h
 
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/gazebobehavior.h
+/home/color/soccerbot/soccer/src/control/behaviors/gazebobehavior.h
 naobehavior.h
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/naobehavior.h
+/home/color/soccerbot/soccer/src/control/behaviors/naobehavior.h
 
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/kicking.cc
+/home/color/soccerbot/soccer/src/control/behaviors/kicking.cc
 naobehavior.h
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/naobehavior.h
+/home/color/soccerbot/soccer/src/control/behaviors/naobehavior.h
 list
 -
 algorithm
 -
 ../rvdraw/rvdraw.h
-/home/color/Utra/soccerbot/soccer/src/control/rvdraw/rvdraw.h
+/home/color/soccerbot/soccer/src/control/rvdraw/rvdraw.h
 sys/time.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/naobehavior.cc
+/home/color/soccerbot/soccer/src/control/behaviors/naobehavior.cc
 naobehavior.h
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/naobehavior.h
+/home/color/soccerbot/soccer/src/control/behaviors/naobehavior.h
 iostream
 -
 sstream
@@ -68,9 +68,9 @@ cctype
 exception
 -
 ../skills/skillparser.h
-/home/color/Utra/soccerbot/soccer/src/control/skills/skillparser.h
+/home/color/soccerbot/soccer/src/control/skills/skillparser.h
 ../rvdraw/rvdraw.h
-/home/color/Utra/soccerbot/soccer/src/control/rvdraw/rvdraw.h
+/home/color/soccerbot/soccer/src/control/rvdraw/rvdraw.h
 assert.h
 -
 common/InterfaceInfo.h
@@ -78,21 +78,21 @@ common/InterfaceInfo.h
 motion/MotionModule.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/naobehavior.h
+/home/color/soccerbot/soccer/src/control/behaviors/naobehavior.h
 behavior.h
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/behavior.h
+/home/color/soccerbot/soccer/src/control/behaviors/behavior.h
 ../headers/headers.h
-/home/color/Utra/soccerbot/soccer/src/control/headers/headers.h
+/home/color/soccerbot/soccer/src/control/headers/headers.h
 ../parser/parser.h
-/home/color/Utra/soccerbot/soccer/src/control/parser/parser.h
+/home/color/soccerbot/soccer/src/control/parser/parser.h
 ../worldmodel/worldmodel.h
-/home/color/Utra/soccerbot/soccer/src/control/worldmodel/worldmodel.h
+/home/color/soccerbot/soccer/src/control/worldmodel/worldmodel.h
 ../bodymodel/bodymodel.h
-/home/color/Utra/soccerbot/soccer/src/control/bodymodel/bodymodel.h
+/home/color/soccerbot/soccer/src/control/bodymodel/bodymodel.h
 ../particlefilter/PFLocalization.h
-/home/color/Utra/soccerbot/soccer/src/control/particlefilter/PFLocalization.h
+/home/color/soccerbot/soccer/src/control/particlefilter/PFLocalization.h
 ../skills/skill.h
-/home/color/Utra/soccerbot/soccer/src/control/skills/skill.h
+/home/color/soccerbot/soccer/src/control/skills/skill.h
 MotionCore.h
 -
 memory/Memory.h
@@ -110,23 +110,23 @@ memory/SimEffectorBlock.h
 memory/WalkRequestBlock.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/pkbehaviors.cc
+/home/color/soccerbot/soccer/src/control/behaviors/pkbehaviors.cc
 pkbehaviors.h
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/pkbehaviors.h
+/home/color/soccerbot/soccer/src/control/behaviors/pkbehaviors.h
 
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/pkbehaviors.h
+/home/color/soccerbot/soccer/src/control/behaviors/pkbehaviors.h
 naobehavior.h
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/naobehavior.h
+/home/color/soccerbot/soccer/src/control/behaviors/naobehavior.h
 
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/strategy.cc
+/home/color/soccerbot/soccer/src/control/behaviors/strategy.cc
 naobehavior.h
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/naobehavior.h
+/home/color/soccerbot/soccer/src/control/behaviors/naobehavior.h
 ../rvdraw/rvdraw.h
-/home/color/Utra/soccerbot/soccer/src/control/rvdraw/rvdraw.h
+/home/color/soccerbot/soccer/src/control/rvdraw/rvdraw.h
 
-/home/color/Utra/soccerbot/soccer/src/control/bodymodel/bodymodel.cc
+/home/color/soccerbot/soccer/src/control/bodymodel/bodymodel.cc
 bodymodel.h
-/home/color/Utra/soccerbot/soccer/src/control/bodymodel/bodymodel.h
+/home/color/soccerbot/soccer/src/control/bodymodel/bodymodel.h
 common/RobotInfo.h
 -
 algorithm
@@ -140,33 +140,33 @@ memory/JointBlock.h
 memory/JointCommandBlock.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/bodymodel/bodymodel.h
+/home/color/soccerbot/soccer/src/control/bodymodel/bodymodel.h
 ../headers/headers.h
-/home/color/Utra/soccerbot/soccer/src/control/headers/headers.h
+/home/color/soccerbot/soccer/src/control/headers/headers.h
 ../math/vecposition.h
-/home/color/Utra/soccerbot/soccer/src/control/math/vecposition.h
+/home/color/soccerbot/soccer/src/control/math/vecposition.h
 ../math/hctmatrix.h
-/home/color/Utra/soccerbot/soccer/src/control/math/hctmatrix.h
+/home/color/soccerbot/soccer/src/control/math/hctmatrix.h
 ../worldmodel/worldmodel.h
-/home/color/Utra/soccerbot/soccer/src/control/worldmodel/worldmodel.h
+/home/color/soccerbot/soccer/src/control/worldmodel/worldmodel.h
 ../ikfast/ikfast.h
-/home/color/Utra/soccerbot/soccer/src/control/ikfast/ikfast.h
+/home/color/soccerbot/soccer/src/control/ikfast/ikfast.h
 sstream
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/headers/Field.h
+/home/color/soccerbot/soccer/src/control/headers/Field.h
 ../worldmodel/WorldObject.h
-/home/color/Utra/soccerbot/soccer/src/control/worldmodel/WorldObject.h
+/home/color/soccerbot/soccer/src/control/worldmodel/WorldObject.h
 ../math/Geometry.h
-/home/color/Utra/soccerbot/soccer/src/control/math/Geometry.h
+/home/color/soccerbot/soccer/src/control/math/Geometry.h
 stdio.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/headers/headers.cc
+/home/color/soccerbot/soccer/src/control/headers/headers.cc
 headers.h
-/home/color/Utra/soccerbot/soccer/src/control/headers/headers.h
+/home/color/soccerbot/soccer/src/control/headers/headers.h
 
-/home/color/Utra/soccerbot/soccer/src/control/headers/headers.h
+/home/color/soccerbot/soccer/src/control/headers/headers.h
 map
 -
 string
@@ -178,21 +178,21 @@ ostream
 sstream
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/ikfast/ikfast.cpp
+/home/color/soccerbot/soccer/src/control/ikfast/ikfast.cpp
 cassert
 -
 ikfast.h
-/home/color/Utra/soccerbot/soccer/src/control/ikfast/ikfast.h
+/home/color/soccerbot/soccer/src/control/ikfast/ikfast.h
 ikfast_left_foot.cpp
-/home/color/Utra/soccerbot/soccer/src/control/ikfast/ikfast_left_foot.cpp
+/home/color/soccerbot/soccer/src/control/ikfast/ikfast_left_foot.cpp
 ikfast_right_foot.cpp
-/home/color/Utra/soccerbot/soccer/src/control/ikfast/ikfast_right_foot.cpp
+/home/color/soccerbot/soccer/src/control/ikfast/ikfast_right_foot.cpp
 
-/home/color/Utra/soccerbot/soccer/src/control/ikfast/ikfast.h
+/home/color/soccerbot/soccer/src/control/ikfast/ikfast.h
 vector
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/ikfast/ikfast_left_foot.cpp
+/home/color/soccerbot/soccer/src/control/ikfast/ikfast_left_foot.cpp
 cmath
 -
 vector
@@ -212,7 +212,7 @@ stdio.h
 stdlib.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/ikfast/ikfast_right_foot.cpp
+/home/color/soccerbot/soccer/src/control/ikfast/ikfast_right_foot.cpp
 cmath
 -
 vector
@@ -232,69 +232,69 @@ stdio.h
 stdlib.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/kalman/BallKF.cpp
+/home/color/soccerbot/soccer/src/control/kalman/BallKF.cpp
 BallKF.h
-/home/color/Utra/soccerbot/soccer/src/control/kalman/BallKF.h
+/home/color/soccerbot/soccer/src/control/kalman/BallKF.h
 iostream
 -
 cstdlib
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/kalman/BallKF.h
+/home/color/soccerbot/soccer/src/control/kalman/BallKF.h
 OrigKalmanFilter.h
-/home/color/Utra/soccerbot/soccer/src/control/kalman/OrigKalmanFilter.h
+/home/color/soccerbot/soccer/src/control/kalman/OrigKalmanFilter.h
 common/NMatrix.h
 -
 ../math/Geometry.h
-/home/color/Utra/soccerbot/soccer/src/control/math/Geometry.h
+/home/color/soccerbot/soccer/src/control/math/Geometry.h
 ../headers/Field.h
-/home/color/Utra/soccerbot/soccer/src/control/headers/Field.h
+/home/color/soccerbot/soccer/src/control/headers/Field.h
 ../worldmodel/WorldObject.h
-/home/color/Utra/soccerbot/soccer/src/control/worldmodel/WorldObject.h
+/home/color/soccerbot/soccer/src/control/worldmodel/WorldObject.h
 ../worldmodel/worldmodel.h
-/home/color/Utra/soccerbot/soccer/src/control/worldmodel/worldmodel.h
+/home/color/soccerbot/soccer/src/control/worldmodel/worldmodel.h
 stdarg.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/kalman/OrigKalmanFilter.cpp
+/home/color/soccerbot/soccer/src/control/kalman/OrigKalmanFilter.cpp
 OrigKalmanFilter.h
-/home/color/Utra/soccerbot/soccer/src/control/kalman/OrigKalmanFilter.h
+/home/color/soccerbot/soccer/src/control/kalman/OrigKalmanFilter.h
 math/Geometry.h
 -
 iostream
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/kalman/OrigKalmanFilter.h
+/home/color/soccerbot/soccer/src/control/kalman/OrigKalmanFilter.h
 math.h
 -
 common/NMatrix.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/kalman/PlayerKF.cpp
+/home/color/soccerbot/soccer/src/control/kalman/PlayerKF.cpp
 PlayerKF.h
-/home/color/Utra/soccerbot/soccer/src/control/kalman/PlayerKF.h
+/home/color/soccerbot/soccer/src/control/kalman/PlayerKF.h
 iostream
 -
 cstdlib
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/kalman/PlayerKF.h
+/home/color/soccerbot/soccer/src/control/kalman/PlayerKF.h
 OrigKalmanFilter.h
-/home/color/Utra/soccerbot/soccer/src/control/kalman/OrigKalmanFilter.h
+/home/color/soccerbot/soccer/src/control/kalman/OrigKalmanFilter.h
 common/NMatrix.h
 -
 ../math/Geometry.h
-/home/color/Utra/soccerbot/soccer/src/control/math/Geometry.h
+/home/color/soccerbot/soccer/src/control/math/Geometry.h
 ../headers/Field.h
-/home/color/Utra/soccerbot/soccer/src/control/headers/Field.h
+/home/color/soccerbot/soccer/src/control/headers/Field.h
 ../worldmodel/WorldObject.h
-/home/color/Utra/soccerbot/soccer/src/control/worldmodel/WorldObject.h
+/home/color/soccerbot/soccer/src/control/worldmodel/WorldObject.h
 ../worldmodel/worldmodel.h
-/home/color/Utra/soccerbot/soccer/src/control/worldmodel/worldmodel.h
+/home/color/soccerbot/soccer/src/control/worldmodel/worldmodel.h
 stdarg.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/main.cc
+/home/color/soccerbot/soccer/src/control/main.cc
 errno.h
 -
 signal.h
@@ -312,95 +312,95 @@ rcssnet/exception.hpp
 netinet/in.h
 -
 behaviors/behavior.h
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/behavior.h
+/home/color/soccerbot/soccer/src/control/behaviors/behavior.h
 behaviors/naobehavior.h
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/naobehavior.h
+/home/color/soccerbot/soccer/src/control/behaviors/naobehavior.h
 optimization/optimizationbehaviors.h
-/home/color/Utra/soccerbot/soccer/src/control/optimization/optimizationbehaviors.h
+/home/color/soccerbot/soccer/src/control/optimization/optimizationbehaviors.h
 behaviors/pkbehaviors.h
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/pkbehaviors.h
+/home/color/soccerbot/soccer/src/control/behaviors/pkbehaviors.h
 behaviors/gazebobehavior.h
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/gazebobehavior.h
+/home/color/soccerbot/soccer/src/control/behaviors/gazebobehavior.h
 
-/home/color/Utra/soccerbot/soccer/src/control/math/Geometry.cc
+/home/color/soccerbot/soccer/src/control/math/Geometry.cc
 assert.h
 -
 stdio.h
 -
 Geometry.h
-/home/color/Utra/soccerbot/soccer/src/control/math/Geometry.h
+/home/color/soccerbot/soccer/src/control/math/Geometry.h
 
-/home/color/Utra/soccerbot/soccer/src/control/math/Geometry.h
+/home/color/soccerbot/soccer/src/control/math/Geometry.h
 cmath
 -
 iostream
 -
 vecposition.h
-/home/color/Utra/soccerbot/soccer/src/control/math/vecposition.h
+/home/color/soccerbot/soccer/src/control/math/vecposition.h
 
-/home/color/Utra/soccerbot/soccer/src/control/math/hctmatrix.cc
+/home/color/soccerbot/soccer/src/control/math/hctmatrix.cc
 hctmatrix.h
-/home/color/Utra/soccerbot/soccer/src/control/math/hctmatrix.h
+/home/color/soccerbot/soccer/src/control/math/hctmatrix.h
 
-/home/color/Utra/soccerbot/soccer/src/control/math/hctmatrix.h
+/home/color/soccerbot/soccer/src/control/math/hctmatrix.h
 ../headers/headers.h
-/home/color/Utra/soccerbot/soccer/src/control/headers/headers.h
+/home/color/soccerbot/soccer/src/control/headers/headers.h
 vecposition.h
-/home/color/Utra/soccerbot/soccer/src/control/math/vecposition.h
+/home/color/soccerbot/soccer/src/control/math/vecposition.h
 iostream
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/math/vecposition.cc
+/home/color/soccerbot/soccer/src/control/math/vecposition.cc
 vecposition.h
-/home/color/Utra/soccerbot/soccer/src/control/math/vecposition.h
+/home/color/soccerbot/soccer/src/control/math/vecposition.h
 
-/home/color/Utra/soccerbot/soccer/src/control/math/vecposition.h
+/home/color/soccerbot/soccer/src/control/math/vecposition.h
 math.h
-/home/color/Utra/soccerbot/soccer/src/control/math/math.h
+/home/color/soccerbot/soccer/src/control/math/math.h
 string.h
 -
 iostream
 -
 ../headers/headers.h
-/home/color/Utra/soccerbot/soccer/src/control/headers/headers.h
+/home/color/soccerbot/soccer/src/control/headers/headers.h
 
-/home/color/Utra/soccerbot/soccer/src/control/optimization/optimizationbehaviors.cc
+/home/color/soccerbot/soccer/src/control/optimization/optimizationbehaviors.cc
 optimizationbehaviors.h
-/home/color/Utra/soccerbot/soccer/src/control/optimization/optimizationbehaviors.h
+/home/color/soccerbot/soccer/src/control/optimization/optimizationbehaviors.h
 fstream
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/optimization/optimizationbehaviors.h
+/home/color/soccerbot/soccer/src/control/optimization/optimizationbehaviors.h
 ../behaviors/naobehavior.h
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/naobehavior.h
+/home/color/soccerbot/soccer/src/control/behaviors/naobehavior.h
 
-/home/color/Utra/soccerbot/soccer/src/control/parser/VisionObject.h
+/home/color/soccerbot/soccer/src/control/parser/VisionObject.h
 ../math/vecposition.h
-/home/color/Utra/soccerbot/soccer/src/control/math/vecposition.h
+/home/color/soccerbot/soccer/src/control/math/vecposition.h
 
-/home/color/Utra/soccerbot/soccer/src/control/parser/parser.cc
+/home/color/soccerbot/soccer/src/control/parser/parser.cc
 cmath
 -
 parser.h
-/home/color/Utra/soccerbot/soccer/src/control/parser/parser.h
+/home/color/soccerbot/soccer/src/control/parser/parser.h
 ../worldmodel/WorldObject.h
-/home/color/Utra/soccerbot/soccer/src/control/worldmodel/WorldObject.h
+/home/color/soccerbot/soccer/src/control/worldmodel/WorldObject.h
 ../audio/audio.h
-/home/color/Utra/soccerbot/soccer/src/control/audio/audio.h
+/home/color/soccerbot/soccer/src/control/audio/audio.h
 ../headers/headers.h
-/home/color/Utra/soccerbot/soccer/src/control/headers/headers.h
+/home/color/soccerbot/soccer/src/control/headers/headers.h
 ../worldmodel/worldmodel.h
-/home/color/Utra/soccerbot/soccer/src/control/worldmodel/worldmodel.h
+/home/color/soccerbot/soccer/src/control/worldmodel/worldmodel.h
 ../bodymodel/bodymodel.h
-/home/color/Utra/soccerbot/soccer/src/control/bodymodel/bodymodel.h
+/home/color/soccerbot/soccer/src/control/bodymodel/bodymodel.h
 VisionObject.h
-/home/color/Utra/soccerbot/soccer/src/control/parser/VisionObject.h
+/home/color/soccerbot/soccer/src/control/parser/VisionObject.h
 ../particlefilter/PFLocalization.h
-/home/color/Utra/soccerbot/soccer/src/control/particlefilter/PFLocalization.h
+/home/color/soccerbot/soccer/src/control/particlefilter/PFLocalization.h
 ../kalman/BallKF.h
-/home/color/Utra/soccerbot/soccer/src/control/kalman/BallKF.h
+/home/color/soccerbot/soccer/src/control/kalman/BallKF.h
 ../kalman/PlayerKF.h
-/home/color/Utra/soccerbot/soccer/src/control/kalman/PlayerKF.h
+/home/color/soccerbot/soccer/src/control/kalman/PlayerKF.h
 memory/Memory.h
 -
 memory/FrameInfoBlock.h
@@ -416,7 +416,7 @@ memory/SimEffectorBlock.h
 sys/time.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/parser/parser.h
+/home/color/soccerbot/soccer/src/control/parser/parser.h
 iostream
 -
 string
@@ -428,57 +428,57 @@ vector
 boost/shared_ptr.hpp
 -
 ../headers/headers.h
-/home/color/Utra/soccerbot/soccer/src/control/headers/headers.h
+/home/color/soccerbot/soccer/src/control/headers/headers.h
 
-/home/color/Utra/soccerbot/soccer/src/control/particlefilter/MyRandom.h
+/home/color/soccerbot/soccer/src/control/particlefilter/MyRandom.h
 iostream
 -
 sys/time.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/particlefilter/PFLocalization.cc
+/home/color/soccerbot/soccer/src/control/particlefilter/PFLocalization.cc
 PFLocalization.h
-/home/color/Utra/soccerbot/soccer/src/control/particlefilter/PFLocalization.h
+/home/color/soccerbot/soccer/src/control/particlefilter/PFLocalization.h
 iostream
 -
 iomanip
 -
 MyRandom.h
-/home/color/Utra/soccerbot/soccer/src/control/particlefilter/MyRandom.h
+/home/color/soccerbot/soccer/src/control/particlefilter/MyRandom.h
 motion/MotionModule.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/particlefilter/PFLocalization.h
+/home/color/soccerbot/soccer/src/control/particlefilter/PFLocalization.h
 Particle.h
-/home/color/Utra/soccerbot/soccer/src/control/particlefilter/Particle.h
+/home/color/soccerbot/soccer/src/control/particlefilter/Particle.h
 ../worldmodel/worldmodel.h
-/home/color/Utra/soccerbot/soccer/src/control/worldmodel/worldmodel.h
+/home/color/soccerbot/soccer/src/control/worldmodel/worldmodel.h
 ../bodymodel/bodymodel.h
-/home/color/Utra/soccerbot/soccer/src/control/bodymodel/bodymodel.h
+/home/color/soccerbot/soccer/src/control/bodymodel/bodymodel.h
 ../headers/Field.h
-/home/color/Utra/soccerbot/soccer/src/control/headers/Field.h
+/home/color/soccerbot/soccer/src/control/headers/Field.h
 MotionCore.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/particlefilter/Particle.cc
+/home/color/soccerbot/soccer/src/control/particlefilter/Particle.cc
 stdlib.h
 -
 Particle.h
-/home/color/Utra/soccerbot/soccer/src/control/particlefilter/Particle.h
+/home/color/soccerbot/soccer/src/control/particlefilter/Particle.h
 
-/home/color/Utra/soccerbot/soccer/src/control/particlefilter/Particle.h
+/home/color/soccerbot/soccer/src/control/particlefilter/Particle.h
 ../math/Geometry.h
-/home/color/Utra/soccerbot/soccer/src/control/math/Geometry.h
+/home/color/soccerbot/soccer/src/control/math/Geometry.h
 ../worldmodel/WorldObject.h
-/home/color/Utra/soccerbot/soccer/src/control/worldmodel/WorldObject.h
+/home/color/soccerbot/soccer/src/control/worldmodel/WorldObject.h
 
-/home/color/Utra/soccerbot/soccer/src/control/rvdraw/rvdraw.cc
+/home/color/soccerbot/soccer/src/control/rvdraw/rvdraw.cc
 rvdraw.h
-/home/color/Utra/soccerbot/soccer/src/control/rvdraw/rvdraw.h
+/home/color/soccerbot/soccer/src/control/rvdraw/rvdraw.h
 ../worldmodel/worldmodel.h
-/home/color/Utra/soccerbot/soccer/src/control/worldmodel/worldmodel.h
+/home/color/soccerbot/soccer/src/control/worldmodel/worldmodel.h
 
-/home/color/Utra/soccerbot/soccer/src/control/rvdraw/rvdraw.h
+/home/color/soccerbot/soccer/src/control/rvdraw/rvdraw.h
 cstdio
 -
 cstring
@@ -516,17 +516,17 @@ sstream
 iomanip
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/servercomm/primitives.cc
+/home/color/soccerbot/soccer/src/control/servercomm/primitives.cc
 ../behaviors/naobehavior.h
-/home/color/Utra/soccerbot/soccer/src/control/behaviors/naobehavior.h
+/home/color/soccerbot/soccer/src/control/behaviors/naobehavior.h
 ../audio/audio.h
-/home/color/Utra/soccerbot/soccer/src/control/audio/audio.h
+/home/color/soccerbot/soccer/src/control/audio/audio.h
 common/RobotInfo.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/skills/curve3d.cc
+/home/color/soccerbot/soccer/src/control/skills/curve3d.cc
 curve3d.h
-/home/color/Utra/soccerbot/soccer/src/control/skills/curve3d.h
+/home/color/soccerbot/soccer/src/control/skills/curve3d.h
 cmath
 -
 cassert
@@ -534,29 +534,29 @@ cassert
 stdexcept
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/skills/curve3d.h
+/home/color/soccerbot/soccer/src/control/skills/curve3d.h
 vector
 -
 ../math/vecposition.h
-/home/color/Utra/soccerbot/soccer/src/control/math/vecposition.h
+/home/color/soccerbot/soccer/src/control/math/vecposition.h
 
-/home/color/Utra/soccerbot/soccer/src/control/skills/skill.cc
+/home/color/soccerbot/soccer/src/control/skills/skill.cc
 boost/foreach.hpp
 -
 skill.h
-/home/color/Utra/soccerbot/soccer/src/control/skills/skill.h
+/home/color/soccerbot/soccer/src/control/skills/skill.h
 ../ikfast/ikfast.h
-/home/color/Utra/soccerbot/soccer/src/control/ikfast/ikfast.h
+/home/color/soccerbot/soccer/src/control/ikfast/ikfast.h
 
-/home/color/Utra/soccerbot/soccer/src/control/skills/skill.h
+/home/color/soccerbot/soccer/src/control/skills/skill.h
 boost/shared_ptr.hpp
 -
 ../bodymodel/bodymodel.h
-/home/color/Utra/soccerbot/soccer/src/control/bodymodel/bodymodel.h
+/home/color/soccerbot/soccer/src/control/bodymodel/bodymodel.h
 curve3d.h
-/home/color/Utra/soccerbot/soccer/src/control/skills/curve3d.h
+/home/color/soccerbot/soccer/src/control/skills/curve3d.h
 
-/home/color/Utra/soccerbot/soccer/src/control/skills/skillparser.h
+/home/color/soccerbot/soccer/src/control/skills/skillparser.h
 boost/spirit/include/classic_core.hpp
 -
 boost/spirit/include/classic_file_iterator.hpp
@@ -578,13 +578,13 @@ string
 vector
 -
 skill.h
-/home/color/Utra/soccerbot/soccer/src/control/skills/skill.h
+/home/color/soccerbot/soccer/src/control/skills/skill.h
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/Module.cpp
+/home/color/soccerbot/soccer/src/control/utwalk/Module.cpp
 Module.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/Module.h
+/home/color/soccerbot/soccer/src/control/utwalk/Module.h
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/Module.h
+/home/color/soccerbot/soccer/src/control/utwalk/Module.h
 string
 -
 vector
@@ -596,9 +596,9 @@ memory/MemoryBlock.h
 memory/Memory.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/MotionCore.cpp
+/home/color/soccerbot/soccer/src/control/utwalk/MotionCore.cpp
 MotionCore.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/MotionCore.h
+/home/color/soccerbot/soccer/src/control/utwalk/MotionCore.h
 memory/FrameInfoBlock.h
 -
 memory/GraphableBlock.h
@@ -616,7 +616,7 @@ motion/MotionModule.h
 sensor/SensorModule.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/MotionCore.h
+/home/color/soccerbot/soccer/src/control/utwalk/MotionCore.h
 memory/Memory.h
 -
 memory/FrameInfoBlock.h
@@ -626,13 +626,13 @@ memory/WalkRequestBlock.h
 memory/Logger.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/common/NMatrix.cpp
+/home/color/soccerbot/soccer/src/control/utwalk/common/NMatrix.cpp
 NMatrix.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/common/NMatrix.h
+/home/color/soccerbot/soccer/src/control/utwalk/common/NMatrix.h
 string.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/common/NMatrix.h
+/home/color/soccerbot/soccer/src/control/utwalk/common/NMatrix.h
 iostream
 -
 math.h
@@ -640,19 +640,19 @@ math.h
 vector
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/common/PIDController.cpp
+/home/color/soccerbot/soccer/src/control/utwalk/common/PIDController.cpp
 PIDController.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/common/PIDController.h
+/home/color/soccerbot/soccer/src/control/utwalk/common/PIDController.h
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/common/PIDController.h
+/home/color/soccerbot/soccer/src/control/utwalk/common/PIDController.h
 math/Vector3.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/kinematics/ForwardKinematics.cpp
+/home/color/soccerbot/soccer/src/control/utwalk/kinematics/ForwardKinematics.cpp
 ForwardKinematics.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/kinematics/ForwardKinematics.h
+/home/color/soccerbot/soccer/src/control/utwalk/kinematics/ForwardKinematics.h
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/kinematics/ForwardKinematics.h
+/home/color/soccerbot/soccer/src/control/utwalk/kinematics/ForwardKinematics.h
 math/Pose3D.h
 -
 math/Vector3.h
@@ -662,29 +662,29 @@ common/MassCalibration.h
 common/RobotDimensions.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/kinematics/InverseKinematics.cpp
+/home/color/soccerbot/soccer/src/control/utwalk/kinematics/InverseKinematics.cpp
 InverseKinematics.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/kinematics/InverseKinematics.h
+/home/color/soccerbot/soccer/src/control/utwalk/kinematics/InverseKinematics.h
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/kinematics/InverseKinematics.h
+/home/color/soccerbot/soccer/src/control/utwalk/kinematics/InverseKinematics.h
 math/Vector2.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/kinematics/math/Vector2.h
+/home/color/soccerbot/soccer/src/control/utwalk/kinematics/math/Vector2.h
 math/Range.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/kinematics/math/Range.h
+/home/color/soccerbot/soccer/src/control/utwalk/kinematics/math/Range.h
 math/Pose3D.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/kinematics/math/Pose3D.h
+/home/color/soccerbot/soccer/src/control/utwalk/kinematics/math/Pose3D.h
 math/Common.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/kinematics/math/Common.h
+/home/color/soccerbot/soccer/src/control/utwalk/kinematics/math/Common.h
 common/RobotDimensions.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/kinematics/common/RobotDimensions.h
+/home/color/soccerbot/soccer/src/control/utwalk/kinematics/common/RobotDimensions.h
 common/RobotInfo.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/kinematics/common/RobotInfo.h
+/home/color/soccerbot/soccer/src/control/utwalk/kinematics/common/RobotInfo.h
 cassert
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/kinematics/KinematicsModule.cpp
+/home/color/soccerbot/soccer/src/control/utwalk/kinematics/KinematicsModule.cpp
 KinematicsModule.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/kinematics/KinematicsModule.h
+/home/color/soccerbot/soccer/src/control/utwalk/kinematics/KinematicsModule.h
 kinematics/ForwardKinematics.h
 -
 common/RobotInfo.h
@@ -696,7 +696,7 @@ memory/JointBlock.h
 memory/SensorBlock.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/kinematics/KinematicsModule.h
+/home/color/soccerbot/soccer/src/control/utwalk/kinematics/KinematicsModule.h
 Module.h
 -
 common/MassCalibration.h
@@ -704,77 +704,77 @@ common/MassCalibration.h
 common/RobotDimensions.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/math/Geometry.cpp
+/home/color/soccerbot/soccer/src/control/utwalk/math/Geometry.cpp
 assert.h
 -
 Geometry.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/math/Geometry.h
+/home/color/soccerbot/soccer/src/control/utwalk/math/Geometry.h
 cstdio
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/math/Geometry.h
+/home/color/soccerbot/soccer/src/control/utwalk/math/Geometry.h
 cmath
 -
 iostream
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/math/MVTools.cpp
+/home/color/soccerbot/soccer/src/control/utwalk/math/MVTools.cpp
 MVTools.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/math/MVTools.h
+/home/color/soccerbot/soccer/src/control/utwalk/math/MVTools.h
 limits
 -
 cstring
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/math/MVTools.h
+/home/color/soccerbot/soccer/src/control/utwalk/math/MVTools.h
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/math/Matrix2x2.h
+/home/color/soccerbot/soccer/src/control/utwalk/math/Matrix2x2.h
 Vector2.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/math/Vector2.h
+/home/color/soccerbot/soccer/src/control/utwalk/math/Vector2.h
 limits
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/math/Matrix3x3.h
+/home/color/soccerbot/soccer/src/control/utwalk/math/Matrix3x3.h
 Vector3.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/math/Vector3.h
+/home/color/soccerbot/soccer/src/control/utwalk/math/Vector3.h
 Matrix2x2.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/math/Matrix2x2.h
+/home/color/soccerbot/soccer/src/control/utwalk/math/Matrix2x2.h
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/math/Range.h
+/home/color/soccerbot/soccer/src/control/utwalk/math/Range.h
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/math/RotationMatrix.cpp
+/home/color/soccerbot/soccer/src/control/utwalk/math/RotationMatrix.cpp
 RotationMatrix.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/math/RotationMatrix.h
+/home/color/soccerbot/soccer/src/control/utwalk/math/RotationMatrix.h
 Range.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/math/Range.h
+/home/color/soccerbot/soccer/src/control/utwalk/math/Range.h
 MVTools.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/math/MVTools.h
+/home/color/soccerbot/soccer/src/control/utwalk/math/MVTools.h
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/math/RotationMatrix.h
+/home/color/soccerbot/soccer/src/control/utwalk/math/RotationMatrix.h
 Matrix3x3.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/math/Matrix3x3.h
+/home/color/soccerbot/soccer/src/control/utwalk/math/Matrix3x3.h
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/math/Vector2.h
+/home/color/soccerbot/soccer/src/control/utwalk/math/Vector2.h
 cmath
 -
 iostream
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/math/Vector3.h
+/home/color/soccerbot/soccer/src/control/utwalk/math/Vector3.h
 cmath
 -
 iostream
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/AbstractMemory.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/AbstractMemory.h
 vector
 -
 string
 -
 MemoryBlock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/BodyModelBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/BodyModelBlock.h
 common/RobotInfo.h
 -
 math/Pose3D.h
@@ -782,43 +782,43 @@ math/Pose3D.h
 math/Vector3.h
 -
 MemoryBlock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/FrameInfoBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/FrameInfoBlock.h
 MemoryBlock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
 iostream
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/GraphableBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/GraphableBlock.h
 MemoryBlock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
 cstring
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/JointBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/JointBlock.h
 iostream
 -
 common/RobotInfo.h
 -
 MemoryBlock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/JointCommandBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/JointCommandBlock.h
 iostream
 -
 common/RobotInfo.h
 -
 MemoryBlock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/Lock.cpp
+/home/color/soccerbot/soccer/src/control/utwalk/memory/Lock.cpp
 Lock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/Lock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/Lock.h
 iostream
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/Lock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/Lock.h
 string
 -
 boost/interprocess/sync/named_mutex.hpp
@@ -830,85 +830,85 @@ boost/interprocess/sync/scoped_lock.hpp
 boost/thread/thread_time.hpp
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/Logger.cpp
+/home/color/soccerbot/soccer/src/control/utwalk/memory/Logger.cpp
 Logger.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/Logger.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/Logger.h
 iostream
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/Logger.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/Logger.h
 fstream
 -
 Memory.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/Memory.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/Memory.h
 MemoryBlock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/Memory.cpp
+/home/color/soccerbot/soccer/src/control/utwalk/memory/Memory.cpp
 Memory.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/Memory.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/Memory.h
 BodyModelBlock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/BodyModelBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/BodyModelBlock.h
 FrameInfoBlock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/FrameInfoBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/FrameInfoBlock.h
 GraphableBlock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/GraphableBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/GraphableBlock.h
 JointBlock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/JointBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/JointBlock.h
 JointCommandBlock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/JointCommandBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/JointCommandBlock.h
 SensorBlock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/SensorBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/SensorBlock.h
 SimEffectorBlock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/SimEffectorBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/SimEffectorBlock.h
 WalkRequestBlock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/WalkRequestBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/WalkRequestBlock.h
 WalkEngineBlock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/WalkEngineBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/WalkEngineBlock.h
 OdometryBlock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/OdometryBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/OdometryBlock.h
 boost/thread.hpp
 -
 boost/date_time/posix_time/posix_time.hpp
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/Memory.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/Memory.h
 vector
 -
 string
 -
 MemoryBlock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
 SharedMemory.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/SharedMemory.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/SharedMemory.h
 PrivateMemory.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/PrivateMemory.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/PrivateMemory.h
 Lock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/Lock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/Lock.h
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.cpp
+/home/color/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.cpp
 MemoryBlock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
 iostream
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
 cstring
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/OdometryBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/OdometryBlock.h
 MemoryBlock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
 math/Geometry.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/PrivateMemory.cpp
+/home/color/soccerbot/soccer/src/control/utwalk/memory/PrivateMemory.cpp
 PrivateMemory.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/PrivateMemory.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/PrivateMemory.h
 iostream
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/PrivateMemory.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/PrivateMemory.h
 vector
 -
 map
@@ -916,21 +916,21 @@ map
 string
 -
 MemoryBlock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
 AbstractMemory.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/AbstractMemory.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/AbstractMemory.h
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/SensorBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/SensorBlock.h
 iostream
 -
 common/RobotInfo.h
 -
 MemoryBlock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/SharedMemory.cpp
+/home/color/soccerbot/soccer/src/control/utwalk/memory/SharedMemory.cpp
 SharedMemory.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/SharedMemory.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/SharedMemory.h
 memory/FrameInfoBlock.h
 -
 memory/SensorBlock.h
@@ -940,7 +940,7 @@ memory/JointBlock.h
 memory/JointCommandBlock.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/SharedMemory.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/SharedMemory.h
 iostream
 -
 cstdarg
@@ -954,35 +954,35 @@ boost/interprocess/containers/map.hpp
 boost/interprocess/containers/string.hpp
 -
 AbstractMemory.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/AbstractMemory.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/AbstractMemory.h
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/SimEffectorBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/SimEffectorBlock.h
 common/RobotInfo.h
 -
 MemoryBlock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/WalkEngineBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/WalkEngineBlock.h
 MemoryBlock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
 math/Pose2D.h
 -
 math/Pose3D.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/WalkRequestBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/WalkRequestBlock.h
 math/Pose2D.h
 -
 MemoryBlock.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
+/home/color/soccerbot/soccer/src/control/utwalk/memory/MemoryBlock.h
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/motion/MotionModule.cpp
+/home/color/soccerbot/soccer/src/control/utwalk/motion/MotionModule.cpp
 MotionModule.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/motion/MotionModule.h
+/home/color/soccerbot/soccer/src/control/utwalk/motion/MotionModule.h
 common/RobotInfo.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/motion/MotionModule.h
+/home/color/soccerbot/soccer/src/control/utwalk/motion/MotionModule.h
 Module.h
 -
 memory/BodyModelBlock.h
@@ -998,15 +998,15 @@ memory/WalkRequestBlock.h
 motion/UTWalkEngine.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/motion/UTWalkEngine.cpp
+/home/color/soccerbot/soccer/src/control/utwalk/motion/UTWalkEngine.cpp
 UTWalkEngine.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/motion/UTWalkEngine.h
+/home/color/soccerbot/soccer/src/control/utwalk/motion/UTWalkEngine.h
 kinematics/ForwardKinematics.h
 -
 math/Geometry.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/motion/UTWalkEngine.h
+/home/color/soccerbot/soccer/src/control/utwalk/motion/UTWalkEngine.h
 kinematics/InverseKinematics.h
 -
 common/RobotDimensions.h
@@ -1038,9 +1038,9 @@ memory/WalkRequestBlock.h
 map
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/motion/WalkEngineParameters.cpp
+/home/color/soccerbot/soccer/src/control/utwalk/motion/WalkEngineParameters.cpp
 WalkEngineParameters.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/motion/WalkEngineParameters.h
+/home/color/soccerbot/soccer/src/control/utwalk/motion/WalkEngineParameters.h
 math/Geometry.h
 -
 map
@@ -1048,7 +1048,7 @@ map
 stdio.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/motion/WalkEngineParameters.h
+/home/color/soccerbot/soccer/src/control/utwalk/motion/WalkEngineParameters.h
 math/Pose2D.h
 -
 math/Vector3.h
@@ -1056,21 +1056,21 @@ math/Vector3.h
 string
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/sensor/InertialFilter.cpp
+/home/color/soccerbot/soccer/src/control/utwalk/sensor/InertialFilter.cpp
 InertialFilter.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/sensor/InertialFilter.h
+/home/color/soccerbot/soccer/src/control/utwalk/sensor/InertialFilter.h
 math.h
 -
 iostream
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/sensor/InertialFilter.h
+/home/color/soccerbot/soccer/src/control/utwalk/sensor/InertialFilter.h
 common/NMatrix.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/sensor/SensorModule.cpp
+/home/color/soccerbot/soccer/src/control/utwalk/sensor/SensorModule.cpp
 SensorModule.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/sensor/SensorModule.h
+/home/color/soccerbot/soccer/src/control/utwalk/sensor/SensorModule.h
 common/RobotInfo.h
 -
 memory/SensorBlock.h
@@ -1078,49 +1078,49 @@ memory/SensorBlock.h
 memory/FrameInfoBlock.h
 -
 
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/sensor/SensorModule.h
+/home/color/soccerbot/soccer/src/control/utwalk/sensor/SensorModule.h
 Module.h
 -
 InertialFilter.h
-/home/color/Utra/soccerbot/soccer/src/control/utwalk/sensor/InertialFilter.h
+/home/color/soccerbot/soccer/src/control/utwalk/sensor/InertialFilter.h
 
-/home/color/Utra/soccerbot/soccer/src/control/worldmodel/WorldObject.h
+/home/color/soccerbot/soccer/src/control/worldmodel/WorldObject.h
 boost/assign/list_of.hpp
 -
 map
 -
 ../math/vecposition.h
-/home/color/Utra/soccerbot/soccer/src/control/math/vecposition.h
+/home/color/soccerbot/soccer/src/control/math/vecposition.h
 vector
 -
 ../math/Geometry.h
-/home/color/Utra/soccerbot/soccer/src/control/math/Geometry.h
+/home/color/soccerbot/soccer/src/control/math/Geometry.h
 ../parser/VisionObject.h
-/home/color/Utra/soccerbot/soccer/src/control/parser/VisionObject.h
+/home/color/soccerbot/soccer/src/control/parser/VisionObject.h
 
-/home/color/Utra/soccerbot/soccer/src/control/worldmodel/worldmodel.cc
+/home/color/soccerbot/soccer/src/control/worldmodel/worldmodel.cc
 worldmodel.h
-/home/color/Utra/soccerbot/soccer/src/control/worldmodel/worldmodel.h
+/home/color/soccerbot/soccer/src/control/worldmodel/worldmodel.h
 ../kalman/BallKF.h
-/home/color/Utra/soccerbot/soccer/src/control/kalman/BallKF.h
+/home/color/soccerbot/soccer/src/control/kalman/BallKF.h
 ../kalman/PlayerKF.h
-/home/color/Utra/soccerbot/soccer/src/control/kalman/PlayerKF.h
+/home/color/soccerbot/soccer/src/control/kalman/PlayerKF.h
 
-/home/color/Utra/soccerbot/soccer/src/control/worldmodel/worldmodel.h
+/home/color/soccerbot/soccer/src/control/worldmodel/worldmodel.h
 ../headers/headers.h
-/home/color/Utra/soccerbot/soccer/src/control/headers/headers.h
+/home/color/soccerbot/soccer/src/control/headers/headers.h
 ../math/Geometry.h
-/home/color/Utra/soccerbot/soccer/src/control/math/Geometry.h
+/home/color/soccerbot/soccer/src/control/math/Geometry.h
 ../math/hctmatrix.h
-/home/color/Utra/soccerbot/soccer/src/control/math/hctmatrix.h
+/home/color/soccerbot/soccer/src/control/math/hctmatrix.h
 WorldObject.h
-/home/color/Utra/soccerbot/soccer/src/control/worldmodel/WorldObject.h
+/home/color/soccerbot/soccer/src/control/worldmodel/WorldObject.h
 ../headers/Field.h
-/home/color/Utra/soccerbot/soccer/src/control/headers/Field.h
+/home/color/soccerbot/soccer/src/control/headers/Field.h
 ../rvdraw/rvdraw.h
-/home/color/Utra/soccerbot/soccer/src/control/rvdraw/rvdraw.h
+/home/color/soccerbot/soccer/src/control/rvdraw/rvdraw.h
 
-/usr/local/include/simspark/rcssnet/addr.hpp
+/usr/include/simspark/rcssnet/addr.hpp
 string
 -
 boost/shared_ptr.hpp
@@ -1128,19 +1128,19 @@ boost/shared_ptr.hpp
 boost/cstdint.hpp
 -
 rcssnet3D_defines.h
-/usr/local/include/simspark/rcssnet/rcssnet3D_defines.h
+/usr/include/simspark/rcssnet/rcssnet3D_defines.h
 
-/usr/local/include/simspark/rcssnet/exception.hpp
+/usr/include/simspark/rcssnet/exception.hpp
 exception
 -
 rcssnet3D_defines.h
-/usr/local/include/simspark/rcssnet/rcssnet3D_defines.h
+/usr/include/simspark/rcssnet/rcssnet3D_defines.h
 
-/usr/local/include/simspark/rcssnet/rcssnet3D_defines.h
+/usr/include/simspark/rcssnet/rcssnet3D_defines.h
 salt/defines.h
 -
 
-/usr/local/include/simspark/rcssnet/socket.hpp
+/usr/include/simspark/rcssnet/socket.hpp
 sparkconfig.h
 -
 boost/cstdint.hpp
@@ -1148,23 +1148,23 @@ boost/cstdint.hpp
 boost/shared_ptr.hpp
 -
 rcssnet3D_defines.h
-/usr/local/include/simspark/rcssnet/rcssnet3D_defines.h
+/usr/include/simspark/rcssnet/rcssnet3D_defines.h
 addr.hpp
-/usr/local/include/simspark/rcssnet/addr.hpp
+/usr/include/simspark/rcssnet/addr.hpp
 winsock2.h
-/usr/local/include/simspark/rcssnet/winsock2.h
+/usr/include/simspark/rcssnet/winsock2.h
 
-/usr/local/include/simspark/rcssnet/tcpsocket.hpp
+/usr/include/simspark/rcssnet/tcpsocket.hpp
 socket.hpp
-/usr/local/include/simspark/rcssnet/socket.hpp
+/usr/include/simspark/rcssnet/socket.hpp
 
-/usr/local/include/simspark/salt/defines.h
+/usr/include/simspark/salt/defines.h
 sparkconfig.h
 -
 cassert
 -
 
-/usr/local/include/simspark/sparkconfig.h
+/usr/include/simspark/sparkconfig.h
 
 utwalk/Module.h
 string

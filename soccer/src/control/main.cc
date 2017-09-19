@@ -137,7 +137,6 @@ string rsg("rsg/agent/nao/nao.rsg");
 //here the function would filter out the command and agent in the argv
 void ReadOptions(int argc, char* argv[])
 {
-    //LoadParams("testPara.txt");
     teamName = "UTAustinVilla_Base";
     uNum = 0; // Value of 0 means choose next available number
 
@@ -236,13 +235,15 @@ void ReadOptions(int argc, char* argv[])
             }
             rsg = argv[i+1];
         }
+
+        //here main.cc choose the agent type through the argv
         else if (strcmp(argv[i], "--pkgoalie") == 0) {
             agentType = "pkgoalie";
         }
         else if (strcmp(argv[i], "--pkshooter") == 0) {
             agentType = "pkshooter";
         }
-	else if (strcmp(argv[i], "--gazebo") == 0) {
+	   else if (strcmp(argv[i], "--gazebo") == 0) {
             agentType = "gazebo";
         }
     } // for-loop
@@ -476,6 +477,7 @@ bool GetMessage(string& msg)
 
 void Run()
 {
+    //load different behavior by agent type
     Behavior *behavior;
     if (agentType == "naoagent") {
         behavior = new NaoBehavior(teamName, uNum, namedParams, rsg);

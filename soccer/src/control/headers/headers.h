@@ -13,6 +13,8 @@ using std::stringstream;
 
 // TODO: is there a better way to map string to enum??????
 // What is this class? see: http://stackoverflow.com/questions/726664/string-to-enum
+//EnumParser is a class switch between T and string
+
 template<typename T>
 class EnumParser
 {

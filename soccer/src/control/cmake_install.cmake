@@ -1,4 +1,4 @@
-# Install script for directory: /home/color/Utra/soccerbot/soccer/src/control
+# Install script for directory: /home/color/soccerbot/soccer/src/control
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,7 +38,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/home/color/Utra/soccerbot/soccer/src/control/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/home/color/soccerbot/soccer/src/control/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/home/color/Utra/soccerbot/soccer/src/control/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/home/color/soccerbot/soccer/src/control/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)
