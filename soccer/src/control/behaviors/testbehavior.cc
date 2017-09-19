@@ -20,8 +20,8 @@ extern int agentBodyType;
 /*
  * namedParams_ are a mapping between parameters and their values
  */
-NaoBehavior::
-NaoBehavior(const std::string teamName, int uNum, const map<string, string>& namedParams_, const string& rsg_) :
+TestBehavior::
+TestBehavior(const std::string teamName, int uNum, const map<string, string>& namedParams_, const string& rsg_) :
     namedParams( namedParams_ ),
     rsg( rsg_ )
 {
@@ -31,7 +31,7 @@ NaoBehavior(const std::string teamName, int uNum, const map<string, string>& nam
     srand ((unsigned)time(NULL) );
     srand48((unsigned)time(NULL));
 
-    classname = "NaoBehavior"; //TODO: eliminate it...
+    classname = "TestBehavior"; //TODO: eliminate it...
 
     mInit = false;
     initBeamed = false;
@@ -117,7 +117,7 @@ NaoBehavior(const std::string teamName, int uNum, const map<string, string>& nam
     //worldModel->setUseGroundTruthDataForLocalization(true);
 }
 
-NaoBehavior::~NaoBehavior() {
+TestBehavior::~TestBehavior() {
 
     delete parser;
     delete worldModel;
@@ -126,7 +126,7 @@ NaoBehavior::~NaoBehavior() {
     delete core;
 }
 
-string NaoBehavior::Init() {
+string TestBehavior::Init() {
     cout << "Loading rsg: " << "(scene " << rsg << ")" << endl;
     return "(scene " + rsg + ")";
 }
@@ -290,7 +290,7 @@ string NaoBehavior::Think(const std::string& message) {
     return action;
 }
 
-void NaoBehavior::act() {
+void TestBehavior::act() {
     refresh();
 
     const double LAST_LINE_SIGHTING_THRESH = 0.1;
@@ -425,7 +425,7 @@ void NaoBehavior::act() {
 /*
  * Throws string
  */
-void NaoBehavior::readSkillsFromFile( const std::string& filename) {
+void TestBehavior::readSkillsFromFile( const std::string& filename) {
 //  cerr << "Loading skills from file " << filename << endl;
 
 
@@ -514,18 +514,18 @@ void NaoBehavior::readSkillsFromFile( const std::string& filename) {
 }
 
 
-bool NaoBehavior::isRightSkill( SkillType skill ) {
+bool TestBehavior::isRightSkill( SkillType skill ) {
     string skillStr = EnumParser<SkillType>::getStringFromEnum( skill );
     return skillStr.find("RIGHT") != string::npos;
 }
 
-bool NaoBehavior::isLeftSkill( SkillType skill ) {
+bool TestBehavior::isLeftSkill( SkillType skill ) {
     string skillStr = EnumParser<SkillType>::getStringFromEnum( skill );
     return skillStr.find("LEFT") != string::npos;
 }
 
 
-double NaoBehavior::
+double TestBehavior::
 trim(const double& value, const double& min, const double&max)
 {
     double ret;
@@ -539,7 +539,7 @@ trim(const double& value, const double& min, const double&max)
     return ret;
 }
 
-void NaoBehavior::calculateAngles() {
+void TestBehavior::calculateAngles() {
 
     float  accX = raw_sensors_->values_[accelX];
     float  accY = raw_sensors_->values_[accelY];
@@ -552,13 +552,13 @@ void NaoBehavior::calculateAngles() {
     //raw_sensors_->values_[gyroY] = 0; //= 1000000.0;
 }
 
-void NaoBehavior::preProcessJoints() {
+void TestBehavior::preProcessJoints() {
     for (int i=0; i<NUM_JOINTS; i++) {
         processed_joint_angles_->values_[i] = spark_joint_signs[i] * raw_joint_angles_->values_[i];
     }
 }
 
-void NaoBehavior::postProcessJoints() {
+void TestBehavior::postProcessJoints() {
     raw_joint_commands_->angle_time_ = processed_joint_commands_->angle_time_;
     raw_joint_commands_->stiffness_time_ = processed_joint_commands_->stiffness_time_;
     for (int i=0; i<NUM_JOINTS; i++) {
@@ -569,7 +569,7 @@ void NaoBehavior::postProcessJoints() {
     processed_joint_commands_->send_stiffness_ = false;
 }
 
-void NaoBehavior::resetSkills() {
+void TestBehavior::resetSkills() {
     skills[skill]->reset();
 
     skill = SKILL_STAND;
@@ -587,7 +587,7 @@ void NaoBehavior::resetSkills() {
     bodyModel->setUseOmniWalk(true);
 }
 
-void NaoBehavior::resetScales() {
+void TestBehavior::resetScales() {
     for (int e = int(EFF_H1); e < int(EFF_NUM); e++) {
         bodyModel->setScale(e, 1.0);
     }
@@ -595,7 +595,7 @@ void NaoBehavior::resetScales() {
 
 
 // Determines whether a collision will occur while moving to a target, adjusting accordingly when necessary
-VecPosition NaoBehavior::collisionAvoidance(bool avoidTeammate, bool avoidOpponent, bool avoidBall, double PROXIMITY_THRESH, double COLLISION_THRESH, VecPosition target, bool fKeepDistance) {
+VecPosition TestBehavior::collisionAvoidance(bool avoidTeammate, bool avoidOpponent, bool avoidBall, double PROXIMITY_THRESH, double COLLISION_THRESH, VecPosition target, bool fKeepDistance) {
     // Obstacle avoidance
     VecPosition closestObjPos = VecPosition(100, 100, 0);
     double closestObjDistance = me.getDistanceTo(closestObjPos);
@@ -664,7 +664,7 @@ VecPosition NaoBehavior::collisionAvoidance(bool avoidTeammate, bool avoidOppone
     return target;
 }
 
-VecPosition NaoBehavior::collisionAvoidanceCorrection(VecPosition start, double PROXIMITY_THRESH, double COLLISION_THRESH, VecPosition target, VecPosition obstacle) {
+VecPosition TestBehavior::collisionAvoidanceCorrection(VecPosition start, double PROXIMITY_THRESH, double COLLISION_THRESH, VecPosition target, VecPosition obstacle) {
     double obstacleDist = start.getDistanceTo(obstacle);
 
     if (abs(start.getAngleBetweenPoints(target, obstacle)) >= 90.0 ||
@@ -690,11 +690,11 @@ VecPosition NaoBehavior::collisionAvoidanceCorrection(VecPosition start, double 
     return target;
 }
 
-VecPosition NaoBehavior::collisionAvoidanceApproach(double PROXIMITY_THRESH, double COLLISION_THRESH, VecPosition target, VecPosition obstacle) {
+VecPosition TestBehavior::collisionAvoidanceApproach(double PROXIMITY_THRESH, double COLLISION_THRESH, VecPosition target, VecPosition obstacle) {
     return collisionAvoidanceApproach(me, PROXIMITY_THRESH, COLLISION_THRESH, target, obstacle);
 }
 
-VecPosition NaoBehavior::collisionAvoidanceApproach(VecPosition start, double PROXIMITY_THRESH, double COLLISION_THRESH, VecPosition target, VecPosition obstacle) {
+VecPosition TestBehavior::collisionAvoidanceApproach(VecPosition start, double PROXIMITY_THRESH, double COLLISION_THRESH, VecPosition target, VecPosition obstacle) {
     double distanceToObstacle = start.getDistanceTo(obstacle);
     if (fabs(start.getAngleBetweenPoints(target, obstacle)) >= 90.0 ||
             distanceToObstacle > start.getDistanceTo(target)) {
@@ -726,12 +726,12 @@ VecPosition NaoBehavior::collisionAvoidanceApproach(VecPosition start, double PR
 
 
 
-SkillType NaoBehavior::getWalk(const double& direction, const double& rotation, double speed, bool fAllowOver180Turn)
+SkillType TestBehavior::getWalk(const double& direction, const double& rotation, double speed, bool fAllowOver180Turn)
 {
     return getWalk(WalkRequestBlock::PARAMS_DEFAULT, direction, rotation, speed, fAllowOver180Turn);
 }
 
-SkillType NaoBehavior::getWalk(WalkRequestBlock::ParamSet paramSet, const double& direction, double rotation, double speed, bool fAllowOver180Turn)
+SkillType TestBehavior::getWalk(WalkRequestBlock::ParamSet paramSet, const double& direction, double rotation, double speed, bool fAllowOver180Turn)
 {
     double reqDirection, relSpeed;
 

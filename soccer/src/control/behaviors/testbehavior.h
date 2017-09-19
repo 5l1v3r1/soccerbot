@@ -45,7 +45,7 @@ struct WalkVelocity
     }
 };
 
-class NaoBehavior : public Behavior {
+class TestBehavior : public Behavior {
     friend class KickClassifier;
 protected:
 
