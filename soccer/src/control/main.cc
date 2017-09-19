@@ -4,8 +4,8 @@
 #include <iostream>
 #include <fstream>
 #include <rcssnet/tcpsocket.hpp>
-//#include <rcssnet/udpsocket.hpp>
-#include <rcssnet/exception.hpp>
+#include <rcssnet/udpsocket.hpp>
+//#include <rcssnet/exception.hpp>
 #include <netinet/in.h>
 #include "behaviors/behavior.h"
 #include "behaviors/naobehavior.h"
@@ -13,12 +13,12 @@
 #include "behaviors/pkbehaviors.h"
 #include "behaviors/gazebobehavior.h"
 
-using namespace rcss::net;
+//using namespace rcss::net;
 using namespace std;
 
 
 TCPSocket gSocket;
-//UDPSocket gSocket;
+UDPSocket gSocket;
 string gHost = "127.0.0.1";
 int gPort = 3100;
 
@@ -80,6 +80,7 @@ void PrintHelp()
  * with a single newline.  Parameters will be loaded into the
  * namedParams map.
  */
+
 map<string, string> namedParams;
 void LoadParams(const string& inputsFile) {
     cout << "Reading->" << inputsFile << endl;

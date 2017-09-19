@@ -5,7 +5,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/)
 
 find_package(Threads REQUIRED)
 find_package(Boost COMPONENTS system REQUIRED)
-find_package(Rcssnet3d REQUIRED)
+#find_package(Rcssnet3d REQUIRED)
 
 if(NOT CMAKE_BUILD_TYPE)
   message(STATUS "No build type selected, default to Release")
@@ -20,7 +20,7 @@ set(CORE_PATH utwalk)
 
 include_directories(
 ${CORE_PATH}
-${RCSSNET3D_INCLUDE_DIR}
+#${RCSSNET3D_INCLUDE_DIR}
 )
 
 set(CORE_FILES
