@@ -3,6 +3,8 @@
 ######################################################
 
 sudo apt-get update
+git submodule init
+git submodule update
 
 #### Basic requirements ####
 sudo apt install openssh-server -y
@@ -84,4 +86,7 @@ cd ../../scripts
 
 ## AWS
 pip install awscli
+
+## Miscellaneous
+sudo apt-get install openni2-utils -y
 

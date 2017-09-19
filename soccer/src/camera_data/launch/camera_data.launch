@@ -1,0 +1,3 @@
+<launch>
+  <node name="camera_data" pkg="camera_data" type="camera_data" />
+</launch>

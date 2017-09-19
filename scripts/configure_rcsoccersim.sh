@@ -1,3 +1,7 @@
+sudo apt-get install autoconf automake -y
+git pull --recurse-submodules
+git submodule update --recursive --remote
+
 # Configure simspark monitor
 
 cd ../rcsoccersim/rcssserver
@@ -6,8 +10,9 @@ autoconf
 aclocal
 autoreconf --install
 automake --add-missing
-sudo ./configure
 sudo apt-get install libaudio-dev
+sudo apt-get install flex bison -y
+sudo ./configure
 sudo make
 sudo make install
 sudo ldconfig
