@@ -32,6 +32,7 @@ TestBehavior(const std::string teamName, int uNum, const map<string, string>& na
     srand48((unsigned)time(NULL));
 
     classname = "TestBehavior"; //TODO: eliminate it...
+    cout << "Loading test agent" << endl;
 
     mInit = false;
     initBeamed = false;
