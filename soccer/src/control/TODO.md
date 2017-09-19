@@ -6,7 +6,7 @@
 
  - try to figure out the teleport location of agent
 
- - let one agent play with ball
+ - add moving cmd to soecific point 
 
 ## Optimization
  - Try to implement all possible file in the utaustin
@@ -16,6 +16,8 @@
  - Call multi-agent at once
 
  - Working on the strategy
+
+ - Update moving and kicking
 
 ## Physics
  - may be got the detail of movement command from control team

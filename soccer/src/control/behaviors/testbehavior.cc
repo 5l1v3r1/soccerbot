@@ -135,7 +135,7 @@ string TestBehavior::Init() {
 
 
 
-string NaoBehavior::Think(const std::string& message) {
+string TestBehavior::Think(const std::string& message) {
 
     //  cout << "(NaoBehavior) received message " << message << endl;
 
@@ -857,7 +857,7 @@ SkillType TestBehavior::getWalk(WalkRequestBlock::ParamSet paramSet, const doubl
 }
 
 // Currently untuned. For example, there's no slow down...
-SkillType NaoBehavior::goToTargetRelative(const VecPosition& targetLoc, const double& targetRot, const double speed, bool fAllowOver180Turn, WalkRequestBlock::ParamSet paramSet)
+SkillType TestBehavior::goToTargetRelative(const VecPosition& targetLoc, const double& targetRot, const double speed, bool fAllowOver180Turn, WalkRequestBlock::ParamSet paramSet)
 {
     double walkDirection, walkRotation, walkSpeed;
 
@@ -875,7 +875,7 @@ SkillType NaoBehavior::goToTargetRelative(const VecPosition& targetLoc, const do
 
 
 //Assumes target = z-0. Maybe needs further tuning
-SkillType NaoBehavior::goToTarget(const VecPosition &target) {
+SkillType TestBehavior::goToTarget(const VecPosition &target) {
     double distance, angle;
     getTargetDistanceAndAngle(target, distance, angle);
 
@@ -904,14 +904,14 @@ SkillType NaoBehavior::goToTarget(const VecPosition &target) {
     return goToTargetRelative(relativeTarget, turnAngle);
 }
 
-double NaoBehavior::getLimitingAngleForward() {
+double TestBehavior::getLimitingAngleForward() {
     double maxSpeedX = core->motion_->getMaxXSpeed(); //core->walkEngine.p.speedMax.translation.x;
     double maxSpeedY = core->motion_->getMaxYSpeed(); // core->walkEngine.p.speedMax.translation.y;
     return abs(atan2Deg(maxSpeedY, maxSpeedX));
 }
 
 
-void NaoBehavior::refresh() {
+void TestBehavior::refresh() {
     myXDirection = worldModel->l2g(VecPosition(1.0, 0, 0)) - worldModel->l2g(VecPosition(0, 0, 0));
     myXDirection.setZ(0);
     myXDirection.normalize();
@@ -934,7 +934,7 @@ void NaoBehavior::refresh() {
 
 
 //Assumes target it z-0.
-void NaoBehavior::getTargetDistanceAndAngle(const VecPosition &target, double &distance, double &angle) {
+void TestBehavior::getTargetDistanceAndAngle(const VecPosition &target, double &distance, double &angle) {
     VecPosition targetDirection = VecPosition(target) - me;
     targetDirection.setZ(0);
 
@@ -955,19 +955,19 @@ void NaoBehavior::getTargetDistanceAndAngle(const VecPosition &target, double &d
 }
 
 
-bool NaoBehavior::beamablePlayMode() {
+bool TestBehavior::beamablePlayMode() {
     int pm = worldModel->getPlayMode();
     return pm == PM_BEFORE_KICK_OFF || pm == PM_GOAL_LEFT || pm == PM_GOAL_RIGHT;
 }
 
 
 /* Set message to be send to the monitor port */
-void NaoBehavior::setMonMessage(const std::string& msg) {
+void TestBehavior::setMonMessage(const std::string& msg) {
     monMsg = msg;
 }
 
 /* Get message to be sent to the monitor port.  Also flushes message */
-string NaoBehavior::getMonMessage() {
+string TestBehavior::getMonMessage() {
     string ret = monMsg;
     monMsg = "";
     return ret;
