@@ -1,0 +1,23 @@
+#!/usr/bin/env python
+import rospy
+from Wrench.msg import Wrench
+
+def talker():
+    pub = rospy.Publisher('ApplyBodyWrench', Wrench)
+    rospy.init_node('custom_talker', anonymous=True)
+    r = rospy.Rate(10) #10hz
+    msg = Wrench()
+    msg.body_name = "nubot1::chassis"
+    msg.wrench = { torque: { x: 0.01, y: 0 , z: 0 } }
+    msg.start_time = 10000000000
+    msg.duration = 10000000000
+
+#    while not rospy.is_shutdown():
+    rospy.loginfo(msg)
+    pub.publish(msg)
+    sr.sleep()
+
+if __name__ == '__main__':
+    try:
+        talker()
+    except rospy.ROSInterruptException: pass
