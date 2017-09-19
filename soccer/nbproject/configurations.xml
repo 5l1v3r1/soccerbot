@@ -215,15 +215,6 @@
             <in>tf_listener.cpp</in>
           </df>
         </df>
-        <df name="soccer_field">
-          <df name="src">
-            <in>ball.cpp</in>
-            <in>ball_node.cpp</in>
-            <in>field.cpp</in>
-            <in>field_node.cpp</in>
-            <in>object.cpp</in>
-          </df>
-        </df>
       </df>
     </df>
     <logicalFolder name="usr" displayName="usr" projectFiles="true" root="/usr">
@@ -701,27 +692,6 @@
             <Elem>ROSCONSOLE_BACKEND_LOG4CXX</Elem>
             <Elem>ROS_BUILD_SHARED_LIBS=1</Elem>
             <Elem>ROS_PACKAGE_NAME="robot_tf"</Elem>
-          </preprocessorList>
-        </ccTool>
-      </folder>
-      <folder path="0/src/soccer_field">
-        <ccTool>
-          <incDir>
-            <pElem>src/soccer_field/include</pElem>
-            <pElem>/opt/ros/kinetic/include</pElem>
-            <pElem>/opt/ros/kinetic/include/xmlrpcpp</pElem>
-            <pElem>/usr/include/gazebo-7</pElem>
-            <pElem>/usr/include/sdformat-4.3</pElem>
-            <pElem>/usr/include/ignition/math2</pElem>
-            <pElem>/usr/include/OGRE</pElem>
-            <pElem>/usr/include/OGRE/Terrain</pElem>
-            <pElem>/usr/include/OGRE/Paging</pElem>
-            <pElem>build/soccer_field</pElem>
-          </incDir>
-          <preprocessorList>
-            <Elem>ROSCONSOLE_BACKEND_LOG4CXX</Elem>
-            <Elem>ROS_BUILD_SHARED_LIBS=1</Elem>
-            <Elem>ROS_PACKAGE_NAME="soccer_field"</Elem>
           </preprocessorList>
         </ccTool>
       </folder>
@@ -1457,19 +1427,6 @@
             flavor2="4">
       </item>
       <item path="src/robot_tf/src/tf_listener.cpp" ex="false" tool="1" flavor2="4">
-      </item>
-      <item path="src/soccer_field/src/ball.cpp" ex="false" tool="1" flavor2="4">
-      </item>
-      <item path="src/soccer_field/src/ball_node.cpp" ex="false" tool="1" flavor2="4">
-      </item>
-      <item path="src/soccer_field/src/field.cpp" ex="false" tool="1" flavor2="4">
-      </item>
-      <item path="src/soccer_field/src/field_node.cpp"
-            ex="false"
-            tool="1"
-            flavor2="4">
-      </item>
-      <item path="src/soccer_field/src/object.cpp" ex="false" tool="1" flavor2="4">
       </item>
     </conf>
   </confs>
