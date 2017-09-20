@@ -12,7 +12,6 @@
 #include "optimization/optimizationbehaviors.h"
 #include "behaviors/pkbehaviors.h"
 #include "behaviors/gazebobehavior.h"
-#include "behaviors/testbehavior.h"
 
 using namespace rcss::net;
 using namespace std;
@@ -244,9 +243,9 @@ void ReadOptions(int argc, char* argv[])
 	    else if (strcmp(argv[i], "--gazebo") == 0) {
             agentType = "gazebo";
         }
-        else if (strcmp(argv[i], "--test") == 0) {
+        /*else if (strcmp(argv[i], "--test") == 0) {
             agentType = "testAgent";
-        }
+        }*/
     } // for-loop
 }
 
@@ -508,10 +507,10 @@ void Run()
                 rsg,
                 outputFile);
     }
-    else if (agentType == "testAgent"){
+    /*else if (agentType == "testAgent"){
         cout << "Loading the test agent" << endl;
         behavior = new TestBehavior(teamName, uNum, namedParams, rsg);
-    }
+    }*/
     else {
         throw "unknown agent type";
     }

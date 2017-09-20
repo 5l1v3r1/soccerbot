@@ -76,7 +76,6 @@ set(SRCS
   kalman/PlayerKF.cpp 
   kalman/OrigKalmanFilter.cpp
   optimization/optimizationbehaviors.cc
-  behaviors/testbehavior.cc
 )
 
 add_executable(agentspark 
