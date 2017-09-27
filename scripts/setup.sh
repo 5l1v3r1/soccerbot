@@ -53,7 +53,7 @@ chmod +x gazebo8_install.sh
 cd ..
 sh scripts/gazebo8_install.sh
 cd scripts/
-rm -rf gazebo8_install.sh
+rm -rf ../gazebo8_install.sh
 
 sudo apt-get install meshlab -y
 
