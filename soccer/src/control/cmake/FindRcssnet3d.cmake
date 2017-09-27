@@ -5,7 +5,7 @@
 #  RCSSNET3D_LIBRARIES       - List of libraries when using rcssnet.
 #  RCSSNET3D_FOUND           - True if rcssnet found.
 
-SET(SPARK_DIR $ENV{SPARK_DIR} "~/soccer/simspark" "../../../../simpark")
+SET(SPARK_DIR $ENV{SPARK_DIR} "C:/Program Files/simspark" "C:/Program Files (x86)/simspark" "C:/library/simspark" "~/soccerbot/simspark" "/user/soccerbot/simspark")
 
 
 # rcssnet3D

@@ -4,8 +4,8 @@
 #include <iostream>
 #include <fstream>
 #include <rcssnet/tcpsocket.hpp>
-#include <rcssnet/udpsocket.hpp>
-//#include <rcssnet/exception.hpp>
+//#include <rcssnet/udpsocket.hpp>
+#include <rcssnet/exception.hpp>
 #include <netinet/in.h>
 #include "behaviors/behavior.h"
 #include "behaviors/naobehavior.h"
@@ -13,12 +13,12 @@
 #include "behaviors/pkbehaviors.h"
 #include "behaviors/gazebobehavior.h"
 
-//using namespace rcss::net;
+using namespace rcss::net;
 using namespace std;
 
 
 TCPSocket gSocket;
-UDPSocket gSocket;
+//UDPSocket gSocket;
 string gHost = "127.0.0.1";
 int gPort = 3100;
 
@@ -80,10 +80,8 @@ void PrintHelp()
  * with a single newline.  Parameters will be loaded into the
  * namedParams map.
  */
-
 map<string, string> namedParams;
 void LoadParams(const string& inputsFile) {
-    cout << "Reading->" << inputsFile << endl;
     istream *input;
     ifstream infile;
     istringstream inString;
@@ -133,11 +131,11 @@ void LoadParams(const string& inputsFile) {
 string teamName;
 int uNum;
 string outputFile(""); // For optimization
-string agentType("naoagent"); //Default type
+string agentType("naoagent");
 string rsg("rsg/agent/nao/nao.rsg");
-//here the function would filter out the command and agent in the argv
 void ReadOptions(int argc, char* argv[])
 {
+
     teamName = "UTAustinVilla_Base";
     uNum = 0; // Value of 0 means choose next available number
 
@@ -236,17 +234,18 @@ void ReadOptions(int argc, char* argv[])
             }
             rsg = argv[i+1];
         }
-
-        //here main.cc choose the agent type through the argv
         else if (strcmp(argv[i], "--pkgoalie") == 0) {
             agentType = "pkgoalie";
         }
         else if (strcmp(argv[i], "--pkshooter") == 0) {
             agentType = "pkshooter";
         }
-	   else if (strcmp(argv[i], "--gazebo") == 0) {
+	    else if (strcmp(argv[i], "--gazebo") == 0) {
             agentType = "gazebo";
         }
+        /*else if (strcmp(argv[i], "--test") == 0) {
+            agentType = "testAgent";
+        }*/
     } // for-loop
 }
 
@@ -478,7 +477,6 @@ bool GetMessage(string& msg)
 
 void Run()
 {
-    //load different behavior by agent type
     Behavior *behavior;
     if (agentType == "naoagent") {
         behavior = new NaoBehavior(teamName, uNum, namedParams, rsg);
@@ -509,6 +507,10 @@ void Run()
                 rsg,
                 outputFile);
     }
+    /*else if (agentType == "testAgent"){
+        cout << "Loading the test agent" << endl;
+        behavior = new TestBehavior(teamName, uNum, namedParams, rsg);
+    }*/
     else {
         throw "unknown agent type";
     }
@@ -523,7 +525,6 @@ void Run()
         // To support agent sync mode
         msgToServer.append("(syn)");
         PutMessage(msgToServer);
-
         if (mPort != -1) {
             PutMonMessage(behavior->getMonMessage());
         }
@@ -540,7 +541,6 @@ main(int argc, char* argv[])
     try
     {
         PrintGreeting();
-        //pass the agent type to the function or command
         ReadOptions(argc,argv);
 
         if (! Init())
