@@ -1,0 +1,8 @@
+prefix=/home/vuwij/soccerbot/soccer/devel
+
+Name: gridmap_2d
+Description: Description of gridmap_2d
+Version: 0.4.1
+Cflags: -I/home/vuwij/soccerbot/soccer/src/humanoid_navigation/gridmap_2d/include
+Libs: -L/home/vuwij/soccerbot/soccer/devel/lib -lgridmap_2d
+Requires: 
