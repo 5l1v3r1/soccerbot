@@ -21,4 +21,4 @@
 /simspark/**/build/**
 
 # pkgconfig
-/soccer/devel/lib/pjgconfig/**
+/soccer/devel/lib/pkgconfig/**
