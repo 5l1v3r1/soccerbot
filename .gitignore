@@ -14,7 +14,7 @@
 
 # ROS files
 /soccer/build/
-#/soccer/devel/
+/soccer/devel/
 /soccer/nbproject/private/*
 
 # SIMSpark
