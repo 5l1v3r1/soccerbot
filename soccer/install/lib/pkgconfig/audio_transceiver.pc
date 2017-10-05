@@ -1,0 +1,8 @@
+prefix=/home/newton/soccerbot/soccer/install
+
+Name: audio_transceiver
+Description: Description of audio_transceiver
+Version: 0.0.0
+Cflags: -I/home/newton/soccerbot/soccer/install/include
+Libs: -L/home/newton/soccerbot/soccer/install/lib 
+Requires: roscpp std_msgs
