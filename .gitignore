@@ -11,6 +11,7 @@
 /Desktop/
 /Downloads/
 !/Documents/
+/libraries/tensorflow/
 
 # ROS files
 /soccer/build/
