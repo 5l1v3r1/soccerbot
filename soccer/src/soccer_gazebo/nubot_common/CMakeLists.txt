@@ -20,32 +20,21 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 
-add_message_files(DIRECTORY msgs FILES Angle.msg
-Point2d.msg
-PPoint.msg
-Point3d.msg
-RobotInfo.msg
-MotorInfo.msg
-BallInfo.msg
-BallInfo3d.msg
-ObstaclesInfo.msg
-OminiVisionInfo.msg
-
-currentCmd.msg
-
-VelCmd.msg
-OdoInfo.msg
-CoachInfo.msg
-PassCommands.msg
-WorldModelInfo.msg
-StrategyInfo.msg
-TargetInfo.msg
-FrontBallInfo.msg
-simulation_strategy.msg
-Wrench.msg
+add_message_files(
+        DIRECTORY msg
+        FILES
+        Num.msg
+	VelCmd.msg
 )
 
-add_service_files(DIRECTORY srv FILES BallHandle.srv Shoot.srv)
+add_service_files(
+	DIRECTORY srv 
+	FILES 
+	BallHandle.srv 
+	Shoot.srv
+	GetModelState.srv
+)
+
 
 generate_messages(DEPENDENCIES 
                   std_msgs 

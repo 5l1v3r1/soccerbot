@@ -1,0 +1,8 @@
+prefix=/home/newton/soccerbot/soccer/install
+
+Name: camera_data
+Description: Description of camera_data
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/newton/soccerbot/soccer/install/lib 
+Requires: 
