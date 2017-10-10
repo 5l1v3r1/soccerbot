@@ -158,6 +158,17 @@ add_executable(camera_data src/camera_data.cpp src/camera.cpp src/settings.cpp)
 add_dependencies(camera_data ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(camera_data ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} objects pose_estimation)
 
+## Another ROS Node
+add_executable(image_processing src/image_processing.cpp)
+add_dependencies(image_processing ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(image_processing ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+
+add_executable(camera_input src/camera_input.cpp)
+add_dependencies(camera_input ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(camera_input ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+
+
+
 #############
 ## Install ##
 #############

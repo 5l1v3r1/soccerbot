@@ -1,0 +1,5 @@
+<launch>
+    <include file="$(find camera_data)/launch/camera_data.launch">
+        <arg name="video_stream_provider" value="/home/vuwij/soccerbot/soccer/training_images/soccer_video/original_clipped.mp4" />
+    </include>
+</launch>
