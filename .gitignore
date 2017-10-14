@@ -11,10 +11,11 @@
 /Desktop/
 /Downloads/
 !/Documents/
+/libraries/tensorflow/
 
 # ROS files
 /soccer/build/
-#/soccer/devel/
+/soccer/devel/
 /soccer/nbproject/private/*
 
 # SIMSpark

@@ -3,8 +3,10 @@
 ######################################################
 
 sudo apt-get update
+cd ../
 git submodule init
 git submodule update
+cd scripts/
 
 #### Basic requirements ####
 sudo apt install openssh-server -y

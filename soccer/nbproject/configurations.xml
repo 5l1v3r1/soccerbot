@@ -53,6 +53,8 @@
             </df>
             <in>camera.cpp</in>
             <in>camera_data.cpp</in>
+            <in>camera_input.cpp</in>
+            <in>image_processing.cpp</in>
             <in>settings.cpp</in>
           </df>
         </df>
@@ -871,6 +873,16 @@
             flavor2="8">
         <ccTool flags="5">
         </ccTool>
+      </item>
+      <item path="src/camera_data/src/camera_input.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/camera_data/src/image_processing.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
       </item>
       <item path="src/camera_data/src/objects/ball.cpp"
             ex="false"

@@ -1,0 +1,8 @@
+prefix=/home/newton/soccerbot/soccer/install
+
+Name: nubot_description
+Description: Description of nubot_description
+Version: 1.0.0
+Cflags: 
+Libs: -L/home/newton/soccerbot/soccer/install/lib 
+Requires: gazebo_ros

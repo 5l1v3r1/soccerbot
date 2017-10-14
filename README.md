@@ -42,6 +42,9 @@ http://www.dis.uniroma1.it/~bloisi/papers/bloisi-robocup2016-draft.pdf
 ```
 cd ~
 git clone https://github.com/utra-robosoccer/soccerbot/
+cd soccerbot
+git submodule init
+git submodule update # This will pull all the submodules
 ```
 
 3. Execute the installation scripts

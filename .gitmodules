@@ -2,6 +2,10 @@
   path = libraries/ROBOTIS-Framework
   url = https://github.com/ROBOTIS-GIT/ROBOTIS-Framework
 
+[submodule "libraries/ROBOTIS-Framework-msgs"] 
+  path = libraries/ROBOTIS-Framework-msgs
+  url = https://github.com/ROBOTIS-GIT/ROBOTIS-Framework-msgs
+
 [submodule "libraries/THORMANG/ROBOTIS-Math"] 
   path = libraries/THORMANG/ROBOTIS-Math
   url = https://github.com/ROBOTIS-GIT/ROBOTIS-Math
