@@ -1,0 +1,1119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="." name="0">
+      <df name="scripts">
+        <df name="utrasoccer">
+          <in>main.py</in>
+        </df>
+        <in>__init__.py</in>
+      </df>
+      <df name="src">
+        <in>ActionEffector.cpp</in>
+        <in>ActionEffector.h</in>
+        <in>Agent.cpp</in>
+        <in>Agent.h</in>
+        <in>Analyser.cpp</in>
+        <in>Analyser.h</in>
+        <in>BallState.h</in>
+        <in>BaseState.cpp</in>
+        <in>BaseState.h</in>
+        <in>BasicCommand.cpp</in>
+        <in>BasicCommand.h</in>
+        <in>BehaviorAttack.cpp</in>
+        <in>BehaviorAttack.h</in>
+        <in>BehaviorBase.cpp</in>
+        <in>BehaviorBase.h</in>
+        <in>BehaviorBlock.cpp</in>
+        <in>BehaviorBlock.h</in>
+        <in>BehaviorDefense.cpp</in>
+        <in>BehaviorDefense.h</in>
+        <in>BehaviorDribble.cpp</in>
+        <in>BehaviorDribble.h</in>
+        <in>BehaviorFormation.cpp</in>
+        <in>BehaviorFormation.h</in>
+        <in>BehaviorGoalie.cpp</in>
+        <in>BehaviorGoalie.h</in>
+        <in>BehaviorHold.cpp</in>
+        <in>BehaviorHold.h</in>
+        <in>BehaviorIntercept.cpp</in>
+        <in>BehaviorIntercept.h</in>
+        <in>BehaviorMark.cpp</in>
+        <in>BehaviorMark.h</in>
+        <in>BehaviorPass.cpp</in>
+        <in>BehaviorPass.h</in>
+        <in>BehaviorPenalty.cpp</in>
+        <in>BehaviorPenalty.h</in>
+        <in>BehaviorPosition.cpp</in>
+        <in>BehaviorPosition.h</in>
+        <in>BehaviorSetplay.cpp</in>
+        <in>BehaviorSetplay.h</in>
+        <in>BehaviorShoot.cpp</in>
+        <in>BehaviorShoot.h</in>
+        <in>Client.cpp</in>
+        <in>Client.h</in>
+        <in>Coach.cpp</in>
+        <in>Coach.h</in>
+        <in>CommandSender.cpp</in>
+        <in>CommandSender.h</in>
+        <in>CommunicateSystem.cpp</in>
+        <in>CommunicateSystem.h</in>
+        <in>Dasher.cpp</in>
+        <in>Dasher.h</in>
+        <in>DecisionData.cpp</in>
+        <in>DecisionData.h</in>
+        <in>DecisionTree.cpp</in>
+        <in>DecisionTree.h</in>
+        <in>DynamicDebug.cpp</in>
+        <in>DynamicDebug.h</in>
+        <in>Evaluation.cpp</in>
+        <in>Evaluation.h</in>
+        <in>Formation.cpp</in>
+        <in>Formation.h</in>
+        <in>FormationTactics.cpp</in>
+        <in>FormationTactics.h</in>
+        <in>Geometry.cpp</in>
+        <in>Geometry.h</in>
+        <in>InfoState.cpp</in>
+        <in>InfoState.h</in>
+        <in>InterceptInfo.cpp</in>
+        <in>InterceptInfo.h</in>
+        <in>InterceptModel.cpp</in>
+        <in>InterceptModel.h</in>
+        <in>Kicker.cpp</in>
+        <in>Kicker.h</in>
+        <in>Logger.cpp</in>
+        <in>Logger.h</in>
+        <in>Net.cpp</in>
+        <in>Net.h</in>
+        <in>NetworkTest.cpp</in>
+        <in>NetworkTest.h</in>
+        <in>Observer.cpp</in>
+        <in>Observer.h</in>
+        <in>ParamEngine.cpp</in>
+        <in>ParamEngine.h</in>
+        <in>Parser.cpp</in>
+        <in>Parser.h</in>
+        <in>Player.cpp</in>
+        <in>Player.h</in>
+        <in>PlayerParam.cpp</in>
+        <in>PlayerParam.h</in>
+        <in>PlayerState.cpp</in>
+        <in>PlayerState.h</in>
+        <in>Plotter.cpp</in>
+        <in>Plotter.h</in>
+        <in>PositionInfo.cpp</in>
+        <in>PositionInfo.h</in>
+        <in>ServerParam.cpp</in>
+        <in>ServerParam.h</in>
+        <in>Simulator.cpp</in>
+        <in>Simulator.h</in>
+        <in>Strategy.cpp</in>
+        <in>Strategy.h</in>
+        <in>Tackler.cpp</in>
+        <in>Tackler.h</in>
+        <in>Thread.cpp</in>
+        <in>Thread.h</in>
+        <in>TimeTest.cpp</in>
+        <in>TimeTest.h</in>
+        <in>Trainer.cpp</in>
+        <in>Trainer.h</in>
+        <in>Types.cpp</in>
+        <in>Types.h</in>
+        <in>UDPSocket.cpp</in>
+        <in>UDPSocket.h</in>
+        <in>Utilities.cpp</in>
+        <in>Utilities.h</in>
+        <in>VisualSystem.cpp</in>
+        <in>VisualSystem.h</in>
+        <in>WorldModel.cpp</in>
+        <in>WorldModel.h</in>
+        <in>WorldState.cpp</in>
+        <in>WorldState.h</in>
+        <in>main.cpp</in>
+      </df>
+      <in>start_all.sh</in>
+    </df>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+      <itemPath>nbproject/private/launcher.properties</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <codeAssistance>
+      </codeAssistance>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>${MAKE} -f Makefile</buildCommand>
+          <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
+          <executablePath>Debug/WEBase</executablePath>
+          <ccTool>
+            <incDir>
+              <pElem>Debug</pElem>
+            </incDir>
+          </ccTool>
+        </makeTool>
+        <preBuild>
+          <preBuildCommandWorkingDir>.</preBuildCommandWorkingDir>
+          <preBuildCommand></preBuildCommand>
+        </preBuild>
+      </makefileType>
+      <item path="scripts/utrasoccer/__init__.py" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="scripts/utrasoccer/main.py" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/ActionEffector.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Agent.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Analyser.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BaseState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BasicCommand.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorAttack.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorBase.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorBlock.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorDefense.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorDribble.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorFormation.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorGoalie.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorHold.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorIntercept.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorMark.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorPass.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorPenalty.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorPosition.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorSetplay.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorShoot.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Client.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Coach.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/CommandSender.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/CommunicateSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Dasher.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/DecisionData.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/DecisionTree.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/DynamicDebug.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Evaluation.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Formation.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/FormationTactics.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Geometry.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/InfoState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/InterceptInfo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/InterceptModel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Kicker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Logger.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Net.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/NetworkTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Observer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/ParamEngine.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Parser.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Player.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/PlayerParam.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/PlayerState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Plotter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/PositionInfo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/ServerParam.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Simulator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Strategy.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Tackler.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Thread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/TimeTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Trainer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Types.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/UDPSocket.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Utilities.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/VisualSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/WorldModel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/WorldState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="start_all.sh" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Play" type="0">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <codeAssistance>
+      </codeAssistance>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>${MAKE}</buildCommand>
+          <cleanCommand>${MAKE} clean</cleanCommand>
+          <executablePath></executablePath>
+        </makeTool>
+        <preBuild>
+          <preBuildCommandWorkingDir>.</preBuildCommandWorkingDir>
+          <preBuildCommand></preBuildCommand>
+        </preBuild>
+      </makefileType>
+      <item path="scripts/utrasoccer/__init__.py" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="scripts/utrasoccer/main.py" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/ActionEffector.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/ActionEffector.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Agent.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Agent.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Analyser.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Analyser.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BallState.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BaseState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BaseState.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BasicCommand.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BasicCommand.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorAttack.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorAttack.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorBase.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorBase.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorBlock.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorBlock.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorDefense.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorDefense.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorDribble.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorDribble.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorFormation.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorFormation.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorGoalie.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorGoalie.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorHold.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorHold.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorIntercept.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorIntercept.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorMark.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorMark.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorPass.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorPass.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorPenalty.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorPenalty.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorPosition.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorPosition.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorSetplay.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorSetplay.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorShoot.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorShoot.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Client.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Client.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Coach.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Coach.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/CommandSender.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/CommandSender.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/CommunicateSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/CommunicateSystem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Dasher.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Dasher.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/DecisionData.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/DecisionData.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/DecisionTree.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/DecisionTree.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/DynamicDebug.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/DynamicDebug.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Evaluation.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Evaluation.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Formation.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Formation.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/FormationTactics.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/FormationTactics.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Geometry.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Geometry.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/InfoState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/InfoState.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/InterceptInfo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/InterceptInfo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/InterceptModel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/InterceptModel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Kicker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Kicker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Logger.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Logger.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Net.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Net.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/NetworkTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/NetworkTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Observer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Observer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/ParamEngine.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/ParamEngine.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Parser.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Parser.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Player.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Player.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/PlayerParam.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/PlayerParam.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/PlayerState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/PlayerState.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Plotter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Plotter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/PositionInfo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/PositionInfo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/ServerParam.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/ServerParam.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Simulator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Simulator.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Strategy.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Strategy.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Tackler.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Tackler.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Thread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Thread.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/TimeTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/TimeTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Trainer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Trainer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Types.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Types.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/UDPSocket.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/UDPSocket.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Utilities.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Utilities.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/VisualSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/VisualSystem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/WorldModel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/WorldModel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/WorldState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/WorldState.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="start_all.sh" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Train" type="0">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <codeAssistance>
+      </codeAssistance>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>${MAKE}</buildCommand>
+          <cleanCommand>${MAKE} clean</cleanCommand>
+          <executablePath></executablePath>
+        </makeTool>
+        <preBuild>
+          <preBuildCommandWorkingDir>.</preBuildCommandWorkingDir>
+          <preBuildCommand></preBuildCommand>
+        </preBuild>
+      </makefileType>
+      <item path="scripts/utrasoccer/__init__.py" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="scripts/utrasoccer/main.py" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/ActionEffector.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/ActionEffector.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Agent.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Agent.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Analyser.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Analyser.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BallState.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BaseState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BaseState.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BasicCommand.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BasicCommand.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorAttack.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorAttack.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorBase.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorBase.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorBlock.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorBlock.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorDefense.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorDefense.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorDribble.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorDribble.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorFormation.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorFormation.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorGoalie.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorGoalie.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorHold.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorHold.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorIntercept.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorIntercept.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorMark.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorMark.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorPass.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorPass.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorPenalty.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorPenalty.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorPosition.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorPosition.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorSetplay.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorSetplay.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorShoot.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorShoot.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Client.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Client.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Coach.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Coach.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/CommandSender.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/CommandSender.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/CommunicateSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/CommunicateSystem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Dasher.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Dasher.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/DecisionData.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/DecisionData.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/DecisionTree.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/DecisionTree.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/DynamicDebug.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/DynamicDebug.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Evaluation.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Evaluation.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Formation.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Formation.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/FormationTactics.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/FormationTactics.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Geometry.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Geometry.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/InfoState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/InfoState.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/InterceptInfo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/InterceptInfo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/InterceptModel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/InterceptModel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Kicker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Kicker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Logger.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Logger.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Net.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Net.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/NetworkTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/NetworkTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Observer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Observer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/ParamEngine.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/ParamEngine.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Parser.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Parser.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Player.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Player.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/PlayerParam.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/PlayerParam.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/PlayerState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/PlayerState.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Plotter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Plotter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/PositionInfo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/PositionInfo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/ServerParam.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/ServerParam.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Simulator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Simulator.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Strategy.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Strategy.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Tackler.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Tackler.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Thread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Thread.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/TimeTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/TimeTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Trainer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Trainer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Types.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Types.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/UDPSocket.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/UDPSocket.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Utilities.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Utilities.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/VisualSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/VisualSystem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/WorldModel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/WorldModel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/WorldState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/WorldState.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="start_all.sh" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Python_Play" type="0">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <codeAssistance>
+      </codeAssistance>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>${MAKE}</buildCommand>
+          <cleanCommand>${MAKE} clean</cleanCommand>
+          <executablePath></executablePath>
+        </makeTool>
+        <preBuild>
+          <preBuildCommandWorkingDir>.</preBuildCommandWorkingDir>
+          <preBuildCommand></preBuildCommand>
+        </preBuild>
+      </makefileType>
+      <item path="scripts/utrasoccer/__init__.py" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="scripts/utrasoccer/main.py" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/ActionEffector.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/ActionEffector.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Agent.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Agent.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Analyser.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Analyser.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BallState.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BaseState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BaseState.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BasicCommand.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BasicCommand.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorAttack.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorAttack.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorBase.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorBase.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorBlock.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorBlock.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorDefense.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorDefense.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorDribble.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorDribble.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorFormation.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorFormation.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorGoalie.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorGoalie.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorHold.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorHold.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorIntercept.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorIntercept.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorMark.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorMark.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorPass.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorPass.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorPenalty.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorPenalty.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorPosition.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorPosition.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorSetplay.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorSetplay.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/BehaviorShoot.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/BehaviorShoot.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Client.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Client.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Coach.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Coach.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/CommandSender.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/CommandSender.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/CommunicateSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/CommunicateSystem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Dasher.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Dasher.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/DecisionData.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/DecisionData.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/DecisionTree.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/DecisionTree.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/DynamicDebug.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/DynamicDebug.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Evaluation.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Evaluation.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Formation.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Formation.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/FormationTactics.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/FormationTactics.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Geometry.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Geometry.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/InfoState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/InfoState.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/InterceptInfo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/InterceptInfo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/InterceptModel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/InterceptModel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Kicker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Kicker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Logger.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Logger.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Net.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Net.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/NetworkTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/NetworkTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Observer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Observer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/ParamEngine.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/ParamEngine.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Parser.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Parser.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Player.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Player.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/PlayerParam.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/PlayerParam.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/PlayerState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/PlayerState.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Plotter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Plotter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/PositionInfo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/PositionInfo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/ServerParam.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/ServerParam.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Simulator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Simulator.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Strategy.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Strategy.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Tackler.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Tackler.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Thread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Thread.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/TimeTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/TimeTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Trainer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Trainer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Types.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Types.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/UDPSocket.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/UDPSocket.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Utilities.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Utilities.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/VisualSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/VisualSystem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/WorldModel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/WorldModel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/WorldState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/WorldState.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="start_all.sh" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
