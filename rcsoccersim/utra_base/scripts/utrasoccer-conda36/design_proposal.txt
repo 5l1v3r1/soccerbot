@@ -1,0 +1,67 @@
+Deterministic policy 
+Take state action pairs to be a PCA of the infinite state/previous action of pitch and self. For example, the PCA state is where on the pitch using a 18 grid + relative position of nearby players + special assumptions (ie a set play being used/strategies/chemistry with player allows guesses of where teammates are). PCA actions are the 8 directions, kick power/accuracy, dash speed, turns. (note, turn and run idea) 
+ 
+Model other agents stochastically with most probable move. 
+ 
+Solve Exploitation vs Exploration using the Creativity and Stake index 
+Creativity index is the players own probability to try something new. Generally the ace needs this. 
+Stake index is how costly a mistake would be to the outcome of the episode. Is it a game, or a practice, are we leading in points? << part of state perhaps or a derivation from state 
+ 
+Reward signals: skill feedback [-2, 2] , utter by players in real time 
+ goal feedback[1 0], observation (monte carlo percentage idea) likelihood of goal 
+coaching feedback [-2,2], uttered by coach in post action/game* 
+ 
+Skill feedback translate to sports field utterances [wtf, better try next time, no comment, nice __, great save/fix!] >> we sum it and divide it by number of occurrences? >> aids development of a skill 
+ 
+Goal feedback >> sum and divide to get probability>> aids development of a smart tactic, affects a whole goal scoring sequence… how did montecarlo do this? something about propagating the probabilities up. 
+ 
+Coaching feedback is the post action stuff, plays are given a score if it is good/great, bad/terrible >> sum and divide>> aids dev of skills and tactics. 
+ 
+Postgame, a win is good a loss is bad. But the outcome of a game does not imply the performance of players. It perhaps only tells us whether or not our strategies where good or not. This signal is really for the coach.  
+ 
+*Post action achieved by pointing directly to an action state pair in the deterministic policy and giving a reward. (problem of bad coaching arises, but good coaching may be perceived as bad if players can't understand why the comment is appropriate.) 
+ 
+Learn cycles define when the policy is learned. 
+We can always be learning 
+We can only learn the game relevant skills 
+Or we just have to design the drills very very carefully 
+ 
+Persistent skills… fundamental skills are persisted and the set plays/special assumptions allow certain skills to activate that are high reward. 
+ 
+Model of opponent team to learn how to anticipate their game and deploy a counter strategy. This is about coaching. The point is to abstract that decision to the coach instead of making the players learn how to respond to defense strategies. This does raise questions for how the policies should be implemented because for different strategies there are things that work and things that don't… for example fundamental skills are applicable but you might choose to dash more or something 
+ 
+Heterogeneous players, dummies, an online coach, and a trainer, will each connect to the server that is set up for either drills or games. 
+player - play the game, receive and give skill feedbacks, get goal and coaching feedback. needs to remember their policy/training 
+online coach - provides high level game strategy 
+trainer - provides drill scenarios and coaching feedback 
+dummies - pylons for players to practice the drills on (else the states won't be the same) 
+ 
+There needs to be a mechanism to identify a play but that's further down the line… this is for goal feedbacks and coaching feedbacks.  
+ 
+Policy implementation as a 3D decision tree: states x actions x special assumptions.  
+ 
+				/-------/------s------\-------\ 
+actions              		f       b             r        l  
+ 			p(action|team play)
+ 				
+ 		   (some unknown transition)
+ 			/      |      \ 
+			s'      s'     s'   …         …         …  
+ 
+ 
+more like a state look up… we treat the training as the simulation steps/unrolling of the monte carlo tree and in the future we just look up the state and do the best action. 
+ 
+Where would reinforcement learning fit in here or maybe it doesn't?  
+ 
+  |---- agent  
+  |          … 
+SS ----|---- agent 
+  |          … 
+  |----- coach 
+  |-----[trainer] 
+ 
+A base agent process handles the communications with server and has functions to load and update the policy. Separate policies are stored for each agent. Each agent will always wear the same jersey number and is a particular type of agent as defined by rcss (specified in the player's profile).  
+ 
+A script starts multiple agent processes that load different player profiles to start a game. 
+ 
+Trainers load agents into specific drills 
