@@ -76,8 +76,8 @@ sudo apt-get install libopencv-dev python-opencv -y
 
 
 ### MATLAB ###
-wget http://esd.mathworks.com/R2017a/Linux_x86_64/INST_432557/matlab_R2017a_glnxa64.zip
-unzip matlab_R2017a_glnxa42.zip
+sudo apt-get install default-jre -y
+sudo apt-get install default-jdk -y
 
 ## Libportaudio
 sudo apt-get install libasound-dev
