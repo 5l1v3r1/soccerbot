@@ -74,6 +74,8 @@ rosinstall ../soccer/include/ ../soccer/include/packages.rosinstall
 echo "source ~/soccerbot/soccer/devel/setup.bash" >> ~/.bashrc
 sudo apt-get install libopencv-dev python-opencv -y
 
+### Game Controller
+sudo apt-get install ant
 
 ### MATLAB ###
 sudo apt-get install default-jre -y
