@@ -104,6 +104,15 @@ sudo ln -s /usr/lib/aarch64-linux-gnu/tegra/libGL.so /usr/lib/aarch64-linux-gnu/
 ## Miscellaneous
 sudo apt-get install openni2-utils -y
 
+# SPBL
+cd ../libraries/sbpl
+mkdir build
+./../configure
+cmake ..
+make
+sudo make install
+cd ../../../scripts
+
 ## Configuring other packages
 sh configure_simspark.sh
 sh configure_rcsoccersim.sh

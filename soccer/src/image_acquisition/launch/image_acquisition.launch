@@ -1,0 +1,4 @@
+<launch>
+    <node name="image_acquisition" pkg="image_acquisition" type="image_acquisition" />
+    <node name="image_processing" pkg="image_acquisition" type="image_processing" />
+</launch>
