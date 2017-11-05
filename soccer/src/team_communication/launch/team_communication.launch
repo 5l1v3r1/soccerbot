@@ -1,0 +1,4 @@
+<launch>
+    <node name="team_communication" pkg="team_communication" type="team_communication" />
+    <node name="gamecontroller_client" pkg="team_communication" type="gamecontroller_client" />    
+</launch>

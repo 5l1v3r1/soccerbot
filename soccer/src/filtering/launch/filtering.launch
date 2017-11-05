@@ -1,0 +1,4 @@
+<launch>
+    <node name="personal_model" pkg="filtering" type="personal_model" />
+    <node name="team_updated_model" pkg="filtering" type="team_updated_model" />    
+</launch>

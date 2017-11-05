@@ -1,0 +1,4 @@
+<launch>
+    <node name="body_behaviour" pkg="behaviour" type="body_behaviour" />
+    <node name="head_behaviour" pkg="behaviour" type="head_behaviour" />
+</launch>

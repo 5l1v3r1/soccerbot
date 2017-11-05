@@ -1,0 +1,7 @@
+<launch>
+    <node name="ball_position_transformation" pkg="pixel_to_position_transformation" type="ball_position_transformation" />
+    <node name="opponent_position_transformation" pkg="pixel_to_position_transformation" type="opponent_position_transformation" />
+    <node name="goal_position_transformation" pkg="pixel_to_position_transformation" type="goal_position_transformation" />
+    <node name="line_position_transformation" pkg="pixel_to_position_transformation" type="line_position_transformation" />
+    <node name="line_points_transformation" pkg="pixel_to_position_transformation" type="line_points_transformation" />
+</launch>
