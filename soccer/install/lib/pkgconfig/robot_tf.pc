@@ -1,8 +1,0 @@
-prefix=/home/newton/soccerbot/soccer/install
-
-Name: robot_tf
-Description: Description of robot_tf
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/newton/soccerbot/soccer/install/lib 
-Requires: 

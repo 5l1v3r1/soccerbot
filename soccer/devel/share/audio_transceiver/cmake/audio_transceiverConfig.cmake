@@ -67,14 +67,14 @@ set(audio_transceiver_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(audio_transceiver_SOURCE_PREFIX /home/james/soccerbot/soccer/src/audio_transceiver)
-  set(audio_transceiver_DEVEL_PREFIX /home/james/soccerbot/soccer/devel)
+  set(audio_transceiver_SOURCE_PREFIX /media/nvidia/RoboSoccer/soccerbot/soccer/src/audio_transceiver)
+  set(audio_transceiver_DEVEL_PREFIX /media/nvidia/RoboSoccer/soccerbot/soccer/devel)
   set(audio_transceiver_INSTALL_PREFIX "")
   set(audio_transceiver_PREFIX ${audio_transceiver_DEVEL_PREFIX})
 else()
   set(audio_transceiver_SOURCE_PREFIX "")
   set(audio_transceiver_DEVEL_PREFIX "")
-  set(audio_transceiver_INSTALL_PREFIX /home/james/soccerbot/soccer/install)
+  set(audio_transceiver_INSTALL_PREFIX /media/nvidia/RoboSoccer/soccerbot/soccer/install)
   set(audio_transceiver_PREFIX ${audio_transceiver_INSTALL_PREFIX})
 endif()
 
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(audio_transceiver_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/james/soccerbot/soccer/src/audio_transceiver/include " STREQUAL " ")
+if(NOT "/media/nvidia/RoboSoccer/soccerbot/soccer/src/audio_transceiver/include " STREQUAL " ")
   set(audio_transceiver_INCLUDE_DIRS "")
-  set(_include_dirs "/home/james/soccerbot/soccer/src/audio_transceiver/include")
+  set(_include_dirs "/media/nvidia/RoboSoccer/soccerbot/soccer/src/audio_transceiver/include")
   foreach(idir ${_include_dirs})
     if(IS_ABSOLUTE ${idir} AND IS_DIRECTORY ${idir})
       set(include ${idir})
@@ -103,7 +103,7 @@ if(NOT "/home/james/soccerbot/soccer/src/audio_transceiver/include " STREQUAL " 
         message(FATAL_ERROR "Project 'audio_transceiver' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  Ask the maintainer 'soccer <soccer@todo.todo>' to fix it.")
       endif()
     else()
-      message(FATAL_ERROR "Project 'audio_transceiver' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/james/soccerbot/soccer/src/audio_transceiver/${idir}'.  Ask the maintainer 'soccer <soccer@todo.todo>' to fix it.")
+      message(FATAL_ERROR "Project 'audio_transceiver' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/media/nvidia/RoboSoccer/soccerbot/soccer/src/audio_transceiver/${idir}'.  Ask the maintainer 'soccer <soccer@todo.todo>' to fix it.")
     endif()
     _list_append_unique(audio_transceiver_INCLUDE_DIRS ${include})
   endforeach()
@@ -122,7 +122,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/james/soccerbot/soccer/devel/lib;/home/james/soccerbot/soccer/devel/lib;/opt/ros/kinetic/lib)
+    foreach(path /media/nvidia/RoboSoccer/soccerbot/soccer/devel/lib;/opt/ros/kinetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

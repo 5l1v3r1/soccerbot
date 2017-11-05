@@ -78,3 +78,10 @@
   path = rcsoccersim/wrighteaglebase
   url = https://github.com/wrighteagle2d/wrighteaglebase
 
+[submodule "libraries/humanoid_msgs"]
+	path = libraries/humanoid_msgs
+	url = https://github.com/bit-bots/humanoid_league_msgs
+
+[submodule "soccer/src/humanoid_league_msgs"]
+	path = soccer/src/humanoid_league_msgs
+	url = https://github.com/bit-bots/humanoid_league_msgs

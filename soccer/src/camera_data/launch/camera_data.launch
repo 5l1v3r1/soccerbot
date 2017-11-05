@@ -1,4 +1,0 @@
-<launch>
-    <node name="camera_input" pkg="camera_data" type="camera_input" />
-    <node name="image_processing" pkg="camera_data" type="image_processing" />
-</launch>

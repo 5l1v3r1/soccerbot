@@ -1,8 +1,8 @@
-prefix=/home/james/soccerbot/soccer/devel
+prefix=/media/nvidia/RoboSoccer/soccerbot/soccer/devel
 
 Name: audio_transceiver
 Description: Description of audio_transceiver
 Version: 0.0.0
-Cflags: -I/home/james/soccerbot/soccer/src/audio_transceiver/include
-Libs: -L/home/james/soccerbot/soccer/devel/lib 
+Cflags: -I/media/nvidia/RoboSoccer/soccerbot/soccer/src/audio_transceiver/include
+Libs: -L/media/nvidia/RoboSoccer/soccerbot/soccer/devel/lib 
 Requires: roscpp std_msgs

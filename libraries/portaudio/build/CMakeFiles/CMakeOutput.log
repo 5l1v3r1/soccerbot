@@ -1,4 +1,4 @@
-The system is: Linux - 4.10.0-32-generic - x86_64
+The system is: Linux - 4.4.38+ - aarch64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
 Compiler: /usr/bin/cc 
 Build flags: 
@@ -10,7 +10,7 @@ The output was:
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
 
-The C compiler identification is GNU, found in "/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/3.5.1/CompilerIdC/a.out"
+The C compiler identification is GNU, found in "/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/3.5.1/CompilerIdC/a.out"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
 Compiler: /usr/bin/c++ 
@@ -23,75 +23,75 @@ The output was:
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
 
-The CXX compiler identification is GNU, found in "/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/3.5.1/CompilerIdCXX/a.out"
+The CXX compiler identification is GNU, found in "/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/3.5.1/CompilerIdCXX/a.out"
 
 Determining if the C compiler works passed with the following output:
-Change Dir: /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
+Change Dir: /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_705bf/fast"
-/usr/bin/make -f CMakeFiles/cmTC_705bf.dir/build.make CMakeFiles/cmTC_705bf.dir/build
-make[1]: Entering directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_705bf.dir/testCCompiler.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_705bf.dir/testCCompiler.c.o   -c /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_705bf
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_705bf.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_705bf.dir/testCCompiler.c.o  -o cmTC_705bf -rdynamic 
-make[1]: Leaving directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_1af88/fast"
+/usr/bin/make -f CMakeFiles/cmTC_1af88.dir/build.make CMakeFiles/cmTC_1af88.dir/build
+make[1]: Entering directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1af88.dir/testCCompiler.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_1af88.dir/testCCompiler.c.o   -c /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_1af88
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1af88.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_1af88.dir/testCCompiler.c.o  -o cmTC_1af88 -rdynamic 
+make[1]: Leaving directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
+Change Dir: /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_0cf8c/fast"
-/usr/bin/make -f CMakeFiles/cmTC_0cf8c.dir/build.make CMakeFiles/cmTC_0cf8c.dir/build
-make[1]: Entering directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_0cf8c.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_0cf8c.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c
-Linking C executable cmTC_0cf8c
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0cf8c.dir/link.txt --verbose=1
-/usr/bin/cc      -v CMakeFiles/cmTC_0cf8c.dir/CMakeCCompilerABI.c.o  -o cmTC_0cf8c -rdynamic  
+Run Build Command:"/usr/bin/make" "cmTC_08f8f/fast"
+/usr/bin/make -f CMakeFiles/cmTC_08f8f.dir/build.make CMakeFiles/cmTC_08f8f.dir/build
+make[1]: Entering directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_08f8f.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_08f8f.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_08f8f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_08f8f.dir/link.txt --verbose=1
+/usr/bin/cc      -v CMakeFiles/cmTC_08f8f.dir/CMakeCCompilerABI.c.o  -o cmTC_08f8f -rdynamic  
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
-COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper
-Target: x86_64-linux-gnu
-Configured with: ../src/configure -v --with-pkgversion='Ubuntu 5.4.0-6ubuntu1~16.04.4' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper
+Target: aarch64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.5' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-libquadmath --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-arm64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-arm64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-arm64 --with-arch-directory=aarch64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-multiarch --enable-fix-cortex-a53-843419 --disable-werror --enable-checking=release --build=aarch64-linux-gnu --host=aarch64-linux-gnu --target=aarch64-linux-gnu
 Thread model: posix
-gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.4) 
-COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/
-LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_0cf8c' '-rdynamic' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccwMm39O.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_0cf8c /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_0cf8c.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
-make[1]: Leaving directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+gcc version 5.4.0 20160609 (Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.5) 
+COMPILER_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib/:/lib/aarch64-linux-gnu/:/lib/../lib/:/usr/lib/aarch64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_08f8f' '-rdynamic' '-mlittle-endian' '-mabi=lp64'
+ /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccp6YVr3.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -z relro -o cmTC_08f8f /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_08f8f.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o
+make[1]: Leaving directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
 
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_0cf8c/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_0cf8c.dir/build.make CMakeFiles/cmTC_0cf8c.dir/build]
-  ignore line: [make[1]: Entering directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp']
-  ignore line: [Building C object CMakeFiles/cmTC_0cf8c.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc     -o CMakeFiles/cmTC_0cf8c.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTC_0cf8c]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0cf8c.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTC_0cf8c.dir/CMakeCCompilerABI.c.o  -o cmTC_0cf8c -rdynamic  ]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_08f8f/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_08f8f.dir/build.make CMakeFiles/cmTC_08f8f.dir/build]
+  ignore line: [make[1]: Entering directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_08f8f.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc     -o CMakeFiles/cmTC_08f8f.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_08f8f]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_08f8f.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTC_08f8f.dir/CMakeCCompilerABI.c.o  -o cmTC_08f8f -rdynamic  ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
-  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper]
-  ignore line: [Target: x86_64-linux-gnu]
-  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 5.4.0-6ubuntu1~16.04.4' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper]
+  ignore line: [Target: aarch64-linux-gnu]
+  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.5' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-libquadmath --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-arm64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-arm64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-arm64 --with-arch-directory=aarch64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-multiarch --enable-fix-cortex-a53-843419 --disable-werror --enable-checking=release --build=aarch64-linux-gnu --host=aarch64-linux-gnu --target=aarch64-linux-gnu]
   ignore line: [Thread model: posix]
-  ignore line: [gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.4) ]
-  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/]
-  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_0cf8c' '-rdynamic' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccwMm39O.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_0cf8c /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_0cf8c.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o]
-    arg [/usr/lib/gcc/x86_64-linux-gnu/5/collect2] ==> ignore
+  ignore line: [gcc version 5.4.0 20160609 (Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.5) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib/:/lib/aarch64-linux-gnu/:/lib/../lib/:/usr/lib/aarch64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_08f8f' '-rdynamic' '-mlittle-endian' '-mabi=lp64']
+  link line: [ /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccp6YVr3.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -z relro -o cmTC_08f8f /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_08f8f.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o]
+    arg [/usr/lib/gcc/aarch64-linux-gnu/5/collect2] ==> ignore
     arg [-plugin] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so] ==> ignore
-    arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccwMm39O.res] ==> ignore
+    arg [/usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccp6YVr3.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -100,28 +100,30 @@ Parsed C implicit link information from above output:
     arg [--sysroot=/] ==> ignore
     arg [--build-id] ==> ignore
     arg [--eh-frame-hdr] ==> ignore
-    arg [-m] ==> ignore
-    arg [elf_x86_64] ==> ignore
     arg [--hash-style=gnu] ==> ignore
     arg [--as-needed] ==> ignore
     arg [-export-dynamic] ==> ignore
     arg [-dynamic-linker] ==> ignore
-    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [/lib/ld-linux-aarch64.so.1] ==> ignore
+    arg [-X] ==> ignore
+    arg [-EL] ==> ignore
+    arg [-maarch64linux] ==> ignore
+    arg [--fix-cortex-a53-843419] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_0cf8c] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o] ==> ignore
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/5] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5]
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu]
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib]
-    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+    arg [cmTC_08f8f] ==> ignore
+    arg [/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crt1.o] ==> ignore
+    arg [/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o] ==> ignore
+    arg [/usr/lib/gcc/aarch64-linux-gnu/5/crtbegin.o] ==> ignore
+    arg [-L/usr/lib/gcc/aarch64-linux-gnu/5] ==> dir [/usr/lib/gcc/aarch64-linux-gnu/5]
+    arg [-L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu] ==> dir [/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu]
+    arg [-L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib] ==> dir [/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib]
+    arg [-L/lib/aarch64-linux-gnu] ==> dir [/lib/aarch64-linux-gnu]
     arg [-L/lib/../lib] ==> dir [/lib/../lib]
-    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L/usr/lib/aarch64-linux-gnu] ==> dir [/usr/lib/aarch64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/5/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../..]
-    arg [CMakeFiles/cmTC_0cf8c.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-L/usr/lib/gcc/aarch64-linux-gnu/5/../../..] ==> dir [/usr/lib/gcc/aarch64-linux-gnu/5/../../..]
+    arg [CMakeFiles/cmTC_08f8f.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--as-needed] ==> ignore
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -131,39 +133,39 @@ Parsed C implicit link information from above output:
     arg [--as-needed] ==> ignore
     arg [-lgcc_s] ==> lib [gcc_s]
     arg [--no-as-needed] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/5/crtend.o] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o] ==> ignore
+    arg [/usr/lib/gcc/aarch64-linux-gnu/5/crtend.o] ==> ignore
+    arg [/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o] ==> ignore
   remove lib [gcc]
   remove lib [gcc_s]
   remove lib [gcc]
   remove lib [gcc_s]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/5] ==> [/usr/lib/gcc/x86_64-linux-gnu/5]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib] ==> [/usr/lib]
-  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/gcc/aarch64-linux-gnu/5] ==> [/usr/lib/gcc/aarch64-linux-gnu/5]
+  collapse library dir [/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu] ==> [/usr/lib/aarch64-linux-gnu]
+  collapse library dir [/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib] ==> [/usr/lib]
+  collapse library dir [/lib/aarch64-linux-gnu] ==> [/lib/aarch64-linux-gnu]
   collapse library dir [/lib/../lib] ==> [/lib]
-  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/aarch64-linux-gnu] ==> [/usr/lib/aarch64-linux-gnu]
   collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../..] ==> [/usr/lib]
+  collapse library dir [/usr/lib/gcc/aarch64-linux-gnu/5/../../..] ==> [/usr/lib]
   implicit libs: [c]
-  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/5;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+  implicit dirs: [/usr/lib/gcc/aarch64-linux-gnu/5;/usr/lib/aarch64-linux-gnu;/usr/lib;/lib/aarch64-linux-gnu;/lib]
   implicit fwks: []
 
 
 
 
 Detecting C [-std=c11] compiler features compiled with the following output:
-Change Dir: /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
+Change Dir: /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_b5b07/fast"
-/usr/bin/make -f CMakeFiles/cmTC_b5b07.dir/build.make CMakeFiles/cmTC_b5b07.dir/build
-make[1]: Entering directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_b5b07.dir/feature_tests.c.o
-/usr/bin/cc    -std=c11 -o CMakeFiles/cmTC_b5b07.dir/feature_tests.c.o   -c /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_b5b07
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b5b07.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_b5b07.dir/feature_tests.c.o  -o cmTC_b5b07 -rdynamic 
-make[1]: Leaving directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_ef112/fast"
+/usr/bin/make -f CMakeFiles/cmTC_ef112.dir/build.make CMakeFiles/cmTC_ef112.dir/build
+make[1]: Entering directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ef112.dir/feature_tests.c.o
+/usr/bin/cc    -std=c11 -o CMakeFiles/cmTC_ef112.dir/feature_tests.c.o   -c /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_ef112
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ef112.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_ef112.dir/feature_tests.c.o  -o cmTC_ef112 -rdynamic 
+make[1]: Leaving directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -173,17 +175,17 @@ make[1]: Leaving directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMak
 
 
 Detecting C [-std=c99] compiler features compiled with the following output:
-Change Dir: /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
+Change Dir: /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_336b4/fast"
-/usr/bin/make -f CMakeFiles/cmTC_336b4.dir/build.make CMakeFiles/cmTC_336b4.dir/build
-make[1]: Entering directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_336b4.dir/feature_tests.c.o
-/usr/bin/cc    -std=c99 -o CMakeFiles/cmTC_336b4.dir/feature_tests.c.o   -c /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_336b4
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_336b4.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_336b4.dir/feature_tests.c.o  -o cmTC_336b4 -rdynamic 
-make[1]: Leaving directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_c84a7/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c84a7.dir/build.make CMakeFiles/cmTC_c84a7.dir/build
+make[1]: Entering directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c84a7.dir/feature_tests.c.o
+/usr/bin/cc    -std=c99 -o CMakeFiles/cmTC_c84a7.dir/feature_tests.c.o   -c /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_c84a7
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c84a7.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_c84a7.dir/feature_tests.c.o  -o cmTC_c84a7 -rdynamic 
+make[1]: Leaving directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -193,17 +195,17 @@ make[1]: Leaving directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMak
 
 
 Detecting C [-std=c90] compiler features compiled with the following output:
-Change Dir: /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
+Change Dir: /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_af51c/fast"
-/usr/bin/make -f CMakeFiles/cmTC_af51c.dir/build.make CMakeFiles/cmTC_af51c.dir/build
-make[1]: Entering directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_af51c.dir/feature_tests.c.o
-/usr/bin/cc    -std=c90 -o CMakeFiles/cmTC_af51c.dir/feature_tests.c.o   -c /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_af51c
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_af51c.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_af51c.dir/feature_tests.c.o  -o cmTC_af51c -rdynamic 
-make[1]: Leaving directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_18362/fast"
+/usr/bin/make -f CMakeFiles/cmTC_18362.dir/build.make CMakeFiles/cmTC_18362.dir/build
+make[1]: Entering directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_18362.dir/feature_tests.c.o
+/usr/bin/cc    -std=c90 -o CMakeFiles/cmTC_18362.dir/feature_tests.c.o   -c /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_18362
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_18362.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_18362.dir/feature_tests.c.o  -o cmTC_18362 -rdynamic 
+make[1]: Leaving directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -211,72 +213,72 @@ make[1]: Leaving directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMak
     Feature record: C_FEATURE:0c_static_assert
     Feature record: C_FEATURE:0c_variadic_macros
 Determining if the CXX compiler works passed with the following output:
-Change Dir: /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
+Change Dir: /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_5d30d/fast"
-/usr/bin/make -f CMakeFiles/cmTC_5d30d.dir/build.make CMakeFiles/cmTC_5d30d.dir/build
-make[1]: Entering directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_5d30d.dir/testCXXCompiler.cxx.o
-/usr/bin/c++      -o CMakeFiles/cmTC_5d30d.dir/testCXXCompiler.cxx.o -c /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTC_5d30d
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5d30d.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_5d30d.dir/testCXXCompiler.cxx.o  -o cmTC_5d30d -rdynamic 
-make[1]: Leaving directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_c2bfa/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c2bfa.dir/build.make CMakeFiles/cmTC_c2bfa.dir/build
+make[1]: Entering directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_c2bfa.dir/testCXXCompiler.cxx.o
+/usr/bin/c++      -o CMakeFiles/cmTC_c2bfa.dir/testCXXCompiler.cxx.o -c /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_c2bfa
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c2bfa.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_c2bfa.dir/testCXXCompiler.cxx.o  -o cmTC_c2bfa -rdynamic 
+make[1]: Leaving directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
+Change Dir: /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_a171f/fast"
-/usr/bin/make -f CMakeFiles/cmTC_a171f.dir/build.make CMakeFiles/cmTC_a171f.dir/build
-make[1]: Entering directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_a171f.dir/CMakeCXXCompilerABI.cpp.o
-/usr/bin/c++      -o CMakeFiles/cmTC_a171f.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_a171f
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a171f.dir/link.txt --verbose=1
-/usr/bin/c++       -v CMakeFiles/cmTC_a171f.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_a171f -rdynamic  
+Run Build Command:"/usr/bin/make" "cmTC_4d633/fast"
+/usr/bin/make -f CMakeFiles/cmTC_4d633.dir/build.make CMakeFiles/cmTC_4d633.dir/build
+make[1]: Entering directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_4d633.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++      -o CMakeFiles/cmTC_4d633.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_4d633
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4d633.dir/link.txt --verbose=1
+/usr/bin/c++       -v CMakeFiles/cmTC_4d633.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_4d633 -rdynamic  
 Using built-in specs.
 COLLECT_GCC=/usr/bin/c++
-COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper
-Target: x86_64-linux-gnu
-Configured with: ../src/configure -v --with-pkgversion='Ubuntu 5.4.0-6ubuntu1~16.04.4' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper
+Target: aarch64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.5' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-libquadmath --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-arm64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-arm64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-arm64 --with-arch-directory=aarch64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-multiarch --enable-fix-cortex-a53-843419 --disable-werror --enable-checking=release --build=aarch64-linux-gnu --host=aarch64-linux-gnu --target=aarch64-linux-gnu
 Thread model: posix
-gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.4) 
-COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/
-LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_a171f' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccwETaZ3.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_a171f /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_a171f.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
-make[1]: Leaving directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+gcc version 5.4.0 20160609 (Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.5) 
+COMPILER_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib/:/lib/aarch64-linux-gnu/:/lib/../lib/:/usr/lib/aarch64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_4d633' '-rdynamic' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64'
+ /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccBzHup5.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -z relro -o cmTC_4d633 /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_4d633.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o
+make[1]: Leaving directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
 
 
 Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_a171f/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_a171f.dir/build.make CMakeFiles/cmTC_a171f.dir/build]
-  ignore line: [make[1]: Entering directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp']
-  ignore line: [Building CXX object CMakeFiles/cmTC_a171f.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/usr/bin/c++      -o CMakeFiles/cmTC_a171f.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTC_a171f]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a171f.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/c++       -v CMakeFiles/cmTC_a171f.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_a171f -rdynamic  ]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_4d633/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_4d633.dir/build.make CMakeFiles/cmTC_4d633.dir/build]
+  ignore line: [make[1]: Entering directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_4d633.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++      -o CMakeFiles/cmTC_4d633.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_4d633]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4d633.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++       -v CMakeFiles/cmTC_4d633.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_4d633 -rdynamic  ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/c++]
-  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper]
-  ignore line: [Target: x86_64-linux-gnu]
-  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 5.4.0-6ubuntu1~16.04.4' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper]
+  ignore line: [Target: aarch64-linux-gnu]
+  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.5' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-libquadmath --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-arm64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-arm64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-arm64 --with-arch-directory=aarch64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-multiarch --enable-fix-cortex-a53-843419 --disable-werror --enable-checking=release --build=aarch64-linux-gnu --host=aarch64-linux-gnu --target=aarch64-linux-gnu]
   ignore line: [Thread model: posix]
-  ignore line: [gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.4) ]
-  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/]
-  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_a171f' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccwETaZ3.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_a171f /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_a171f.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o]
-    arg [/usr/lib/gcc/x86_64-linux-gnu/5/collect2] ==> ignore
+  ignore line: [gcc version 5.4.0 20160609 (Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.5) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib/:/lib/aarch64-linux-gnu/:/lib/../lib/:/usr/lib/aarch64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_4d633' '-rdynamic' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64']
+  link line: [ /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccBzHup5.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -z relro -o cmTC_4d633 /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_4d633.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o]
+    arg [/usr/lib/gcc/aarch64-linux-gnu/5/collect2] ==> ignore
     arg [-plugin] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so] ==> ignore
-    arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccwETaZ3.res] ==> ignore
+    arg [/usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccBzHup5.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -285,28 +287,30 @@ Parsed CXX implicit link information from above output:
     arg [--sysroot=/] ==> ignore
     arg [--build-id] ==> ignore
     arg [--eh-frame-hdr] ==> ignore
-    arg [-m] ==> ignore
-    arg [elf_x86_64] ==> ignore
     arg [--hash-style=gnu] ==> ignore
     arg [--as-needed] ==> ignore
     arg [-export-dynamic] ==> ignore
     arg [-dynamic-linker] ==> ignore
-    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [/lib/ld-linux-aarch64.so.1] ==> ignore
+    arg [-X] ==> ignore
+    arg [-EL] ==> ignore
+    arg [-maarch64linux] ==> ignore
+    arg [--fix-cortex-a53-843419] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_a171f] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o] ==> ignore
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/5] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5]
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu]
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib]
-    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+    arg [cmTC_4d633] ==> ignore
+    arg [/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crt1.o] ==> ignore
+    arg [/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o] ==> ignore
+    arg [/usr/lib/gcc/aarch64-linux-gnu/5/crtbegin.o] ==> ignore
+    arg [-L/usr/lib/gcc/aarch64-linux-gnu/5] ==> dir [/usr/lib/gcc/aarch64-linux-gnu/5]
+    arg [-L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu] ==> dir [/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu]
+    arg [-L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib] ==> dir [/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib]
+    arg [-L/lib/aarch64-linux-gnu] ==> dir [/lib/aarch64-linux-gnu]
     arg [-L/lib/../lib] ==> dir [/lib/../lib]
-    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L/usr/lib/aarch64-linux-gnu] ==> dir [/usr/lib/aarch64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/5/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../..]
-    arg [CMakeFiles/cmTC_a171f.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-L/usr/lib/gcc/aarch64-linux-gnu/5/../../..] ==> dir [/usr/lib/gcc/aarch64-linux-gnu/5/../../..]
+    arg [CMakeFiles/cmTC_4d633.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -314,39 +318,39 @@ Parsed CXX implicit link information from above output:
     arg [-lc] ==> lib [c]
     arg [-lgcc_s] ==> lib [gcc_s]
     arg [-lgcc] ==> lib [gcc]
-    arg [/usr/lib/gcc/x86_64-linux-gnu/5/crtend.o] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o] ==> ignore
+    arg [/usr/lib/gcc/aarch64-linux-gnu/5/crtend.o] ==> ignore
+    arg [/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o] ==> ignore
   remove lib [gcc_s]
   remove lib [gcc]
   remove lib [gcc_s]
   remove lib [gcc]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/5] ==> [/usr/lib/gcc/x86_64-linux-gnu/5]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib] ==> [/usr/lib]
-  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/gcc/aarch64-linux-gnu/5] ==> [/usr/lib/gcc/aarch64-linux-gnu/5]
+  collapse library dir [/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu] ==> [/usr/lib/aarch64-linux-gnu]
+  collapse library dir [/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib] ==> [/usr/lib]
+  collapse library dir [/lib/aarch64-linux-gnu] ==> [/lib/aarch64-linux-gnu]
   collapse library dir [/lib/../lib] ==> [/lib]
-  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/aarch64-linux-gnu] ==> [/usr/lib/aarch64-linux-gnu]
   collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../..] ==> [/usr/lib]
+  collapse library dir [/usr/lib/gcc/aarch64-linux-gnu/5/../../..] ==> [/usr/lib]
   implicit libs: [stdc++;m;c]
-  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/5;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+  implicit dirs: [/usr/lib/gcc/aarch64-linux-gnu/5;/usr/lib/aarch64-linux-gnu;/usr/lib;/lib/aarch64-linux-gnu;/lib]
   implicit fwks: []
 
 
 
 
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
-Change Dir: /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
+Change Dir: /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_1a7e2/fast"
-/usr/bin/make -f CMakeFiles/cmTC_1a7e2.dir/build.make CMakeFiles/cmTC_1a7e2.dir/build
-make[1]: Entering directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_1a7e2.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++14 -o CMakeFiles/cmTC_1a7e2.dir/feature_tests.cxx.o -c /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_1a7e2
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1a7e2.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_1a7e2.dir/feature_tests.cxx.o  -o cmTC_1a7e2 -rdynamic 
-make[1]: Leaving directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_17b86/fast"
+/usr/bin/make -f CMakeFiles/cmTC_17b86.dir/build.make CMakeFiles/cmTC_17b86.dir/build
+make[1]: Entering directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_17b86.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++14 -o CMakeFiles/cmTC_17b86.dir/feature_tests.cxx.o -c /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_17b86
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_17b86.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_17b86.dir/feature_tests.cxx.o  -o cmTC_17b86 -rdynamic 
+make[1]: Leaving directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -409,17 +413,17 @@ make[1]: Leaving directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMak
 
 
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
-Change Dir: /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
+Change Dir: /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_e5660/fast"
-/usr/bin/make -f CMakeFiles/cmTC_e5660.dir/build.make CMakeFiles/cmTC_e5660.dir/build
-make[1]: Entering directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_e5660.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++11 -o CMakeFiles/cmTC_e5660.dir/feature_tests.cxx.o -c /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_e5660
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e5660.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_e5660.dir/feature_tests.cxx.o  -o cmTC_e5660 -rdynamic 
-make[1]: Leaving directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_11606/fast"
+/usr/bin/make -f CMakeFiles/cmTC_11606.dir/build.make CMakeFiles/cmTC_11606.dir/build
+make[1]: Entering directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_11606.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++11 -o CMakeFiles/cmTC_11606.dir/feature_tests.cxx.o -c /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_11606
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_11606.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_11606.dir/feature_tests.cxx.o  -o cmTC_11606 -rdynamic 
+make[1]: Leaving directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -482,17 +486,17 @@ make[1]: Leaving directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMak
 
 
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
-Change Dir: /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
+Change Dir: /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_275d5/fast"
-/usr/bin/make -f CMakeFiles/cmTC_275d5.dir/build.make CMakeFiles/cmTC_275d5.dir/build
-make[1]: Entering directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_275d5.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++98 -o CMakeFiles/cmTC_275d5.dir/feature_tests.cxx.o -c /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_275d5
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_275d5.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_275d5.dir/feature_tests.cxx.o  -o cmTC_275d5 -rdynamic 
-make[1]: Leaving directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_f55af/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f55af.dir/build.make CMakeFiles/cmTC_f55af.dir/build
+make[1]: Entering directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_f55af.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++98 -o CMakeFiles/cmTC_f55af.dir/feature_tests.cxx.o -c /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_f55af
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f55af.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_f55af.dir/feature_tests.cxx.o  -o cmTC_f55af -rdynamic 
+make[1]: Leaving directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -553,58 +557,58 @@ make[1]: Leaving directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMak
     Feature record: CXX_FEATURE:0cxx_variadic_macros
     Feature record: CXX_FEATURE:0cxx_variadic_templates
 Determining if the include file sys/types.h exists passed with the following output:
-Change Dir: /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
+Change Dir: /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_cd8b7/fast"
-/usr/bin/make -f CMakeFiles/cmTC_cd8b7.dir/build.make CMakeFiles/cmTC_cd8b7.dir/build
-make[1]: Entering directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_cd8b7.dir/CheckIncludeFile.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_cd8b7.dir/CheckIncludeFile.c.o   -c /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
-Linking C executable cmTC_cd8b7
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cd8b7.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_cd8b7.dir/CheckIncludeFile.c.o  -o cmTC_cd8b7 -rdynamic 
-make[1]: Leaving directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_41d0f/fast"
+/usr/bin/make -f CMakeFiles/cmTC_41d0f.dir/build.make CMakeFiles/cmTC_41d0f.dir/build
+make[1]: Entering directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_41d0f.dir/CheckIncludeFile.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_41d0f.dir/CheckIncludeFile.c.o   -c /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_41d0f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_41d0f.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_41d0f.dir/CheckIncludeFile.c.o  -o cmTC_41d0f -rdynamic 
+make[1]: Leaving directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
 
 
 Determining if the include file stdint.h exists passed with the following output:
-Change Dir: /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
+Change Dir: /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_7e2ed/fast"
-/usr/bin/make -f CMakeFiles/cmTC_7e2ed.dir/build.make CMakeFiles/cmTC_7e2ed.dir/build
-make[1]: Entering directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_7e2ed.dir/CheckIncludeFile.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_7e2ed.dir/CheckIncludeFile.c.o   -c /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
-Linking C executable cmTC_7e2ed
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7e2ed.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_7e2ed.dir/CheckIncludeFile.c.o  -o cmTC_7e2ed -rdynamic 
-make[1]: Leaving directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_92a1c/fast"
+/usr/bin/make -f CMakeFiles/cmTC_92a1c.dir/build.make CMakeFiles/cmTC_92a1c.dir/build
+make[1]: Entering directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_92a1c.dir/CheckIncludeFile.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_92a1c.dir/CheckIncludeFile.c.o   -c /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_92a1c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_92a1c.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_92a1c.dir/CheckIncludeFile.c.o  -o cmTC_92a1c -rdynamic 
+make[1]: Leaving directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
 
 
 Determining if the include file stddef.h exists passed with the following output:
-Change Dir: /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
+Change Dir: /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_a36ca/fast"
-/usr/bin/make -f CMakeFiles/cmTC_a36ca.dir/build.make CMakeFiles/cmTC_a36ca.dir/build
-make[1]: Entering directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_a36ca.dir/CheckIncludeFile.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_a36ca.dir/CheckIncludeFile.c.o   -c /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
-Linking C executable cmTC_a36ca
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a36ca.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_a36ca.dir/CheckIncludeFile.c.o  -o cmTC_a36ca -rdynamic 
-make[1]: Leaving directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_145c0/fast"
+/usr/bin/make -f CMakeFiles/cmTC_145c0.dir/build.make CMakeFiles/cmTC_145c0.dir/build
+make[1]: Entering directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_145c0.dir/CheckIncludeFile.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_145c0.dir/CheckIncludeFile.c.o   -c /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_145c0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_145c0.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_145c0.dir/CheckIncludeFile.c.o  -o cmTC_145c0 -rdynamic 
+make[1]: Leaving directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
 
 
 Determining size of unsigned short passed with the following output:
-Change Dir: /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
+Change Dir: /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_0b7be/fast"
-/usr/bin/make -f CMakeFiles/cmTC_0b7be.dir/build.make CMakeFiles/cmTC_0b7be.dir/build
-make[1]: Entering directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_0b7be.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_0b7be.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o   -c /home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CheckTypeSize/CMAKE_SIZEOF_UNSIGNED_SHORT.c
-Linking C executable cmTC_0b7be
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0b7be.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_0b7be.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o  -o cmTC_0b7be -rdynamic 
-make[1]: Leaving directory '/home/vuwij/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_b3702/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b3702.dir/build.make CMakeFiles/cmTC_b3702.dir/build
+make[1]: Entering directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b3702.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_b3702.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o   -c /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CheckTypeSize/CMAKE_SIZEOF_UNSIGNED_SHORT.c
+Linking C executable cmTC_b3702
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b3702.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_b3702.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o  -o cmTC_b3702 -rdynamic 
+make[1]: Leaving directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
 
 

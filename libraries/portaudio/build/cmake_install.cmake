@@ -1,4 +1,4 @@
-# Install script for directory: /home/vuwij/soccerbot/libraries/portaudio
+# Install script for directory: /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -33,13 +33,13 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/vuwij/soccerbot/libraries/portaudio/build/portaudio-2.0.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/portaudio-2.0.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE FILES
-    "/home/vuwij/soccerbot/libraries/portaudio/include/portaudio.h"
-    "/home/vuwij/soccerbot/libraries/portaudio/include/pa_linux_alsa.h"
+    "/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/include/portaudio.h"
+    "/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/include/pa_linux_alsa.h"
     )
 endif()
 
@@ -50,7 +50,7 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libportaudio.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/vuwij/soccerbot/libraries/portaudio/build/libportaudio.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/libportaudio.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libportaudio.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libportaudio.so")
     if(CMAKE_INSTALL_DO_STRIP)
@@ -67,5 +67,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/vuwij/soccerbot/libraries/portaudio/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
