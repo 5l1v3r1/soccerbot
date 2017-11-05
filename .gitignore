@@ -18,6 +18,8 @@
 /soccer/devel/
 /soccer/nbproject/private/*
 
+/soccer/src/primes_tutorial/
+
 # SIMSpark
 /simspark/**/build/**
 
