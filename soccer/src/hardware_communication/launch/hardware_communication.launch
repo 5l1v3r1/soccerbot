@@ -1,0 +1,3 @@
+<launch>
+    <node name="hardware_communication" pkg="hardware_communication" type="hardware_communication" />
+</launch>

@@ -1,0 +1,5 @@
+<launch>
+    <node name="field_ROI" pkg="object_recognition" type="ball_ROI" />
+    <node name="ball_detection" pkg="object_recognition" type="ball_detection" />
+    <node name="ball_candidate_chooser" pkg="object_recognition" type="ball_candidate_chooser" />
+</launch>

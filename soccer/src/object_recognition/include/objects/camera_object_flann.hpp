@@ -1,7 +1,6 @@
 #ifndef CAMERA_OBJECT_FLANN_HPP
 #define CAMERA_OBJECT_FLANN_HPP
 
-#include "constants.hpp"
 #include <std_msgs/Header.h>
 #include <geometry_msgs/PoseWithCovarianceStamped.h>
 #include <cv_bridge/cv_bridge.h>
@@ -12,6 +11,7 @@
 #include "../pose_estimation/Model.h"
 #include "../pose_estimation/RobustMatcher.h"
 #include "../pose_estimation/Mesh.h"
+#include "../../../audio/include/constants.hpp"
 
 
 using namespace std;

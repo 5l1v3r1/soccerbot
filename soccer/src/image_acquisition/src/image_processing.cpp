@@ -12,9 +12,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/core/core.hpp>
 
-#define TEST_INPUT true
-
-static const std::string OPENCV_WINDOW = "Image window";
+static const std::string OPENCV_WINDOW = "Camera 1";
 
 using namespace cv;
 
@@ -23,14 +21,13 @@ class ImageProcessing
     ros::NodeHandle nh;
     image_transport::ImageTransport it;
     image_transport::Subscriber raw_image_sub;
-    image_transport::Publisher raw_image_pub;
     image_transport::Publisher hsv_image_pub;
+    Mat hsv;
+
 public:
     ImageProcessing() : it(nh) {
-        raw_image_pub = it.advertise("/image_converter/output_video", 1);
-        
-        if(TEST_INPUT)
-            raw_image_sub = it.subscribe("/camera_input/image_raw", 1, &ImageProcessing::imageCb, this);
+    	raw_image_sub = it.subscribe("/camera_input/image_raw", 1, &ImageProcessing::findHSV, this);
+        hsv_image_pub = it.advertise("/camera_input/image_hsv", 1);
         
         namedWindow(OPENCV_WINDOW);
     }
@@ -38,25 +35,28 @@ public:
         cv::destroyWindow(OPENCV_WINDOW);
     }
     
-    void imageCb(const sensor_msgs::ImageConstPtr& msg) {
-        cv_bridge::CvImagePtr cv_ptr;
+    void findHSV(const sensor_msgs::ImageConstPtr& msg) {
+        cv_bridge::CvImagePtr img;
+
+        // Copy the input image to a pointer
         try {
-            cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8);
+            img = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8);
         } catch(cv_bridge::Exception& e) {
             ROS_ERROR("cv_bridge exception: %s", e.what());
             return;
         }
-        
-        // Draw an example circle
-        if(cv_ptr->image.rows > 60 && cv_ptr->image.cols > 60)
-            cv::circle(cv_ptr->image, cv::Point(50,50), 10, CV_RGB(255,0,0));
-        
-        cv::imshow(OPENCV_WINDOW, cv_ptr->image);
-        cv::waitKey(3);
-        
-        raw_image_pub.publish(cv_ptr->toImageMsg());
+
+        // Convert to the HSV
+        cv::cvtColor(img->image, hsv, cv::COLOR_BGR2HSV);
+
+        // Create and send off message
+        sensor_msgs::Image hsv_img; // >> message to be sent
+        std_msgs::Header header;
+        header.stamp = ros::Time::now();
+        cv_bridge::CvImage img_bridge = cv_bridge::CvImage(header, sensor_msgs::image_encodings::RGB8, hsv);
+        img_bridge.toImageMsg(hsv_img);
+        hsv_image_pub.publish(hsv_img);
     }
-    
 };
 
 int main(int argc, char **argv) {

@@ -22,6 +22,8 @@
 
 # SIMSpark
 /simspark/**/build/**
+/rcsoccersim/utra_base/Release
+/rcsoccersim/utra_base/Debug
 
 # pkgconfig
 /soccer/devel/lib/pkgconfig/**

@@ -8,9 +8,9 @@ find_package(catkin REQUIRED dynamic_reconfigure std_msgs humanoid_league_msgs r
 catkin_python_setup()
 
 ## Generate dynamic reconfigure parameters in the 'cfg' folder
- generate_dynamic_reconfigure_options(
-   cfg/field_rqt_params.cfg
-)
+# generate_dynamic_reconfigure_options(
+#   cfg/field_rqt_params.cfg
+#)
 
 catkin_package()
 
