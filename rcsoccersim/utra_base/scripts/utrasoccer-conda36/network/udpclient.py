@@ -1,4 +1,5 @@
 import socket
+from network.serializer import _byte_utf8, _unbyte_utf8
 
 class UDPClient:
     ip = ''
@@ -67,7 +68,7 @@ class UDPClient:
         try:
             while True:
                 data, addr = self.sock.recvfrom(self.packSize)
-                ddata = deserialize(data)
+                ddata = _unbyte_utf8(data)
                 if _dict.__contains__(addr):
                     _dict[addr].append(ddata)
                 else:
@@ -77,26 +78,18 @@ class UDPClient:
         return _dict
         
     def send(self,data,addr):
-        edata = serialize(data)
+        edata = _byte_utf8(data)
         try:
             self.sock.sendto(edata,addr)
         except socket.error as e:
             print(e)
             
     def sendToServer(self,data):
-        edata = serialize(data)
+        edata = _byte_utf8(data)serialize
         try:
             self.sock.sendto(edata,(self.sIP,self.sPort))
         except socket.error as e:
             print(e)
-
-def serialize(s):
-    ''' Serializes string to bytes using UTF-8''' 
-    return s.encode()
- 
-def deserialize(s):
-    ''' Decodes bytes to string using UTF-8'''
-    return s.decode()
     
 # Example usage, launch rcssserver then execute code
 #     Wait for some input before showing server response

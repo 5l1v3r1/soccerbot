@@ -1,12 +1,27 @@
-from udpclient import *
+from network.udpclient import *
+import time
 
 
 import random
-myport = random.randint(0,1000)+2000
-c = UDPClient('',myport,'localhost',6000)
+myPort = random.randint(0,1000)+2000
+c = UDPClient('',myPort,'localhost',6000)
+
+TEAM = input('Team: ')
+VERSION = 7
+
+c.sendToServer('(init '+TEAM+' (version '+str(VERSION)+'))')
+
+# get the ack
+l = c.read()
+print(l)
+time.sleep(1)
+
+# ask player to start match
+START = input('Start match? (y/n): ')
+if START=='y':
+    c.sendToServer('??start match??')
+
 while True:
- 
-    msg = input('>> ')
-    c.sendToServer(msg)
-    l = c.read()
-    print(l)
+    print('\n\n\n\n\n\n\n')
+    time.sleep(2)
+    print(c.read())
