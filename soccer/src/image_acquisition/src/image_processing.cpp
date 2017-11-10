@@ -12,6 +12,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/core/core.hpp>
 
+#define DISPLAY_WINDOW false
 static const std::string OPENCV_WINDOW = "Camera 1";
 
 using namespace cv;
@@ -29,10 +30,12 @@ public:
     	raw_image_sub = it.subscribe("/camera_input/image_raw", 1, &ImageProcessing::findHSV, this);
         hsv_image_pub = it.advertise("/camera_input/image_hsv", 1);
         
-        namedWindow(OPENCV_WINDOW);
+        if (DISPLAY_WINDOW)
+        	namedWindow(OPENCV_WINDOW);
     }
     ~ImageProcessing() {
-        cv::destroyWindow(OPENCV_WINDOW);
+    	if (DISPLAY_WINDOW)
+    		cv::destroyWindow(OPENCV_WINDOW);
     }
     
     void findHSV(const sensor_msgs::ImageConstPtr& msg) {
@@ -47,7 +50,13 @@ public:
         }
 
         // Convert to the HSV
-        cv::cvtColor(img->image, hsv, cv::COLOR_BGR2HSV);
+        cvtColor(img->image, hsv, cv::COLOR_BGR2HSV);
+
+        // Display the image window
+        if(DISPLAY_WINDOW) {
+			imshow(OPENCV_WINDOW, img->image);
+			waitKey(1000);
+        }
 
         // Create and send off message
         sensor_msgs::Image hsv_img; // >> message to be sent

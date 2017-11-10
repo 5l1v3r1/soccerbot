@@ -108,4 +108,3 @@ target_link_libraries(visual_odom ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 #############
 ## Testing ##
 #############
-

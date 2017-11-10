@@ -50,7 +50,7 @@ include_directories(
 )
 
 ## Image Acquisition
-add_executable(image_acquisition src/image_acqusition.cpp)
+add_executable(image_acquisition src/image_acquisition.cpp)
 add_dependencies(image_acquisition ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(image_acquisition ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
@@ -66,4 +66,3 @@ target_link_libraries(image_processing ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 #############
 ## Testing ##
 #############
-

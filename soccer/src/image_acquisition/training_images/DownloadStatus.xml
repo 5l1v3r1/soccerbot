@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<DownloadStatus>
-   <synsetTask>
-      <wnid>n07722390</wnid>
-      <completed>0</completed>
-      <version>Uninitialized</version>
-      <storePath>../training_images</storePath>
-   </synsetTask>
-</DownloadStatus>

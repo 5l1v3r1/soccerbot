@@ -1,0 +1,7 @@
+<launch>
+    <param name="image_test" type="bool" value="true" />
+    <param name="image_test_folder" type="string" value="$(find image_acquisition)/images/field" />
+    <param name="video_stream_provider" type="string" value="0" />
+	<include file="$(find image_acquisition)/launch/image_acquisition.launch" >
+	</include>
+</launch>
