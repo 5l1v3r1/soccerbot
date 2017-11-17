@@ -1,0 +1,4 @@
+<launch>
+    <node name="transmitter_node" pkg="audio" type="transmitter_node" />
+    <node name="receiver_node" pkg="audio" type="receiver_node" />
+</launch>

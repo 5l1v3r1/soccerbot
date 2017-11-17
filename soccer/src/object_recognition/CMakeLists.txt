@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   sensor_msgs
   geometry_msgs
+  humanoid_league_msgs
   std_msgs
   image_transport
 )
@@ -49,11 +50,6 @@ include_directories(
   ${OpenCV_INCLUDE_DIRS}
 )
 
-## Ball ROI
-add_executable(ball_ROI src/ball_ROI.cpp)
-add_dependencies(ball_ROI ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(ball_ROI ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
-
 ## Ball Detection
 add_executable(ball_detection src/ball_detection.cpp)
 add_dependencies(ball_detection ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
@@ -64,20 +60,20 @@ add_executable(ball_candidate_chooser src/ball_candidate_chooser.cpp)
 add_dependencies(ball_candidate_chooser ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(ball_candidate_chooser ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
-## Obstacle ROI
-add_executable(obstacle_ROI src/obstacle_ROI.cpp)
-add_dependencies(obstacle_ROI ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(obstacle_ROI ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+## Game ROI
+add_executable(game_ROI src/game_ROI.cpp)
+add_dependencies(game_ROI ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(game_ROI ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+
+## Field ROI
+add_executable(field_ROI src/field_ROI.cpp)
+add_dependencies(field_ROI ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(field_ROI ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
 ## Obstacle Detection
 add_executable(obstacle_detection src/obstacle_detection.cpp)
 add_dependencies(obstacle_detection ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(obstacle_detection ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
-
-## Goal ROI
-add_executable(goal_ROI src/goal_ROI.cpp)
-add_dependencies(goal_ROI ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(goal_ROI ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
 ## Post Detection
 add_executable(post_detection src/post_detection.cpp)
@@ -88,11 +84,6 @@ target_link_libraries(post_detection ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 add_executable(goal_detection src/goal_detection.cpp)
 add_dependencies(goal_detection ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(goal_detection ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
-
-## Line ROI
-add_executable(line_ROI src/line_ROI.cpp)
-add_dependencies(line_ROI ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(line_ROI ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
 ## Line Detection
 add_executable(line_detection src/line_detection.cpp)
@@ -117,4 +108,3 @@ target_link_libraries(visual_odom ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 #############
 ## Testing ##
 #############
-

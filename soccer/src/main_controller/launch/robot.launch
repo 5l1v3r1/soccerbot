@@ -7,4 +7,5 @@
     <include file="$(find behaviour)/launch/behaviour.launch" />
     <include file="$(find path_planning)/launch/path_planning.launch" />
     <include file="$(find team_communication)/launch/team_communication.launch" />
+    <include file="$(find hardware_communication)/launch/hardware_communication.launch" />
 </launch>

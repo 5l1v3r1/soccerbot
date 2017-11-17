@@ -8,8 +8,8 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/calib3d/calib3d.hpp>
 #include <opencv2/highgui/highgui.hpp>
-#include "constants.hpp"
 #include <math.h>
+#include "../../../audio/include/constants.hpp"
 
 using namespace cv;
 using namespace std;

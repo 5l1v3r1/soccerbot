@@ -1,0 +1,7 @@
+<launch>
+	<include file="$(find image_acquisition)/launch/image_acquisition.launch" >
+        <arg name="image_test" value="true" />
+        <arg name="image_test_folder" value="$(find image_acquisition)/images/robot" />
+        <arg name="video_stream_provider" value="0" />
+	</include>
+</launch>
