@@ -90,7 +90,7 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 	nh->getParam("image_test", image_test);
 	if(image_test) {
 		string fileName = "../../../src/object_recognition/test/field/test" + std::to_string(++image_count) + ".png";
-		ROS_ERROR("File is %s", fileName.c_str());
+		ROS_INFO("File tested %s", fileName.c_str());
 		try {
 			imwrite(fileName, img->image);
 		} catch (runtime_error& ex) {
