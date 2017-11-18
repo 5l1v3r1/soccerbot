@@ -51,10 +51,12 @@ find_package(catkin REQUIRED COMPONENTS
 add_message_files(
    FILES
    game_state.msg
-   team_data.msg
    teamInfo.msg
    robotInfo.msg
    game_stateRes.msg
+   local_model.msg
+   team_local_model.msg
+   team_data.msg
 )
 
 ## Generate services in the 'srv' folder
@@ -132,10 +134,15 @@ add_executable(gamecontroller_client src/gamecontroller_client.cpp)
 add_dependencies(gamecontroller_client ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(gamecontroller_client ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
-## Team Communication
-add_executable(team_communication src/team_communication.cpp)
-add_dependencies(team_communication ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(team_communication ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+## Team Communication Client
+add_executable(team_communication_client src/team_communication_client.cpp)
+add_dependencies(team_communication_client ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(team_communication_client ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+
+## Team Communication Server
+add_executable(team_communication_server src/team_communication_server.cpp)
+add_dependencies(team_communication_server ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(team_communication_server ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
 #############
 ## Install ##
