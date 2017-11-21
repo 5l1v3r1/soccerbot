@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(filtering)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -11,10 +11,20 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  geometry_msgs
+  sensor_msgs
+  gazebo_ros  
+  dynamic_reconfigure
 )
 
 ## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
+find_package(gazebo REQUIRED)
+find_package(Boost REQUIRED COMPONENTS system)
+
+generate_dynamic_reconfigure_options(config/soccerbot.cfg)
+
+link_directories(${GAZEBO_LIBRARY_DIRS})
+include_directories(${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS})
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -35,10 +45,13 @@ find_package(catkin REQUIRED COMPONENTS
 ###################################
 
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES filtering
-#  CATKIN_DEPENDS roscpp rospy std_msgs
-#  DEPENDS system_lib
+#  CATKIN_DEPENDS 
+#    sensor_msgs
+#    gazebo_ros 
+#    roscpp
+#    dynamic_reconfigure
+#  DEPENDS 
+#    gazebo
 )
 
 ###########

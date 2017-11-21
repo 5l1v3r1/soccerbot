@@ -1,4 +1,0 @@
-<launch>
-    <node name="path_planning" pkg="path_planning" type="path_planning" />
-    <node name="path_execution" pkg="path_planning" type="path_execution" />
-</launch>
