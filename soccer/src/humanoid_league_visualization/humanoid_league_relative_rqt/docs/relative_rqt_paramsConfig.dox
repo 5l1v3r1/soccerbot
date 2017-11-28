@@ -1,0 +1,9 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~ball" : \b [bool] Ball position min: False, default: True, max: True
+- \b "~goal" : \b [bool] Goal position min: False, default: True, max: True
+- \b "~obstacles" : \b [bool] Obstacle positions min: False, default: True, max: True
+- \b "~lines" : \b [bool] Line positions min: False, default: True, max: True
+

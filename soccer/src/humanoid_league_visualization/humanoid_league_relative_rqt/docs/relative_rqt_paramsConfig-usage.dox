@@ -1,0 +1,10 @@
+\subsubsection usage Usage
+\verbatim
+<node name="humanoid_league_relative_rqt" pkg="humanoid_league_relative_rqt" type="humanoid_league_relative_rqt">
+  <param name="ball" type="bool" value="True" />
+  <param name="goal" type="bool" value="True" />
+  <param name="obstacles" type="bool" value="True" />
+  <param name="lines" type="bool" value="True" />
+</node>
+\endverbatim
+

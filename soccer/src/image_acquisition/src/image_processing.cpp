@@ -12,7 +12,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/core/core.hpp>
 
-#define DISPLAY_WINDOW false
+#define DISPLAY_WINDOW true
 static const std::string OPENCV_WINDOW = "Camera 1";
 
 using namespace cv;
@@ -59,10 +59,10 @@ public:
         }
 
         // Create and send off message
-        sensor_msgs::Image hsv_img; // >> message to be sent
+        sensor_msgs::Image hsv_img;
         std_msgs::Header header;
         header.stamp = ros::Time::now();
-        cv_bridge::CvImage img_bridge = cv_bridge::CvImage(header, sensor_msgs::image_encodings::RGB8, hsv);
+        cv_bridge::CvImage img_bridge = cv_bridge::CvImage(header, sensor_msgs::image_encodings::BGR8, hsv);
         img_bridge.toImageMsg(hsv_img);
         hsv_image_pub.publish(hsv_img);
     }

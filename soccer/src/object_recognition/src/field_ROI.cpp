@@ -15,7 +15,7 @@ using namespace std;
 using namespace ros;
 using namespace cv;
 
-#define DISPLAY_WINDOW true
+#define DISPLAY_WINDOW false
 static const string WINDOW_NAME = "Field ROI";
 
 // Publisher Subscribers
@@ -30,9 +30,9 @@ int image_count = 0;
 
 void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 	Mat mask, mask2, mask3;
-    cv_bridge::CvImagePtr img;
+    cv_bridge::CvImageConstPtr img;
     try {
-        img = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8);
+        img = cv_bridge::toCvShare(msg, "");
     } catch(cv_bridge::Exception& e) {
         ROS_ERROR("cv_bridge exception: %s", e.what());
         return;
@@ -92,7 +92,7 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 		string fileName = "../../../src/object_recognition/test/field/test" + std::to_string(++image_count) + ".png";
 		ROS_INFO("File tested %s", fileName.c_str());
 		try {
-			imwrite(fileName, img->image);
+			imwrite(fileName, mask3);
 		} catch (runtime_error& ex) {
 			ROS_ERROR(ex.what());
 		}

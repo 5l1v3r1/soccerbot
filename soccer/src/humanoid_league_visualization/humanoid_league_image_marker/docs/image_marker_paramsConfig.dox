@@ -1,0 +1,15 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~ball_ROI" : \b [bool] Mark region of interest ball min: False, default: True, max: True
+- \b "~ball_candidates" : \b [bool] Mark ball candidates min: False, default: True, max: True
+- \b "~ball" : \b [bool] Mark ball min: False, default: True, max: True
+- \b "~goal_post_ROI" : \b [bool] Mark region of intereset goal posts min: False, default: True, max: True
+- \b "~goal_posts" : \b [bool] Mark goal posts min: False, default: True, max: True
+- \b "~goals" : \b [bool] Mark goals min: False, default: True, max: True
+- \b "~obstacle_ROI" : \b [bool] Mark region of interest obstacle min: False, default: True, max: True
+- \b "~obstacles" : \b [bool] Mark obstacles min: False, default: True, max: True
+- \b "~line_ROI" : \b [bool] Mark region of intereset for lines min: False, default: True, max: True
+- \b "~lines" : \b [bool] Mark lines min: False, default: True, max: True
+

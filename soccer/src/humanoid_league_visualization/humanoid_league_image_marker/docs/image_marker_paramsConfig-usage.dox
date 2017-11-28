@@ -1,0 +1,16 @@
+\subsubsection usage Usage
+\verbatim
+<node name="humanoid_league_image_marker" pkg="humanoid_league_image_marker" type="humanoid_league_image_marker">
+  <param name="ball_ROI" type="bool" value="True" />
+  <param name="ball_candidates" type="bool" value="True" />
+  <param name="ball" type="bool" value="True" />
+  <param name="goal_post_ROI" type="bool" value="True" />
+  <param name="goal_posts" type="bool" value="True" />
+  <param name="goals" type="bool" value="True" />
+  <param name="obstacle_ROI" type="bool" value="True" />
+  <param name="obstacles" type="bool" value="True" />
+  <param name="line_ROI" type="bool" value="True" />
+  <param name="lines" type="bool" value="True" />
+</node>
+\endverbatim
+
