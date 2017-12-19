@@ -56,7 +56,7 @@ double KDE::get_max(int x) {
 double KDE::get_min(int y) {
 	curr_var = y;
 	default_bandwidth();
-	return (max_map[y] + (extension * default_bandwidth_map[x]));
+	return (max_map[y] + (extension * default_bandwidth_map[y]));
 }
 
 double KDE::pdf(double x) {

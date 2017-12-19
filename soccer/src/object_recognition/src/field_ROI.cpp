@@ -13,6 +13,9 @@
 #include "camera.hpp"
 #include "stdio.h"
 #include "../include/statistics/kde.hpp"
+#include <std_msgs/Int32.h>
+#include <image_acquisition/colorspace.h>
+
 using namespace std;
 using namespace ros;
 using namespace cv;
@@ -26,8 +29,9 @@ image_transport::Subscriber hsv_img;
 Publisher field_coordinates;
 
 // Constants
-const Scalar lower = Scalar(20, 0, 0); //(45, 60, 50);
-const Scalar upper = Scalar(60, 255, 255); //(85, 255, 200);
+Scalar lower = Scalar(45, 100, 50);
+Scalar upper = Scalar(85, 255, 200);
+
 int image_count = 0;
 
 bool sortbyangle(Vec2f a, Vec2f b) {
@@ -139,6 +143,13 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 
 }
 
+void callback_colorspace(const image_acquisition::colorspace::ConstPtr& msg)
+{
+	//update colorspace
+	lower = Scalar(msg->lower_hue, 100, 50);
+	upper = Scalar(msg->upper_hue, 255, 200);
+}
+
 int main(int argc, char **argv) {
 	ros::init(argc, argv, "field_ROI");
 	ros::NodeHandle n;
@@ -148,11 +159,11 @@ int main(int argc, char **argv) {
 	namedWindow(WINDOW_NAME);
 #endif
 
-	image_transport::ImageTransport it(n);
-	hsv_img = it.subscribe("/camera_input/image_hsv", 1, &find_field_area);
-	field_roi = it.advertise("/object_recognition/field_ROI", 1);
-	field_coordinates = n.advertise<sensor_msgs::PointCloud2>(
-			"/object_recognition/field_coordinates", 1);
+    image_transport::ImageTransport it(n);
+    image_transport::Subscriber hsv_img = it.subscribe("/camera_input/image_hsv", 1, &find_field_area);
+    ros::Subscriber colorspace = n.subscribe("/image_acquisition/colorspace", 1, callback_colorspace);
+    field_roi = it.advertise("/object_recognition/field_ROI", 1);
+    field_coordinates = n.advertise<sensor_msgs::PointCloud2>("/object_recognition/field_coordinates", 1);
 
 	ros::spin();
 }
