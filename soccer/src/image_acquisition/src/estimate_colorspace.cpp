@@ -76,7 +76,7 @@ static int index_most_whitedots( Mat img_in )
 	return index;
 }
 
-static void callback_getImage(const sensor_msgs::ImagePtr &msg)
+static void callback_getImage(const sensor_msgs::ImageConstPtr& msg)
 {
 	
 	cv_bridge::CvImagePtr cv_ptr = NULL;
@@ -121,8 +121,8 @@ int main(int argc, char **argv)
     image_transport::ImageTransport it(n);
     
 	//subscribe same topic as field_ROI node
-	ros::Subscriber sub = n.subscribe("/camera_input/image_hsv", 1, callback_getImage);
-	pub = n.advertise<image_acquisition::colorspace>("colorspace", 1);
+	image_transport::Subscriber sub = it.subscribe("/camera_input/image_hsv", 1, &callback_getImage);
+	pub = n.advertise<image_acquisition::colorspace>("/image_acquisition/colorspace", 1);
 
 	if(TEST)
 	{
@@ -131,8 +131,9 @@ int main(int argc, char **argv)
 		int32_t low_hue = 0;
 		int32_t high_hue = 0;
 		image_acquisition::colorspace msg_send;
+		ros::Rate rate(5);
 		
-		img_in = imread("soccer/src/image_acquisition/images/field/5.jpg",CV_LOAD_IMAGE_COLOR);   //change to abs path
+		img_in = imread("/soccerbot/soccer/src/image_acquisition/images/field/5.jpg",CV_LOAD_IMAGE_COLOR);   //change to abs path
 		cvtColor(img_in,img_hsv,COLOR_BGR2HSV);
 		
 		//explore the color range of field
@@ -146,7 +147,19 @@ int main(int argc, char **argv)
 		inRange(img_hsv, lower, higher, masked_img);
 		
 		//save the masked img
-		imwrite("soccer/src/image_acquisition/images/field/test/5_tes_2.jpg",masked_img);     //change to abs path
+		imwrite("/soccerbot/soccer/src/image_acquisition/images/field/test/5_tes_2.jpg",masked_img);     //change to abs path
+		
+		for(int i =0; i < 5 ; i++ )
+		{
+			//publish the values as msg
+			msg_send.upper_hue = high_hue;
+			msg_send.lower_hue = low_hue;
+			pub.publish(msg_send);
+			cout << "sent" << i << ":" << msg_send.upper_hue << "," << msg_send.lower_hue << endl;
+			
+			rate.sleep();
+
+		}
 	}
 	
 	ros::spin();
