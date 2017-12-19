@@ -1,0 +1,4 @@
+<launch>
+	<include file="$(find object_recognition)/launch/roi_test.launch" />
+    <node name="line_detection" pkg="object_recognition" type="line_detection" cwd="node" />
+</launch>

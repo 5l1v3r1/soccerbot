@@ -445,7 +445,6 @@ void Camera::detect_field_lines() {
         
         line(frame_out, Point(l[0], l[1]), Point(l[2], l[3]), Scalar(0, 0, 255), 1, CV_AA);
     }
-
 }
 
 vector<string> Camera::get_image_names(string folder) {

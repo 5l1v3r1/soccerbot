@@ -38,7 +38,7 @@ int main(int argc, char **argv) {
 			frame = imread(image_names[i]);
 			msg = cv_bridge::CvImage(header, "bgr8", frame).toImageMsg();
 			pub.publish(*msg, cam_info, ros::Time::now());
-			ros::Duration(1.0).sleep();
+			ros::Duration(0.1).sleep();
 		}
     }
     else {

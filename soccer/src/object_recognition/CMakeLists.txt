@@ -66,7 +66,7 @@ add_dependencies(game_ROI ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_
 target_link_libraries(game_ROI ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
 ## Field ROI
-add_executable(field_ROI src/field_ROI.cpp)
+add_executable(field_ROI src/field_ROI.cpp src/statistics/kde.cpp)
 add_dependencies(field_ROI ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(field_ROI ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 

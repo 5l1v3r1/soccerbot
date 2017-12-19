@@ -1,6 +1,7 @@
 #include <ros/ros.h>
 #include <ros/console.h>
 #include <image_transport/image_transport.h>
+#include <geometry_msgs/Polygon.h>
 #include <cv_bridge/cv_bridge.h>
 #include <opencv2/core/core.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
@@ -11,38 +12,42 @@
 #include <string>
 #include "camera.hpp"
 #include "stdio.h"
+#include "../include/statistics/kde.hpp"
 using namespace std;
 using namespace ros;
 using namespace cv;
 
-#define DISPLAY_WINDOW false
 static const string WINDOW_NAME = "Field ROI";
 
 // Publisher Subscribers
 ros::NodeHandle* nh;
 image_transport::Publisher field_roi;
+image_transport::Subscriber hsv_img;
 Publisher field_coordinates;
 
 // Constants
-const Scalar lower = Scalar(45, 100, 50);
-const Scalar upper = Scalar(85, 255, 200);
+const Scalar lower = Scalar(20, 0, 0); //(45, 60, 50);
+const Scalar upper = Scalar(60, 255, 255); //(85, 255, 200);
 int image_count = 0;
 
-void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
-	Mat mask, mask2, mask3;
-    cv_bridge::CvImageConstPtr img;
-    try {
-        img = cv_bridge::toCvShare(msg, "");
-    } catch(cv_bridge::Exception& e) {
-        ROS_ERROR("cv_bridge exception: %s", e.what());
-        return;
-    }
+bool sortbyangle(Vec2f a, Vec2f b) {
+	return a[1] < b[1];
+}
 
+void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
+	cv_bridge::CvImageConstPtr img;
+	try {
+		img = cv_bridge::toCvShare(msg, "");
+	} catch (cv_bridge::Exception& e) {
+		ROS_ERROR("cv_bridge exception: %s", e.what());
+		return;
+	}
+
+	Mat mask, mask2, mask3;
 	inRange(img->image, lower, upper, mask);
 
-	int erosion_size = 15;
-	Mat element = getStructuringElement(
-			MORPH_ELLIPSE,
+	int erosion_size = 5;
+	Mat element = getStructuringElement(MORPH_ELLIPSE,
 			Size(2 * erosion_size + 1, 2 * erosion_size + 1),
 			Point(erosion_size, erosion_size));
 
@@ -79,41 +84,75 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 	dilate(mask3, mask3, element);
 	erode(mask3, mask3, element);
 
-	// We are done with the field
-	if (DISPLAY_WINDOW) {
-		imshow(WINDOW_NAME, img->image);
-		waitKey(3);
+	// Find the polygon information
+	Mat edges, cedges;
+	Canny(mask3, edges, 50, 200, 3);
+	cvtColor(edges, cedges, CV_GRAY2BGR);
+
+	vector<Vec2f> lines;
+	HoughLines(edges, lines, 1, CV_PI / 180, 50, 0, 0);
+
+	// Go through the vertical lines and find ones that are not straight
+	sort(lines.begin(), lines.end(), sortbyangle);
+	KDE kde;
+	for (auto it = lines.begin(); it != lines.end(); ++it) {
+		kde.add_data((*it)[1]);
+	}
+	vector<double> pdf;
+	kde.pdf(pdf);
+
+	// Hill climb to find peaks
+	vector<double> peaks;
+	for(auto it = pdf.begin(); it != pdf.end(); ++it) {
+		//TODO finish this part
+	}
+
+
+
+	Mat imtest;
+	cvtColor(img->image, imtest, cv::COLOR_HSV2BGR);
+	for (size_t i = 0; i < lines.size(); i++) {
+		float rho = lines[i][0], theta = lines[i][1];
+		Point pt1, pt2;
+		double a = cos(theta), b = sin(theta);
+		double x0 = a * rho, y0 = b * rho;
+		pt1.x = cvRound(x0 + 1000 * (-b));
+		pt1.y = cvRound(y0 + 1000 * (a));
+		pt2.x = cvRound(x0 - 1000 * (-b));
+		pt2.y = cvRound(y0 - 1000 * (a));
+		line(cedges, pt1, pt2, Scalar(0, 0, 255), 3, CV_AA);
 	}
 
 	// Save information
-    bool image_test;
+	bool image_test;
 	nh->getParam("image_test", image_test);
-	if(image_test) {
-		string fileName = "../../../src/object_recognition/test/field/test" + std::to_string(++image_count) + ".png";
-		ROS_INFO("File tested %s", fileName.c_str());
+	if (image_test) {
+		string fileName = "../../../src/object_recognition/test/field/test"
+				+ std::to_string(++image_count) + ".png";
+		ROS_INFO("File  %s", fileName.c_str());
 		try {
-			imwrite(fileName, mask3);
+			imwrite(fileName, cedges);
 		} catch (runtime_error& ex) {
 			ROS_ERROR(ex.what());
 		}
 	}
 
-	// Send the ROI to the next node
 }
 
 int main(int argc, char **argv) {
-    ros::init(argc, argv, "field_ROI");
-    ros::NodeHandle n;
-    nh = &n;
+	ros::init(argc, argv, "field_ROI");
+	ros::NodeHandle n;
+	nh = &n;
 
 #ifdef DISPLAY_WINDOW
-    namedWindow(WINDOW_NAME);
+	namedWindow(WINDOW_NAME);
 #endif
 
-    image_transport::ImageTransport it(n);
-    image_transport::Subscriber hsv_img = it.subscribe("/camera_input/image_hsv", 1, &find_field_area);
-    field_roi = it.advertise("/object_recognition/field_ROI", 1);
-    field_coordinates = n.advertise<sensor_msgs::PointCloud2>("/object_recognition/field_coordinates", 1);
+	image_transport::ImageTransport it(n);
+	hsv_img = it.subscribe("/camera_input/image_hsv", 1, &find_field_area);
+	field_roi = it.advertise("/object_recognition/field_ROI", 1);
+	field_coordinates = n.advertise<sensor_msgs::PointCloud2>(
+			"/object_recognition/field_coordinates", 1);
 
-    ros::spin();
+	ros::spin();
 }
