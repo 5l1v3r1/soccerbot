@@ -105,6 +105,11 @@ add_executable(visual_odom src/visual_odom.cpp)
 add_dependencies(visual_odom ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(visual_odom ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
+## Calibrate Camera
+add_executable(calibrate_camera src/calibrate_camera.cpp src/settings.cpp)
+add_dependencies(calibrate_camera ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(calibrate_camera ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+
 
 #############
 ## Install ##

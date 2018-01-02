@@ -1,0 +1,3 @@
+<launch>
+    <node name="calibrate_camera" pkg="object_recognition" type="calibrate_camera" cwd="node" />
+</launch>

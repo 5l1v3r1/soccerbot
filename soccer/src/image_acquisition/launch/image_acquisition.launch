@@ -1,4 +1,5 @@
 <launch>
     <node name="image_acquisition" pkg="image_acquisition" type="image_acquisition" />
     <node name="image_processing" pkg="image_acquisition" type="image_processing" />
+    <node name="estimate_colorspace" pkg="image_acquisition" type="estimate_colorspace" />
 </launch>

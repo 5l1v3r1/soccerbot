@@ -78,7 +78,6 @@ add_executable(estimate_colorspace src/estimate_colorspace.cpp)
 add_dependencies(estimate_colorspace ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(estimate_colorspace ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
-
 #############
 ## Install ##
 #############
