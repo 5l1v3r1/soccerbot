@@ -1,0 +1,16 @@
+/*
+ * RobotGoal.h
+ *
+ *  Created on: 2017-12-19
+ *      Author: vuwij
+ */
+
+#ifndef HARDWARE_COMMUNICATION_INCLUDE_HARDWARE_COMMUNICATION_ROBOTGOAL_H_
+#define HARDWARE_COMMUNICATION_INCLUDE_HARDWARE_COMMUNICATION_ROBOTGOAL_H_
+
+typedef struct robotGoal {
+	u_int32_t id;
+	char message[50];
+} RobotGoal;
+
+#endif /* HARDWARE_COMMUNICATION_INCLUDE_HARDWARE_COMMUNICATION_ROBOTGOAL_H_ */

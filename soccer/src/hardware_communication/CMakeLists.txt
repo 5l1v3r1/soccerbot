@@ -58,7 +58,7 @@ include_directories(
 )
 
 ## Localization
-add_executable(hardware_communication src/hardware_communication.cpp)
+add_executable(hardware_communication src/hardware_communication.cpp src/serial.cpp src/robotstate.cpp)
 add_dependencies(hardware_communication ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(hardware_communication ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 

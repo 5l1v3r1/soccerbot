@@ -1,109 +1,167 @@
 #include <ros/ros.h>
+#include <ros/console.h>
 #include <iostream>
 #include <errno.h>
 #include <fcntl.h>
+#include <hardware_communication/robotgoal.h>
+#include <hardware_communication/robotstate.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <termios.h>
 #include <unistd.h>
-#include "../include/hardware_communication/SerialPort.h"
+#include <termio.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/select.h>
+#include "../include/hardware_communication/serial.h"
 
-#define DISPLAY_STRING
+using namespace std;
+using namespace ros;
 
-int set_interface_attribs(int fd, int speed) {
-	struct termios tty;
+int fd;
+RobotState robotState;
+RobotGoal robotGoal, *robotGoalPtr;
 
-	if (tcgetattr(fd, &tty) < 0) {
-		printf("Error from tcgetattr: %s\n", strerror(errno));
-		return -1;
+int open_port(void) {
+	int fd; // file description for the serial port
+
+	fd = open("/dev/ttyACM0", O_RDWR | O_NOCTTY | O_NDELAY);
+
+	if(fd == -1)
+		fd = open("/dev/ttyACM1", O_RDWR | O_NOCTTY | O_NDELAY);
+
+	if(fd == -1)
+		fd = open("/dev/ttyACM2", O_RDWR | O_NOCTTY | O_NDELAY);
+
+
+	if (fd == -1) {
+		ROS_ERROR("open_port: Unable to open /dev/ttyACM0. \n");
+	} else {
+		fcntl(fd, F_SETFL, 0);
+		ROS_ERROR("port is open.\n");
 	}
 
-	cfsetospeed(&tty, (speed_t) speed);
-	cfsetispeed(&tty, (speed_t) speed);
+	return (fd);
+} //open_port
 
-	tty.c_cflag |= (CLOCAL | CREAD); /* ignore modem controls */
-	tty.c_cflag &= ~CSIZE;
-	tty.c_cflag |= CS8; /* 8-bit characters */
-	tty.c_cflag &= ~PARENB; /* no parity bit */
-	tty.c_cflag &= ~CSTOPB; /* only need 1 stop bit */
-	tty.c_cflag &= ~CRTSCTS; /* no hardware flowcontrol */
+int configure_port(int fd)      // configure the port
+		{
+	struct termios port_settings;     // structure to store the port settings in
 
-	/* setup for non-canonical mode */
-	tty.c_iflag &= ~(IGNBRK | BRKINT | PARMRK | ISTRIP | INLCR | IGNCR | ICRNL
-			| IXON);
-	tty.c_lflag &= ~(ECHO | ECHONL | ICANON | ISIG | IEXTEN);
-	tty.c_oflag &= ~OPOST;
+	cfsetispeed(&port_settings, B115200);    // set baud rates
+	cfsetospeed(&port_settings, B115200);
 
-	/* fetch bytes as they become available */
-	tty.c_cc[VMIN] = 1;
-	tty.c_cc[VTIME] = 1;
+	port_settings.c_cflag &= ~PARENB;    // set no parity, stop bits, data bits
+	port_settings.c_cflag &= ~CSTOPB;
+	port_settings.c_cflag &= ~CSIZE;
+	port_settings.c_cflag |= CS8;
 
-	if (tcsetattr(fd, TCSANOW, &tty) != 0) {
-		printf("Error from tcsetattr: %s\n", strerror(errno));
-		return -1;
+	tcsetattr(fd, TCSANOW, &port_settings);    // apply the settings to the port
+	return (fd);
+
+} //configure_port
+
+int query_modem(int fd)   // query modem with an AT command
+		{
+	char n;
+	fd_set rdfs;
+	struct timeval timeout;
+
+	// initialise the timeout structure
+	timeout.tv_sec = 10; // ten second timeout
+	timeout.tv_usec = 0;
+
+	//Create byte array
+	unsigned char send_bytes[] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+			0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+
+	write(fd, send_bytes, 13);  //Send data
+	ROS_ERROR("Wrote the bytes. \n");
+
+	// do the select
+	n = select(fd + 1, &rdfs, NULL, NULL, &timeout);
+
+	// check if an error has occured
+	if (n < 0) {
+		ROS_ERROR("select failed\n");
+	} else if (n == 0) {
+		ROS_ERROR("Timeout!");
+	} else {
+		ROS_ERROR("\nBytes detected on the port!\n");
 	}
+
 	return 0;
-}
 
-void set_mincount(int fd, int mcount) {
-	struct termios tty;
+} //query_modem
 
-	if (tcgetattr(fd, &tty) < 0) {
-		printf("Error tcgetattr: %s\n", strerror(errno));
-		return;
+int main(int argc, char **argv) {
+	ros::init(argc, argv, "hardware_communication");
+	ros::NodeHandle n;
+
+	// Open Port
+	fd = open_port();
+	configure_port(fd);
+	ROS_INFO("Port Opened");
+	tcflush(fd, TCIOFLUSH);
+
+	// Establish Connection via 3 way handshake
+	ROS_ERROR("1 way");
+	while(strcmp(robotState.message, "START")) {
+		robotState = receive_state();
 	}
-
-	tty.c_cc[VMIN] = mcount ? 1 : 0;
-	tty.c_cc[VTIME] = 5; /* half second timer */
-
-	if (tcsetattr(fd, TCSANOW, &tty) < 0)
-		printf("Error tcsetattr: %s\n", strerror(errno));
-}
-
-int main() {
-	char *portname = "/dev/ttyS0";
-	int fd;
-	int wlen;
-
-	fd = open(portname, O_RDWR | O_NOCTTY | O_SYNC);
-	if (fd < 0) {
-		printf("Error opening %s: %s\n", portname, strerror(errno));
-		return -1;
+	ROS_ERROR("2 way");
+	robotGoalPtr = &robotGoal;
+	robotGoal.id = 1;
+	memset(robotGoal.message,0,strlen(robotGoal.message));
+	sprintf(robotGoal.message, "BEGIN");
+	while(strcmp(robotState.message, "ACK")) {
+		ROS_ERROR("Sending Begin");
+		send_goal(robotGoalPtr);
+		ros::Duration(0.5).sleep();
+		ROS_ERROR("Receiving ACK");
+		robotState = receive_state();
+		print_robot_state(robotState);
 	}
-	/*baudrate 115200, 8 bits, no parity, 1 stop bit */
-	set_interface_attribs(fd, B9600);
-	//set_mincount(fd, 0);                /* set to pure timed read */
+	ROS_ERROR("3 way");
+	return 1;
 
-	/* simple output */
-	wlen = write(fd, "Hello!\n", 7);
-	if (wlen != 7) {
-		printf("Error from write: %d, %d\n", wlen, errno);
-	}
-	tcdrain(fd); /* delay for output */
+	// Output
+	fd_set serialfd;
+	timeval t;
+	t.tv_usec = 0;
+	t.tv_sec = 1;
 
-	/* simple noncanonical input */
-	do {
-		unsigned char buf[80];
-		int rdlen;
+	// Output poll
+	robotGoal.id = 1;
+	sprintf(robotGoal.message, "Message 1");
 
-		rdlen = read(fd, buf, sizeof(buf) - 1);
-		if (rdlen > 0) {
-#ifdef DISPLAY_STRING
-			buf[rdlen] = 0;
-			printf("Read %d: \"%s\"\n", rdlen, buf);
-			wlen = write(fd, buf, sizeof(buf));
+	ros::Rate r(1);
+	while (ros::ok()) {
 
-#else /* display hex */
-			unsigned char *p;
-			printf("Read %d:", rdlen);
-			for (p = buf; rdlen-- > 0; p++)
-			printf(" 0x%x", *p);
-			printf("\n");
-#endif
-		} else if (rdlen < 0) {
-			printf("Error from read: %d: %s\n", rdlen, strerror(errno));
+		ROS_ERROR("Send Message %d", robotGoal.id);
+
+		while (!strcmp(robotState.message, "ACK")) {
+			// Send message
+			send_goal(robotGoalPtr);
+
+			// Wait for acknowledgment
+			FD_ZERO(&serialfd);
+			FD_SET(fd, &serialfd);
+			t.tv_sec = 1;
+			int retval = select(fd + 1, &serialfd, NULL, NULL, &t);
+			if (retval == -1) {
+				exit(4);
+			} else if (retval == 0) {
+				ROS_ERROR("Timeout");
+			} else {
+				robotState = receive_state();
+			}
 		}
-		/* repeat read to get full message */
-	} while (1);
+
+		ROS_ERROR("Ack Message %s", robotState.message);
+		robotGoal.id++;
+		if(robotGoal.id > 10) break;
+		r.sleep();
+	}
 }
