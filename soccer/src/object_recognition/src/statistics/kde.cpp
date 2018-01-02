@@ -50,13 +50,13 @@ void KDE::set_kernel_type(int x) {
 double KDE::get_max(int x) {
 	curr_var = x;
 	default_bandwidth();
-	return (min_map[x] - (extension * default_bandwidth_map[x]));
+	return (max_map[x] + (extension * default_bandwidth_map[x]));
 }
 
-double KDE::get_min(int y) {
-	curr_var = y;
+double KDE::get_min(int x) {
+	curr_var = x;
 	default_bandwidth();
-	return (max_map[y] + (extension * default_bandwidth_map[y]));
+	return (min_map[x] - (extension * default_bandwidth_map[x]));
 }
 
 double KDE::pdf(double x) {
@@ -97,7 +97,6 @@ double KDE::pdf(vector<double>& data) {
 		d += a;
 	}
 	return (d / count_map[0]);
-
 }
 
 double KDE::cdf(double x) {

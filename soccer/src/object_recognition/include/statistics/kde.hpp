@@ -58,7 +58,7 @@ private:
 	map<int,double> sum_x_map, sum_x2_map, count_map, min_map, max_map, default_bandwidth_map, bandwidth_map;
 	vector<vector<double> > data_matrix;
 	unsigned int extension;
-	int bandwidth_opt_type, kernel;
+	int bandwidth_opt_type = 1, kernel = 1;
 	unsigned int curr_var;
 
 };

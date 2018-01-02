@@ -12,7 +12,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/core/core.hpp>
 
-#define DISPLAY_WINDOW true
+#define DISPLAY_WINDOW false
 #define IMAGE_ADJUST true
 static const std::string OPENCV_WINDOW = "Camera 1";
 

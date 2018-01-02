@@ -70,6 +70,11 @@ add_executable(field_ROI src/field_ROI.cpp src/statistics/kde.cpp)
 add_dependencies(field_ROI ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(field_ROI ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
+## Obstacle ROI
+add_executable(obstacle_ROI src/obstacle_ROI.cpp)
+add_dependencies(obstacle_ROI ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(obstacle_ROI ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+
 ## Obstacle Detection
 add_executable(obstacle_detection src/obstacle_detection.cpp)
 add_dependencies(obstacle_detection ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})

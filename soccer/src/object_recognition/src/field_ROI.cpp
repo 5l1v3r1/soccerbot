@@ -20,8 +20,6 @@ using namespace std;
 using namespace ros;
 using namespace cv;
 
-static const string WINDOW_NAME = "Field ROI";
-
 // Publisher Subscribers
 ros::NodeHandle* nh;
 image_transport::Publisher field_roi;
@@ -29,8 +27,8 @@ image_transport::Subscriber hsv_img;
 Publisher field_coordinates;
 
 // Constants
-Scalar lower = Scalar(45, 100, 50);
-Scalar upper = Scalar(85, 255, 200);
+Scalar lower = Scalar(25, 0, 0);
+Scalar upper = Scalar(80, 255, 200);
 
 int image_count = 0;
 
@@ -50,7 +48,7 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 	Mat mask, mask2, mask3;
 	inRange(img->image, lower, upper, mask);
 
-	int erosion_size = 5;
+	int erosion_size = 7;
 	Mat element = getStructuringElement(MORPH_ELLIPSE,
 			Size(2 * erosion_size + 1, 2 * erosion_size + 1),
 			Point(erosion_size, erosion_size));
@@ -96,35 +94,66 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 	vector<Vec2f> lines;
 	HoughLines(edges, lines, 1, CV_PI / 180, 50, 0, 0);
 
-	// Go through the vertical lines and find ones that are not straight
-	sort(lines.begin(), lines.end(), sortbyangle);
-	KDE kde;
-	for (auto it = lines.begin(); it != lines.end(); ++it) {
-		kde.add_data((*it)[1]);
-	}
-	vector<double> pdf;
-	kde.pdf(pdf);
+	if(lines.size() != 0) {
 
-	// Hill climb to find peaks
-	vector<double> peaks;
-	for(auto it = pdf.begin(); it != pdf.end(); ++it) {
-		//TODO finish this part
-	}
+		// Go through the vertical lines and find ones that are not straight
+		sort(lines.begin(), lines.end(), sortbyangle);
+		KDE kde;
+		kde.set_kernel_type(1);
+		kde.set_bandwidth_opt_type(1);
+		ROS_ERROR("Img %d", image_count);
 
+		for (auto it = lines.begin(); it != lines.end(); ++it) {
+			vector<double> angles;
+			angles.push_back(it->val[1]);
+			kde.add_data(angles);
+		}
 
+		vector<double> pdf;
 
-	Mat imtest;
-	cvtColor(img->image, imtest, cv::COLOR_HSV2BGR);
-	for (size_t i = 0; i < lines.size(); i++) {
-		float rho = lines[i][0], theta = lines[i][1];
-		Point pt1, pt2;
-		double a = cos(theta), b = sin(theta);
-		double x0 = a * rho, y0 = b * rho;
-		pt1.x = cvRound(x0 + 1000 * (-b));
-		pt1.y = cvRound(y0 + 1000 * (a));
-		pt2.x = cvRound(x0 - 1000 * (-b));
-		pt2.y = cvRound(y0 - 1000 * (a));
-		line(cedges, pt1, pt2, Scalar(0, 0, 255), 3, CV_AA);
+		double min_x = kde.get_min(0);
+		double max_x = kde.get_max(0);
+		double x_increment = (max_x-min_x)/1000.0;
+
+		cout << "# bandwidth var 1: " << kde.get_bandwidth(0) << endl;
+		vector<Vec2f> peaks;
+		double currentpeak = 0;
+		bool up = true;
+		for(double x = min_x; x <= max_x; x += x_increment) {
+			float p = kde.pdf(x);
+			if(p < currentpeak && up == true) {
+				float rho = 0;
+				float mindist = 10000000;
+				for(auto it = lines.begin(); it != lines.end(); ++it) {
+					float closeness = abs(it->val[1] - x);
+					if(closeness < mindist) {
+						mindist = closeness;
+						rho = it->val[0];
+					}
+				}
+				Vec2f vec(rho, x);
+				peaks.push_back(vec);
+
+				up = false;
+			}
+			if(p > currentpeak)
+				up = true;
+			currentpeak = p;
+		}
+
+		Mat imtest;
+		cvtColor(img->image, imtest, cv::COLOR_HSV2BGR);
+		for (size_t i = 0; i < peaks.size(); i++) {
+			float rho = peaks[i][0], theta = peaks[i][1];
+			Point pt1, pt2;
+			double a = cos(theta), b = sin(theta);
+			double x0 = a * rho, y0 = b * rho;
+			pt1.x = cvRound(x0 + 1000 * (-b));
+			pt1.y = cvRound(y0 + 1000 * (a));
+			pt2.x = cvRound(x0 - 1000 * (-b));
+			pt2.y = cvRound(y0 - 1000 * (a));
+			line(cedges, pt1, pt2, Scalar(0, 0, 255), 3, CV_AA);
+		}
 	}
 
 	// Save information
@@ -133,14 +162,19 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 	if (image_test) {
 		string fileName = "../../../src/object_recognition/test/field/test"
 				+ std::to_string(++image_count) + ".png";
+		string fileNameOriginal = "../../../src/object_recognition/test/field/"
+						+ std::to_string(image_count) + ".png";
 		ROS_INFO("File  %s", fileName.c_str());
 		try {
 			imwrite(fileName, cedges);
+			imwrite(fileNameOriginal, img->image);
 		} catch (runtime_error& ex) {
 			ROS_ERROR(ex.what());
 		}
 	}
 
+	// Publish field coordinates
+	sensor_msgs::PointCloud2 pc;
 }
 
 void callback_colorspace(const image_acquisition::colorspace::ConstPtr& msg)
@@ -148,6 +182,7 @@ void callback_colorspace(const image_acquisition::colorspace::ConstPtr& msg)
 	//update colorspace
 	lower = Scalar(msg->lower_hue, 100, 50);
 	upper = Scalar(msg->upper_hue, 255, 200);
+	ROS_INFO("Updated Colorspace %d %d", msg->lower_hue, msg->upper_hue);
 }
 
 int main(int argc, char **argv) {

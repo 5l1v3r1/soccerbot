@@ -34,12 +34,13 @@ int main(int argc, char **argv) {
 		std_msgs::Header header;
 		header.frame_id = 1;
 		for (size_t i = 0; i < image_names.size(); ++i) {
-			ROS_INFO("Testing Image %s", image_names[i]);
+			ROS_INFO("Testing Image %s", image_names[i].c_str());
 			frame = imread(image_names[i]);
 			msg = cv_bridge::CvImage(header, "bgr8", frame).toImageMsg();
 			pub.publish(*msg, cam_info, ros::Time::now());
 			ros::Duration(0.1).sleep();
 		}
+		return EXIT_SUCCESS;
     }
     else {
     	// Open the camera
