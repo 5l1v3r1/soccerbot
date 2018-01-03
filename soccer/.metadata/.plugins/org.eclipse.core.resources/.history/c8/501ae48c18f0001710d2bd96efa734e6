@@ -1,3 +1,0 @@
-<launch>
-   <node name="single_image_test" pkg="darknet_ros" type="single_image_test" output="screen" />
-</launch>
