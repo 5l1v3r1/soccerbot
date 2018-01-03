@@ -175,7 +175,6 @@ struct layer{
     float coord_scale;
     float object_scale;
     float noobject_scale;
-    float mask_scale;
     float class_scale;
     int bias_match;
     int random;
@@ -509,7 +508,7 @@ typedef struct{
 } data;
 
 typedef enum {
-    CLASSIFICATION_DATA, DETECTION_DATA, CAPTCHA_DATA, REGION_DATA, IMAGE_DATA, COMPARE_DATA, WRITING_DATA, SWAG_DATA, TAG_DATA, OLD_CLASSIFICATION_DATA, STUDY_DATA, DET_DATA, SUPER_DATA, LETTERBOX_DATA, REGRESSION_DATA, SEGMENTATION_DATA, INSTANCE_DATA
+    CLASSIFICATION_DATA, DETECTION_DATA, CAPTCHA_DATA, REGION_DATA, IMAGE_DATA, COMPARE_DATA, WRITING_DATA, SWAG_DATA, TAG_DATA, OLD_CLASSIFICATION_DATA, STUDY_DATA, DET_DATA, SUPER_DATA, LETTERBOX_DATA, REGRESSION_DATA, SEGMENTATION_DATA
 } data_type;
 
 typedef struct load_args{
@@ -531,7 +530,6 @@ typedef struct load_args{
     int background;
     int scale;
     int center;
-    int coords;
     float jitter;
     float angle;
     float aspect;
@@ -644,10 +642,9 @@ void save_weights_upto(network net, char *filename, int cutoff);
 void load_weights_upto(network *net, char *filename, int start, int cutoff);
 
 void zero_objectness(layer l);
-void get_region_boxes(layer l, int w, int h, int netw, int neth, float thresh, float **probs, box *boxes, float **masks, int only_objectness, int *map, float tree_thresh, int relative);
+void get_region_boxes(layer l, int w, int h, int netw, int neth, float thresh, float **probs, box *boxes, int only_objectness, int *map, float tree_thresh, int relative);
 void free_network(network net);
 void set_batch_network(network *net, int b);
-void set_temp_network(network net, float t);
 image load_image(char *filename, int w, int h, int c);
 image load_image_color(char *filename, int w, int h);
 image make_image(int w, int h, int c);
@@ -680,15 +677,13 @@ void random_distort_image(image im, float hue, float saturation, float exposure)
 void fill_image(image m, float s);
 image grayscale_image(image im);
 void rotate_image_cw(image im, int times);
-double what_time_is_it_now();
 image rotate_image(image m, float rad);
 void visualize_network(network net);
 float box_iou(box a, box b);
 void do_nms(box *boxes, float **probs, int total, int classes, float thresh);
 data load_all_cifar10();
 box_label *read_boxes(char *filename, int *n);
-box float_to_box(float *f, int stride);
-void draw_detections(image im, int num, float thresh, box *boxes, float **probs, float **masks, char **names, image **alphabet, int classes);
+void draw_detections(image im, int num, float thresh, box *boxes, float **probs, char **names, image **labels, int classes);
 
 matrix network_predict_data(network net, data test);
 image **load_alphabet();
@@ -699,9 +694,6 @@ float *network_predict_p(network *net, float *input);
 int network_width(network *net);
 int network_height(network *net);
 float *network_predict_image(network *net, image im);
-
-void reset_network_state(network net, int b);
-void reset_network_state(network net, int b);
 
 char **get_labels(char *filename);
 void do_nms_sort(box *boxes, float **probs, int total, int classes, float thresh);
@@ -717,7 +709,6 @@ image get_image_from_stream(CvCapture *cap);
 void free_image(image m);
 float train_network(network net, data d);
 pthread_t load_data_in_thread(load_args args);
-void load_data_blocking(load_args args);
 list *get_paths(char *filename);
 void hierarchy_predictions(float *predictions, int n, tree *hier, int only_leaves, int stride);
 void change_leaves(tree *t, char *leaf_list);
