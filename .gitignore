@@ -1,5 +1,5 @@
 # All hidden folders and files
-.*
+/.*
 !/.gitignore
 !/.gitconfig
 !/.gitmodules

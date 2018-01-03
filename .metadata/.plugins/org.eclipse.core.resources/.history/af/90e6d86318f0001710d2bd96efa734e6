@@ -1,0 +1,4 @@
+<launch>
+   <include file="$(find image_acqusition)/launch/usb_cam.launch"/>
+   <node pkg="darknet_ros" type="yolo_ros" name="yolo_ros"/>
+</launch>

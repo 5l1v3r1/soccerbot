@@ -1,0 +1,5 @@
+<launch>
+	<include file="$(find image_acquisition)/launch/image_acquisition_field.launch" />
+    <node name="field_ROI" pkg="object_recognition" type="field_ROI" cwd="node" launch-prefix="/usr/bin/gdbserver localhost:10000" />
+    <node name="game_ROI" pkg="object_recognition" type="game_ROI" cwd="node" />	
+</launch>
