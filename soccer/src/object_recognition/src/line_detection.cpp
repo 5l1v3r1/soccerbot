@@ -11,6 +11,7 @@
 #include <string>
 #include <sensor_msgs/PointCloud2.h>
 #include <humanoid_league_msgs/LineInformationInImage.h>
+#include "vectormath.hpp"
 
 using namespace std;
 using namespace ros;
@@ -20,9 +21,15 @@ ros::NodeHandle* nh;
 
 Publisher line_points_in_image;
 Publisher lines_in_image;
+image_transport::Subscriber field_img;
 int image_count = 0;
 
+Scalar lower = Scalar(0, 0, 165);
+Scalar upper = Scalar(255, 105, 255);
+
 void detect_lines(const sensor_msgs::ImageConstPtr& msg) {
+	ROS_ERROR("Line Area");
+
 	cv_bridge::CvImageConstPtr img;
 	try {
 		img = cv_bridge::toCvShare(msg, "");
@@ -31,59 +38,64 @@ void detect_lines(const sensor_msgs::ImageConstPtr& msg) {
 		return;
 	}
 
-	Mat mask, mask2, mask3;
-	const Scalar lower = Scalar(0, 0, 190);
-	const Scalar upper = Scalar(255, 100, 255);
+	Mat mask, mask2;
+
 	cv::inRange(img->image, lower, upper, mask);
 
-	Canny(mask, mask2, 50, 150, 3);
+	Canny(img->image, mask2, 80, 250, 3);
 
-	int erosion_size = 1;
-	Mat element = getStructuringElement(cv::MORPH_ELLIPSE,
-			Size(2 * erosion_size + 1, 2 * erosion_size + 1),
-			Point(erosion_size, erosion_size));
+	Mat final = img->image.clone();
 
-	cv::dilate(mask2, mask3, element);
+	vector<Vec2f> lines;
+	HoughLines(mask2, lines, 1, CV_PI / 180, 160, 0, 0);
 
-	vector<Vec4i> lines;
-	Vec4i longest;
-	int longestLength = 0;
-	HoughLinesP(mask3, lines, 1, CV_PI / 180 / 4, 60, 40, 2);
-	for (size_t i = 0; i < lines.size(); i++) {
-		Vec4i l = lines[i];
+	vector<Vec2f> fieldlines = filterUnparallelRepeats(lines);
 
-		line(mask, Point(l[0], l[1]), Point(l[2], l[3]), Scalar(0, 0, 255), 1,
-				CV_AA);
+	drawLinesOnImg(final, fieldlines, Scalar(255,0,0));
+//	drawLinesOnImg(final, lines, Scalar(0,255,0));
+
+	// Extract the intersections of the line
+	vector<Point2f> intersections;
+	for(int i = 0; i < fieldlines.size(); ++i) {
+		for(int j = 0; j < fieldlines.size(); ++j) {
+			if(abs(fieldlines[i][1] - fieldlines[j][1]) < CV_PI / 12) continue;
+
+			if(i == j) continue;
+			Point2f intersect = intersection(fieldlines[i], fieldlines[j]);
+			intersections.push_back(intersect);
+			circle(final, intersect, 5, Scalar(0,255,0));
+		}
 	}
 
+	// Save information
 	bool image_test;
 	nh->getParam("image_test", image_test);
 	if (image_test) {
 		string fileName = "../../../src/object_recognition/test/lines/test"
 				+ std::to_string(++image_count) + ".png";
-		ROS_INFO("File tested %s", fileName.c_str());
+		string fileNameOriginal = "../../../src/object_recognition/test/lines/"
+				+ std::to_string(image_count) + ".png";
+		ROS_INFO("File  %s", fileName.c_str());
 		try {
-			imwrite(fileName, mask3);
+			imwrite(fileName, final);
+			imwrite(fileNameOriginal, img->image);
 		} catch (runtime_error& ex) {
 			ROS_ERROR(ex.what());
 		}
 	}
-
 }
 
 int main(int argc, char **argv) {
 
 	ros::init(argc, argv, "line_detection");
 	ros::NodeHandle n;
-    nh = &n;
+	nh = &n;
 
 	image_transport::ImageTransport it(n);
-	image_transport::Subscriber hsv_img = it.subscribe(
-			"/object_recognition/field_ROI", 1, &detect_lines);
-	line_points_in_image = n.advertise<sensor_msgs::PointCloud2>(
-			"/object_recognition/line_points_in_image", 1);
-	lines_in_image = n.advertise<humanoid_league_msgs::LineInformationInImage>(
-			"/object_recognition/lines_in_image", 1);
+	field_img = it.subscribe("/object_recognition/field_area", 1, &detect_lines);
+
+	line_points_in_image = n.advertise<sensor_msgs::PointCloud2>("/object_recognition/line_points_in_image", 1);
+	lines_in_image = n.advertise<humanoid_league_msgs::LineInformationInImage>("/object_recognition/lines_in_image", 1);
 
 	ros::spin();
 }

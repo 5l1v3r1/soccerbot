@@ -8,7 +8,6 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <iostream>
 #include <vector>
-#include "settings.hpp"
 #include "objects/ball.hpp"
 #include "objects/field.hpp"
 #include "objects/net.hpp"
@@ -37,10 +36,8 @@ public:
     Camera(string path);
     ~Camera();
     std::string path;
-    Settings settings;
     
     void initialize();
-    void calibrateCamera();
     void process_intermediates();
     void loop();
     

@@ -15,6 +15,7 @@ find_package(catkin REQUIRED COMPONENTS
   humanoid_league_msgs
   std_msgs
   image_transport
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -23,6 +24,17 @@ find_package(catkin REQUIRED COMPONENTS
 ################################################
 ## Declare ROS messages, services and actions ##
 ################################################
+
+add_message_files(
+    FILES
+    ROI.msg
+)
+
+generate_messages(
+   DEPENDENCIES
+   std_msgs
+   geometry_msgs
+ )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -33,9 +45,8 @@ find_package(catkin REQUIRED COMPONENTS
 ###################################
 
 catkin_package(
-#  INCLUDE_DIRS include
-#  CATKIN_DEPENDS roscpp std_msgs
-#  DEPENDS system_lib
+  INCLUDE_DIRS include
+  CATKIN_DEPENDS roscpp std_msgs geometry_msgs
 )
 
 ###########
@@ -66,7 +77,7 @@ add_dependencies(game_ROI ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_
 target_link_libraries(game_ROI ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
 ## Field ROI
-add_executable(field_ROI src/field_ROI.cpp src/statistics/kde.cpp)
+add_executable(field_ROI src/field_ROI.cpp src/statistics/kde.cpp src/vectormath.cpp)
 add_dependencies(field_ROI ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(field_ROI ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
@@ -81,7 +92,7 @@ add_dependencies(obstacle_detection ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin
 target_link_libraries(obstacle_detection ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
 ## Post Detection
-add_executable(post_detection src/post_detection.cpp)
+add_executable(post_detection src/post_detection.cpp src/statistics/kde.cpp src/vectormath.cpp)
 add_dependencies(post_detection ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(post_detection ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
@@ -91,7 +102,7 @@ add_dependencies(goal_detection ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXP
 target_link_libraries(goal_detection ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
 ## Line Detection
-add_executable(line_detection src/line_detection.cpp)
+add_executable(line_detection src/line_detection.cpp src/statistics/kde.cpp src/vectormath.cpp)
 add_dependencies(line_detection ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(line_detection ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
@@ -104,12 +115,6 @@ target_link_libraries(visual_compass ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 add_executable(visual_odom src/visual_odom.cpp)
 add_dependencies(visual_odom ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(visual_odom ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
-
-## Calibrate Camera
-add_executable(calibrate_camera src/calibrate_camera.cpp src/settings.cpp)
-add_dependencies(calibrate_camera ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(calibrate_camera ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
-
 
 #############
 ## Install ##

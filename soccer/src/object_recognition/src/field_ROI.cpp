@@ -15,6 +15,8 @@
 #include "../include/statistics/kde.hpp"
 #include <std_msgs/Int32.h>
 #include <image_acquisition/colorspace.h>
+#include <vectormath.hpp>
+#include <object_recognition/ROI.h>
 
 using namespace std;
 using namespace ros;
@@ -22,9 +24,9 @@ using namespace cv;
 
 // Publisher Subscribers
 ros::NodeHandle* nh;
-image_transport::Publisher field_roi;
+ros::Publisher field_roi;
+image_transport::Publisher field_area_img;
 image_transport::Subscriber hsv_img;
-Publisher field_coordinates;
 
 // Constants
 Scalar lower = Scalar(25, 0, 0);
@@ -32,11 +34,8 @@ Scalar upper = Scalar(80, 255, 200);
 
 int image_count = 0;
 
-bool sortbyangle(Vec2f a, Vec2f b) {
-	return a[1] < b[1];
-}
-
 void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
+	ROS_ERROR("Field Area");
 	cv_bridge::CvImageConstPtr img;
 	try {
 		img = cv_bridge::toCvShare(msg, "");
@@ -94,52 +93,12 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 	vector<Vec2f> lines;
 	HoughLines(edges, lines, 1, CV_PI / 180, 50, 0, 0);
 
+
+	Mat field_area_mat = img->image.clone();
 	if(lines.size() != 0) {
 
 		// Go through the vertical lines and find ones that are not straight
-		sort(lines.begin(), lines.end(), sortbyangle);
-		KDE kde;
-		kde.set_kernel_type(1);
-		kde.set_bandwidth_opt_type(1);
-		ROS_ERROR("Img %d", image_count);
-
-		for (auto it = lines.begin(); it != lines.end(); ++it) {
-			vector<double> angles;
-			angles.push_back(it->val[1]);
-			kde.add_data(angles);
-		}
-
-		vector<double> pdf;
-
-		double min_x = kde.get_min(0);
-		double max_x = kde.get_max(0);
-		double x_increment = (max_x-min_x)/1000.0;
-
-		cout << "# bandwidth var 1: " << kde.get_bandwidth(0) << endl;
-		vector<Vec2f> peaks;
-		double currentpeak = 0;
-		bool up = true;
-		for(double x = min_x; x <= max_x; x += x_increment) {
-			float p = kde.pdf(x);
-			if(p < currentpeak && up == true) {
-				float rho = 0;
-				float mindist = 10000000;
-				for(auto it = lines.begin(); it != lines.end(); ++it) {
-					float closeness = abs(it->val[1] - x);
-					if(closeness < mindist) {
-						mindist = closeness;
-						rho = it->val[0];
-					}
-				}
-				Vec2f vec(rho, x);
-				peaks.push_back(vec);
-
-				up = false;
-			}
-			if(p > currentpeak)
-				up = true;
-			currentpeak = p;
-		}
+		vector<Vec2f> peaks = filterRepeats(lines);
 
 		Mat imtest;
 		cvtColor(img->image, imtest, cv::COLOR_HSV2BGR);
@@ -154,6 +113,79 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 			pt2.y = cvRound(y0 - 1000 * (a));
 			line(cedges, pt1, pt2, Scalar(0, 0, 255), 3, CV_AA);
 		}
+
+		// Extract the intersections of the line
+		vector<Point2f> intersections;
+		for(int i = 0; i < peaks.size() - 1; ++i) {
+			Point2f intersect = intersection(peaks[i], peaks[i+1]);
+//			ROS_ERROR("%f %f", intersect.x, intersect.y);
+			intersections.push_back(intersect);
+			circle(cedges, intersect, 5, Scalar(0,255,0));
+		}
+		ROS_ERROR("%d %d", img->image.size().height, img->image.size().width);
+		Point2f right_int = rightScreenIntersection(peaks[peaks.size() - 1], img->image.size());
+		ROS_ERROR("%f %f", right_int.x, right_int.y);
+		circle(cedges, right_int, 5, Scalar(0,255,0));
+
+		Point2f left_int = leftScreenIntersection(peaks[0], img->image.size());
+		ROS_ERROR("%f %f", left_int.x, left_int.y);
+		circle(cedges, left_int, 5, Scalar(0,255,0));
+
+		vector<Point2f> points, pointsinv;
+		points.push_back(left_int);
+		pointsinv.push_back(left_int);
+		for (auto it = intersections.begin(); it != intersections.end(); ++it) {
+			points.push_back((*it));
+			pointsinv.push_back((*it));
+		}
+		points.push_back(right_int);
+		pointsinv.push_back(right_int);
+
+		Point2f bottomleft, bottomright, topleft, topright;
+		bottomleft.x = 0;
+		bottomleft.y = 0;
+		bottomright.x = img->image.size().width;
+		bottomright.y = 0;
+		topleft.x = 0;
+		topleft.y = img->image.size().height;
+		topright.x = img->image.size().width;
+		topright.y = img->image.size().height;
+
+		points.push_back(topright);
+		points.push_back(topleft);
+
+		pointsinv.push_back(bottomright);
+		pointsinv.push_back(bottomleft);
+
+		// Publish ROI
+		object_recognition::ROI roi;
+		roi.name = "Field ROI";
+
+		for(auto it = points.begin(); it != points.end(); ++it) {
+			geometry_msgs::Point p;
+			p.x = it->x;
+			p.y = it->y;
+			roi.points.push_back(p);
+		}
+		field_roi.publish(roi);
+
+		// Publish filtered area
+		vector<Point> pointinv2;
+		for(auto it = pointsinv.begin(); it != pointsinv.end(); ++it) {
+			pointinv2.push_back((Point) (*it));
+		}
+
+		Point* pointinvdata = pointinv2.data();
+		const Point* ppt[1] = { pointinvdata };
+		int npt[] = { (int) points.size() };
+
+		fillPoly( field_area_mat, ppt, npt, 1, Scalar( 0, 0, 0 ), 8 );
+		std_msgs::Header header;
+		sensor_msgs::ImagePtr msg = cv_bridge::CvImage(header, "bgr8", field_area_mat).toImageMsg();
+		field_area_img.publish(msg);
+	}
+	else {
+		field_area_img.publish(msg);
 	}
 
 	// Save information
@@ -164,9 +196,9 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 				+ std::to_string(++image_count) + ".png";
 		string fileNameOriginal = "../../../src/object_recognition/test/field/"
 						+ std::to_string(image_count) + ".png";
-		ROS_INFO("File  %s", fileName.c_str());
+		ROS_ERROR("File  %s", fileName.c_str());
 		try {
-			imwrite(fileName, cedges);
+			imwrite(fileName, mask);
 			imwrite(fileNameOriginal, img->image);
 		} catch (runtime_error& ex) {
 			ROS_ERROR(ex.what());
@@ -190,15 +222,11 @@ int main(int argc, char **argv) {
 	ros::NodeHandle n;
 	nh = &n;
 
-#ifdef DISPLAY_WINDOW
-	namedWindow(WINDOW_NAME);
-#endif
-
     image_transport::ImageTransport it(n);
     image_transport::Subscriber hsv_img = it.subscribe("/camera_input/image_hsv", 1, &find_field_area);
     ros::Subscriber colorspace = n.subscribe("/image_acquisition/colorspace", 1, callback_colorspace);
-    field_roi = it.advertise("/object_recognition/field_ROI", 1);
-    field_coordinates = n.advertise<sensor_msgs::PointCloud2>("/object_recognition/field_coordinates", 1);
+    field_roi = n.advertise<object_recognition::ROI>("/object_recognition/field_ROI", 1);
+    field_area_img = it.advertise("/object_recognition/field_area", 1);
 
 	ros::spin();
 }
