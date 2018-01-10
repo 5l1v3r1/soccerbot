@@ -38,16 +38,13 @@ void detect_lines(const sensor_msgs::ImageConstPtr& msg) {
 		return;
 	}
 
-	Mat mask, mask2;
-
-	cv::inRange(img->image, lower, upper, mask);
-
-	Canny(img->image, mask2, 80, 250, 3);
+	Mat mask;
+	Canny(img->image, mask, 80, 250, 3);
 
 	Mat final = img->image.clone();
 
 	vector<Vec2f> lines;
-	HoughLines(mask2, lines, 1, CV_PI / 180, 160, 0, 0);
+	HoughLines(mask, lines, 1, CV_PI / 180, 160, 0, 0);
 
 	vector<Vec2f> fieldlines = filterUnparallelRepeats(lines);
 
@@ -58,7 +55,7 @@ void detect_lines(const sensor_msgs::ImageConstPtr& msg) {
 	vector<Point2f> intersections;
 	for(int i = 0; i < fieldlines.size(); ++i) {
 		for(int j = 0; j < fieldlines.size(); ++j) {
-			if(abs(fieldlines[i][1] - fieldlines[j][1]) < CV_PI / 12) continue;
+			if(abs(fieldlines[i][1] - fieldlines[j][1]) < CV_PI / 24) continue;
 
 			if(i == j) continue;
 			Point2f intersect = intersection(fieldlines[i], fieldlines[j]);

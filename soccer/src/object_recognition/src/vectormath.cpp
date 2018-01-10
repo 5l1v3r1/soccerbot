@@ -112,6 +112,7 @@ bool isVerticalLine(Vec2f vec, Size2f imgSize) {
 			return true;
 		}
 	}
+
 	return false;
 }
 

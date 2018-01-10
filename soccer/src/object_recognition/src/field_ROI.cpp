@@ -47,7 +47,7 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 	Mat mask, mask2, mask3;
 	inRange(img->image, lower, upper, mask);
 
-	int erosion_size = 5;
+	int erosion_size = 7;
 	Mat element = getStructuringElement(MORPH_ELLIPSE,
 			Size(2 * erosion_size + 1, 2 * erosion_size + 1),
 			Point(erosion_size, erosion_size));
@@ -59,13 +59,13 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 
 
 	// Dilate and Erode for small parts
-	bitwise_not(mask, mask);
 	dilate(mask, mask2, element);
 	erode(mask2, mask2, element);
-
 	bitwise_not(mask2, mask3);
+
 	dilate(mask3, mask3, element);
 	erode(mask3, mask3, element);
+	bitwise_not(mask3, mask3);
 
 
 	double minarea = ((double) (640 * 480) / 30);
@@ -98,7 +98,7 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 	cvtColor(edges, cedges, CV_GRAY2BGR);
 
 	vector<Vec2f> lines;
-	HoughLines(edges, lines, 1, CV_PI / 180, 50, 0, 0);
+	HoughLines(edges, lines, 1, CV_PI / 180, 50, 0, 0, 0, CV_PI);
 
 
 	Mat field_area_mat = img->image.clone();
@@ -108,14 +108,17 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 		vector<Vec2f> valid_lines;
 		for(auto it = lines.begin(); it != lines.end(); ++it) {
 			if(isVerticalLine(*it, img->image.size())) continue;
-			if((*it)[1] < - CV_PI / 4) continue;
+			if((*it)[0] > img->image.size().height) continue;
 			valid_lines.push_back(*it);
 		}
 		vector<Vec2f> peaks = filterRepeats(valid_lines);
+		for(auto it = peaks.begin(); it < peaks.end(); ++it) {
+			ROS_INFO("%d %f %f",image_count, (*it)[0], (*it)[1]);
+		}
 
 		Mat imtest;
 		cvtColor(img->image, imtest, cv::COLOR_HSV2BGR);
-		drawLinesOnImg(cedges, lines, Scalar(0, 255, 0));
+		drawLinesOnImg(cedges, valid_lines, Scalar(0, 255, 0));
 		drawLinesOnImg(cedges, peaks, Scalar(0, 0, 255));
 
 		// Extract the intersections of the line
