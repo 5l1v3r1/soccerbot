@@ -14,7 +14,7 @@
 #include "stdio.h"
 #include "../include/statistics/kde.hpp"
 #include <std_msgs/Int32.h>
-#include <image_acquisition/colorspace.h>
+#include <image_acquisition/SoccerColorSpace.h>
 #include <vectormath.hpp>
 #include <object_recognition/ROI.h>
 
@@ -29,13 +29,13 @@ image_transport::Publisher field_area_img;
 image_transport::Subscriber hsv_img;
 
 // Constants
-Scalar lower = Scalar(25, 0, 0);
-Scalar upper = Scalar(80, 255, 200);
+Scalar lower = Scalar(40, 0, 0);
+Scalar upper = Scalar(60, 255, 200);
 
 int image_count = 0;
 
 void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
-	ROS_ERROR("Field Area");
+	ROS_INFO("Field Area");
 	cv_bridge::CvImageConstPtr img;
 	try {
 		img = cv_bridge::toCvShare(msg, "");
@@ -47,19 +47,26 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 	Mat mask, mask2, mask3;
 	inRange(img->image, lower, upper, mask);
 
-	int erosion_size = 7;
+	int erosion_size = 5;
 	Mat element = getStructuringElement(MORPH_ELLIPSE,
 			Size(2 * erosion_size + 1, 2 * erosion_size + 1),
 			Point(erosion_size, erosion_size));
 
-	// Dilate and Erode for small parts
-	dilate(mask, mask2, element);
-	erode(mask2, mask3, element);
+	int erosion_size2 = 13;
+	Mat element11 = getStructuringElement(MORPH_ELLIPSE,
+			Size(2 * erosion_size2 + 1, 2 * erosion_size2 + 1),
+			Point(erosion_size2, erosion_size2));
 
-	bitwise_not(mask3, mask3);
+
+	// Dilate and Erode for small parts
+	bitwise_not(mask, mask);
+	dilate(mask, mask2, element);
+	erode(mask2, mask2, element);
+
+	bitwise_not(mask2, mask3);
 	dilate(mask3, mask3, element);
 	erode(mask3, mask3, element);
-	bitwise_not(mask3, mask3);
+
 
 	double minarea = ((double) (640 * 480) / 30);
 	double tmparea = 0.0;
@@ -82,8 +89,8 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 	}
 	bitwise_not(mask3, mask3);
 
-	dilate(mask3, mask3, element);
-	erode(mask3, mask3, element);
+	dilate(mask3, mask3, element11);
+	erode(mask3, mask3, element11);
 
 	// Find the polygon information
 	Mat edges, cedges;
@@ -98,21 +105,18 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 	if(lines.size() != 0) {
 
 		// Go through the vertical lines and find ones that are not straight
-		vector<Vec2f> peaks = filterRepeats(lines);
+		vector<Vec2f> valid_lines;
+		for(auto it = lines.begin(); it != lines.end(); ++it) {
+			if(isVerticalLine(*it, img->image.size())) continue;
+			if((*it)[1] < - CV_PI / 4) continue;
+			valid_lines.push_back(*it);
+		}
+		vector<Vec2f> peaks = filterRepeats(valid_lines);
 
 		Mat imtest;
 		cvtColor(img->image, imtest, cv::COLOR_HSV2BGR);
-		for (size_t i = 0; i < peaks.size(); i++) {
-			float rho = peaks[i][0], theta = peaks[i][1];
-			Point pt1, pt2;
-			double a = cos(theta), b = sin(theta);
-			double x0 = a * rho, y0 = b * rho;
-			pt1.x = cvRound(x0 + 1000 * (-b));
-			pt1.y = cvRound(y0 + 1000 * (a));
-			pt2.x = cvRound(x0 - 1000 * (-b));
-			pt2.y = cvRound(y0 - 1000 * (a));
-			line(cedges, pt1, pt2, Scalar(0, 0, 255), 3, CV_AA);
-		}
+		drawLinesOnImg(cedges, lines, Scalar(0, 255, 0));
+		drawLinesOnImg(cedges, peaks, Scalar(0, 0, 255));
 
 		// Extract the intersections of the line
 		vector<Point2f> intersections;
@@ -122,13 +126,13 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 			intersections.push_back(intersect);
 			circle(cedges, intersect, 5, Scalar(0,255,0));
 		}
-		ROS_ERROR("%d %d", img->image.size().height, img->image.size().width);
+		//ROS_ERROR("%d %d", img->image.size().height, img->image.size().width);
 		Point2f right_int = rightScreenIntersection(peaks[peaks.size() - 1], img->image.size());
-		ROS_ERROR("%f %f", right_int.x, right_int.y);
+		//ROS_ERROR("%f %f", right_int.x, right_int.y);
 		circle(cedges, right_int, 5, Scalar(0,255,0));
 
 		Point2f left_int = leftScreenIntersection(peaks[0], img->image.size());
-		ROS_ERROR("%f %f", left_int.x, left_int.y);
+		//ROS_ERROR("%f %f", left_int.x, left_int.y);
 		circle(cedges, left_int, 5, Scalar(0,255,0));
 
 		vector<Point2f> points, pointsinv;
@@ -196,25 +200,22 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 				+ std::to_string(++image_count) + ".png";
 		string fileNameOriginal = "../../../src/object_recognition/test/field/"
 						+ std::to_string(image_count) + ".png";
-		ROS_ERROR("File  %s", fileName.c_str());
 		try {
-			imwrite(fileName, mask);
+			imwrite(fileName, cedges);
 			imwrite(fileNameOriginal, img->image);
 		} catch (runtime_error& ex) {
 			ROS_ERROR(ex.what());
 		}
 	}
-
-	// Publish field coordinates
-	sensor_msgs::PointCloud2 pc;
 }
 
-void callback_colorspace(const image_acquisition::colorspace::ConstPtr& msg)
+void callback_colorspace(const image_acquisition::SoccerColorSpaceConstPtr& msg)
 {
 	//update colorspace
-	lower = Scalar(msg->lower_hue, 100, 50);
-	upper = Scalar(msg->upper_hue, 255, 200);
-	ROS_INFO("Updated Colorspace %d %d", msg->lower_hue, msg->upper_hue);
+	lower = Scalar(msg->grass.lower_hue, msg->grass.lower_sat, msg->grass.lower_val);
+	upper = Scalar(msg->grass.upper_hue, msg->grass.upper_sat, msg->grass.upper_val);
+
+	ROS_INFO("Updated Colorspace %d %d %d %d %d %d", msg->grass.lower_hue, msg->grass.upper_hue, msg->grass.lower_sat, msg->grass.upper_sat, msg->grass.lower_val, msg->grass.upper_val);
 }
 
 int main(int argc, char **argv) {

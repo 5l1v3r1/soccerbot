@@ -26,7 +26,8 @@ find_package(Boost REQUIRED COMPONENTS system)
 ## Generate messages in the 'msg' folder
 add_message_files(
    FILES
-   colorspace.msg
+   ColorSpace.msg
+   SoccerColorSpace.msg
 )
 
 ## Generate added messages and services with any dependencies listed here

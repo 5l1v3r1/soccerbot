@@ -28,7 +28,7 @@ Scalar lower = Scalar(0, 0, 165);
 Scalar upper = Scalar(255, 105, 255);
 
 void detect_lines(const sensor_msgs::ImageConstPtr& msg) {
-	ROS_ERROR("Line Area");
+	ROS_INFO("Line Area");
 
 	cv_bridge::CvImageConstPtr img;
 	try {
@@ -75,7 +75,6 @@ void detect_lines(const sensor_msgs::ImageConstPtr& msg) {
 				+ std::to_string(++image_count) + ".png";
 		string fileNameOriginal = "../../../src/object_recognition/test/lines/"
 				+ std::to_string(image_count) + ".png";
-		ROS_INFO("File  %s", fileName.c_str());
 		try {
 			imwrite(fileName, final);
 			imwrite(fileNameOriginal, img->image);

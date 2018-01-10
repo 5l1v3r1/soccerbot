@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <std_msgs/Int32.h> 
-#include <image_acquisition/colorspace.h>
+#include <image_acquisition/SoccerColorSpace.h>
 
 using namespace std;
 using namespace cv;
@@ -18,20 +18,20 @@ using namespace cv;
 ros::Publisher pub;
 
 //hard code the range
-const int HUE_RANGE = 40; 	
-const int NUM_HUE_RANGES = 9; // 360 / 40 = 9
-const int SAT_LOW = 100;
+#define HUE_RANGE 20
+#define NUM_HUE_RANGES 360/HUE_RANGE
+const int SAT_LOW = 95;
 const int SAT_HIGH = 255;
-const int VAL_LOW = 50;
-const int VAL_HIGH = 255;
+const int VAL_LOW = 60;
+const int VAL_HIGH = 200;
 
 //test flag
-static int TEST = 1;
+#define TEST 0
 
 int32_t num_whitedots[NUM_HUE_RANGES] = { 0 };
 
 
-static int32_t img_masking( Mat img_hsv_in, int32_t hue_low, int32_t hue_high, int num)
+static int32_t img_masking(const Mat& img_hsv_in, int32_t hue_low, int32_t hue_high, int num)
 {
 	int32_t num_whitedot = 0;
 	Scalar lower = Scalar(hue_low, SAT_LOW, VAL_LOW);
@@ -48,7 +48,7 @@ exit:
 	return num_whitedot;
 }
 
-static int index_most_whitedots( Mat img_in )
+static int index_most_whitedots(const Mat& img_in )
 {
 	int index = 0;
 	int32_t lower = 0;
@@ -76,11 +76,14 @@ static int index_most_whitedots( Mat img_in )
 	return index;
 }
 
+int callbackCount;
+
 static void callback_getImage(const sensor_msgs::ImageConstPtr& msg)
 {
+	if (callbackCount++ % 10) return; // Call back only every 10 images
 	
-	cv_bridge::CvImagePtr cv_ptr = NULL;
-	image_acquisition::colorspace msg_send;
+	cv_bridge::CvImageConstPtr cv_ptr = NULL;
+	image_acquisition::SoccerColorSpace msg_send;
 	int index = 0;
 	int32_t low_hue = 0;
 	int32_t high_hue = 0;
@@ -88,7 +91,7 @@ static void callback_getImage(const sensor_msgs::ImageConstPtr& msg)
 	try
     {
 		// retrieve the received img
-		cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8);
+		cv_ptr = cv_bridge::toCvShare(msg, sensor_msgs::image_encodings::BGR8);
 		if( NULL == cv_ptr )
 			goto exit;
 		
@@ -98,8 +101,12 @@ static void callback_getImage(const sensor_msgs::ImageConstPtr& msg)
 		high_hue = low_hue + HUE_RANGE - 1;
 		
 		//publish the values as msg
-		msg_send.upper_hue = high_hue;
-		msg_send.lower_hue = low_hue;
+		msg_send.grass.upper_hue = high_hue;
+		msg_send.grass.lower_hue = low_hue;
+		msg_send.grass.upper_sat = SAT_HIGH;
+		msg_send.grass.lower_sat = SAT_LOW;
+		msg_send.grass.upper_val = VAL_HIGH;
+		msg_send.grass.lower_val  = VAL_LOW;
 		pub.publish(msg_send);
 		
     }
@@ -121,8 +128,9 @@ int main(int argc, char **argv)
     image_transport::ImageTransport it(n);
     
 	//subscribe same topic as field_ROI node
+    callbackCount = 0;
 	image_transport::Subscriber sub = it.subscribe("/camera_input/image_hsv", 1, &callback_getImage);
-	pub = n.advertise<image_acquisition::colorspace>("/image_acquisition/colorspace", 1);
+	pub = n.advertise<image_acquisition::SoccerColorSpace>("/image_acquisition/colorspace", 1);
 
 	if(TEST)
 	{
@@ -130,7 +138,7 @@ int main(int argc, char **argv)
 		int index = 0;
 		int32_t low_hue = 0;
 		int32_t high_hue = 0;
-		image_acquisition::colorspace msg_send;
+		image_acquisition::SoccerColorSpace msg_send;
 		ros::Rate rate(5);
 		
 		img_in = imread("/soccerbot/soccer/src/image_acquisition/images/field/5.jpg",CV_LOAD_IMAGE_COLOR);   //change to abs path
@@ -152,10 +160,10 @@ int main(int argc, char **argv)
 		for(int i =0; i < 5 ; i++ )
 		{
 			//publish the values as msg
-			msg_send.upper_hue = high_hue;
-			msg_send.lower_hue = low_hue;
+			msg_send.grass.upper_hue = high_hue;
+			msg_send.grass.lower_hue = low_hue;
 			pub.publish(msg_send);
-			cout << "sent" << i << ":" << msg_send.upper_hue << "," << msg_send.lower_hue << endl;
+			cout << "sent" << i << ":" << msg_send.grass.upper_hue << "," << msg_send.grass.lower_hue << endl;
 			
 			rate.sleep();
 

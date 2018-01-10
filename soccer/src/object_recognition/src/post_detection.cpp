@@ -13,8 +13,6 @@
 #include <humanoid_league_msgs/LineInformationInImage.h>
 #include <vectormath.hpp>
 
-#define PI 3.1415926
-
 using namespace std;
 using namespace ros;
 using namespace cv;
@@ -30,7 +28,7 @@ Scalar lower = Scalar(0, 0, 190);
 Scalar upper = Scalar(255, 100, 255);
 
 void detect_post(const sensor_msgs::ImageConstPtr& msg) {
-	ROS_ERROR("Post Detection");
+	ROS_INFO("Post Detection");
 	cv_bridge::CvImageConstPtr img;
 	try {
 		img = cv_bridge::toCvShare(msg, "");
@@ -76,7 +74,6 @@ void detect_post(const sensor_msgs::ImageConstPtr& msg) {
 				+ std::to_string(++image_count) + ".png";
 		string fileNameOriginal = "../../../src/object_recognition/test/net/"
 				+ std::to_string(image_count) + ".png";
-		ROS_INFO("File  %s", fileName.c_str());
 		try {
 			imwrite(fileName, final);
 			imwrite(fileNameOriginal, img->image);
@@ -93,7 +90,7 @@ int main(int argc, char **argv) {
 	nh = &n;
 
 	image_transport::ImageTransport it(n);
-	hsv_img = it.subscribe("/camera_input/image_hsv", 1, &detect_post);
+//	hsv_img = it.subscribe("/camera_input/image_hsv", 1, &detect_post);
 	line_points_in_image = n.advertise<sensor_msgs::PointCloud2>("/object_recognition/line_points_in_image", 1);
 	lines_in_image = n.advertise<humanoid_league_msgs::LineInformationInImage>("/object_recognition/lines_in_image", 1);
 

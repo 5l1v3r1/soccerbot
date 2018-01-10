@@ -17,7 +17,7 @@
 #include "stdio.h"
 #include "../include/statistics/kde.hpp"
 #include <std_msgs/Int32.h>
-#include <image_acquisition/colorspace.h>
+#include <image_acquisition/SoccerColorSpace.h>
 
 #define PI CV_PI
 #define ANGLE_PROXIMITY_MIN PI / 72 // 10 degrees
@@ -30,6 +30,8 @@ Point2f intersection(Vec2f a, Vec2f b);
 Point2f leftScreenIntersection(Vec2f vec, Size2f imgSize);
 
 Point2f rightScreenIntersection(Vec2f vec, Size2f imgSize);
+
+bool isVerticalLine(Vec2f vec, Size2f imgSize);
 
 vector<Vec2f> filterRepeats(vector<Vec2f>& vec);
 

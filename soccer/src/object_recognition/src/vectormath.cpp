@@ -35,21 +35,21 @@ Point2f leftScreenIntersection(Vec2f vec, Size2f imgSize) {
 	if ((rho / cos(theta)) < x && (rho / cos(theta)) > 0) {
 		a = 0;
 		b = rho / cos(theta);
-		ROS_ERROR("CASE 1");
+//		ROS_ERROR("CASE 1");
 	} else if (tan(PI - theta) * (y - rho * sin(theta)) < x && theta < PI / 2) {
 		a = x;
 		b = rho * sin(theta) - tan(PI / 2 - theta) * (x - rho * cos(theta));
-		ROS_ERROR("CASE 2");
+//		ROS_ERROR("CASE 2");
 	} else if ((rho * cos(PI - theta) + x) * tan( PI / 2 - (PI - theta))
 			+ rho * sin(PI - theta) < y && theta > PI / 2) {
 		a = x;
 		b = (rho * cos(PI - theta) + x) * tan( PI / 2 - (PI - theta))
 				+ rho * sin(PI - theta);
-		ROS_ERROR("CASE 3");
+//		ROS_ERROR("CASE 3");
 	} else {
 		a = tan(PI - theta) * (y - rho * sin(theta));
 		b = y;
-		ROS_ERROR("CASE 4");
+//		ROS_ERROR("CASE 4");
 	}
 
 	Point2f intersect(a, b);
@@ -69,25 +69,50 @@ Point2f rightScreenIntersection(Vec2f vec, Size2f imgSize) {
 	if ((rho / cos(theta)) < x && (rho / cos(theta)) > 0) {
 		a = 0;
 		b = rho / cos(theta);
-		ROS_ERROR("CASE 1");
+//		ROS_ERROR("CASE 1");
 	} else if (tan(PI - theta) * (y - rho * sin(theta)) < x && theta < PI / 2) {
 		a = x;
 		b = rho * sin(theta) - tan(PI / 2 - theta) * (x - rho * cos(theta));
-		ROS_ERROR("CASE 2");
+//		ROS_ERROR("CASE 2");
 	} else if ((rho * cos(PI - theta) + x) * tan( PI / 2 - (PI - theta))
 			+ rho * sin(PI - theta) < y && theta > PI / 2) {
 		a = x;
 		b = (rho * cos(PI - theta) + x) * tan( PI / 2 - (PI - theta))
 				+ rho * sin(PI - theta);
-		ROS_ERROR("CASE 3");
+//		ROS_ERROR("CASE 3");
 	} else {
 		a = tan(PI - theta) * (y - rho * sin(theta));
 		b = y;
-		ROS_ERROR("CASE 4");
+//		ROS_ERROR("CASE 4");
 	}
 
 	Point2f intersect(a, b);
 	return intersect;
+}
+
+bool isVerticalLine(Vec2f vec, Size2f imgSize) {
+	float rho = vec[0];
+	float theta = vec[1];
+
+	float x = imgSize.width;
+	float y = imgSize.height;
+
+	float rho2 = vec[0];
+	float theta2 = PI / 2 - vec[1];
+
+	float x2 = imgSize.height;
+	float y2 = imgSize.width;
+
+	if ((rho / cos(theta)) < x && (rho / cos(theta)) > 0) {
+		return true; // TODO allow robot to see outside of the field
+		if((tan(PI - theta2) * (y2 - rho2 * sin(theta2)) < x2 && theta2 < PI / 2)) {
+			return true;
+		}
+		if(((rho2 * cos(PI - theta2) + x2) * tan( PI / 2 - (PI - theta2)) + rho2 * sin(PI - theta2) < y2 && theta2 > PI / 2)) {
+			return true;
+		}
+	}
+	return false;
 }
 
 bool sortbyangle(Vec2f a, Vec2f b) {

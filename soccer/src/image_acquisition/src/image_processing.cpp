@@ -52,8 +52,8 @@ public:
         }
 
         // Convert to the HSV
-        BrightnessAndContrastAuto(img->image, colorAdjust);
-        cvtColor(colorAdjust, hsv, cv::COLOR_BGR2HSV);
+//        BrightnessAndContrastAuto(img->image, colorAdjust);
+        cvtColor(img->image, hsv, cv::COLOR_BGR2HSV);
 
         // Display the image window
         if(DISPLAY_WINDOW) {
