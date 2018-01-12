@@ -13,6 +13,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   humanoid_league_msgs
   nav_msgs
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -27,7 +28,16 @@ find_package(catkin REQUIRED COMPONENTS
 ################################################
 ## Declare ROS messages, services and actions ##
 ################################################
+add_message_files(
+    FILES
+    WalkingPath.msg
+)
 
+generate_messages(
+   DEPENDENCIES
+   std_msgs
+   geometry_msgs
+)
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
 ################################################
