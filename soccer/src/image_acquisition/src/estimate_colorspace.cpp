@@ -19,23 +19,45 @@ ros::Publisher pub;
 
 //hard code the range
 #define HUE_RANGE 20
-#define NUM_HUE_RANGES 360/HUE_RANGE
-const int SAT_LOW = 95;
-const int SAT_HIGH = 255;
-const int VAL_LOW = 60;
-const int VAL_HIGH = 200;
+#define HUE_CHANGE_SCALE 10	
+#define HUE_GREREN_MAX 200
+#define NUM_HUE_RANGES HUE_GREREN_MAX/HUE_CHANGE_SCALE
+
+#define SAT_RANGE_LINE 25
+#define SAT_CHANGE_SCALE 12
+#define SAT_MAX 72
+#define NUM_SAT_RANGES	SAT_MAX/SAT_CHANGE_SCALE
+
+//const sat/val value for field 
+const int32_t SAT_LOW = 75;
+const int32_t SAT_HIGH = 255;
+const int32_t VAL_LOW = 0;
+const int32_t VAL_HIGH = 200;
+
+//const sat/val value for line
+const int32_t HUE_LOW_LINE = 0;
+const int32_t HUE_HIGH_LINE = 360;
+const int32_t VAL_LOW_LINE = 25;
+const int32_t VAL_HIGH_LINE = 255;
 
 //test flag
 #define TEST 0
 
-int32_t num_whitedots[NUM_HUE_RANGES] = { 0 };
+//int32_t num_whitedots[NUM_HUE_RANGES] = { 0 };
 
-
-static int32_t img_masking(const Mat& img_hsv_in, int32_t hue_low, int32_t hue_high, int num)
+static int32_t img_masking(
+	const Mat& img_hsv_in,
+	int32_t hue_low, 
+	int32_t hue_high,
+	int32_t sat_low,
+	int32_t sat_high,
+	int32_t val_low,
+	int32_t val_high
+)
 {
 	int32_t num_whitedot = 0;
-	Scalar lower = Scalar(hue_low, SAT_LOW, VAL_LOW);
-	Scalar higher = Scalar(hue_high, SAT_HIGH, VAL_HIGH);
+	Scalar lower = Scalar(hue_low, sat_low, val_low);
+	Scalar higher = Scalar(hue_high, sat_high, val_high);
 	
 	//mask input image with defined hue range
 	Mat img_masked;
@@ -48,32 +70,55 @@ exit:
 	return num_whitedot;
 }
 
-static int index_most_whitedots(const Mat& img_in )
+static void index_most_whitedots(const Mat& img_in, int *index, int *index_line )
 {
-	int index = 0;
 	int32_t lower = 0;
 	int32_t higher = 0;
 	int32_t max_whitedot = 0;
+	int32_t max_whitedot_line = 0;
 	int32_t tmp_whitedot = 0;
 	
+	if( NULL == index || NULL == index_line )
+		goto exit;
 	
+	//field
 	for( int i = 0 ; i < NUM_HUE_RANGES ; i++ )
 	{	
 		//set lower and higher bounds
-		lower = HUE_RANGE * i;
+		lower = HUE_CHANGE_SCALE * i;
 		higher = lower + HUE_RANGE - 1;
 				
-		tmp_whitedot = img_masking(img_in,lower,higher,i);
+		tmp_whitedot = img_masking(img_in,lower,higher,SAT_LOW,SAT_HIGH,VAL_LOW,VAL_HIGH);
 		
 		//update the index with most whitedots
 		if( max_whitedot < tmp_whitedot)
 		{
 			max_whitedot = tmp_whitedot;
-			index = i;
+			*index = i;
 		}
+		
 	}
 	
-	return index;
+	//line
+	for(int i = 0; i < NUM_SAT_RANGES; i++ )
+	{
+		//set lower and higher bounds
+		lower = SAT_CHANGE_SCALE * i;
+		higher = lower + SAT_RANGE_LINE - 1;
+		
+		tmp_whitedot = img_masking(img_in,HUE_LOW_LINE,HUE_HIGH_LINE,lower,higher,VAL_LOW_LINE,VAL_HIGH_LINE);
+		
+		//update the index with most whitedots
+		if( max_whitedot_line < tmp_whitedot)
+		{
+			max_whitedot_line = tmp_whitedot;
+			*index_line = i;
+		}
+		
+	}
+	
+exit:
+	return;
 }
 
 int callbackCount;
@@ -85,8 +130,11 @@ static void callback_getImage(const sensor_msgs::ImageConstPtr& msg)
 	cv_bridge::CvImageConstPtr cv_ptr = NULL;
 	image_acquisition::SoccerColorSpace msg_send;
 	int index = 0;
+	int index_line = 0;
 	int32_t low_hue = 0;
 	int32_t high_hue = 0;
+	int32_t low_sat = 0;
+	int32_t high_sat = 0;
 	
 	try
     {
@@ -96,17 +144,30 @@ static void callback_getImage(const sensor_msgs::ImageConstPtr& msg)
 			goto exit;
 		
 		//explore the color range of field
-		index = index_most_whitedots(cv_ptr->image);
+		index_most_whitedots(cv_ptr->image, &index, &index_line);
 		low_hue = HUE_RANGE * index;
 		high_hue = low_hue + HUE_RANGE - 1;
+		low_sat = SAT_RANGE_LINE * index_line;
+		high_sat = low_sat + SAT_RANGE_LINE - 1;
+		
 		
 		//publish the values as msg
+		//field
 		msg_send.grass.upper_hue = high_hue;
 		msg_send.grass.lower_hue = low_hue;
 		msg_send.grass.upper_sat = SAT_HIGH;
 		msg_send.grass.lower_sat = SAT_LOW;
 		msg_send.grass.upper_val = VAL_HIGH;
-		msg_send.grass.lower_val  = VAL_LOW;
+		msg_send.grass.lower_val = VAL_LOW;
+		
+		//line
+		msg_send.field_lines.upper_hue = HUE_HIGH_LINE;
+		msg_send.field_lines.lower_hue = HUE_LOW_LINE;
+		msg_send.field_lines.upper_sat = high_sat;
+		msg_send.field_lines.lower_sat = low_sat;
+		msg_send.field_lines.upper_val = VAL_HIGH_LINE;
+		msg_send.field_lines.lower_val = VAL_LOW_LINE;
+		
 		pub.publish(msg_send);
 		
     }
@@ -135,36 +196,50 @@ int main(int argc, char **argv)
 
 	if(TEST)
 	{
-		Mat img_in,masked_img,img_hsv;
+		Mat img_in,masked_img,masked_img2,img_hsv;
 		int index = 0;
+		int index_line = 0;
 		int32_t low_hue = 0;
 		int32_t high_hue = 0;
+		int32_t low_sat = 0;
+		int32_t high_sat = 0;
 		image_acquisition::SoccerColorSpace msg_send;
 		ros::Rate rate(5);
 		
-		img_in = imread("/soccerbot/soccer/src/image_acquisition/images/field/5.jpg",CV_LOAD_IMAGE_COLOR);   //change to abs path
+		img_in = imread("/soccerbot/soccer/src/image_acquisition/images/field/aufnahme11_FullPic.jpg",CV_LOAD_IMAGE_COLOR);   //change to abs path
 		cvtColor(img_in,img_hsv,COLOR_BGR2HSV);
 		
 		//explore the color range of field
-		index = index_most_whitedots(img_hsv);
-		low_hue = HUE_RANGE * index;
+		index_most_whitedots(img_hsv,&index,&index_line);
+		low_hue = HUE_CHANGE_SCALE * index;
 		high_hue = low_hue + HUE_RANGE - 1;
 		
 		//define the lower/upper value of the range -> masking
 		Scalar lower = Scalar(low_hue, SAT_LOW, VAL_LOW);
 		Scalar higher = Scalar(high_hue, SAT_HIGH, VAL_HIGH); 
 		inRange(img_hsv, lower, higher, masked_img);
-		
-		//save the masked img
 		imwrite("/soccerbot/soccer/src/image_acquisition/images/field/test/5_tes_2.jpg",masked_img);     //change to abs path
+		
+		//define the lower/upper value of the range -> masking
+		low_sat = SAT_CHANGE_SCALE * index_line;
+		high_sat = low_sat + SAT_RANGE_LINE - 1;
+		lower = Scalar(HUE_LOW_LINE, low_sat, VAL_LOW_LINE);
+		higher = Scalar(HUE_HIGH_LINE, high_sat, VAL_HIGH_LINE); 
+		inRange(img_hsv, lower, higher, masked_img2);
+		imwrite("/soccerbot/soccer/src/image_acquisition/images/field/test/5_tes_3.jpg",masked_img2);     //change to abs path
+		
+		
 		
 		for(int i =0; i < 5 ; i++ )
 		{
 			//publish the values as msg
 			msg_send.grass.upper_hue = high_hue;
 			msg_send.grass.lower_hue = low_hue;
+			msg_send.field_lines.lower_sat = low_sat;
+			msg_send.field_lines.upper_sat = high_sat;
+			
 			pub.publish(msg_send);
-			cout << "sent" << i << ":" << msg_send.grass.upper_hue << "," << msg_send.grass.lower_hue << endl;
+			cout << "hue high: " << msg_send.grass.upper_hue << " hue low: " << msg_send.grass.lower_hue << " sat low: " << msg_send.field_lines.lower_sat << " sat high: " << msg_send.field_lines.upper_sat << endl;
 			
 			rate.sleep();
 

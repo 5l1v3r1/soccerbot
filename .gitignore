@@ -26,6 +26,7 @@
 /soccer/src/darknet_ros/weights
 /soccer/src/darknet_ros/darknet_ros/CMakeList.txt
 /soccer/src/darknet_ros/darknet/weights
+/soccer/src/darknet_ros/darknet/training
 
 # SIMSpark
 /simspark/**/build/**
