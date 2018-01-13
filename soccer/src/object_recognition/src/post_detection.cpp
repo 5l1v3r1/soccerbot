@@ -24,8 +24,8 @@ Publisher lines_in_image;
 image_transport::Subscriber hsv_img;
 int image_count = 0;
 
-Scalar lower = Scalar(0, 0, 190);
-Scalar upper = Scalar(255, 100, 255);
+Scalar lower = Scalar(0, 13, 125);
+Scalar upper = Scalar(120, 77, 204);
 
 void detect_post(const sensor_msgs::ImageConstPtr& msg) {
 	ROS_INFO("Post Detection");
@@ -36,14 +36,19 @@ void detect_post(const sensor_msgs::ImageConstPtr& msg) {
 		ROS_ERROR("cv_bridge exception: %s", e.what());
 		return;
 	}
-
+	
+	Mat white_mask ,white_part, dilated;
+	inRange(img->image, lower, upper, white_mask);
+	dilate( white_mask, dilated, MORPH_RECT );
+	bitwise_and(img->image,img->image,white_part,white_mask);
+	
 	Mat mask;
-	Canny(img->image, mask, 1500, 4000, 5);
+	Canny(white_part, mask, 1500, 4000, 5);
 
 	Mat final = img->image.clone();
 
 	vector<Vec2f> lines;
-	HoughLines(mask, lines, 1, CV_PI / 180, 100, 0, 0, 15*PI/16, 17*PI/16);
+	HoughLines(mask, lines, 1, CV_PI / 180, 87, 0, 0, 15*PI/16, 17*PI/16); //100
 
 	drawLinesOnImg(final, lines, Scalar(0, 255, 0));
 
@@ -55,9 +60,12 @@ void detect_post(const sensor_msgs::ImageConstPtr& msg) {
 				+ std::to_string(++image_count) + ".png";
 		string fileNameOriginal = "../../../src/object_recognition/test/net/"
 				+ std::to_string(image_count) + ".png";
+		string fileNameWhite = "../../../src/object_recognition/test/net/testwhite"
+				+ std::to_string(image_count) + ".png";		
 		try {
 			imwrite(fileName, final);
 			imwrite(fileNameOriginal, mask);
+			imwrite(fileNameWhite, white_part);
 		} catch (runtime_error& ex) {
 			ROS_ERROR(ex.what());
 		}
