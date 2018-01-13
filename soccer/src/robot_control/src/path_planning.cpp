@@ -16,7 +16,7 @@ ros::Subscriber goal_relative_subscriber;
 ros::Publisher path_publisher;
 
 int image_count = 0;
-const double KICK_DISTANCE = 5; //meters
+const double KICK_DISTANCE = 1; //meters
 const double TURN_SPEED = 1; //radians
 const double WALK_SPEED = 1; //meters
 humanoid_league_msgs::Model model;
@@ -33,13 +33,13 @@ public:
 
 void Listener::callback_model(const humanoid_league_msgs::ModelConstPtr& msg) {
 	ROS_INFO("Callback Model");
-	checkmodel = 0;
+	checkmodel = 1;
 	model = *msg;
 }
 
 void Listener::callback_goalrelative(const humanoid_league_msgs::GoalRelativeConstPtr& msg) {
 	ROS_INFO("Callback Goal Relative");
-	checkgoal = 0;
+	checkgoal = 1;
 	goal = *msg;
 };
 
@@ -61,10 +61,10 @@ robot_control::WalkingPath Listener::computedestination(humanoid_league_msgs::Mo
 	double alpha = atan((trueyball-ybot)/(truexball-xbot)); //orientation to approach the ball
 	double w = model.position.pose.pose.orientation.w;
 
-	int turns1 = (alpha-w)/TURN_SPEED;
+	int turns1 = (int)(alpha-w)/TURN_SPEED;
 	//add direction
-	int steps = distance/WALK_SPEED;
-	int turns2 = (beta-alpha)/TURN_SPEED;
+	int steps = (int)distance/WALK_SPEED;
+	int turns2 = (int)(beta-alpha)/TURN_SPEED;
 	robot_control::WalkingPath output;
 	output.turns1 = turns1;
 	output.steps = steps;
@@ -80,15 +80,15 @@ int main(int argc, char **argv) {
 	Listener listener;
     model_subscriber = n.subscribe("/localization/model", 1, &Listener::callback_model, &listener);
     goal_relative_subscriber = n.subscribe("/localization/goal_relative", 1, &Listener::callback_goalrelative, &listener);
-    path_publisher = n.advertise<robot_control::WalkingPath>("/robot_control/path", 1);
+    path_publisher = n.advertise<robot_control::WalkingPath>("/robot_control/WalkingPath", 1);
 
-    ros::Rate r(1000);
+    ros::Rate r(1);
 
     while(ros::ok()) {
     	// Write you publish message heres
     	if(listener.checkmodel==1 && listener.checkgoal==1 ){
-    		ROS_INFO("Ready to launch");
     		robot_control::WalkingPath msg = listener.computedestination(listener.model, listener.goal);
+    		ROS_INFO("Ready to launch");
     		path_publisher.publish(msg);
     	};
     	ros::spinOnce();

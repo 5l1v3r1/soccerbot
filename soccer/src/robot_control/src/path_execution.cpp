@@ -15,11 +15,10 @@ ros::Subscriber path_subscriber;
 ros::Subscriber hardwarecommand_subscriber;
 ros::Publisher hardwarecommand_publisher;
 
-int image_count = 0;
-class Listener{
+class Listener {
 public:
 	int walkingpathind= 0;
-	int hardwareind = 0;
+	int hardwareind = 1;
 	int turn1;
 	int steps;
 	int turn2;
@@ -62,11 +61,17 @@ int main(int argc, char **argv) {
 	hardwarecommand_publisher = n.advertise<std_msgs::String>("robot_control/execution", 1);
 
 
-    ros::Rate r(2);
+    ros::Rate r(1);
     while(ros::ok()) {
     	// Write you publish message here
+    	if (listener.walkingpathind == 0){
+    		ROS_INFO("No walking path");
+    	};
+    	ROS_INFO("Walking path");
     	if(listener.hardwareind==1 && listener.walkingpathind==1){
-    		if(listener.turn1 !=0){
+    		ROS_INFO("Deciding optimal move");
+    		listener.hardwareind = 0;
+    		if(listener.turn1 != 0){
     			if (listener.turn1 < 0){
     				std_msgs::String msg;
     				msg.data= "Left Turn";
@@ -113,8 +118,7 @@ int main(int argc, char **argv) {
     		}
     	};
 
+    	ros::spinOnce();
     	r.sleep();
     }
-
-	ros::spin();
 }
