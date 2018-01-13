@@ -1,0 +1,5 @@
+<launch>
+	<node name="path_test" pkg="robot_control" type="path_test" cwd="node" />
+    <node name="path_planning" pkg="robot_control" type="path_planning" cwd="node" />
+    <node name="path_execution" pkg="robot_control" type="path_execution" cwd="node" />
+</launch>
