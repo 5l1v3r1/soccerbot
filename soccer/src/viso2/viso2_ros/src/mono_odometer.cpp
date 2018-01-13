@@ -39,7 +39,7 @@ public:
 
     ros::NodeHandle nh;
     image_transport::ImageTransport it(nh);
-    camera_sub_ = it.subscribeCamera("image", 1, &MonoOdometer::imageCallback, this, transport);
+    camera_sub_ = it.subscribeCamera("/camera_input/image_raw", 1, &MonoOdometer::imageCallback, this, transport);
 
     info_pub_ = local_nh.advertise<VisoInfo>("info", 1);
   }
@@ -51,7 +51,8 @@ protected:
       const sensor_msgs::CameraInfoConstPtr& info_msg)
   {
     ros::WallTime start_time = ros::WallTime::now();
- 
+
+    ROS_INFO("Callback");
     bool first_run = false;
     // create odometer if not exists
     if (!visual_odometer_)

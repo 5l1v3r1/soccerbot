@@ -1,6 +1,6 @@
 <launch>
 	<node name="image_acquisition" pkg="image_acquisition" type="image_acquisition">
-  		<param name="video_device" value="/dev/video0"/>
+  		<param name="video_device" value="../../../src/image_acquisition/videos/1.mp4"/>
       	<param name="image_width" value="640"/>
       	<param name="image_height" value="480"/>
       	<param name="pixel_format" value="yuyv"/>

@@ -124,6 +124,7 @@ int main(int argc, char **argv)
 {
 	//ros setup
 	ros::init(argc, argv, "estimate_colorspace");
+    ROS_INFO("Estimate Colorspace");
     ros::NodeHandle n;
     image_transport::ImageTransport it(n);
     

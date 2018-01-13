@@ -152,6 +152,7 @@ public:
 
 int main(int argc, char **argv) {
     ros::init(argc, argv, "image_processing");
+    ROS_INFO("Image Processing");
     ImageProcessing imageProcessing;
     ros::spin();
 }

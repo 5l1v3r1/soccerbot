@@ -24,6 +24,10 @@ void send_goal(RobotGoal* robotGoal);
 // Receives a state message from the robot
 RobotState receive_state();
 
+#define START_PATTERN 0xAA
+#define BUFFER_SIZE 1600
+#define PACKET_SIZE 800
+
 // FD
 extern int fd;
 extern RobotState robotState;

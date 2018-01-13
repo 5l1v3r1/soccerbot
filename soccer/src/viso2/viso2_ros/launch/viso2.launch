@@ -1,0 +1,9 @@
+<launch>
+    <param name="image_test" value="false" />
+    <param name="video_stream_provider" value="0" />
+	<include file="$(find image_acquisition)/launch/image_acquisition.launch" />
+
+  <!-- Viso2 -->
+  <node pkg="viso2_ros" type="mono_odometer" name="mono_odometer" />
+
+</launch>

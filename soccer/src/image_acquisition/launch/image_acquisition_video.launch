@@ -1,0 +1,13 @@
+<launch>
+	<node name="image_acquisition" pkg="image_acquisition" type="image_acquisition">
+  		<param name="video_device" value="/dev/video0"/>
+      	<param name="image_width" value="640"/>
+      	<param name="image_height" value="480"/>
+      	<param name="pixel_format" value="yuyv"/>
+      	<param name="camera_frame_id" value="usb_cam"/>
+      	<param name="io_method" value="mmap"/>
+      	<param name="framerate" value="30"/>
+	</node>
+    <node name="image_processing" pkg="image_acquisition" type="image_processing" />
+    <node name="estimate_colorspace" pkg="image_acquisition" type="estimate_colorspace" />
+</launch>

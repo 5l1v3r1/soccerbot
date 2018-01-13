@@ -1,0 +1,6 @@
+<launch>
+    <param name="image_test" value="false" />
+    <param name="video_stream_provider" value="$(find image_acquisition)/videos/1.mp4" />
+	<include file="$(find image_acquisition)/launch/image_acquisition_video.launch" />
+    <node name="visual_odom" pkg="object_recognition" type="visual_odom" cwd="node" />
+</launch>

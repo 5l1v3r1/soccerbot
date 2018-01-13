@@ -227,7 +227,7 @@ int main(int argc, char **argv) {
 	nh = &n;
 
     image_transport::ImageTransport it(n);
-    image_transport::Subscriber hsv_img = it.subscribe("/camera_input/image_hsv", 1, &find_field_area);
+    image_transport::Subscriber hsv_img = it.subscribe("/camera_input/image_hsv", 1, find_field_area);
     ros::Subscriber colorspace = n.subscribe("/image_acquisition/colorspace", 1, callback_colorspace);
     field_roi = n.advertise<object_recognition::ROI>("/object_recognition/field_ROI", 1);
     field_area_img = it.advertise("/object_recognition/field_area", 1);

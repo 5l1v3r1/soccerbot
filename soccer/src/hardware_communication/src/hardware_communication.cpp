@@ -30,13 +30,26 @@ int open_port(void) {
 
 	if(fd == -1)
 		fd = open("/dev/ttyACM1", O_RDWR | O_NOCTTY | O_NDELAY);
-
 	if(fd == -1)
 		fd = open("/dev/ttyACM2", O_RDWR | O_NOCTTY | O_NDELAY);
-
+	if(fd == -1)
+		fd = open("/dev/ttyACM3", O_RDWR | O_NOCTTY | O_NDELAY);
+	if(fd == -1)
+		fd = open("/dev/ttyACM4", O_RDWR | O_NOCTTY | O_NDELAY);
+	if(fd == -1)
+		fd = open("/dev/ttyACM5", O_RDWR | O_NOCTTY | O_NDELAY);
+	if(fd == -1)
+		fd = open("/dev/ttyACM6", O_RDWR | O_NOCTTY | O_NDELAY);
+	if(fd == -1)
+		fd = open("/dev/ttyACM7", O_RDWR | O_NOCTTY | O_NDELAY);
+	if(fd == -1)
+		fd = open("/dev/ttyACM8", O_RDWR | O_NOCTTY | O_NDELAY);
+	if(fd == -1)
+		fd = open("/dev/ttyACM9", O_RDWR | O_NOCTTY | O_NDELAY);
 
 	if (fd == -1) {
 		ROS_ERROR("open_port: Unable to open /dev/ttyACM0. \n");
+		exit(1);
 	} else {
 		fcntl(fd, F_SETFL, 0);
 		ROS_ERROR("port is open.\n");
@@ -110,6 +123,9 @@ int main(int argc, char **argv) {
 	while(strcmp(robotState.message, "START")) {
 		robotState = receive_state();
 	}
+
+	return 1;
+
 	ROS_ERROR("2 way");
 	robotGoalPtr = &robotGoal;
 	robotGoal.id = 1;
