@@ -16,6 +16,7 @@ ros::Publisher goal_relative_publisher;
 ros::Publisher hardware_publisher;
 ros::Publisher pose_publisher;
 ros::Publisher bad_publisher;
+ros::Publisher goal_publisher;
 ros::Subscriber hardware_subscriber;
 
 void test() {
@@ -34,7 +35,7 @@ void test() {
 
 	humanoid_league_msgs::GoalRelative g;
 	g.center_direction.x = 5;
-	g.center_direction.y = 5;
+	g.center_direction.y = 3;
 
 	model_publisher.publish(m);
 	goal_relative_publisher.publish(g);
@@ -92,6 +93,30 @@ void test() {
 	marker.mesh_resource = "package://pr2_description/meshes/base_v0/base.dae";
 	bad_publisher.publish(marker);
 
+	marker.header.frame_id = "base_link";
+	marker.header.stamp = ros::Time();
+	marker.ns = "path_test";
+	marker.type = visualization_msgs::Marker::SPHERE;
+	marker.action = visualization_msgs::Marker::ADD;
+	marker.pose.position.x = g.center_direction.x;
+	marker.pose.position.y = 	g.center_direction.y;
+	marker.pose.position.z = 0;
+	marker.pose.orientation.x = 0;
+	marker.pose.orientation.y = 0;
+	marker.pose.orientation.z = 0;
+	marker.pose.orientation.w = 0;
+	marker.scale.x = 0.2;
+	marker.scale.y = 0.2;
+	marker.scale.z = 0.2;
+	marker.id = 0;
+	marker.color.a = 1.0;
+	marker.color.r = 1.0;
+	marker.color.g = 1.0;
+	marker.color.b = 1.0;
+	marker.lifetime = ros::Duration(1);
+	marker.mesh_resource = "package://pr2_description/meshes/base_v0/base.dae";
+	goal_publisher.publish(marker);
+
 
 }
 void callback_hardware(const std_msgs::StringConstPtr& msg){
@@ -112,6 +137,7 @@ int main(int argc, char **argv) {
     hardware_subscriber = n.subscribe("/robot_control/execution",1, callback_hardware);
     pose_publisher = n.advertise<visualization_msgs::Marker>("Ball_Marker", 0);
     bad_publisher = n.advertise<visualization_msgs::Marker>("Position_Marker", 0);
+    goal_publisher = n.advertise<visualization_msgs::Marker>("Goal_Marker", 0);
 
     ros::Rate r(1);
 
