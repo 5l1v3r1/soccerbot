@@ -18,6 +18,7 @@
 #include "../include/statistics/kde.hpp"
 #include <std_msgs/Int32.h>
 #include <image_acquisition/SoccerColorSpace.h>
+#include <geometry_msgs/Point.h>
 #include <object_recognition/FieldBoundary.h>
 
 #define PI CV_PI
@@ -47,5 +48,7 @@ void drawIntersectionsOnImg(Mat& img, vector<Point2f> centers, Scalar color);
 vector<Point2f> findIntersections(vector<Vec2f> lines, Vec2f* field_line, int field_line_num);
 
 object_recognition::FieldBoundary PopulateFieldBmsg( vector<Vec2f> peaks );
+
+float angle(geometry_msgs::Point start, geometry_msgs::Point end);
 
 #endif /* vectorfunction.hpp */

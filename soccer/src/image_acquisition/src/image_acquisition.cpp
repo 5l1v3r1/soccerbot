@@ -65,8 +65,18 @@ int main(int argc, char **argv) {
 		header.frame_id = 1;
 		for (size_t i = 0; i < image_names.size(); ++i) {
 			ROS_INFO("Testing Image %s", image_names[i].c_str());
-			frame = imread(image_names[i]);
-			msg = cv_bridge::CvImage(header, "bgr8", frame).toImageMsg();
+			string s = image_names[i];
+
+			size_t found = s.find("._");
+			if(found != string::npos)
+				s.erase(found, 2);
+
+			frame = imread(s);
+//	    	ROS_ERROR_STREAM(s << " " << frame.rows << " " << frame.cols);
+
+	    	msg = cv_bridge::CvImage(header, "bgr8", frame).toImageMsg();
+	    	cam_info = get_default_camera_info_from_image(msg);
+
 			pub.publish(*msg, cam_info, ros::Time::now());
 			ros::Duration(0.2).sleep();
 		}

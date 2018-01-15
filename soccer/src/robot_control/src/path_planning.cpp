@@ -45,7 +45,8 @@ void Listener::callback_goalrelative(const humanoid_league_msgs::GoalRelativeCon
 	checkgoal = 1;
 	goal = *msg;
 };
-void generate_line(ros::Publisher marker_pub, double xbot, double ybot, double xcomponent, double ycomponent, int steps){
+
+void draw_line(ros::Publisher& marker_pub, double xbot, double ybot, double xcomponent, double ycomponent, int steps){
 	visualization_msgs::Marker points, line_strip, line_list;
 	points.header.frame_id = line_strip.header.frame_id = line_list.header.frame_id = "base_link";
 	points.header.stamp = line_strip.header.stamp = line_list.header.stamp = ros::Time::now();
@@ -94,8 +95,6 @@ void generate_line(ros::Publisher marker_pub, double xbot, double ybot, double x
 	// Create the vertices for the points and lines
 	for (uint32_t i = 0; i < steps; ++i)
 	{
-
-
 	  geometry_msgs::Point p;
 	  p.x = xbot+i*xcomponent;
 	  p.y = ybot+i*ycomponent;
@@ -114,6 +113,7 @@ void generate_line(ros::Publisher marker_pub, double xbot, double ybot, double x
 	marker_pub.publish(line_strip);
 	marker_pub.publish(line_list);
 };
+
 robot_control::WalkingPath Listener::computedestination(humanoid_league_msgs::Model model, humanoid_league_msgs::GoalRelative goal){
 	ROS_INFO("Computing");
 	double xball = model.ball.ball_relative.x;
@@ -148,8 +148,8 @@ robot_control::WalkingPath Listener::computedestination(humanoid_league_msgs::Mo
 	output.steps = steps;
 	output.turns2 = turns2;
 
-	generate_line(marker_pub, xbot, ybot, xcomponent, ycomponent, steps);
-	generate_line(goal_pub, xball, yball, xcompgoal, ycompgoal, vis_step);
+	draw_line(marker_pub, xbot, ybot, xcomponent, ycomponent, steps);
+	draw_line(goal_pub, xball, yball, xcompgoal, ycompgoal, vis_step);
 	return output;
 };
 

@@ -120,6 +120,10 @@ bool sortbyangle(Vec2f a, Vec2f b) {
 	return a[1] < b[1];
 }
 
+bool sortbydistance(Vec2f a, Vec2f b) {
+	return a[0] < b[0];
+}
+
 vector<Vec2f> filterRepeats(vector<Vec2f>& lines) {
 	KDE kde;
 	kde.set_kernel_type(1);
@@ -207,38 +211,4 @@ void drawLinesOnImg(Mat& img, vector<Vec2f>& lines, Scalar color) {
 		pt2.y = cvRound(y0 - 1000 * (a));
 		line(img, pt1, pt2, color, 1, CV_AA);
 	}
-}
-
-void drawIntersectionsOnImg(Mat& img, vector<Point2f> centers, Scalar color) {
-	for(size_t i = 0 ; i < centers.size() ; i++ ) {
-		Point pt;
-		pt.x = cvRound(centers[i].x);
-		pt.y = cvRound(centers[i].y);
-		circle(img, pt, 2, color,2);
-	}
-}
-
-vector<Point2f> findIntersections(vector<Vec2f> lines, Vec2f* field_line, int field_line_num) {
-	vector<Point2f> intersections;
-	for( size_t i =0 ; i < lines.size() ; i++ ){
-		for(size_t j  = 0  ; j < field_line_num; j++ ) {
-			Point2f tmp_point;
-			tmp_point = intersection(lines[i], field_line[j]);
-			intersections.push_back(tmp_point);
-		}
-	}
-	
-	return intersections;
-}
-
-object_recognition::FieldBoundary PopulateFieldBmsg( vector<Vec2f> peaks ){
-	object_recognition::FieldBoundary rtn_msg;
-	
-	rtn_msg.num_lines = peaks.size();
-	for(size_t i = 0 ; i < peaks.size() ; i++ ){
-		rtn_msg.boundaries_ele1[i] = peaks[i][0];
-		rtn_msg.boundaries_ele2[i] = peaks[i][1];
-	}
-	
-	return rtn_msg;
 }

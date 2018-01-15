@@ -17,6 +17,7 @@
 #include <image_acquisition/SoccerColorSpace.h>
 #include <vectormath.hpp>
 #include <object_recognition/ROI.h>
+#include <humanoid_league_msgs/LineInformationInImage.h>
 #include <object_recognition/FieldBoundary.h>
 
 using namespace std;
@@ -25,7 +26,7 @@ using namespace cv;
 
 // Publisher Subscribers
 ros::NodeHandle* nh;
-ros::Publisher field_roi,field_boundary;
+ros::Publisher field_roi;
 image_transport::Publisher field_area_img;
 image_transport::Subscriber hsv_img;
 
@@ -69,7 +70,7 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 	bitwise_not(mask3, mask3);
 
 
-	double minarea = ((double) (640 * 480) / 30);
+	double minarea = ((double) (img->image.rows * img->image.cols) / 30);
 	double tmparea = 0.0;
 	vector<vector<Point> > contours;
 	vector<Vec4i> hierarchy;
@@ -149,6 +150,27 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 		points.push_back(right_int);
 		pointsinv.push_back(right_int);
 
+		// Publish the lines themselves
+		humanoid_league_msgs::LineInformationInImage field_borders;
+		for (auto it = points.begin(); it != points.end() - 1; ++it) {
+			geometry_msgs::Point p1;
+			p1.x = it->x;
+			p1.y = it->y;
+			p1.z = 0;
+
+			geometry_msgs::Point p2;
+			p1.x = it->x;
+			p1.y = it->y;
+			p1.z = 0;
+
+			humanoid_league_msgs::LineSegmentInImage seg;
+			seg.start = p1;
+			seg.end = p2;
+			field_borders.segments.push_back(seg);
+		}
+		field_border.publish(field_borders);
+
+		// Publish the ROI
 		Point2f bottomleft, bottomright, topleft, topright;
 		bottomleft.x = 0;
 		bottomleft.y = 0;
@@ -238,6 +260,7 @@ int main(int argc, char **argv) {
     field_roi = n.advertise<object_recognition::ROI>("/object_recognition/field_ROI", 1);
     field_boundary = n.advertise<object_recognition::FieldBoundary>("/object_recognition/field_boundary", 1);
     field_area_img = it.advertise("/object_recognition/field_area", 1);
+    field_border = n.advertise<humanoid_league_msgs::LineInformationInImage>("/object_recognition/field_borders", 1);
 
 	ros::spin();
 }

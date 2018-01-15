@@ -22,10 +22,13 @@ ros::NodeHandle* nh;
 Publisher line_points_in_image;
 Publisher lines_in_image;
 image_transport::Subscriber field_img;
+Subscriber field_border;
 int image_count = 0;
 
 Scalar lower = Scalar(0, 0, 165);
 Scalar upper = Scalar(255, 105, 255);
+
+humanoid_league_msgs::LineInformationInImage soccer_border;
 
 void detect_lines(const sensor_msgs::ImageConstPtr& msg) {
 	ROS_INFO("Line Area");
@@ -64,6 +67,69 @@ void detect_lines(const sensor_msgs::ImageConstPtr& msg) {
 		}
 	}
 
+	// Send off the information
+	humanoid_league_msgs::LineInformationInImage info;
+
+	for(auto it = fieldlines.begin(); it != fieldlines.end(); ++it) {
+		Point2f p1 = leftScreenIntersection(*it, img->image.size());
+		Point2f p2 = rightScreenIntersection(*it, img->image.size());
+		humanoid_league_msgs::LineSegmentInImage seg;
+		seg.start.x = p1.x;
+		seg.start.y = p1.y;
+		seg.end.x = p2.x;
+		seg.end.y = p2.y;
+
+		info.segments.push_back(seg);
+	}
+	lines_in_image.publish(info);
+
+	// Split the lines into groups
+//	int groupCount = soccer_border.segments.size();
+//	vector<vector<Vec2f>> line_group(groupCount);
+//	for(int i = 0; i < fieldlines.size(); ++i) {
+//		float mindeltatheta = 100000;
+//		int closest_group = 0;
+//
+//		for(int group = 0; group < groupCount; ++group) {
+//			geometry_msgs::Point start = soccer_border.segments[group].start;
+//			geometry_msgs::Point end = soccer_border.segments[group].end;
+//			float pangle = angle(start, end);
+//
+//			float deltatheta = abs(pangle - fieldlines[i].val[1]);
+//			if(deltatheta < mindeltatheta) {
+//				mindeltatheta = deltatheta;
+//				closest_group = group;
+//			}
+//		}
+//
+//		line_group[closest_group].push_back(fieldlines[i]);
+//	}
+//
+//	// Permute the different groups
+//	for(int i = 0; i < line_group.size(); ++i) {
+//		for(int j = 0; j < line_group.size(); ++j) {
+//			if(i == j) continue;
+//
+//			vector<Vec2f> lg1 = line_group[i];
+//			vector<Vec2f> lg2 = line_group[j];
+//
+//			// Sort the line groups by distance
+//			sort(lg1.begin(), lg1.end(), sortbydistance);
+//			sort(lg1.begin(), lg1.end(), sortbydistance);
+//
+//
+//			// Intersections of lg1 onto lg2
+//			if
+//
+//			for(auto it = lg1.begin(); it != lg1.end(); ++it) {
+//				for(auto it = lg2.begin(); it != lg2.end() - 1; ++it) {
+//
+//				}
+//			}
+//		}
+//	}
+
+
 	// Save information
 	bool image_test;
 	nh->getParam("image_test", image_test);
@@ -81,6 +147,10 @@ void detect_lines(const sensor_msgs::ImageConstPtr& msg) {
 	}
 }
 
+void update_field_border(const humanoid_league_msgs::LineInformationInImage::ConstPtr msg) {
+	soccer_border = *msg;
+}
+
 int main(int argc, char **argv) {
 
 	ros::init(argc, argv, "line_detection");
@@ -89,6 +159,7 @@ int main(int argc, char **argv) {
 
 	image_transport::ImageTransport it(n);
 	field_img = it.subscribe("/object_recognition/field_area", 1, &detect_lines);
+    field_border = n.subscribe("/object_recognition/field_borders", 1, &update_field_border);
 
 	line_points_in_image = n.advertise<sensor_msgs::PointCloud2>("/object_recognition/line_points_in_image", 1);
 	lines_in_image = n.advertise<humanoid_league_msgs::LineInformationInImage>("/object_recognition/lines_in_image", 1);

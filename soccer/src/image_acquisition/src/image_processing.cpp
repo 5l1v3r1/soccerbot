@@ -41,15 +41,14 @@ public:
     }
     
     void findHSV(const sensor_msgs::ImageConstPtr& msg) {
-        cv_bridge::CvImagePtr img;
+    	cv_bridge::CvImageConstPtr img;
 
-        // Copy the input image to a pointer
-        try {
-            img = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8);
-        } catch(cv_bridge::Exception& e) {
-            ROS_ERROR("cv_bridge exception: %s", e.what());
-            return;
-        }
+    	try {
+    		img = cv_bridge::toCvShare(msg, "");
+    	} catch (cv_bridge::Exception& e) {
+    		ROS_ERROR("cv_bridge exception: %s", e.what());
+    		return;
+    	}
 
         // Convert to the HSV
 //        BrightnessAndContrastAuto(img->image, colorAdjust);
