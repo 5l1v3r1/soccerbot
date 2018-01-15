@@ -171,18 +171,16 @@ static void callback_getImage(const sensor_msgs::ImageConstPtr& msg)
 		msg_send.field_lines.lower_val = VAL_LOW_LINE;
 		
 		pub.publish(msg_send);
-		ROS_INFO("hue_high: %d, low_hue: %d", high_hue, msg_send.grass.lower_hue);
-		cout << "hue high: " << msg_send.grass.upper_hue << " hue low: " << msg_send.grass.lower_hue << " sat low: " << msg_send.field_lines.lower_sat << " sat high: " << msg_send.field_lines.upper_sat << endl;
-		
+	
 		//save 
 		Mat img_masked;
 		Scalar lower = Scalar(low_hue, SAT_LOW, VAL_LOW);
 		Scalar higher = Scalar(high_hue, SAT_HIGH, VAL_HIGH);
 		inRange(cv_ptr->image.clone(), lower,higher, img_masked);
 		if (image_test) {
-			string fileName = "/home/mariko/soccerbot/soccer/src/image_acquisition/images/test/test"
+			string fileName = "/src/image_acquisition/images/test/test"
 					+ std::to_string(++image_count) + ".png";
-			string fileNameOriginal = "/home/mariko/soccerbot/soccer/src/image_acquisition/images/test/"
+			string fileNameOriginal = "/src/image_acquisition/images/test/"
 							+ std::to_string(image_count) + ".png";
 			try {
 				imwrite(fileName, img_masked);
@@ -229,7 +227,7 @@ int main(int argc, char **argv)
 		image_acquisition::SoccerColorSpace msg_send;
 		ros::Rate rate(5);
 		
-		img_in = imread("/home/mariko/soccerbot/soccer/src/image_acquisition/images/field/4.png",CV_LOAD_IMAGE_COLOR);   //change to abs path
+		img_in = imread("/soccerbot/soccer/src/image_acquisition/images/field/4.png",CV_LOAD_IMAGE_COLOR);   //change to abs path
 		cvtColor(img_in,img_hsv,COLOR_BGR2HSV);
 		
 		//explore the color range of field
@@ -241,7 +239,7 @@ int main(int argc, char **argv)
 		Scalar lower = Scalar(low_hue, SAT_LOW, VAL_LOW);
 		Scalar higher = Scalar(high_hue, SAT_HIGH, VAL_HIGH); 
 		inRange(img_hsv, lower, higher, masked_img);
-		imwrite("/home/mariko/soccerbot/soccer/src/image_acquisition/images/field/test/5_tes_2.jpg",masked_img);     //change to abs path
+		imwrite("/soccerbot/soccer/src/image_acquisition/images/field/test/5_tes_2.jpg",masked_img);     //change to abs path
 		
 		//define the lower/upper value of the range -> masking
 		low_sat = SAT_CHANGE_SCALE * index_line;
@@ -249,7 +247,7 @@ int main(int argc, char **argv)
 		lower = Scalar(HUE_LOW_LINE, low_sat, VAL_LOW_LINE);
 		higher = Scalar(HUE_HIGH_LINE, high_sat, VAL_HIGH_LINE); 
 		inRange(img_hsv, lower, higher, masked_img2);
-		imwrite("/home/mariko/soccerbot/soccer/src/image_acquisition/images/field/test/5_tes_3.jpg",masked_img2);     //change to abs path
+		imwrite("/soccerbot/soccer/src/image_acquisition/images/field/test/5_tes_3.jpg",masked_img2);     //change to abs path
 		
 		
 		
