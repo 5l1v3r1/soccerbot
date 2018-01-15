@@ -11,6 +11,8 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  geometry_msgs
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -25,6 +27,17 @@ find_package(Boost REQUIRED COMPONENTS system)
 ################################################
 ## Declare ROS messages, services and actions ##
 ################################################
+add_message_files(
+    FILES
+    RobotGoal.msg
+    RobotState.msg
+)
+
+generate_messages(
+   DEPENDENCIES
+   std_msgs
+   geometry_msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##

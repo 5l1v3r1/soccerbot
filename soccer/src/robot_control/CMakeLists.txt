@@ -13,6 +13,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   humanoid_league_msgs
   nav_msgs
+  hardware_communication
   message_generation
   visualization_msgs
 )

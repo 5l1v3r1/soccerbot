@@ -17,7 +17,7 @@ ros::Publisher hardware_publisher;
 ros::Publisher pose_publisher;
 ros::Publisher bad_publisher;
 ros::Publisher goal_publisher;
-ros::Subscriber hardware_subscriber;
+//ros::Subscriber hardware_subscriber;
 
 void test() {
 	ROS_INFO("Testing");
@@ -133,8 +133,8 @@ int main(int argc, char **argv) {
 
     model_publisher = n.advertise<humanoid_league_msgs::Model>("/localization/model",1);
     goal_relative_publisher = n.advertise<humanoid_league_msgs::GoalRelative>("/localization/goal_relative", 1);
-    hardware_publisher = n.advertise<std_msgs::String>("/hardware_communication/hardware_callback", 1);
-    hardware_subscriber = n.subscribe("/robot_control/execution",1, callback_hardware);
+//    hardware_publisher = n.advertise<std_msgs::String>("/hardware_communication/hardware_callback", 1);
+//    hardware_subscriber = n.subscribe("/robot_control/execution",1, callback_hardware);
     pose_publisher = n.advertise<visualization_msgs::Marker>("Ball_Marker", 0);
     bad_publisher = n.advertise<visualization_msgs::Marker>("Position_Marker", 0);
     goal_publisher = n.advertise<visualization_msgs::Marker>("Goal_Marker", 0);
