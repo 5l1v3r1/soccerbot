@@ -13,6 +13,8 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   humanoid_league_msgs
+  geometry_msgs
+  visualization_msgs
   image_transport
 )
 
@@ -68,33 +70,28 @@ set(POSE_ESTIMATION
 )
 add_library(POSE_ESTIMATION_LIBRARIES ${POSE_ESTIMATION} ${OpenCV_LIBRARIES})
 
-## Calibrate Camera
-add_executable(calibrate_camera src/calibrate_camera.cpp src/settings.cpp)
-add_dependencies(calibrate_camera ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(calibrate_camera ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
-
 ## Ball Position Transformation
-add_executable(ball_position_transformation src/ball_position_transformation.cpp)
+add_executable(ball_position_transformation src/ball_position_transformation.cpp src/point_transform.cpp)
 add_dependencies(ball_position_transformation ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(ball_position_transformation ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} ${POSE_ESTIMATION_LIBRARIES})
 
 ## Opponent Position Transformation
-add_executable(opponent_position_transformation src/opponent_position_transformation.cpp)
+add_executable(opponent_position_transformation src/opponent_position_transformation.cpp src/point_transform.cpp)
 add_dependencies(opponent_position_transformation ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(opponent_position_transformation ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} ${POSE_ESTIMATION_LIBRARIES})
 
 ## Goal Position Transformation
-add_executable(goal_position_transformation src/goal_position_transformation.cpp)
+add_executable(goal_position_transformation src/goal_position_transformation.cpp src/point_transform.cpp)
 add_dependencies(goal_position_transformation ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(goal_position_transformation ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} ${POSE_ESTIMATION_LIBRARIES})
 
 ## Line Position Transformation
-add_executable(line_position_transformation src/line_position_transformation.cpp)
+add_executable(line_position_transformation src/line_position_transformation.cpp src/point_transform.cpp)
 add_dependencies(line_position_transformation ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(line_position_transformation ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} ${POSE_ESTIMATION_LIBRARIES})
 
 ## Line Points Transformation
-add_executable(line_points_transformation src/line_points_transformation.cpp)
+add_executable(line_points_transformation src/line_points_transformation.cpp src/point_transform.cpp)
 add_dependencies(line_points_transformation ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(line_points_transformation ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} ${POSE_ESTIMATION_LIBRARIES})
 

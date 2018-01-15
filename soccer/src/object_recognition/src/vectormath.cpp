@@ -120,6 +120,10 @@ bool sortbyangle(Vec2f a, Vec2f b) {
 	return a[1] < b[1];
 }
 
+bool sortbydistance(Vec2f a, Vec2f b) {
+	return a[0] < b[0];
+}
+
 vector<Vec2f> filterRepeats(vector<Vec2f>& lines) {
 	KDE kde;
 	kde.set_kernel_type(1);
@@ -207,4 +211,14 @@ void drawLinesOnImg(Mat& img, vector<Vec2f>& lines, Scalar color) {
 		pt2.y = cvRound(y0 - 1000 * (a));
 		line(img, pt1, pt2, color, 1, CV_AA);
 	}
+}
+
+float angle(geometry_msgs::Point start, geometry_msgs::Point end) {
+	float slope = (end.y - start.y) / (end.x - start.x);
+	float theta = atan(slope);
+
+	if ((theta + CV_PI / 2) > (2 * CV_PI))
+		return (theta + CV_PI / 2) - (2 * CV_PI);
+
+	return (theta + CV_PI / 2);
 }

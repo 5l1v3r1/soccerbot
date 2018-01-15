@@ -18,6 +18,7 @@
 #include "../include/statistics/kde.hpp"
 #include <std_msgs/Int32.h>
 #include <image_acquisition/SoccerColorSpace.h>
+#include <geometry_msgs/Point.h>
 
 #define PI CV_PI
 #define ANGLE_PROXIMITY_MIN PI / 72 // 10 degrees
@@ -40,5 +41,7 @@ vector<Vec2f> filterUnparallelRepeats(vector<Vec2f>& lines);
 vector<Vec2f> filterByAngle(vector<Vec2f>& lines, float angleStart, float angleEnd);
 
 void drawLinesOnImg(Mat& img, vector<Vec2f>& lines, Scalar color = Scalar(0, 255, 0));
+
+float angle(geometry_msgs::Point start, geometry_msgs::Point end);
 
 #endif /* vectorfunction.hpp */

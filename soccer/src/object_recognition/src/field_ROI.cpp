@@ -17,6 +17,7 @@
 #include <image_acquisition/SoccerColorSpace.h>
 #include <vectormath.hpp>
 #include <object_recognition/ROI.h>
+#include <humanoid_league_msgs/LineInformationInImage.h>
 
 using namespace std;
 using namespace ros;
@@ -25,6 +26,7 @@ using namespace cv;
 // Publisher Subscribers
 ros::NodeHandle* nh;
 ros::Publisher field_roi;
+ros::Publisher field_border;
 image_transport::Publisher field_area_img;
 image_transport::Subscriber hsv_img;
 
@@ -57,7 +59,6 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 			Size(2 * erosion_size2 + 1, 2 * erosion_size2 + 1),
 			Point(erosion_size2, erosion_size2));
 
-
 	// Dilate and Erode for small parts
 	dilate(mask, mask2, element);
 	erode(mask2, mask2, element);
@@ -68,7 +69,7 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 	bitwise_not(mask3, mask3);
 
 
-	double minarea = ((double) (640 * 480) / 30);
+	double minarea = ((double) (img->image.rows * img->image.cols) / 30);
 	double tmparea = 0.0;
 	vector<vector<Point> > contours;
 	vector<Vec4i> hierarchy;
@@ -91,6 +92,7 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 
 	dilate(mask3, mask3, element11);
 	erode(mask3, mask3, element11);
+
 
 	// Find the polygon information
 	Mat edges, cedges;
@@ -148,6 +150,27 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 		points.push_back(right_int);
 		pointsinv.push_back(right_int);
 
+		// Publish the lines themselves
+		humanoid_league_msgs::LineInformationInImage field_borders;
+		for (auto it = points.begin(); it != points.end() - 1; ++it) {
+			geometry_msgs::Point p1;
+			p1.x = it->x;
+			p1.y = it->y;
+			p1.z = 0;
+
+			geometry_msgs::Point p2;
+			p1.x = it->x;
+			p1.y = it->y;
+			p1.z = 0;
+
+			humanoid_league_msgs::LineSegmentInImage seg;
+			seg.start = p1;
+			seg.end = p2;
+			field_borders.segments.push_back(seg);
+		}
+		field_border.publish(field_borders);
+
+		// Publish the ROI
 		Point2f bottomleft, bottomright, topleft, topright;
 		bottomleft.x = 0;
 		bottomleft.y = 0;
@@ -164,7 +187,6 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 		pointsinv.push_back(bottomright);
 		pointsinv.push_back(bottomleft);
 
-		// Publish ROI
 		object_recognition::ROI roi;
 		roi.name = "Field ROI";
 
@@ -176,7 +198,7 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 		}
 		field_roi.publish(roi);
 
-		// Publish filtered area
+		// Publish the filtered Area
 		vector<Point> pointinv2;
 		for(auto it = pointsinv.begin(); it != pointsinv.end(); ++it) {
 			pointinv2.push_back((Point) (*it));
@@ -190,6 +212,7 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 		std_msgs::Header header;
 		sensor_msgs::ImagePtr msg = cv_bridge::CvImage(header, "bgr8", field_area_mat).toImageMsg();
 		field_area_img.publish(msg);
+
 	}
 	else {
 		field_area_img.publish(msg);
@@ -204,7 +227,7 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 		string fileNameOriginal = "../../../src/object_recognition/test/field/"
 						+ std::to_string(image_count) + ".png";
 		try {
-			imwrite(fileName, cedges);
+			imwrite(fileName, mask);
 			imwrite(fileNameOriginal, img->image);
 		} catch (runtime_error& ex) {
 			ROS_ERROR(ex.what());
@@ -231,6 +254,7 @@ int main(int argc, char **argv) {
     ros::Subscriber colorspace = n.subscribe("/image_acquisition/colorspace", 1, callback_colorspace);
     field_roi = n.advertise<object_recognition::ROI>("/object_recognition/field_ROI", 1);
     field_area_img = it.advertise("/object_recognition/field_area", 1);
+    field_border = n.advertise<humanoid_league_msgs::LineInformationInImage>("/object_recognition/field_borders", 1);
 
 	ros::spin();
 }
