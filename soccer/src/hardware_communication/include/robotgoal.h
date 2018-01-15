@@ -10,7 +10,7 @@
 
 typedef struct robotGoal {
 	u_int32_t id;
-	char message[50];
+	char message[12];
 } RobotGoal;
 
 #endif /* HARDWARE_COMMUNICATION_INCLUDE_HARDWARE_COMMUNICATION_ROBOTGOAL_H_ */

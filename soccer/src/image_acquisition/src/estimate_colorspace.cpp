@@ -29,7 +29,7 @@ ros::Publisher pub;
 #define NUM_SAT_RANGES	SAT_MAX/SAT_CHANGE_SCALE
 
 //const sat/val value for field 
-const int32_t SAT_LOW = 75;
+const int32_t SAT_LOW = 64;  //75
 const int32_t SAT_HIGH = 255;
 const int32_t VAL_LOW = 0;
 const int32_t VAL_HIGH = 200;
@@ -42,6 +42,8 @@ const int32_t VAL_HIGH_LINE = 255;
 
 //test flag
 #define TEST 0
+#define image_test 1
+int image_count = 0;
 
 //int32_t num_whitedots[NUM_HUE_RANGES] = { 0 };
 
@@ -65,7 +67,7 @@ static int32_t img_masking(
 	
 	//count white pixels
 	num_whitedot = countNonZero(img_masked);
-	
+		
 exit:
 	return num_whitedot;
 }
@@ -139,15 +141,15 @@ static void callback_getImage(const sensor_msgs::ImageConstPtr& msg)
 	try
     {
 		// retrieve the received img
-		cv_ptr = cv_bridge::toCvShare(msg, sensor_msgs::image_encodings::BGR8);
+		cv_ptr = cv_bridge::toCvShare(msg, "");
 		if( NULL == cv_ptr )
 			goto exit;
 		
 		//explore the color range of field
-		index_most_whitedots(cv_ptr->image, &index, &index_line);
-		low_hue = HUE_RANGE * index;
+		index_most_whitedots(cv_ptr->image.clone(), &index, &index_line);
+		low_hue = HUE_CHANGE_SCALE * index;
 		high_hue = low_hue + HUE_RANGE - 1;
-		low_sat = SAT_RANGE_LINE * index_line;
+		low_sat = SAT_CHANGE_SCALE * index_line;
 		high_sat = low_sat + SAT_RANGE_LINE - 1;
 		
 		
@@ -169,6 +171,24 @@ static void callback_getImage(const sensor_msgs::ImageConstPtr& msg)
 		msg_send.field_lines.lower_val = VAL_LOW_LINE;
 		
 		pub.publish(msg_send);
+	
+		//save 
+		Mat img_masked;
+		Scalar lower = Scalar(low_hue, SAT_LOW, VAL_LOW);
+		Scalar higher = Scalar(high_hue, SAT_HIGH, VAL_HIGH);
+		inRange(cv_ptr->image.clone(), lower,higher, img_masked);
+		if (image_test) {
+			string fileName = "/src/image_acquisition/images/test/test"
+					+ std::to_string(++image_count) + ".png";
+			string fileNameOriginal = "/src/image_acquisition/images/test/"
+							+ std::to_string(image_count) + ".png";
+			try {
+				imwrite(fileName, img_masked);
+				imwrite(fileNameOriginal, cv_ptr->image);
+			} catch (runtime_error& ex) {
+				ROS_ERROR(ex.what());
+			}
+		}
 		
     }
     catch (cv_bridge::Exception& e)
@@ -176,6 +196,7 @@ static void callback_getImage(const sensor_msgs::ImageConstPtr& msg)
       ROS_ERROR("cv_bridge exception: %s", e.what());
       goto exit;
     }
+	
 	
 exit:
 	return;
@@ -206,7 +227,7 @@ int main(int argc, char **argv)
 		image_acquisition::SoccerColorSpace msg_send;
 		ros::Rate rate(5);
 		
-		img_in = imread("/soccerbot/soccer/src/image_acquisition/images/field/aufnahme11_FullPic.jpg",CV_LOAD_IMAGE_COLOR);   //change to abs path
+		img_in = imread("/soccerbot/soccer/src/image_acquisition/images/field/4.png",CV_LOAD_IMAGE_COLOR);   //change to abs path
 		cvtColor(img_in,img_hsv,COLOR_BGR2HSV);
 		
 		//explore the color range of field

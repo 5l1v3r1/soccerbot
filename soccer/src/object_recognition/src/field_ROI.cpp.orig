@@ -17,8 +17,11 @@
 #include <image_acquisition/SoccerColorSpace.h>
 #include <vectormath.hpp>
 #include <object_recognition/ROI.h>
+<<<<<<< HEAD
 #include <humanoid_league_msgs/LineInformationInImage.h>
+=======
 #include <object_recognition/FieldBoundary.h>
+>>>>>>> 11ccbeb9358245fd823f18c3ed40c38f37c2449e
 
 using namespace std;
 using namespace ros;
@@ -26,7 +29,12 @@ using namespace cv;
 
 // Publisher Subscribers
 ros::NodeHandle* nh;
+<<<<<<< HEAD
 ros::Publisher field_roi;
+ros::Publisher field_border;
+=======
+ros::Publisher field_roi,field_boundary;
+>>>>>>> 11ccbeb9358245fd823f18c3ed40c38f37c2449e
 image_transport::Publisher field_area_img;
 image_transport::Subscriber hsv_img;
 
@@ -58,7 +66,6 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 	Mat element11 = getStructuringElement(MORPH_ELLIPSE,
 			Size(2 * erosion_size2 + 1, 2 * erosion_size2 + 1),
 			Point(erosion_size2, erosion_size2));
-
 
 	// Dilate and Erode for small parts
 	dilate(mask, mask2, element);
@@ -93,6 +100,7 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 
 	dilate(mask3, mask3, element11);
 	erode(mask3, mask3, element11);
+
 
 	// Find the polygon information
 	Mat edges, cedges;
@@ -187,7 +195,6 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 		pointsinv.push_back(bottomright);
 		pointsinv.push_back(bottomleft);
 
-		// Publish ROI
 		object_recognition::ROI roi;
 		roi.name = "Field ROI";
 
@@ -199,7 +206,7 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 		}
 		field_roi.publish(roi);
 
-		// Publish filtered area
+		// Publish the filtered Area
 		vector<Point> pointinv2;
 		for(auto it = pointsinv.begin(); it != pointsinv.end(); ++it) {
 			pointinv2.push_back((Point) (*it));
@@ -213,11 +220,15 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 		std_msgs::Header header;
 		sensor_msgs::ImagePtr msg = cv_bridge::CvImage(header, "bgr8", field_area_mat).toImageMsg();
 		field_area_img.publish(msg);
+<<<<<<< HEAD
+
+=======
 		
 		//publish field boundary line
 		object_recognition::FieldBoundary msg_line;
 		msg_line = PopulateFieldBmsg(peaks);
 		field_boundary.publish(msg_line);
+>>>>>>> 11ccbeb9358245fd823f18c3ed40c38f37c2449e
 	}
 	else {
 		field_area_img.publish(msg);
@@ -232,7 +243,7 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 		string fileNameOriginal = "../../../src/object_recognition/test/field/"
 						+ std::to_string(image_count) + ".png";
 		try {
-			imwrite(fileName, cedges);
+			imwrite(fileName, mask);
 			imwrite(fileNameOriginal, img->image);
 		} catch (runtime_error& ex) {
 			ROS_ERROR(ex.what());
