@@ -8,11 +8,11 @@
 #ifndef HARDWARE_COMMUNICATION_INCLUDE_HARDWARE_COMMUNICATION_ROBOTSTATE_H_
 #define HARDWARE_COMMUNICATION_INCLUDE_HARDWARE_COMMUNICATION_ROBOTSTATE_H_
 
-#include <ros/console.h>
+#include <stdint.h>
 
 typedef struct robotstate {
-	u_int32_t id;
-	char message[50];
+	uint32_t id;
+	char message[12];
 } RobotState;
 
 void print_robot_state(RobotState& robotstate);

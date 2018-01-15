@@ -1,10 +1,6 @@
-#include <ros/ros.h>
-#include <ros/console.h>
 #include <iostream>
 #include <errno.h>
 #include <fcntl.h>
-#include <hardware_communication/robotgoal.h>
-#include <hardware_communication/robotstate.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,52 +10,57 @@
 #include <sys/time.h>
 #include <sys/types.h>
 #include <sys/select.h>
-#include "../include/hardware_communication/serial.h"
+#include "serial.h"
+#include <ros/ros.h>
+#include <ros/console.h>
+#include <hardware_communication/RobotGoal.h>
+#include <hardware_communication/RobotState.h>
 
 using namespace std;
 using namespace ros;
-
+ros::NodeHandle* nh;
 int fd;
+hardware_communication::RobotState successcall;
 RobotState robotState;
-RobotGoal robotGoal, *robotGoalPtr;
+RobotGoal robotGoal;
+RobotGoal *robotGoalPtr;
+
+ros::Publisher hardware_publisher;
+ros::Subscriber hardware_subscriber;
+
+enum MoveType {
+	turnLeft,
+	turnRight,
+	moveForward,
+	success,
+	failure,
+	kick,
+	idle,
+	waiting
+};
 
 int open_port(void) {
 	int fd; // file description for the serial port
 
-	fd = open("/dev/ttyACM0", O_RDWR | O_NOCTTY | O_NDELAY);
+	fd = open("/dev/ttyUSB0",
+			O_RDWR | O_NOCTTY | O_NDELAY | O_NONBLOCK | O_SYNC);
 
-	if(fd == -1)
-		fd = open("/dev/ttyACM1", O_RDWR | O_NOCTTY | O_NDELAY);
-	if(fd == -1)
-		fd = open("/dev/ttyACM2", O_RDWR | O_NOCTTY | O_NDELAY);
-	if(fd == -1)
-		fd = open("/dev/ttyACM3", O_RDWR | O_NOCTTY | O_NDELAY);
-	if(fd == -1)
-		fd = open("/dev/ttyACM4", O_RDWR | O_NOCTTY | O_NDELAY);
-	if(fd == -1)
-		fd = open("/dev/ttyACM5", O_RDWR | O_NOCTTY | O_NDELAY);
-	if(fd == -1)
-		fd = open("/dev/ttyACM6", O_RDWR | O_NOCTTY | O_NDELAY);
-	if(fd == -1)
-		fd = open("/dev/ttyACM7", O_RDWR | O_NOCTTY | O_NDELAY);
-	if(fd == -1)
-		fd = open("/dev/ttyACM8", O_RDWR | O_NOCTTY | O_NDELAY);
-	if(fd == -1)
-		fd = open("/dev/ttyACM9", O_RDWR | O_NOCTTY | O_NDELAY);
-
+	if (fd == -1)
+		fd = open("/dev/ttyUSB1", O_RDWR | O_NOCTTY | O_NDELAY | O_NONBLOCK);
+	if (fd == -1)
+		fd = open("/dev/ttyUSB2", O_RDWR | O_NOCTTY | O_NDELAY | O_NONBLOCK);
 	if (fd == -1) {
-		ROS_ERROR("open_port: Unable to open /dev/ttyACM0. \n");
+		cout << "open_port: Unable to open /dev/ttyACM0. \n" << endl;
 		exit(1);
-	} else {
-		fcntl(fd, F_SETFL, 0);
-		ROS_ERROR("port is open.\n");
 	}
+
+	fcntl(fd, F_SETFL, 0);
+	cout << "Opened Port" << endl;
 
 	return (fd);
 } //open_port
 
-int configure_port(int fd)      // configure the port
-		{
+int configure_port(int fd) {
 	struct termios port_settings;     // structure to store the port settings in
 
 	cfsetispeed(&port_settings, B115200);    // set baud rates
@@ -70,114 +71,138 @@ int configure_port(int fd)      // configure the port
 	port_settings.c_cflag &= ~CSIZE;
 	port_settings.c_cflag |= CS8;
 
+	port_settings.c_cflag |= (CLOCAL | CREAD);
+	port_settings.c_lflag &= ~(ICANON | ECHO | ECHOE | ISIG);
+	port_settings.c_oflag &= ~OPOST;
+	port_settings.c_cc[VMIN] = 0;
+	port_settings.c_cc[VTIME] = 10;
+
 	tcsetattr(fd, TCSANOW, &port_settings);    // apply the settings to the port
+//	tcsetattr(fd,TCSAFLUSH,&port_settings);
+//	fcntl(fd, F_SETFL, O_NONBLOCK);       // make the reads non-blocking
+
+	cout << "Configured Port" << endl;
 	return (fd);
 
 } //configure_port
 
-int query_modem(int fd)   // query modem with an AT command
-		{
-	char n;
-	fd_set rdfs;
-	struct timeval timeout;
-
-	// initialise the timeout structure
-	timeout.tv_sec = 10; // ten second timeout
-	timeout.tv_usec = 0;
-
-	//Create byte array
-	unsigned char send_bytes[] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-			0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
-
-	write(fd, send_bytes, 13);  //Send data
-	ROS_ERROR("Wrote the bytes. \n");
-
-	// do the select
-	n = select(fd + 1, &rdfs, NULL, NULL, &timeout);
-
-	// check if an error has occured
-	if (n < 0) {
-		ROS_ERROR("select failed\n");
-	} else if (n == 0) {
-		ROS_ERROR("Timeout!");
-	} else {
-		ROS_ERROR("\nBytes detected on the port!\n");
-	}
-
-	return 0;
-
-} //query_modem
-
-int main(int argc, char **argv) {
-	ros::init(argc, argv, "hardware_communication");
-	ros::NodeHandle n;
-
+void establishConnection () {
 	// Open Port
 	fd = open_port();
 	configure_port(fd);
-	ROS_INFO("Port Opened");
 	tcflush(fd, TCIOFLUSH);
 
+	// Clean up
+	memset(robotGoal.message, 0, strlen(robotGoal.message));
+	memset(robotState.message, 0, strlen(robotState.message));
+
 	// Establish Connection via 3 way handshake
-	ROS_ERROR("1 way");
-	while(strcmp(robotState.message, "START")) {
+	cout << "1 way" << endl;
+
+	while (strcmp(robotState.message, "START")) {
+		tcflush(fd, TCIFLUSH);
 		robotState = receive_state();
+		cout << robotState.id << " " << robotState.message << endl;
 	}
 
-	return 1;
+	cout << "2 way" << endl;
 
-	ROS_ERROR("2 way");
+	// Creating RobotGoal
 	robotGoalPtr = &robotGoal;
 	robotGoal.id = 1;
-	memset(robotGoal.message,0,strlen(robotGoal.message));
+	memset(robotGoal.message, 0, strlen(robotGoal.message));
 	sprintf(robotGoal.message, "BEGIN");
-	while(strcmp(robotState.message, "ACK")) {
-		ROS_ERROR("Sending Begin");
+
+	while (strcmp(robotState.message, "ACK")) {
+		tcflush(fd, TCIFLUSH);
 		send_goal(robotGoalPtr);
-		ros::Duration(0.5).sleep();
-		ROS_ERROR("Receiving ACK");
 		robotState = receive_state();
-		print_robot_state(robotState);
+		cout << robotState.id << " " << robotState.message << endl;
 	}
-	ROS_ERROR("3 way");
-	return 1;
+	cout << "3 way" << endl;
+}
 
-	// Output
-	fd_set serialfd;
-	timeval t;
-	t.tv_usec = 0;
-	t.tv_sec = 1;
+void messageLoop(ros::Publisher hardware_publisher) {
+	memset(robotState.message, 0, strlen(robotState.message));
+	// Send Goal
+	while (strcmp(robotState.message, "ACK") || robotGoal.id != robotState.id) {
+		tcflush(fd, TCIOFLUSH);
+		send_goal(robotGoalPtr);
+		cout << "Sending Message " << robotGoal.id << endl;
 
-	// Output poll
-	robotGoal.id = 1;
-	sprintf(robotGoal.message, "Message 1");
+		usleep(200000);
+		robotState = receive_state();
+		cout << "Receiving Message " << robotState.id << endl;
 
-	ros::Rate r(1);
-	while (ros::ok()) {
+		if(strcmp(robotState.message, "Done")){
+			successcall.message = MoveType::success;
+			hardware_publisher.publish(successcall);
+			break;
+		};
+	}
 
-		ROS_ERROR("Send Message %d", robotGoal.id);
+	cout << robotState.id << " " << robotState.message << endl;
+	robotGoal.id++;
+}
 
-		while (!strcmp(robotState.message, "ACK")) {
-			// Send message
-			send_goal(robotGoalPtr);
+void send_message(const hardware_communication::RobotStateConstPtr& msg){
+	ROS_INFO("That's me");
+	switch(msg->message){
+	case turnLeft:
+		ROS_INFO("turnLeft");
+		strcpy(robotGoal.message,  "turnLeft");
+		break;
+	case turnRight:
+		ROS_INFO("turnRight");
+		strcpy(robotGoal.message,  "turnRight");
+		break;
+	case moveForward:
+		ROS_INFO("forward");
+		strcpy(robotGoal.message,  "forward");
+		break;
+	case success:
+		ROS_INFO("success");
+		strcpy(robotGoal.message,  "success");
+		break;
+	case failure:
+		ROS_INFO("failure");
+		strcpy(robotGoal.message,  "failure");
+		break;
+	case kick:
+		ROS_INFO("kick");
+		strcpy(robotGoal.message,  "kick");
+		break;
+	case idle:
+		ROS_INFO("idle");
+		strcpy(robotGoal.message,  "idle");
+		break;
+	default:
+	    break;
+	}
+};
 
-			// Wait for acknowledgment
-			FD_ZERO(&serialfd);
-			FD_SET(fd, &serialfd);
-			t.tv_sec = 1;
-			int retval = select(fd + 1, &serialfd, NULL, NULL, &t);
-			if (retval == -1) {
-				exit(4);
-			} else if (retval == 0) {
-				ROS_ERROR("Timeout");
-			} else {
-				robotState = receive_state();
-			}
-		}
+int main(int argc, char **argv) {
 
-		ROS_ERROR("Ack Message %s", robotState.message);
-		robotGoal.id++;
-		if(robotGoal.id > 10) break;
+	//establishConnection();
+	ros::init(argc, argv, "Hardware Communication");
+	ros::NodeHandle n;
+	nh = &n;
+	hardware_subscriber = n.subscribe("/robot_control/execution", 1, send_message);
+	hardware_publisher = n.advertise<hardware_communication::RobotState>("/hardware_communication/RobotState", 1);
+	ros::Rate r(2);
+	while(ros::ok()) {
+		strcpy(robotGoal.message, "waiting");
+		successcall.message = MoveType::waiting;
+		hardware_publisher.publish(successcall);
+		ROS_INFO("OK");
+		messageLoop(hardware_publisher);
+		ROS_INFO("Here");
+		if(!strcmp(robotState.message, "Done")){
+			strcpy(robotGoal.message, "waiting");
+			successcall.message = MoveType::waiting;
+			hardware_publisher.publish(successcall);
+		};
+		ros::spinOnce();
 		r.sleep();
 	}
 }

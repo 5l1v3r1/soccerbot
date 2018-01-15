@@ -1,13 +1,11 @@
 #ifndef SERIAL_H
 #define SERIAL_H
 
-#include <ros/ros.h>
-#include <ros/console.h>
 #include <iostream>
 #include <errno.h>
 #include <fcntl.h>
-#include <hardware_communication/robotgoal.h>
-#include <hardware_communication/robotstate.h>
+#include "robotgoal.h"
+#include "robotstate.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
