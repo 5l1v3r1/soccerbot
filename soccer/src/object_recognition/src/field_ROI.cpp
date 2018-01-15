@@ -17,6 +17,7 @@
 #include <image_acquisition/SoccerColorSpace.h>
 #include <vectormath.hpp>
 #include <object_recognition/ROI.h>
+#include <object_recognition/FieldBoundary.h>
 
 using namespace std;
 using namespace ros;
@@ -24,7 +25,7 @@ using namespace cv;
 
 // Publisher Subscribers
 ros::NodeHandle* nh;
-ros::Publisher field_roi;
+ros::Publisher field_roi,field_boundary;
 image_transport::Publisher field_area_img;
 image_transport::Subscriber hsv_img;
 
@@ -190,6 +191,11 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 		std_msgs::Header header;
 		sensor_msgs::ImagePtr msg = cv_bridge::CvImage(header, "bgr8", field_area_mat).toImageMsg();
 		field_area_img.publish(msg);
+		
+		//publish field boundary line
+		object_recognition::FieldBoundary msg_line;
+		msg_line = PopulateFieldBmsg(peaks);
+		field_boundary.publish(msg_line);
 	}
 	else {
 		field_area_img.publish(msg);
@@ -230,6 +236,7 @@ int main(int argc, char **argv) {
     image_transport::Subscriber hsv_img = it.subscribe("/camera_input/image_hsv", 1, find_field_area);
     ros::Subscriber colorspace = n.subscribe("/image_acquisition/colorspace", 1, callback_colorspace);
     field_roi = n.advertise<object_recognition::ROI>("/object_recognition/field_ROI", 1);
+    field_boundary = n.advertise<object_recognition::FieldBoundary>("/object_recognition/field_boundary", 1);
     field_area_img = it.advertise("/object_recognition/field_area", 1);
 
 	ros::spin();

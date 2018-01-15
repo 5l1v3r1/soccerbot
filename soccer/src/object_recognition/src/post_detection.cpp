@@ -12,6 +12,7 @@
 #include <sensor_msgs/PointCloud2.h>
 #include <humanoid_league_msgs/LineInformationInImage.h>
 #include <vectormath.hpp>
+#include <object_recognition/FieldBoundary.h>
 
 using namespace std;
 using namespace ros;
@@ -26,6 +27,9 @@ int image_count = 0;
 
 Scalar lower = Scalar(0, 13, 125);
 Scalar upper = Scalar(120, 77, 204);
+
+Vec2f field_boundaries[4] = { 0 };
+int num_boundaries = 1;
 
 void detect_post(const sensor_msgs::ImageConstPtr& msg) {
 	ROS_INFO("Post Detection");
@@ -50,7 +54,11 @@ void detect_post(const sensor_msgs::ImageConstPtr& msg) {
 	vector<Vec2f> lines;
 	HoughLines(mask, lines, 1, CV_PI / 180, 87, 0, 0, 15*PI/16, 17*PI/16); //100
 
+	vector<Point2f> intersections;
+	intersections = findIntersections(lines, field_boundaries, num_boundaries);
+	
 	drawLinesOnImg(final, lines, Scalar(0, 255, 0));
+	drawIntersectionsOnImg(final, intersections, Scalar(255,0,0));
 
 	// Save information
 	bool image_test;
@@ -72,14 +80,26 @@ void detect_post(const sensor_msgs::ImageConstPtr& msg) {
 	}
 }
 
+void callback_field_boundary(const object_recognition::FieldBoundaryConstPtr& msg)
+{
+	num_boundaries = msg->num_lines;
+	
+	for(size_t i = 0; i < num_boundaries; i++ )
+	{
+		field_boundaries[i][0] = msg->boundaries_ele1[i];
+		field_boundaries[i][1] = msg->boundaries_ele2[i];
+	}
+}
+
 int main(int argc, char **argv) {
 
 	ros::init(argc, argv, "post_detection");
 	ros::NodeHandle n;
 	nh = &n;
-
+	
 	image_transport::ImageTransport it(n);
 	hsv_img = it.subscribe("/camera_input/image_hsv", 1, &detect_post);
+	ros::Subscriber field_boundary = n.subscribe("/object_recognition/field_boundary", 1, callback_field_boundary);
 	line_points_in_image = n.advertise<sensor_msgs::PointCloud2>("/object_recognition/line_points_in_image", 1);
 	lines_in_image = n.advertise<humanoid_league_msgs::LineInformationInImage>("/object_recognition/lines_in_image", 1);
 

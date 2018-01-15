@@ -18,6 +18,7 @@
 #include "../include/statistics/kde.hpp"
 #include <std_msgs/Int32.h>
 #include <image_acquisition/SoccerColorSpace.h>
+#include <object_recognition/FieldBoundary.h>
 
 #define PI CV_PI
 #define ANGLE_PROXIMITY_MIN PI / 72 // 10 degrees
@@ -40,5 +41,11 @@ vector<Vec2f> filterUnparallelRepeats(vector<Vec2f>& lines);
 vector<Vec2f> filterByAngle(vector<Vec2f>& lines, float angleStart, float angleEnd);
 
 void drawLinesOnImg(Mat& img, vector<Vec2f>& lines, Scalar color = Scalar(0, 255, 0));
+
+void drawIntersectionsOnImg(Mat& img, vector<Point2f> centers, Scalar color);
+
+vector<Point2f> findIntersections(vector<Vec2f> lines, Vec2f* field_line, int field_line_num);
+
+object_recognition::FieldBoundary PopulateFieldBmsg( vector<Vec2f> peaks );
 
 #endif /* vectorfunction.hpp */
