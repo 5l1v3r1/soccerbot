@@ -20,7 +20,7 @@ ros::Publisher pub;
 //hard code the range
 #define HUE_RANGE 20
 #define HUE_CHANGE_SCALE 10	
-#define HUE_GREREN_MAX 200
+#define HUE_GREREN_MAX 80
 #define NUM_HUE_RANGES HUE_GREREN_MAX/HUE_CHANGE_SCALE
 
 #define SAT_RANGE_LINE 25
@@ -123,7 +123,7 @@ exit:
 	return;
 }
 
-int callbackCount;
+int callbackCount = -1;
 
 static void callback_getImage(const sensor_msgs::ImageConstPtr& msg)
 {

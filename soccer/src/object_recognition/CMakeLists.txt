@@ -71,10 +71,10 @@ add_executable(ball_candidate_chooser src/ball_candidate_chooser.cpp)
 add_dependencies(ball_candidate_chooser ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(ball_candidate_chooser ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
-## Game ROI
-add_executable(game_ROI src/game_ROI.cpp)
-add_dependencies(game_ROI ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(game_ROI ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+## Game GUI
+add_executable(game_GUI src/game_GUI.cpp)
+add_dependencies(game_GUI ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(game_GUI ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
 ## Field ROI
 add_executable(field_ROI src/field_ROI.cpp src/statistics/kde.cpp src/vectormath.cpp)
@@ -95,11 +95,6 @@ target_link_libraries(obstacle_detection ${catkin_LIBRARIES} ${OpenCV_LIBRARIES}
 add_executable(post_detection src/post_detection.cpp src/statistics/kde.cpp src/vectormath.cpp)
 add_dependencies(post_detection ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(post_detection ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
-
-## Goal Detection
-add_executable(goal_detection src/goal_detection.cpp)
-add_dependencies(goal_detection ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(goal_detection ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
 ## Line Detection
 add_executable(line_detection src/line_detection.cpp src/statistics/kde.cpp src/vectormath.cpp)

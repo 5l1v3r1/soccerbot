@@ -19,7 +19,7 @@
 #include <std_msgs/Int32.h>
 #include <image_acquisition/SoccerColorSpace.h>
 #include <geometry_msgs/Point.h>
-#include <object_recognition/FieldBoundary.h>
+//#include <object_recognition/FieldBoundary.h>
 
 #define PI CV_PI
 #define ANGLE_PROXIMITY_MIN PI / 72 // 10 degrees
@@ -47,8 +47,10 @@ void drawIntersectionsOnImg(Mat& img, vector<Point2f> centers, Scalar color);
 
 vector<Point2f> findIntersections(vector<Vec2f> lines, Vec2f* field_line, int field_line_num);
 
-object_recognition::FieldBoundary PopulateFieldBmsg( vector<Vec2f> peaks );
+//object_recognition::FieldBoundary PopulateFieldBmsg( vector<Vec2f> peaks );
 
 float angle(geometry_msgs::Point start, geometry_msgs::Point end);
+
+void saveImage(ros::NodeHandle& nh, const Mat& img, string folder, string name, int count);
 
 #endif /* vectorfunction.hpp */

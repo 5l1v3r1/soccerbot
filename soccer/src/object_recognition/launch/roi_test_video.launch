@@ -1,6 +1,6 @@
 <launch>
     <param name="image_test" value="false" />
-    <param name="video_stream_provider" value="$(find image_acquisition)/videos/1.mp4" />
+    <param name="video_stream_provider" value="$(find image_acquisition)/videos/2.mp4" />
 	<include file="$(find image_acquisition)/launch/image_acquisition_video.launch" />
 <!--    <node name="line_detection" pkg="object_recognition" type="line_detection" cwd="node" />-->
     <node name="field_ROI" pkg="object_recognition" type="field_ROI" cwd="node" />
