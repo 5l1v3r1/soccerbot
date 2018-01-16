@@ -1,0 +1,9 @@
+<launch>
+    <include file="$(find image_acquisition)/launch/image_acquisition.launch" />
+    <include file="$(find object_recognition)/launch/object_recognition.launch" />
+    <include file="$(find pixel_to_position_transformation)/launch/pixel_to_position_transformation.launch" />
+    <include file="$(find localization)/launch/localization.launch" />
+    <include file="$(find filtering)/launch/filtering.launch" />
+    <include file="$(find behaviour)/launch/behaviour.launch" />
+    <include file="$(find path_planning)/launch/path_planning.launch" />
+</launch>

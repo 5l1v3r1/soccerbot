@@ -70,6 +70,11 @@ set(POSE_ESTIMATION
 )
 add_library(POSE_ESTIMATION_LIBRARIES ${POSE_ESTIMATION} ${OpenCV_LIBRARIES})
 
+## Pixel to Position Transformation
+add_executable(pixel_to_position_transformation src/pixel_to_position_transformation.cpp src/point_transform.cpp)
+add_dependencies(pixel_to_position_transformation ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(pixel_to_position_transformation ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} ${POSE_ESTIMATION_LIBRARIES})
+
 ## Ball Position Transformation
 add_executable(ball_position_transformation src/ball_position_transformation.cpp src/point_transform.cpp)
 add_dependencies(ball_position_transformation ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})

@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
     NodeHandle n;
 
     image_transport::ImageTransport it(n);
-    hsv_img = it.subscribe("/object_recognition/field_ROI", 1, &findobstacles);
+    hsv_img = it.subscribe("/object_recognition/field_area", 1, &findobstacles);
     obstacles_in_image = n.advertise<humanoid_league_msgs::ObstacleInImage>("/object_recognition/obstacles_in_image", 1);
 
     ros::spin();

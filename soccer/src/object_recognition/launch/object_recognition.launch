@@ -1,17 +1,15 @@
 <launch>
     <node name="field_ROI" pkg="object_recognition" type="field_ROI" />
-    <node name="game_ROI" pkg="object_recognition" type="game_ROI" />
-
+    <node name="post_detection" pkg="object_recognition" type="post_detection" />
+    <node name="line_detection" pkg="object_recognition" type="line_detection" />
+    
     <node name="ball_detection" pkg="object_recognition" type="ball_detection" />
     <node name="ball_candidate_chooser" pkg="object_recognition" type="ball_candidate_chooser" />
 
     <node name="obstacle_ROI" pkg="object_recognition" type="obstacle_ROI" />
     <node name="obstacle_detection" pkg="object_recognition" type="obstacle_detection" />
 
-    <node name="post_detection" pkg="object_recognition" type="post_detection" />
-    <node name="goal_detection" pkg="object_recognition" type="goal_detection" />
-
-    <node name="line_detection" pkg="object_recognition" type="line_detection" />
+    <node name="game_GUI" pkg="object_recognition" type="game_ROI" />
 
     <node name="visual_compass" pkg="object_recognition" type="visual_compass" />
     <node name="visual_odom" pkg="object_recognition" type="visual_odom" />

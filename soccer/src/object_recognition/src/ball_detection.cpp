@@ -22,7 +22,7 @@ int main(int argc, char **argv) {
     NodeHandle n;
 
     image_transport::ImageTransport it(n);
-    image_transport::Subscriber hsv_img = it.subscribe("/object_recognition/field_ROI", 1, &findBall);
+    image_transport::Subscriber hsv_img = it.subscribe("/object_recognition/field_area", 1, &findBall);
     ball_candidates = it.advertise("/object_recognition/ball_candidates", 1);
 
     ros::spin();
