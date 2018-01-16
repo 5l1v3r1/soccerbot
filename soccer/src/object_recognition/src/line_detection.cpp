@@ -41,16 +41,15 @@ void detect_lines(const sensor_msgs::ImageConstPtr& msg) {
 		return;
 	}
 
-	Mat mask;
-	Canny(img->image, mask, 80, 250, 3);
+	Mat mask, mask2, final;
+	vector<Vec2f> lines, fieldlines;
 
-	Mat final = img->image.clone();
+	bilateralFilter(img->image, mask, 9, 75, 75);
+	Canny(mask, mask2, 70, 140, 3);
+	HoughLines(mask2, lines, 1, CV_PI / 180, 120, 0, 0);
+	fieldlines = filterUnparallelRepeats(lines);
 
-	vector<Vec2f> lines;
-	HoughLines(mask, lines, 1, CV_PI / 180, 160, 0, 0);
-
-	vector<Vec2f> fieldlines = filterUnparallelRepeats(lines);
-
+	final = img->image.clone();
 	drawLinesOnImg(final, fieldlines, Scalar(255,0,0));
 //	drawLinesOnImg(final, lines, Scalar(0,255,0));
 
@@ -67,6 +66,7 @@ void detect_lines(const sensor_msgs::ImageConstPtr& msg) {
 		}
 	}
 
+
 	// Send off the information
 	humanoid_league_msgs::LineInformationInImage info;
 
@@ -82,6 +82,7 @@ void detect_lines(const sensor_msgs::ImageConstPtr& msg) {
 		info.segments.push_back(seg);
 	}
 	lines_in_image.publish(info);
+
 
 	// Split the lines into groups
 //	int groupCount = soccer_border.segments.size();
@@ -129,22 +130,8 @@ void detect_lines(const sensor_msgs::ImageConstPtr& msg) {
 //		}
 //	}
 
-
-	// Save information
-	bool image_test;
-	nh->getParam("image_test", image_test);
-	if (image_test) {
-		string fileName = "../../../src/object_recognition/test/lines/test"
-				+ std::to_string(++image_count) + ".png";
-		string fileNameOriginal = "../../../src/object_recognition/test/lines/"
-				+ std::to_string(image_count) + ".png";
-		try {
-			imwrite(fileName, final);
-			imwrite(fileNameOriginal, img->image);
-		} catch (runtime_error& ex) {
-			ROS_ERROR(ex.what());
-		}
-	}
+	saveImage(*nh, final, "lines", "test", ++image_count);
+	saveImage(*nh, img->image, "lines", "orig", image_count);
 }
 
 void update_field_border(const humanoid_league_msgs::LineInformationInImage::ConstPtr msg) {

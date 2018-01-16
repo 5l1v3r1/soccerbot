@@ -27,8 +27,8 @@ cv::Size2f camera_size;
 geometry_msgs::Point get_center_point() {
 	D = robot_height / tan(phi);
 
-	float x = sin(theta) * D;
-	float y = sin(theta) * D;
+	float x = -sin(theta) * D;
+	float y = cos(theta) * D;
 
 	P.x = x;
 	P.y = y;
@@ -37,22 +37,24 @@ geometry_msgs::Point get_center_point() {
 	return P;
 }
 
-
 geometry_msgs::Point point2d_to_3d(const geometry_msgs::Point point2d, float image_height, float image_width) {
 
 	float x = point2d.x - image_width / 2;
 	float y = point2d.y - image_height / 2;
 
-	float D1 = D /  cos(phi);
+	float D1 = D / cos(phi);
 
-	float y_delta = (y / focal_length * D1) / cos(M_PI/2 - phi);
+	float y_delta = D1 * sin (atan( y / focal_length)) / sin (theta - atan(y / focal_length)); //(y / focal_length * D1) / cos(M_PI/2 - phi);
 	float Z1 = sqrt(pow((y_delta + D),2) + pow(robot_height,2));
 
 	float x_delta = x / focal_length * Z1;
 
 	geometry_msgs::Point p;
-	p.x = P.x + x_delta;
-	p.y = P.y + y_delta;
+
+	float x1 = (x_delta);
+	float y1 = (D + y_delta);
+	p.x = x1 * cos(theta) - y1 * sin(theta);
+	p.y = x1 * sin(theta) + y1 * cos(theta);
 	p.z = 0;
 
 	return p;

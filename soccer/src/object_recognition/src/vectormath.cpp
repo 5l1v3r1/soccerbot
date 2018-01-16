@@ -172,13 +172,16 @@ vector<Vec2f> filterRepeats(vector<Vec2f>& lines) {
 
 // TODO Better filter for field lines
 vector<Vec2f> filterUnparallelRepeats(vector<Vec2f>& lines) {
+	if(lines.size() <= 1) return lines;
+
 	sort(lines.begin(), lines.end(), sortbyangle);
 	vector<Vec2f> filteredLines;
+
 	for (auto it = lines.begin(); it != lines.end() - 1; ++it) {
 		float anglediff = abs((*it)[1] - (*(it+1))[1]);
 		float rhodiff = abs((*it)[0] - (*(it+1))[0]);
 
-		if(anglediff > ANGLE_PROXIMITY_MIN || anglediff > ANGLE_PROXIMITY_MAX) {
+		if(anglediff > ANGLE_PROXIMITY_MIN || anglediff < ANGLE_PROXIMITY_MAX) {
 			if(rhodiff > RHO_PROXIMITY_MIN) {
 				filteredLines.push_back((*it));
 			}
@@ -210,5 +213,21 @@ void drawLinesOnImg(Mat& img, vector<Vec2f>& lines, Scalar color) {
 		pt2.x = cvRound(x0 - 1000 * (-b));
 		pt2.y = cvRound(y0 - 1000 * (a));
 		line(img, pt1, pt2, color, 1, CV_AA);
+	}
+}
+
+void saveImage(ros::NodeHandle& nh, const Mat& img, string folder, string name, int count) {
+	bool image_test;
+	nh.getParam("image_test", image_test);
+	if (image_test) {
+		std::stringstream ss;
+		ss << "../../../src/object_recognition/test/" << folder << "/" << name << count << ".png";
+		std::string fileName = ss.str();
+
+		try {
+			imwrite(fileName, img);
+		} catch (runtime_error& ex) {
+			ROS_ERROR(ex.what());
+		}
 	}
 }

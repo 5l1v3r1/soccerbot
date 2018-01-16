@@ -12,7 +12,8 @@
 #include <sensor_msgs/PointCloud2.h>
 #include <humanoid_league_msgs/LineInformationInImage.h>
 #include <vectormath.hpp>
-#include <object_recognition/FieldBoundary.h>
+//#include <object_recognition/FieldBoundary.h>
+#include <humanoid_league_msgs/LineIntersectionInImage.h>
 
 using namespace std;
 using namespace ros;
@@ -55,41 +56,26 @@ void detect_post(const sensor_msgs::ImageConstPtr& msg) {
 	HoughLines(mask, lines, 1, CV_PI / 180, 87, 0, 0, 15*PI/16, 17*PI/16); //100
 
 	vector<Point2f> intersections;
-	intersections = findIntersections(lines, field_boundaries, num_boundaries);
+//	intersections = findIntersections(lines, field_boundaries, num_boundaries);
 	
 	drawLinesOnImg(final, lines, Scalar(0, 255, 0));
-	drawIntersectionsOnImg(final, intersections, Scalar(255,0,0));
+//	drawIntersectionsOnImg(final, intersections, Scalar(255,0,0));
 
-	// Save information
-	bool image_test;
-	nh->getParam("image_test", image_test);
-	if (image_test) {
-		string fileName = "../../../src/object_recognition/test/net/test"
-				+ std::to_string(++image_count) + ".png";
-		string fileNameOriginal = "../../../src/object_recognition/test/net/"
-				+ std::to_string(image_count) + ".png";
-		string fileNameWhite = "../../../src/object_recognition/test/net/testwhite"
-				+ std::to_string(image_count) + ".png";		
-		try {
-			imwrite(fileName, final);
-			imwrite(fileNameOriginal, mask);
-			imwrite(fileNameWhite, white_part);
-		} catch (runtime_error& ex) {
-			ROS_ERROR(ex.what());
-		}
-	}
+	saveImage(*nh, final, "lines", "final", ++image_count);
+	saveImage(*nh, mask, "lines", "mask", image_count);
+	saveImage(*nh, white_part, "lines", "white", image_count);
 }
 
-void callback_field_boundary(const object_recognition::FieldBoundaryConstPtr& msg)
-{
-	num_boundaries = msg->num_lines;
-	
-	for(size_t i = 0; i < num_boundaries; i++ )
-	{
-		field_boundaries[i][0] = msg->boundaries_ele1[i];
-		field_boundaries[i][1] = msg->boundaries_ele2[i];
-	}
-}
+//void callback_field_boundary(const object_recognition::FieldBoundaryConstPtr& msg)
+//{
+//	num_boundaries = msg->num_lines;
+//
+//	for(size_t i = 0; i < num_boundaries; i++ )
+//	{
+//		field_boundaries[i][0] = msg->boundaries_ele1[i];
+//		field_boundaries[i][1] = msg->boundaries_ele2[i];
+//	}
+//}
 
 int main(int argc, char **argv) {
 
@@ -99,7 +85,7 @@ int main(int argc, char **argv) {
 	
 	image_transport::ImageTransport it(n);
 	hsv_img = it.subscribe("/camera_input/image_hsv", 1, &detect_post);
-	ros::Subscriber field_boundary = n.subscribe("/object_recognition/field_boundary", 1, callback_field_boundary);
+//	ros::Subscriber field_boundary = n.subscribe("/object_recognition/field_boundary", 1, callback_field_boundary);
 	line_points_in_image = n.advertise<sensor_msgs::PointCloud2>("/object_recognition/line_points_in_image", 1);
 	lines_in_image = n.advertise<humanoid_league_msgs::LineInformationInImage>("/object_recognition/lines_in_image", 1);
 

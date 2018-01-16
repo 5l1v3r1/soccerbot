@@ -18,7 +18,7 @@
 #include <vectormath.hpp>
 #include <object_recognition/ROI.h>
 #include <humanoid_league_msgs/LineInformationInImage.h>
-#include <object_recognition/FieldBoundary.h>
+//#include <object_recognition/FieldBoundary.h>
 
 using namespace std;
 using namespace ros;
@@ -27,6 +27,7 @@ using namespace cv;
 // Publisher Subscribers
 ros::NodeHandle* nh;
 ros::Publisher field_roi;
+ros::Publisher field_border;
 image_transport::Publisher field_area_img;
 image_transport::Subscriber hsv_img;
 
@@ -49,16 +50,20 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 	Mat mask, mask2, mask3;
 	inRange(img->image, lower, upper, mask);
 
-	int erosion_size = 7;
+	int erosion_size = 17;
 	Mat element = getStructuringElement(MORPH_ELLIPSE,
 			Size(2 * erosion_size + 1, 2 * erosion_size + 1),
 			Point(erosion_size, erosion_size));
 
 	int erosion_size2 = 13;
-	Mat element11 = getStructuringElement(MORPH_ELLIPSE,
+	Mat element2 = getStructuringElement(MORPH_ELLIPSE,
 			Size(2 * erosion_size2 + 1, 2 * erosion_size2 + 1),
 			Point(erosion_size2, erosion_size2));
 
+	int erosion_size3 = 3;
+	Mat element3 = getStructuringElement(MORPH_ELLIPSE,
+			Size(2 * erosion_size + 1, 2 * erosion_size + 1),
+			Point(erosion_size, erosion_size));
 
 	// Dilate and Erode for small parts
 	dilate(mask, mask2, element);
@@ -91,8 +96,7 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 	}
 	bitwise_not(mask3, mask3);
 
-	dilate(mask3, mask3, element11);
-	erode(mask3, mask3, element11);
+	dilate(mask3, mask3, element2);
 
 	// Find the polygon information
 	Mat edges, cedges;
@@ -100,10 +104,10 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 	cvtColor(edges, cedges, CV_GRAY2BGR);
 
 	vector<Vec2f> lines;
-	HoughLines(edges, lines, 1, CV_PI / 180, 50, 0, 0, 0, CV_PI);
+	HoughLines(edges, lines, 1, CV_PI / 180, 40, 0, 0);
 
-
-	Mat field_area_mat = img->image.clone();
+	Mat field_area_mat;
+	img->image.copyTo(field_area_mat, mask3);
 	if(lines.size() != 0) {
 
 		// Go through the vertical lines and find ones that are not straight
@@ -209,35 +213,23 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 		const Point* ppt[1] = { pointinvdata };
 		int npt[] = { (int) points.size() };
 
-		fillPoly( field_area_mat, ppt, npt, 1, Scalar( 0, 0, 0 ), 8 );
+//		fillPoly( field_area_mat, ppt, npt, 1, Scalar( 0, 0, 0 ), 8 );
 		std_msgs::Header header;
 		sensor_msgs::ImagePtr msg = cv_bridge::CvImage(header, "bgr8", field_area_mat).toImageMsg();
 		field_area_img.publish(msg);
 		
 		//publish field boundary line
-		object_recognition::FieldBoundary msg_line;
-		msg_line = PopulateFieldBmsg(peaks);
-		field_boundary.publish(msg_line);
+//		object_recognition::FieldBoundary msg_line;
+//		msg_line = PopulateFieldBmsg(peaks);
+//		field_boundary.publish(msg_line);
 	}
 	else {
 		field_area_img.publish(msg);
 	}
 
 	// Save information
-	bool image_test;
-	nh->getParam("image_test", image_test);
-	if (image_test) {
-		string fileName = "../../../src/object_recognition/test/field/test"
-				+ std::to_string(++image_count) + ".png";
-		string fileNameOriginal = "../../../src/object_recognition/test/field/"
-						+ std::to_string(image_count) + ".png";
-		try {
-			imwrite(fileName, cedges);
-			imwrite(fileNameOriginal, img->image);
-		} catch (runtime_error& ex) {
-			ROS_ERROR(ex.what());
-		}
-	}
+	saveImage(*nh, field_area_mat, "field", "test", ++image_count);
+	saveImage(*nh, img->image, "field", "orig", image_count);
 }
 
 void callback_colorspace(const image_acquisition::SoccerColorSpaceConstPtr& msg)
@@ -258,7 +250,7 @@ int main(int argc, char **argv) {
     image_transport::Subscriber hsv_img = it.subscribe("/camera_input/image_hsv", 1, find_field_area);
     ros::Subscriber colorspace = n.subscribe("/image_acquisition/colorspace", 1, callback_colorspace);
     field_roi = n.advertise<object_recognition::ROI>("/object_recognition/field_ROI", 1);
-    field_boundary = n.advertise<object_recognition::FieldBoundary>("/object_recognition/field_boundary", 1);
+//    field_boundary = n.advertise<object_recognition::FieldBoundary>("/object_recognition/field_boundary", 1);
     field_area_img = it.advertise("/object_recognition/field_area", 1);
     field_border = n.advertise<humanoid_league_msgs::LineInformationInImage>("/object_recognition/field_borders", 1);
 
