@@ -1,12 +1,7 @@
-/*
- * PointTransform.hpp
- *
- *  Created on: 2018-01-14
- *      Author: vuwij
- */
-
 #ifndef PIXEL_TO_POSITION_TRANSFORMATION_INCLUDE_POINT_TRANSFORM_HPP_
 #define PIXEL_TO_POSITION_TRANSFORMATION_INCLUDE_POINT_TRANSFORM_HPP_
+
+#define PIXEL_TO_POSITION_SCALE 50
 
 // Distances in mm
 #include "../include/point_transform.hpp"
@@ -33,7 +28,11 @@ geometry_msgs::Point point2d_to_3d(const geometry_msgs::Point point2d, float ima
 
 geometry_msgs::Point get_center_point();
 
+void scale(geometry_msgs::Point& p, int scale = PIXEL_TO_POSITION_SCALE);
+
 void draw_line(ros::Publisher& marker_pub, double xbot, double ybot, double xcomponent, double ycomponent, int steps);
+
+void draw_line(ros::Publisher& marker_pub, geometry_msgs::Point& start, geometry_msgs::Point& end, float steps);
 
 void draw_point(ros::Publisher& marker_pub, geometry_msgs::Point& p);
 

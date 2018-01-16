@@ -112,7 +112,7 @@ void draw_line(ros::Publisher& marker_pub, double xbot, double ybot, double xcom
 	marker_pub.publish(points);
 	marker_pub.publish(line_strip);
 	marker_pub.publish(line_list);
-};
+}
 
 robot_control::WalkingPath Listener::computedestination(humanoid_league_msgs::Model model, humanoid_league_msgs::GoalRelative goal){
 	ROS_INFO("Computing");

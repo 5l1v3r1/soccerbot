@@ -14,48 +14,77 @@
 
 using namespace std;
 
-float focal_length = 50; 		// TODO get focal length from camera settings
+float focal_length = 800; 		// TODO get focal length from camera settings
 float robot_height = 50; 		// TODO get robot height from robot info
 float theta = 0;				// TODO angle of robot
-float phi = - M_PI / 12; 		// TODO angle looking down from robot head
+float phi = M_PI / 12; 		// TODO angle looking down from robot head
 
 // Distance
 float D = 0.0;
 geometry_msgs::Point P;
 cv::Size2f camera_size;
 
+void scale(geometry_msgs::Point& p, int scale) {
+	p.x = p.x / scale;
+	p.y = p.y / scale;
+	p.z = p.z / scale;
+}
+
 geometry_msgs::Point get_center_point() {
 	D = robot_height / tan(phi);
 
-	float x = -sin(theta) * D;
-	float y = cos(theta) * D;
+	float x = cos(theta) * D;
+	float y = sin(theta) * D;
 
 	P.x = x;
 	P.y = y;
 	P.z = 0;
 
+	scale(P);
 	return P;
 }
 
+
 geometry_msgs::Point point2d_to_3d(const geometry_msgs::Point point2d, float image_height, float image_width) {
 
-	float x = point2d.x - image_width / 2;
-	float y = point2d.y - image_height / 2;
+	float x = (point2d.x - image_width / 2);
+	float y = (point2d.y - image_height / 2);
 
 	float D1 = D / cos(phi);
 
-	float y_delta = D1 * sin (atan( y / focal_length)) / sin (theta - atan(y / focal_length)); //(y / focal_length * D1) / cos(M_PI/2 - phi);
-	float Z1 = sqrt(pow((y_delta + D),2) + pow(robot_height,2));
+	float y_prime = D1 * y / focal_length;
 
-	float x_delta = x / focal_length * Z1;
+	float angle = M_PI - (M_PI/2 + atan(y / focal_length)) - (M_PI / 2 - phi);
+
+	float x_delta = (M_PI - atan(x / focal_length)) / angle * y_prime;
+
+	float Z1 = sqrt(pow((x_delta + D),2) + pow(robot_height,2));
+
+	float y_delta = x / focal_length * Z1;
 
 	geometry_msgs::Point p;
 
-	float x1 = (x_delta);
-	float y1 = (D + y_delta);
+	float x1 = (y_delta / PIXEL_TO_POSITION_SCALE);
+	float y1 = (D + x_delta ) / PIXEL_TO_POSITION_SCALE;
 	p.x = x1 * cos(theta) - y1 * sin(theta);
 	p.y = x1 * sin(theta) + y1 * cos(theta);
 	p.z = 0;
+
+	ROS_INFO_STREAM("POINT2D to POINT3D \n"
+			<< "point2dx " << point2d.x << "\n"
+			<< "point2dy " << point2d.y << "\n"
+			<< "x " << x << "\n" << "y " << y << "\n"
+			<< "image_height " << image_height << "\n"
+			<< "image_width " << image_width << "\n"
+			<< "Y prime " << y_prime << "\n"
+			<< "angle " << angle << "\n"
+			<< "D " << D << "\n"
+			<< "D1 " << D1 << "\n"
+			<< "Z1 " << Z1 << "\n"
+			<< "y_delta " << y_delta << "\n"
+			<< "x_delta " << x_delta << "\n"
+			<< "x1 " << x1 << "\n"
+			<< "y1 " << y1);
 
 	return p;
 }
@@ -115,6 +144,10 @@ void draw_line(ros::Publisher& marker_pub, double xbot, double ybot, double xcom
 //	marker_pub.publish(points);
 	marker_pub.publish(line_strip);
 //	marker_pub.publish(line_list);
+}
+
+void draw_line(ros::Publisher& marker_pub, geometry_msgs::Point& start, geometry_msgs::Point& end, float steps) {
+	draw_line(marker_pub, start.x, start.y, (end.x - start.x) / steps, (end.y - start.y) / steps, steps);
 }
 
 void draw_point (ros::Publisher& marker_pub, geometry_msgs::Point& p) {

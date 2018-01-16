@@ -22,6 +22,7 @@ ros::NodeHandle* nh;
 Publisher line_points_in_image;
 Publisher lines_in_image;
 image_transport::Subscriber field_img;
+image_transport::Publisher line_img;
 Subscriber field_border;
 int image_count = 0;
 
@@ -130,6 +131,10 @@ void detect_lines(const sensor_msgs::ImageConstPtr& msg) {
 //		}
 //	}
 
+	std_msgs::Header header;
+	sensor_msgs::ImagePtr line_img_msg = cv_bridge::CvImage(header, "bgr8", final).toImageMsg();
+	line_img.publish(line_img_msg);
+
 	saveImage(*nh, final, "lines", "test", ++image_count);
 	saveImage(*nh, img->image, "lines", "orig", image_count);
 }
@@ -150,6 +155,7 @@ int main(int argc, char **argv) {
 
 	line_points_in_image = n.advertise<sensor_msgs::PointCloud2>("/object_recognition/line_points_in_image", 1);
 	lines_in_image = n.advertise<humanoid_league_msgs::LineInformationInImage>("/object_recognition/lines_in_image", 1);
+    line_img = it.advertise("/object_recognition/line_area", 1);
 
 	ros::spin();
 }
