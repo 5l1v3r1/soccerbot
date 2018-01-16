@@ -24,6 +24,7 @@ ros::NodeHandle* nh;
 Publisher line_points_in_image;
 Publisher lines_in_image;
 image_transport::Subscriber hsv_img;
+image_transport::Publisher post_img;
 int image_count = 0;
 
 Scalar lower = Scalar(0, 13, 125);
@@ -64,6 +65,11 @@ void detect_post(const sensor_msgs::ImageConstPtr& msg) {
 	saveImage(*nh, final, "lines", "final", ++image_count);
 	saveImage(*nh, mask, "lines", "mask", image_count);
 	saveImage(*nh, white_part, "lines", "white", image_count);
+
+	std_msgs::Header header;
+	sensor_msgs::ImagePtr post_img_msg = cv_bridge::CvImage(header, "bgr8", final).toImageMsg();
+	post_img.publish(post_img_msg);
+
 }
 
 //void callback_field_boundary(const object_recognition::FieldBoundaryConstPtr& msg)
@@ -88,6 +94,8 @@ int main(int argc, char **argv) {
 //	ros::Subscriber field_boundary = n.subscribe("/object_recognition/field_boundary", 1, callback_field_boundary);
 	line_points_in_image = n.advertise<sensor_msgs::PointCloud2>("/object_recognition/line_points_in_image", 1);
 	lines_in_image = n.advertise<humanoid_league_msgs::LineInformationInImage>("/object_recognition/lines_in_image", 1);
+    post_img = it.advertise("/object_recognition/post_area", 1);
+
 
 	ros::spin();
 }
