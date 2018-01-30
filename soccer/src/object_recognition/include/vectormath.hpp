@@ -19,6 +19,7 @@
 #include <std_msgs/Int32.h>
 #include <image_acquisition/SoccerColorSpace.h>
 #include <geometry_msgs/Point.h>
+#include <humanoid_league_msgs/LineInformationInImage.h>
 //#include <object_recognition/FieldBoundary.h>
 
 #define PI CV_PI
@@ -42,6 +43,8 @@ vector<Vec2f> filterUnparallelRepeats(vector<Vec2f>& lines);
 vector<Vec2f> filterByAngle(vector<Vec2f>& lines, float angleStart, float angleEnd);
 
 void drawLinesOnImg(Mat& img, vector<Vec2f>& lines, Scalar color = Scalar(0, 255, 0));
+
+void drawLinesOnImgCartesian(Mat& img, humanoid_league_msgs::LineInformationInImage& lines_cart, Scalar color=Scalar(255,0,0));
 
 void drawIntersectionsOnImg(Mat& img, vector<Point2f> centers, Scalar color);
 

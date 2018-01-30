@@ -71,7 +71,7 @@ void detect_lines(const sensor_msgs::ImageConstPtr& msg) {
 	// Send off the information
 	humanoid_league_msgs::LineInformationInImage info;
 
-	for(auto it = fieldlines.begin(); it != fieldlines.end(); ++it) {
+	/*for(auto it = fieldlines.begin(); it != fieldlines.end(); ++it) {
 		Point2f p1 = leftScreenIntersection(*it, img->image.size());
 		Point2f p2 = rightScreenIntersection(*it, img->image.size());
 		humanoid_league_msgs::LineSegmentInImage seg;
@@ -79,6 +79,19 @@ void detect_lines(const sensor_msgs::ImageConstPtr& msg) {
 		seg.start.y = p1.y;
 		seg.end.x = p2.x;
 		seg.end.y = p2.y;
+
+		info.segments.push_back(seg);
+	}*/
+	for(int i = 0; i < fieldlines.size(); i++) {
+		float rho = fieldlines[i][0], theta = fieldlines[i][1];
+		humanoid_league_msgs::LineSegmentInImage seg;
+		double a = cos(theta), b = sin(theta);
+		double x0 = a * rho, y0 = b * rho;
+
+		seg.start.x = cvRound(x0 + 1000 * (-b));
+		seg.start.y = cvRound(y0 + 1000 * (a));
+		seg.end.x = cvRound(x0 - 1000 * (-b));
+		seg.end.y = cvRound(y0 - 1000 * (a));
 
 		info.segments.push_back(seg);
 	}

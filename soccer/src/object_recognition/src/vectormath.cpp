@@ -3,6 +3,7 @@
 #include <opencv2/core.hpp>
 #include <unordered_map>
 #include <math.h>
+#include <humanoid_league_msgs/LineInformationInImage.h>
 
 // Finds the intersection of two lines, or returns false.
 // The lines are defined by (o1, p1) and (o2, p2).
@@ -212,6 +213,17 @@ void drawLinesOnImg(Mat& img, vector<Vec2f>& lines, Scalar color) {
 		pt1.y = cvRound(y0 + 1000 * (a));
 		pt2.x = cvRound(x0 - 1000 * (-b));
 		pt2.y = cvRound(y0 - 1000 * (a));
+		line(img, pt1, pt2, color, 1, CV_AA);
+	}
+}
+
+void drawLinesOnImgCartesian(Mat& img, humanoid_league_msgs::LineInformationInImage& lines_cart, Scalar color) {
+	for(auto it = lines_cart.segments.begin(); it != lines_cart.segments.end(); ++it){
+		Point pt1,pt2;
+		pt1.x = it->start.x;
+		pt1.y = it->start.y;
+		pt2.x = it->end.x;
+		pt2.y = it->end.y;
 		line(img, pt1, pt2, color, 1, CV_AA);
 	}
 }
