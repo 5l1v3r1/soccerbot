@@ -12,7 +12,11 @@
 /Desktop/
 /Downloads/
 !/Documents/
+
+# Libraries
 /libraries/tensorflow/
+/libraries/portaudio/build/*
+/libraries/portaudio/build/
 
 # ROS files
 /soccer/build/

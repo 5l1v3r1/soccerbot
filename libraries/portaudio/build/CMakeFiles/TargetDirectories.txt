@@ -1,8 +1,8 @@
-/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/install.dir
-/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/list_install_components.dir
-/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/rebuild_cache.dir
-/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/edit_cache.dir
-/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/portaudio.dir
-/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/portaudio_static.dir
-/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/install/strip.dir
-/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/install/local.dir
+/home/arnav/soccerbot/libraries/portaudio/build/CMakeFiles/install.dir
+/home/arnav/soccerbot/libraries/portaudio/build/CMakeFiles/list_install_components.dir
+/home/arnav/soccerbot/libraries/portaudio/build/CMakeFiles/rebuild_cache.dir
+/home/arnav/soccerbot/libraries/portaudio/build/CMakeFiles/edit_cache.dir
+/home/arnav/soccerbot/libraries/portaudio/build/CMakeFiles/portaudio.dir
+/home/arnav/soccerbot/libraries/portaudio/build/CMakeFiles/portaudio_static.dir
+/home/arnav/soccerbot/libraries/portaudio/build/CMakeFiles/install/strip.dir
+/home/arnav/soccerbot/libraries/portaudio/build/CMakeFiles/install/local.dir

@@ -6,5 +6,5 @@ C_FLAGS = -g
 
 C_DEFINES = -DPA_LITTLE_ENDIAN -DPA_USE_ALSA
 
-C_INCLUDES = -I/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/src/common -I/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build -I/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/src/os/unix -I/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/include 
+C_INCLUDES = -I/home/arnav/soccerbot/libraries/portaudio/src/common -I/home/arnav/soccerbot/libraries/portaudio/build -I/home/arnav/soccerbot/libraries/portaudio/src/os/unix -I/home/arnav/soccerbot/libraries/portaudio/include 
 
