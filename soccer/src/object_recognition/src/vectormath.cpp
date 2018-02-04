@@ -224,7 +224,6 @@ void drawLinesOnImgCartesian(Mat& img, humanoid_league_msgs::LineInformationInIm
 		pt1.y = it->start.y;
 		pt2.x = it->end.x;
 		pt2.y = it->end.y;
-		ROS_ERROR_STREAM(pt1.x << " " << pt1.y);
 		line(img, pt1, pt2, color, 1, CV_AA);
 	}
 }
