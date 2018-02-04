@@ -28,13 +28,10 @@ void find_obstacle_position(const humanoid_league_msgs::LineInformationInImagePt
 		geometry_msgs::Point p1 = it->start;
 		geometry_msgs::Point p2 = it->end;
 
+//		ROS_ERROR_STREAM(p1.x << " " << p1.y);
+
 		geometry_msgs::Point p1_3d = point2d_to_3d(p1, camera_size.height, camera_size.width);
 		geometry_msgs::Point p2_3d = point2d_to_3d(p2, camera_size.height, camera_size.width);
-
-//		p1.x = p1.x / 100;
-//		p1.y = p1.y / 100;
-//		p2.x = p2.x / 100;
-//		p2.y = p2.y / 100;
 
 		humanoid_league_msgs::LineSegmentRelative segment;
 		segment.start = p1_3d;

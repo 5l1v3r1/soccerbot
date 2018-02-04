@@ -39,6 +39,8 @@ void draw_lines(ros::Publisher& marker_pub, humanoid_league_msgs::LineInformatio
 
 void draw_point(ros::Publisher& marker_pub, geometry_msgs::Point& p);
 
-void draw_camera_frame(ros::Publisher& marker_pub, geometry_msgs::Point& p, cv::Size2f& camera_size);
+void draw_camera_border(ros::Publisher& marker_pub, cv::Size2f& camera_size);
+
+void draw_camera_frame(ros::Publisher& marker_pub, cv::Size2f& camera_size);
 
 #endif /* PIXEL_TO_POSITION_TRANSFORMATION_INCLUDE_POINT_TRANSFORM_HPP_ */

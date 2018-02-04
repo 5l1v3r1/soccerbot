@@ -23,16 +23,6 @@ image_transport::Publisher game_img;
 humanoid_league_msgs::LineInformationInImage field_lines;
 humanoid_league_msgs::LineInformationInImage post_lines;
 
-/*
-void find_game_area(const sensor_msgs::ImageConstPtr& msg) {
-
-}
-
-void extend_field_area(const sensor_msgs::PointCloud2Ptr& msg) {
-
-}
-*/
-
 static void draw_lines_in_img(const sensor_msgs::ImageConstPtr& msg) {
 	ROS_INFO("Game GUI");
 
@@ -77,7 +67,7 @@ int main(int argc, char **argv) {
     image_transport::Subscriber hsv_img = it.subscribe("/camera_input/image_raw", 1, draw_lines_in_img);
     Subscriber lines = n.subscribe("/object_recognition/lines_in_image", 1, update_field_lines);
     Subscriber goal_posts = n.subscribe("/object_recognition/post_in_image", 1, update_post_lines);
-    game_img = it.advertise("/object_recognition/game_area", 1);
+    game_img = it.advertise("/object_recognition/game_GUI", 1);
 
     ros::spin();
 }
