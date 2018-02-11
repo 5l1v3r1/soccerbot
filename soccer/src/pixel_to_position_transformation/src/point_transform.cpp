@@ -176,6 +176,59 @@ void draw_lines(ros::Publisher& marker_pub,
 	marker_pub.publish(line_list);
 }
 
+void draw_lines2(ros::Publisher& marker_pub,
+		humanoid_league_msgs::LineInformationRelative& lines, float steps) {
+
+	visualization_msgs::Marker line_list;
+	line_list.header.frame_id = "base_link";
+	line_list.header.stamp = ros::Time::now();
+	line_list.ns = "path_test";
+	line_list.action = visualization_msgs::Marker::ADD;
+	line_list.pose.orientation.w = 1.0;
+
+	line_list.id = 2;
+	line_list.type = visualization_msgs::Marker::LINE_LIST;
+	line_list.scale.x = 0.1;
+
+	line_list.color.b = 1.0;
+	line_list.color.a = 1.0;
+
+	// Create the vertices for the points and lines
+	for(auto it = lines.segments.begin(); it != lines.segments.end(); ++it) {
+		line_list.points.push_back(it->start);
+		line_list.points.push_back(it->end);
+	}
+
+	line_list.lifetime = ros::Duration(1);
+
+	//	marker_pub.publish(points);
+	marker_pub.publish(line_list);
+}
+
+void draw_goal(ros::Publisher& marker_pub,
+		humanoid_league_msgs::GoalRelative& goal) {
+
+	visualization_msgs::Marker goal_marker;
+	goal_marker.header.frame_id = "base_link";
+	goal_marker.header.stamp = ros::Time::now();
+	goal_marker.ns = "path_test";
+	goal_marker.action = visualization_msgs::Marker::ADD;
+	goal_marker.id = 2;
+	goal_marker.type = visualization_msgs::Marker::POINTS;
+	goal_marker.scale.x = 0.5;
+	goal_marker.scale.y = 0.5;
+
+	goal_marker.points.push_back(goal.left_post);
+	goal_marker.points.push_back(goal.right_post);
+
+	goal_marker.color.a = 1.0;
+	goal_marker.color.b = 1.0;
+
+	goal_marker.lifetime = ros::Duration(1);
+
+	marker_pub.publish(goal_marker);
+}
+
 void draw_point(ros::Publisher& marker_pub, geometry_msgs::Point& p) {
 	visualization_msgs::Marker marker;
 	marker.header.frame_id = "base_link";
