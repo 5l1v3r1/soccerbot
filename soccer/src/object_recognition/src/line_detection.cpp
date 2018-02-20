@@ -29,8 +29,6 @@ int image_count = 0;
 Scalar lower = Scalar(0, 0, 165);
 Scalar upper = Scalar(255, 105, 255);
 
-humanoid_league_msgs::LineInformationInImage soccer_border;
-
 void detect_lines(const sensor_msgs::ImageConstPtr& msg) {
 	ROS_INFO("Line Area");
 
@@ -52,7 +50,6 @@ void detect_lines(const sensor_msgs::ImageConstPtr& msg) {
 
 	final = img->image.clone();
 	drawLinesOnImg(final, fieldlines, Scalar(255,0,0));
-//	drawLinesOnImg(final, lines, Scalar(0,255,0));
 
 	// Extract the intersections of the line
 	vector<Point2f> intersections;
@@ -69,45 +66,32 @@ void detect_lines(const sensor_msgs::ImageConstPtr& msg) {
 
 
 	// Send off the information
-	humanoid_league_msgs::LineInformationInImage info;
+	humanoid_league_msgs::LineInformationInImage lineinfo;
 
-//	for(auto it = fieldlines.begin(); it != fieldlines.end(); ++it) {
-//		Point2f p1 = leftScreenIntersection(*it, img->image.size());
-//		Point2f p2 = rightScreenIntersection(*it, img->image.size());
-//		humanoid_league_msgs::LineSegmentInImage seg;
-//		seg.start.x = p1.x;
-//		seg.start.y = p1.y;
-//		seg.end.x = p2.x;
-//		seg.end.y = p2.y;
-//
-//		info.segments.push_back(seg);
-//	}
-	for(int i = 0; i < fieldlines.size(); i++) {
-		float rho = fieldlines[i][0], theta = fieldlines[i][1];
+	for(auto it = fieldlines.begin(); it != fieldlines.end(); ++it) {
+		Point2f p1 = leftScreenIntersection(*it, img->image.size());
+		Point2f p2 = rightScreenIntersection(*it, img->image.size());
+		circle(final, p1, 5, Scalar(0,255,0));
+		circle(final, p2, 5, Scalar(0,255,0));
 		humanoid_league_msgs::LineSegmentInImage seg;
-		double a = cos(theta), b = sin(theta);
-		double x0 = a * rho, y0 = b * rho;
+		seg.start.x = p1.x;
+		seg.start.y = p1.y;
+		seg.end.x = p2.x;
+		seg.end.y = p2.y;
 
-		seg.start.x = cvRound(x0 + 1000 * (-b));
-		seg.start.y = cvRound(y0 + 1000 * (a));
-		seg.end.x = cvRound(x0 - 1000 * (-b));
-		seg.end.y = cvRound(y0 - 1000 * (a));
-
-		info.segments.push_back(seg);
+		lineinfo.segments.push_back(seg);
 	}
-	lines_in_image.publish(info);
 
-
-	// Split the lines into groups
-//	int groupCount = soccer_border.segments.size();
+//	// Split the lines into groups
+//	int groupCount = lineinfo.segments.size();
 //	vector<vector<Vec2f>> line_group(groupCount);
 //	for(int i = 0; i < fieldlines.size(); ++i) {
 //		float mindeltatheta = 100000;
 //		int closest_group = 0;
 //
 //		for(int group = 0; group < groupCount; ++group) {
-//			geometry_msgs::Point start = soccer_border.segments[group].start;
-//			geometry_msgs::Point end = soccer_border.segments[group].end;
+//			geometry_msgs::Point start = lineinfo.segments[group].start;
+//			geometry_msgs::Point end = lineinfo.segments[group].end;
 //			float pangle = angle(start, end);
 //
 //			float deltatheta = abs(pangle - fieldlines[i].val[1]);
@@ -134,8 +118,6 @@ void detect_lines(const sensor_msgs::ImageConstPtr& msg) {
 //
 //
 //			// Intersections of lg1 onto lg2
-//			if
-//
 //			for(auto it = lg1.begin(); it != lg1.end(); ++it) {
 //				for(auto it = lg2.begin(); it != lg2.end() - 1; ++it) {
 //
@@ -144,16 +126,14 @@ void detect_lines(const sensor_msgs::ImageConstPtr& msg) {
 //		}
 //	}
 
+	lines_in_image.publish(lineinfo);
+
 	std_msgs::Header header;
 	sensor_msgs::ImagePtr line_img_msg = cv_bridge::CvImage(header, "bgr8", final).toImageMsg();
 	line_img.publish(line_img_msg);
 
 	saveImage(*nh, final, "lines", "test", ++image_count);
 	saveImage(*nh, img->image, "lines", "orig", image_count);
-}
-
-void update_field_border(const humanoid_league_msgs::LineInformationInImage::ConstPtr msg) {
-	soccer_border = *msg;
 }
 
 int main(int argc, char **argv) {

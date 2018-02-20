@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.12)
+#[[cmake_minimum_required(VERSION 2.8.12)
 project(darknet_ros)
 
 # Set c++11 cmake flags
@@ -272,3 +272,4 @@ if(CATKIN_ENABLE_TESTING)
     ${catkin_LIBRARIES}
   )
 endif()
+]]

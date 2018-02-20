@@ -34,8 +34,8 @@ Point2f leftScreenIntersection(Vec2f vec, Size2f imgSize) {
 	float b = 0;
 
 	if ((rho / cos(theta)) < x && (rho / cos(theta)) > 0) {
-		a = 0;
-		b = rho / cos(theta);
+		a = rho / cos(theta);
+		b = 0;
 //		ROS_ERROR("CASE 1");
 	} else if (tan(PI - theta) * (y - rho * sin(theta)) < x && theta < PI / 2) {
 		a = x;
@@ -53,7 +53,7 @@ Point2f leftScreenIntersection(Vec2f vec, Size2f imgSize) {
 //		ROS_ERROR("CASE 4");
 	}
 
-	Point2f intersect(a, b);
+	Point2f intersect(b, a);
 	return intersect;
 }
 
@@ -68,8 +68,8 @@ Point2f rightScreenIntersection(Vec2f vec, Size2f imgSize) {
 	float b = 0;
 
 	if ((rho / cos(theta)) < x && (rho / cos(theta)) > 0) {
-		a = 0;
-		b = rho / cos(theta);
+		a = rho / cos(theta);
+		b = 0;
 //		ROS_ERROR("CASE 1");
 	} else if (tan(PI - theta) * (y - rho * sin(theta)) < x && theta < PI / 2) {
 		a = x;
