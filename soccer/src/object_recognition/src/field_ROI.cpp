@@ -118,9 +118,9 @@ void find_field_area(const sensor_msgs::ImageConstPtr& msg) {
 			valid_lines.push_back(*it);
 		}
 		vector<Vec2f> peaks = filterRepeats(valid_lines);
-		for(auto it = peaks.begin(); it < peaks.end(); ++it) {
-			ROS_INFO("%d %f %f",image_count, (*it)[0], (*it)[1]);
-		}
+//		for(auto it = peaks.begin(); it < peaks.end(); ++it) {
+//			ROS_INFO("%d %f %f",image_count, (*it)[0], (*it)[1]);
+//		}
 
 		Mat imtest;
 		cvtColor(img->image, imtest, cv::COLOR_HSV2BGR);

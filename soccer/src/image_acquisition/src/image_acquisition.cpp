@@ -90,6 +90,7 @@ int main(int argc, char **argv) {
 
 		ROS_INFO("Opened Camera, Starting to publish");
 
+
 		// Camera Information
 		Mat frame;
 		sensor_msgs::ImagePtr msg;

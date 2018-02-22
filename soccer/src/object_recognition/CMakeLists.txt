@@ -19,7 +19,8 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 ## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
+find_package(Boost REQUIRED COMPONENTS system)
+find_package(OpenCV)
 
 ################################################
 ## Declare ROS messages, services and actions ##
@@ -72,7 +73,7 @@ add_dependencies(ball_candidate_chooser ${${PROJECT_NAME}_EXPORTED_TARGETS} ${ca
 target_link_libraries(ball_candidate_chooser ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
 ## Game GUI
-add_executable(game_GUI src/game_GUI.cpp)
+add_executable(game_GUI src/game_GUI.cpp src/statistics/kde.cpp src/vectormath.cpp)
 add_dependencies(game_GUI ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(game_GUI ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 

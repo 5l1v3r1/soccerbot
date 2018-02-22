@@ -45,7 +45,8 @@ int main(int argc, char **argv) {
     ros::Rate r(30);
     while(ros::ok()) {
     	geometry_msgs::Point m = get_center_point(); // TODO Publish this
-//    	ROS_INFO("PIXEL TO POS %lf %lf", m.x, m.y);
+    	draw_camera_border(center_point, camera_size);
+    	//draw_camera_frame(center_point, camera_size);
     	draw_point(center_point, m);
 
     	std_msgs::Float32 dd;

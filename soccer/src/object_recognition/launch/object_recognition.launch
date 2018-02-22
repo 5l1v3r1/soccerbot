@@ -9,7 +9,7 @@
     <node name="obstacle_ROI" pkg="object_recognition" type="obstacle_ROI" />
     <node name="obstacle_detection" pkg="object_recognition" type="obstacle_detection" />
 
-    <node name="game_GUI" pkg="object_recognition" type="game_ROI" />
+    <node name="game_GUI" pkg="object_recognition" type="game_GUI" />
 
     <node name="visual_compass" pkg="object_recognition" type="visual_compass" />
     <node name="visual_odom" pkg="object_recognition" type="visual_odom" />

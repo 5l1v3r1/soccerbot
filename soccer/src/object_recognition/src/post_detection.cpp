@@ -13,7 +13,6 @@
 #include <humanoid_league_msgs/LineInformationInImage.h>
 #include <vectormath.hpp>
 //#include <object_recognition/FieldBoundary.h>
-#include <humanoid_league_msgs/LineIntersectionInImage.h>
 
 using namespace std;
 using namespace ros;
@@ -21,9 +20,11 @@ using namespace cv;
 
 ros::NodeHandle* nh;
 
-Publisher line_points_in_image;
-Publisher lines_in_image;
+//Publisher line_points_in_image;
+//Publisher lines_in_image;
+Publisher post_in_image;
 image_transport::Subscriber hsv_img;
+image_transport::Publisher post_img;
 int image_count = 0;
 
 Scalar lower = Scalar(0, 13, 125);
@@ -61,9 +62,32 @@ void detect_post(const sensor_msgs::ImageConstPtr& msg) {
 	drawLinesOnImg(final, lines, Scalar(0, 255, 0));
 //	drawIntersectionsOnImg(final, intersections, Scalar(255,0,0));
 
+	// Send off the information
+	humanoid_league_msgs::LineInformationInImage info;
+
+	for(int i = 0; i < lines.size(); i++) {
+		float rho = lines[i][0], theta = lines[i][1];
+		humanoid_league_msgs::LineSegmentInImage seg;
+		double a = cos(theta), b = sin(theta);
+		double x0 = a * rho, y0 = b * rho;
+
+		seg.start.x = cvRound(x0 + 1000 * (-b));
+		seg.start.y = cvRound(y0 + 1000 * (a));
+		seg.end.x = cvRound(x0 - 1000 * (-b));
+		seg.end.y = cvRound(y0 - 1000 * (a));
+
+		info.segments.push_back(seg);
+	}
+	post_in_image.publish(info);
+
 	saveImage(*nh, final, "lines", "final", ++image_count);
 	saveImage(*nh, mask, "lines", "mask", image_count);
 	saveImage(*nh, white_part, "lines", "white", image_count);
+
+	std_msgs::Header header;
+	sensor_msgs::ImagePtr post_img_msg = cv_bridge::CvImage(header, "bgr8", final).toImageMsg();
+	post_img.publish(post_img_msg);
+
 }
 
 //void callback_field_boundary(const object_recognition::FieldBoundaryConstPtr& msg)
@@ -86,8 +110,11 @@ int main(int argc, char **argv) {
 	image_transport::ImageTransport it(n);
 	hsv_img = it.subscribe("/camera_input/image_hsv", 1, &detect_post);
 //	ros::Subscriber field_boundary = n.subscribe("/object_recognition/field_boundary", 1, callback_field_boundary);
-	line_points_in_image = n.advertise<sensor_msgs::PointCloud2>("/object_recognition/line_points_in_image", 1);
-	lines_in_image = n.advertise<humanoid_league_msgs::LineInformationInImage>("/object_recognition/lines_in_image", 1);
+//	line_points_in_image = n.advertise<sensor_msgs::PointCloud2>("/object_recognition/line_points_in_image", 1);
+//	lines_in_image = n.advertise<humanoid_league_msgs::LineInformationInImage>("/object_recognition/lines_in_image", 1);
+	post_in_image = n.advertise<humanoid_league_msgs::LineInformationInImage>("/object_recognition/post_in_image", 1);
+    post_img = it.advertise("/object_recognition/post_area", 1);
+
 
 	ros::spin();
 }

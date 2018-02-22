@@ -3,6 +3,7 @@
 #include <opencv2/core.hpp>
 #include <unordered_map>
 #include <math.h>
+#include <humanoid_league_msgs/LineInformationInImage.h>
 
 // Finds the intersection of two lines, or returns false.
 // The lines are defined by (o1, p1) and (o2, p2).
@@ -33,8 +34,8 @@ Point2f leftScreenIntersection(Vec2f vec, Size2f imgSize) {
 	float b = 0;
 
 	if ((rho / cos(theta)) < x && (rho / cos(theta)) > 0) {
-		a = 0;
-		b = rho / cos(theta);
+		a = rho / cos(theta);
+		b = 0;
 //		ROS_ERROR("CASE 1");
 	} else if (tan(PI - theta) * (y - rho * sin(theta)) < x && theta < PI / 2) {
 		a = x;
@@ -52,7 +53,7 @@ Point2f leftScreenIntersection(Vec2f vec, Size2f imgSize) {
 //		ROS_ERROR("CASE 4");
 	}
 
-	Point2f intersect(a, b);
+	Point2f intersect(b, a);
 	return intersect;
 }
 
@@ -67,8 +68,8 @@ Point2f rightScreenIntersection(Vec2f vec, Size2f imgSize) {
 	float b = 0;
 
 	if ((rho / cos(theta)) < x && (rho / cos(theta)) > 0) {
-		a = 0;
-		b = rho / cos(theta);
+		a = rho / cos(theta);
+		b = 0;
 //		ROS_ERROR("CASE 1");
 	} else if (tan(PI - theta) * (y - rho * sin(theta)) < x && theta < PI / 2) {
 		a = x;
@@ -174,21 +175,7 @@ vector<Vec2f> filterRepeats(vector<Vec2f>& lines) {
 vector<Vec2f> filterUnparallelRepeats(vector<Vec2f>& lines) {
 	if(lines.size() <= 1) return lines;
 
-	sort(lines.begin(), lines.end(), sortbyangle);
-	vector<Vec2f> filteredLines;
-
-	for (auto it = lines.begin(); it != lines.end() - 1; ++it) {
-		float anglediff = abs((*it)[1] - (*(it+1))[1]);
-		float rhodiff = abs((*it)[0] - (*(it+1))[0]);
-
-		if(anglediff > ANGLE_PROXIMITY_MIN || anglediff < ANGLE_PROXIMITY_MAX) {
-			if(rhodiff > RHO_PROXIMITY_MIN) {
-				filteredLines.push_back((*it));
-			}
-		}
-	}
-
-	return filteredLines;
+	return filterRepeats(lines);
 }
 
 
@@ -212,6 +199,17 @@ void drawLinesOnImg(Mat& img, vector<Vec2f>& lines, Scalar color) {
 		pt1.y = cvRound(y0 + 1000 * (a));
 		pt2.x = cvRound(x0 - 1000 * (-b));
 		pt2.y = cvRound(y0 - 1000 * (a));
+		line(img, pt1, pt2, color, 1, CV_AA);
+	}
+}
+
+void drawLinesOnImgCartesian(Mat& img, humanoid_league_msgs::LineInformationInImage& lines_cart, Scalar color) {
+	for(auto it = lines_cart.segments.begin(); it != lines_cart.segments.end(); ++it){
+		Point pt1,pt2;
+		pt1.x = it->start.x;
+		pt1.y = it->start.y;
+		pt2.x = it->end.x;
+		pt2.y = it->end.y;
 		line(img, pt1, pt2, color, 1, CV_AA);
 	}
 }
