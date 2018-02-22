@@ -1,15 +1,15 @@
 Determining if the system is big endian passed with the following output:
-Change Dir: /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
+Change Dir: /home/arnav/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_4f3cb/fast"
-/usr/bin/make -f CMakeFiles/cmTC_4f3cb.dir/build.make CMakeFiles/cmTC_4f3cb.dir/build
-make[1]: Entering directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_4f3cb.dir/TestEndianess.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_4f3cb.dir/TestEndianess.c.o   -c /media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp/TestEndianess.c
-Linking C executable cmTC_4f3cb
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4f3cb.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_4f3cb.dir/TestEndianess.c.o  -o cmTC_4f3cb -rdynamic 
-make[1]: Leaving directory '/media/nvidia/RoboSoccer/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_75545/fast"
+/usr/bin/make -f CMakeFiles/cmTC_75545.dir/build.make CMakeFiles/cmTC_75545.dir/build
+make[1]: Entering directory '/home/arnav/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_75545.dir/TestEndianess.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_75545.dir/TestEndianess.c.o   -c /home/arnav/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp/TestEndianess.c
+Linking C executable cmTC_75545
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_75545.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_75545.dir/TestEndianess.c.o  -o cmTC_75545 -rdynamic 
+make[1]: Leaving directory '/home/arnav/soccerbot/libraries/portaudio/build/CMakeFiles/CMakeTmp'
 
 TestEndianess.c:
 /* A 16 bit integer is required. */

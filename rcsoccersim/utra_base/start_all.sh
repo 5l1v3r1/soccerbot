@@ -1,6 +1,15 @@
-#!/bin/sh
+#!/bin/bash
+
+cd ~/soccerbot/rcsoccersim/utra_base/
+
+pkill -f rcssmonitor
+pkill -f rcssserver
+rcssserver &
+sleep 0.5
+rcssmonitor &
+sleep 0.5
 
 echo "Starting both teams"
-sh start.sh &
-sleep 20
-sh start.sh -t "UTRA"
+~/soccerbot/rcsoccersim/utra_base/start.sh &
+sleep 10
+~/soccerbot/rcsoccersim/utra_base/start.sh -t "UTRA"
