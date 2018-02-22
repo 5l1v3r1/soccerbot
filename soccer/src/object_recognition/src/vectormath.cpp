@@ -175,21 +175,7 @@ vector<Vec2f> filterRepeats(vector<Vec2f>& lines) {
 vector<Vec2f> filterUnparallelRepeats(vector<Vec2f>& lines) {
 	if(lines.size() <= 1) return lines;
 
-	sort(lines.begin(), lines.end(), sortbyangle);
-	vector<Vec2f> filteredLines;
-
-	for (auto it = lines.begin(); it != lines.end() - 1; ++it) {
-		float anglediff = abs((*it)[1] - (*(it+1))[1]);
-		float rhodiff = abs((*it)[0] - (*(it+1))[0]);
-
-		if(anglediff > ANGLE_PROXIMITY_MIN || anglediff < ANGLE_PROXIMITY_MAX) {
-			if(rhodiff > RHO_PROXIMITY_MIN) {
-				filteredLines.push_back((*it));
-			}
-		}
-	}
-
-	return filteredLines;
+	return filterRepeats(lines);
 }
 
 
